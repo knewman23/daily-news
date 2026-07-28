@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "sources": [
+    {"handle": "total.hipocrisy", "enabled": true, "added": "2026-07-28", "last_pull_at": null, "last_seen": null},
+    {"handle": "aaronparnas", "enabled": true, "added": "2026-07-28", "last_pull_at": null, "last_seen": null},
+    {"handle": "cancel.ian.carroll", "enabled": true, "added": "2026-07-28", "last_pull_at": null, "last_seen": null},
+    {"handle": "carolinegleich", "enabled": true, "added": "2026-07-28", "last_pull_at": null, "last_seen": null},
+    {"handle": "hunteralexanderhowell", "enabled": true, "added": "2026-07-28", "last_pull_at": null, "last_seen": null},
+    {"handle": "oafnation_actual", "enabled": true, "added": "2026-07-28", "last_pull_at": null, "last_seen": null}
+  ]
+}

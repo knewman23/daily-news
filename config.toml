@@ -1,0 +1,23 @@
+[paths]
+news = "news"
+raw = "data/raw"
+transcripts = "data/transcripts"
+logs = "logs"
+sources = "config/sources.json"
+
+[fetch]
+session_user = ""            # your Instagram username; set before first run
+first_run_lookback_hours = 48   # window used only when a handle has no watermark yet
+max_lookback_days = 14          # ceiling on the walk-back, so a stale watermark
+                                # can't trigger a crawl of a whole profile history
+max_retries = 3
+backoff_seconds = 30
+
+[transcribe]
+model = "small"            # tiny | base | small | medium | large-v3
+compute_type = "int8"
+min_words = 10             # transcripts below this are treated as empty
+
+[serve]
+host = "127.0.0.1"
+port = 8420

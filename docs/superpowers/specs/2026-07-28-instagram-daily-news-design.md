@@ -14,14 +14,14 @@ Instagram itself.
 
 ## Success criteria
 
-1. A single unattended run at 4:30pm produces `news/YYYY-MM-DD.md` containing
+1. A single unattended run at 11am produces `news/YYYY-MM-DD.md` containing
    one section per distinct news topic, with sources attributed.
 2. A story covered by several accounts on the same day appears once.
 3. `python serve.py` opens a page listing every past date, renders the selected
    day, filters by search text and topic tag, and saves journal notes back into
    that day's markdown file without altering the generated summary.
 4. The same page manages the source list: add a handle, remove it, or disable it
-   without editing a file. The next 4:30pm run honors the change.
+   without editing a file. The next 11am run honors the change.
 5. Re-running after a partial failure completes the day without redoing
    already-finished work.
 
@@ -29,7 +29,7 @@ Instagram itself.
 
 - Any news source other than Instagram.
 - Stories, image-only posts, or carousels. Video feed posts and reels only.
-- Multi-run-per-day polling. One run, 4:30pm.
+- Multi-run-per-day polling. One run, 11am.
 - Remote hosting, authentication, or multi-user support. Localhost only.
 - Cross-day de-duplication. Each day stands alone (see Decisions).
 
@@ -41,12 +41,13 @@ Instagram itself.
 | Transcription | `faster-whisper`, local, `small` model default | Free, offline, no audio leaves the machine. ~5–15s per 60s reel on Apple Silicon. |
 | Summarization | `claude -p` headless CLI | Uses the existing Claude Code subscription. No API key, no per-token cost, best available model quality. |
 | Language | Python 3.13 throughout | `instaloader` and `faster-whisper` are Python; stdlib `http.server` and `markdown` cover the web app. No npm, no build step. |
-| Scheduler | launchd `StartCalendarInterval` | On a laptop that sleeps through 4:30pm, launchd fires on wake. cron silently skips the run. |
+| Scheduler | launchd `StartCalendarInterval` | On a laptop that sleeps through 11am, launchd fires on wake. cron silently skips the run. |
 | De-duplication | Same-day across accounts only | Each day is a complete standalone picture. Cross-day suppression risks dropping real developments in ongoing stories. |
 | Filtering | Full-text search + Claude-assigned topic tags | Tags live in frontmatter; search needs no vocabulary maintenance. Both are cheap given the summary is already structured. |
 | Journaling | Local server writes into the same day's `.md` | One file per day holds news and reactions together. Marker comments isolate the writable region. |
 | Source list | `config/sources.json`, server-writable, managed from the web UI | Keeps machine-written state out of the hand-edited `config.toml`. A malformed write can't break whisper settings or the port. |
 | Removing a source | Disable by default, hard delete available | Disabling keeps the handle's past contributions attributable without pulling new posts. Delete is a separate, explicit action. |
+| Fetch window | Per-handle `last_pull_at` watermark, not a fixed lookback | Everything posted since that handle's last successful pull is collected, so a missed or failed run is made up on the next one instead of silently losing posts. Per-handle rather than global means one rate-limited account doesn't cost the others their window. Capped by `max_lookback_days` so a long-stale watermark can't trigger a full profile crawl. |
 
 ## Architecture
 
@@ -88,11 +89,13 @@ reachable; on failure the handle is not added and the reason is returned. Writes
 atomically via temp file plus rename so an interrupted save cannot truncate the
 list. Depends on: filesystem, instaloader (lookup only).
 
-**`fetch.py`** — `fetch_day(date, handles, session) -> list[PostRef]`
-Downloads video feed posts and reels published since the previous run for each
-handle. Writes `data/raw/<date>/<handle>_<shortcode>.mp4` and a sibling
+**`fetch.py`** — `fetch_day(date, cfg) -> Stats`
+Downloads video feed posts and reels for each enabled handle, using that handle's
+own `last_pull_at` watermark as the cutoff rather than a fixed window. Writes
+`data/raw/<date>/<handle>_<shortcode>.mp4` and a sibling
 `<handle>_<shortcode>.json` holding caption, timestamp, and permalink.
-Skips any post whose mp4 already exists. Depends on: instaloader, filesystem.
+Skips any post whose mp4 already exists. Advances the handle's watermark only
+after that handle's fetch succeeds. Depends on: instaloader, filesystem.
 
 **`transcribe.py`** — `transcribe_day(date) -> list[Transcript]`
 For each mp4 without a matching transcript: extract 16kHz mono wav via ffmpeg,

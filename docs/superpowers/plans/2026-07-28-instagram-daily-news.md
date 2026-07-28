@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED: Use superpowers-trainual:executing-plans to implement this plan. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** A 4:30pm daily job that transcribes audio from a curated set of Instagram accounts and writes a de-duped, topic-sectioned markdown digest, plus a localhost web app for reading past days, searching, journaling, and managing the source list.
+**Goal:** An 11am daily job that transcribes audio from a curated set of Instagram accounts and writes a de-duped, topic-sectioned markdown digest, plus a localhost web app for reading past days, searching, journaling, and managing the source list.
 
 **Architecture:** Four resumable pipeline stages (fetch → transcribe → summarize) driven by `run_daily.py` under launchd, each keyed on output existence so re-runs redo only missing work. A separate stdlib HTTP server reads the generated markdown and writes only two things: journal notes (inside comment markers) and `config/sources.json`. Pure logic — normalization, frontmatter parsing, markdown rendering, notes rewriting — lives in modules with no network or subprocess dependencies, so the majority of the system is unit-testable offline.
 
@@ -42,8 +42,10 @@ logs = "logs"
 sources = "config/sources.json"
 
 [fetch]
-lookback_hours = 24
-session_user = ""          # your Instagram username; set before first run
+session_user = ""            # your Instagram username; set before first run
+first_run_lookback_hours = 48   # window used only when a handle has no watermark yet
+max_lookback_days = 14          # ceiling on the walk-back, so a stale watermark
+                                # can't trigger a crawl of a whole profile history
 max_retries = 3
 backoff_seconds = 30
 
@@ -58,16 +60,19 @@ port = 8420
 ```
 
 - [ ] **Step 3: Write `config/sources.json` with the seed handles**
-Exact content — `last_seen` must be `null`, not omitted:
+Exact content — both null fields must be present, not omitted. `last_pull_at` is
+the per-handle fetch watermark (ISO 8601 UTC); `last_seen` is the date a post was
+last actually found, which is what makes a silently dead account visible in the UI.
 ```json
 {
-  "version": 1,
+  "version": 2,
   "sources": [
-    {"handle": "total.hipocrisy", "enabled": true, "added": "2026-07-28", "last_seen": null},
-    {"handle": "aaronparnas", "enabled": true, "added": "2026-07-28", "last_seen": null},
-    {"handle": "cancel.ian.carroll", "enabled": true, "added": "2026-07-28", "last_seen": null},
-    {"handle": "carolinegleich", "enabled": true, "added": "2026-07-28", "last_seen": null},
-    {"handle": "hunteralexanderhowell", "enabled": true, "added": "2026-07-28", "last_seen": null}
+    {"handle": "total.hipocrisy", "enabled": true, "added": "2026-07-28", "last_pull_at": null, "last_seen": null},
+    {"handle": "aaronparnas", "enabled": true, "added": "2026-07-28", "last_pull_at": null, "last_seen": null},
+    {"handle": "cancel.ian.carroll", "enabled": true, "added": "2026-07-28", "last_pull_at": null, "last_seen": null},
+    {"handle": "carolinegleich", "enabled": true, "added": "2026-07-28", "last_pull_at": null, "last_seen": null},
+    {"handle": "hunteralexanderhowell", "enabled": true, "added": "2026-07-28", "last_pull_at": null, "last_seen": null},
+    {"handle": "oafnation_actual", "enabled": true, "added": "2026-07-28", "last_pull_at": null, "last_seen": null}
   ]
 }
 ```
@@ -97,7 +102,10 @@ git commit -m "chore: project scaffold, config, and seed source list"
 - Create: `src/sources.py`
 - Test: `tests/test_sources.py`
 
-Interface: `load(path) -> list[Source]`, `enabled_handles(path) -> list[str]`, `add(path, handle, lookup=...) -> Source`, `set_enabled(path, handle, flag) -> None`, `remove(path, handle) -> None`, `stamp_last_seen(path, handle, date) -> None`, `normalize(raw) -> str`.
+Interface: `load(path) -> list[Source]`, `enabled_sources(path) -> list[Source]`, `add(path, handle, lookup=...) -> Source`, `set_enabled(path, handle, flag) -> None`, `remove(path, handle) -> None`, `advance_watermark(path, handle, when) -> None`, `stamp_last_seen(path, handle, date) -> None`, `normalize(raw) -> str`.
+
+`enabled_sources` returns whole records rather than bare handles because `fetch.py`
+needs each handle's `last_pull_at` watermark to compute its cutoff.
 
 The `lookup` parameter is an injected callable so tests never touch the network. Production passes an instaloader-backed lookup; `add` calls it once and refuses the handle if it raises.
 
@@ -119,14 +127,15 @@ Expected: PASS
 
 - [ ] **Step 5: Write failing tests for load, add, toggle, remove**
 Use a `tmp_path` fixture holding a copy of the seed JSON.
-- `load` returns 5 sources; `enabled_handles` returns all 5
-- `add` with a stub lookup that succeeds appends the handle, `enabled=True`, `added` set to the injected date, `last_seen=None`
+- `load` returns 6 sources; `enabled_sources` returns all 6
+- `add` with a stub lookup that succeeds appends the handle, `enabled=True`, `added` set to the injected date, `last_pull_at=None`, `last_seen=None`
 - `add` with a stub lookup that raises leaves the file byte-identical and surfaces the reason
 - `add` of `"@Aaronparnas"` raises a duplicate error — normalization collides with the existing entry
-- `set_enabled(handle, False)` then `enabled_handles` omits it but `load` still includes it
+- `set_enabled(handle, False)` then `enabled_sources` omits it but `load` still includes it
 - `remove` drops it from `load` entirely
 - `remove` / `set_enabled` on an unknown handle raises
-- `stamp_last_seen` updates only that handle's field
+- `stamp_last_seen` and `advance_watermark` each update only that handle's field, leaving the other five untouched
+- `advance_watermark` never moves a watermark backwards — passing an earlier timestamp than the stored one is a no-op, so an out-of-order or clock-skewed run can't re-open a window that was already closed
 
 - [ ] **Step 6: Write failing tests for the file-safety cases**
 - Corrupt JSON (`"{not json"`) → `load` raises with the path in the message. It must NOT return `[]`; an empty list would silently produce an empty digest that looks like a quiet news day.
@@ -414,27 +423,44 @@ git commit -m "feat: extract audio and transcribe with local faster-whisper"
 - Create: `src/fetch.py`
 - Test: `tests/test_fetch.py`
 
-Interface: `make_loader(cfg) -> Instaloader`, `lookup_profile(loader, handle) -> None` (the callable `sources.add` injects), `fetch_handle(loader, handle, cutoff, dest) -> list[PostRef]`, `fetch_day(date, cfg, loader=...) -> Stats`.
+Interface: `make_loader(cfg) -> Instaloader`, `lookup_profile(loader, handle) -> None` (the callable `sources.add` injects), `cutoff_for(source, now, cfg) -> datetime`, `fetch_handle(loader, source, cutoff, dest) -> list[PostRef]`, `fetch_day(date, cfg, loader=..., now=...) -> Stats`.
 
-- [ ] **Step 1: Write failing tests with instaloader faked**
+**Watermark semantics.** Each handle carries its own `last_pull_at`. The cutoff for
+a handle is that watermark — so everything posted since its last successful pull is
+collected, and a missed run is made up on the next one rather than lost. The
+watermark advances **only after that handle's fetch succeeds**; a handle that was
+rate-limited keeps its old watermark and retries the same window tomorrow, while
+the handles that succeeded move forward independently.
+
+- [ ] **Step 1: Write failing tests for `cutoff_for`**
+- `last_pull_at` present → cutoff is exactly that timestamp
+- `last_pull_at` null (new or freshly added handle) → cutoff is `now - first_run_lookback_hours`
+- `last_pull_at` older than `max_lookback_days` → cutoff is clamped to `now - max_lookback_days`, not the stale watermark
+- Naive vs timezone-aware timestamps do not silently compare wrong — assert everything is UTC-aware
+
+- [ ] **Step 2: Write failing tests with instaloader faked**
 Fake profile objects exposing `is_video`, `date_utc`, `shortcode`, `caption`, `video_url`.
 - Only `is_video` posts are downloaded
 - Iteration stops at the first post older than `cutoff` rather than walking the whole profile history
+- A post posted exactly at the cutoff timestamp is excluded, not fetched twice — the boundary is `>` cutoff, and this is what prevents the last post of the previous run reappearing today
+- Two consecutive runs with no new posts in between download nothing the second time
 - A post whose `.mp4` already exists is not re-downloaded
 - A caption sidecar `.json` is written with caption, UTC timestamp, and permalink
-- `stamp_last_seen` is called for a handle that yielded posts, and not for one that yielded none
+- `advance_watermark` is called with `now` after a successful handle fetch, including when that handle yielded zero posts
+- `stamp_last_seen` is called only for a handle that yielded posts
 
-- [ ] **Step 2: Write failing tests for the failure paths**
+- [ ] **Step 3: Write failing tests for the failure paths**
 - Login/session error → raises a distinct `SessionExpired` so `run_daily` can emit the re-login instruction
 - 429 / `TooManyRequests` → retried with backoff up to `max_retries`, then that handle is abandoned and `incomplete` is set; assert sleep is injected, not real, so the test is fast
-- Private or missing profile → skipped, logged, `incomplete` set
-- One handle failing does not prevent later handles from being fetched
+- **A failed handle's watermark is not advanced** — assert `last_pull_at` is byte-identical after the failure, and that the next run re-requests the same window. This is the whole point of per-handle watermarks; getting it wrong loses posts permanently and silently.
+- Private or missing profile → skipped, logged, `incomplete` set, watermark untouched
+- One handle failing does not prevent later handles from being fetched, and their watermarks still advance
 
-- [ ] **Step 3: Run tests to verify they fail**
+- [ ] **Step 4: Run tests to verify they fail**
 Run: `.venv/bin/pytest tests/test_fetch.py`
 Expected: FAIL — module missing
 
-- [ ] **Step 4: Implement `fetch.py`**
+- [ ] **Step 5: Implement `fetch.py`**
 Non-obvious instaloader configuration — the defaults download a pile of files this project doesn't want:
 ```python
 L = instaloader.Instaloader(
@@ -447,17 +473,17 @@ L = instaloader.Instaloader(
 )
 L.load_session_from_file(cfg.session_user)   # raises if the session is gone
 ```
-Iterate `Profile.from_username(L.context, handle).get_posts()`, break on `post.date_utc < cutoff`, and download videos to `data/raw/<date>/<handle>_<shortcode>.mp4`. Cutoff is `now_utc - lookback_hours`.
+Iterate `Profile.from_username(L.context, handle).get_posts()` (newest first), break once `post.date_utc <= cutoff`, and download videos to `data/raw/<date>/<handle>_<shortcode>.mp4`. Cutoff comes from `cutoff_for`, never a fixed window. Advance the watermark to `now` only on the success path — put it after the loop, not in a `finally`.
 
-- [ ] **Step 5: Run tests to verify they pass**
+- [ ] **Step 6: Run tests to verify they pass**
 Run: `.venv/bin/pytest tests/test_fetch.py`
 Expected: PASS
 
-- [ ] **Step 6: Authenticate for real, then smoke-test one handle**
+- [ ] **Step 7: Authenticate for real, then smoke-test one handle**
 Run: `.venv/bin/instaloader --login <your-username>` (interactive — the user runs this, including any 2FA prompt), set `session_user` in `config.toml`, then fetch a single handle.
-Expected: one or more `.mp4` files in `data/raw/<today>/`.
+Expected: one or more `.mp4` files in `data/raw/<today>/`, and that handle's `last_pull_at` set in `config/sources.json`.
 
-- [ ] **Step 7: Commit**
+- [ ] **Step 8: Commit**
 ```bash
 git add src/fetch.py tests/test_fetch.py
 git commit -m "feat: fetch recent video posts per handle via instaloader"
@@ -585,7 +611,7 @@ git commit -m "feat: local web app for reading, searching, journaling, and sourc
 - Create: `launchd/com.krys.daily-news.plist`, `README.md`
 
 - [ ] **Step 1: Write the launchd plist**
-`StartCalendarInterval` at 16:30 — launchd fires this on wake if the machine was asleep, which cron does not. Use absolute paths; launchd runs with a minimal environment and no shell profile.
+`StartCalendarInterval` at 11:00 — launchd fires this on wake if the machine was asleep, which cron does not. Use absolute paths; launchd runs with a minimal environment and no shell profile.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
@@ -603,10 +629,10 @@ git commit -m "feat: local web app for reading, searching, journaling, and sourc
   <key>EnvironmentVariables</key>
   <dict>
     <key>PATH</key>
-    <string>/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    <string>/Users/krystofernewman/.local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
   </dict>
   <key>StartCalendarInterval</key>
-  <dict><key>Hour</key><integer>16</integer><key>Minute</key><integer>30</integer></dict>
+  <dict><key>Hour</key><integer>11</integer><key>Minute</key><integer>0</integer></dict>
   <key>StandardOutPath</key>
   <string>/Users/krystofernewman/Projects/daily-news/logs/launchd.out.log</string>
   <key>StandardErrorPath</key>
@@ -614,7 +640,7 @@ git commit -m "feat: local web app for reading, searching, journaling, and sourc
 </dict>
 </plist>
 ```
-The `PATH` entry is required: `claude`, `ffmpeg`, and `ffprobe` live in Homebrew's bin and launchd will not find them otherwise.
+The `PATH` entry is required and both directories matter: `ffmpeg`/`ffprobe` are in `/opt/homebrew/bin`, but `claude` is in `~/.local/bin`. launchd starts with a minimal `PATH` and reads no shell profile, so omitting either one means the 11am run fails while a terminal run succeeds.
 
 - [ ] **Step 2: Install and verify the schedule**
 ```bash
@@ -639,7 +665,7 @@ Expected: all tests pass.
 - [ ] **Step 6: Commit**
 ```bash
 git add launchd/ README.md
-git commit -m "feat: launchd schedule at 16:30 and setup documentation"
+git commit -m "feat: launchd schedule at 11:00 and setup documentation"
 ```
 
 ---
