@@ -68,9 +68,15 @@ def project(tmp_path):
     web = tmp_path / "web"
     web.mkdir()
     (web / "index.html").write_text(
+        '<head>\n'
+        '<link rel="icon" href="header.PNG">\n'
+        '<link rel="stylesheet" href="style.css">\n'
+        "</head>\n"
         '<body data-mode="live">\n'
+        '<img class="crest" src="header.PNG" alt="crest">\n'
         '<details class="panel" id="sources-panel" data-live-only open>x</details>\n'
         '<details class="panel" id="runs-panel" data-live-only open>y</details>\n'
+        '<script src="app.js"></script>\n'
         "</body>\n",
         encoding="utf-8",
     )
@@ -290,3 +296,49 @@ def test_the_cli_reports_what_it_wrote(project, capsys):
         "--out", str(project / "site"),
     ])
     assert "2 day" in capsys.readouterr().out
+
+
+# --- cache busting ---------------------------------------------------------
+
+
+def test_asset_urls_carry_a_content_hash(project):
+    """GitHub Pages serves with max-age=600, so a fresh deploy is invisible for
+    ten minutes unless the URL changes."""
+    import re
+
+    html = (export(project) / "index.html").read_text(encoding="utf-8")
+
+    assert re.search(r'"style\.css\?v=[0-9a-f]{10}"', html)
+    assert re.search(r'"app\.js\?v=[0-9a-f]{10}"', html)
+    assert re.search(r'"header\.PNG\?v=[0-9a-f]{10}"', html)
+
+
+def test_the_hash_changes_when_the_asset_changes(project):
+    import re
+
+    def stamp(html):
+        return re.search(r'"app\.js\?v=([0-9a-f]{10})"', html).group(1)
+
+    first = stamp((export(project) / "index.html").read_text(encoding="utf-8"))
+    (project / "web" / "app.js").write_text("console.log('changed')", encoding="utf-8")
+    second = stamp((export(project) / "index.html").read_text(encoding="utf-8"))
+
+    assert first != second
+
+
+def test_the_hash_is_stable_when_nothing_changes(project):
+    import re
+
+    def stamp(html):
+        return re.search(r'"style\.css\?v=([0-9a-f]{10})"', html).group(1)
+
+    first = stamp((export(project) / "index.html").read_text(encoding="utf-8"))
+    second = stamp((export(project) / "index.html").read_text(encoding="utf-8"))
+    assert first == second
+
+
+def test_the_assets_themselves_keep_their_plain_names(project):
+    """Only the URLs are fingerprinted; the files must stay where Pages looks."""
+    site = export(project)
+    assert (site / "app.js").is_file()
+    assert (site / "style.css").is_file()

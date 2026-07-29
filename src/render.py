@@ -67,7 +67,15 @@ def _clean_topic(
         p.strip() for p in _as_list(topic.get("posts"))
         if p.strip() in permalinks
     ]
-    links = [(permalinks[p][0], permalinks[p][1]) for p in dict.fromkeys(posts)]
+
+    # One link per handle, not per post. An account that covered the same story
+    # twice would otherwise render as "@handle, @handle", which reads as a
+    # mistake. The first post it was drawn from is the one linked.
+    by_handle: dict[str, str] = {}
+    for post in dict.fromkeys(posts):
+        handle, url = permalinks[post]
+        by_handle.setdefault(handle, url)
+    links = list(by_handle.items())
 
     handles = [_handle(s) for s in _as_list(topic.get("sources")) if s.strip()]
     linked = {handle for handle, _ in links}

@@ -20,6 +20,7 @@ so the two views cannot drift apart.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import shutil
@@ -146,22 +147,41 @@ def _prepare(out: Path) -> None:
 
 
 def _copy_assets(web: Path, out: Path) -> None:
+    fingerprints = {}
+
     for name in ASSETS:
         source = web / name
         if not source.is_file():
             continue
         if name == "index.html":
-            (out / name).write_text(
-                _make_static(source.read_text(encoding="utf-8")), encoding="utf-8",
-            )
-        else:
-            shutil.copy2(source, out / name)
+            continue                        # written last, once the hashes exist
+        shutil.copy2(source, out / name)
+        fingerprints[name] = _fingerprint(source)
+
+    index = web / "index.html"
+    if index.is_file():
+        (out / "index.html").write_text(
+            _make_static(index.read_text(encoding="utf-8"), fingerprints),
+            encoding="utf-8",
+        )
 
 
-def _make_static(html: str) -> str:
-    """Flip the page into read-only mode and drop the live-only panels."""
+def _make_static(html: str, fingerprints: dict[str, str]) -> str:
+    """Flip the page into read-only mode, drop live-only panels, bust caches."""
     html = html.replace('data-mode="live"', 'data-mode="static"')
-    return _LIVE_ONLY.sub("", html)
+    html = _LIVE_ONLY.sub("", html)
+
+    # GitHub Pages serves assets with max-age=600, so a fresh deploy is invisible
+    # for up to ten minutes unless the URL changes. A content hash in the query
+    # string means a changed file is always a new URL.
+    for name, stamp in fingerprints.items():   # not `digest`: shadows the module
+        html = html.replace(f'"{name}"', f'"{name}?v={stamp}"')
+
+    return html
+
+
+def _fingerprint(path: Path, length: int = 10) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()[:length]
 
 
 if __name__ == "__main__":

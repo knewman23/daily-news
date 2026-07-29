@@ -214,3 +214,28 @@ def test_a_handle_the_model_named_without_a_post_id_is_still_credited():
 def test_sources_are_plain_when_no_permalinks_are_supplied():
     out = render.render_day(DAY, TOPICS_WITH_POSTS, STATS, generated=GENERATED)
     assert "sources: @aaronparnas, @total.hypocrisy" in out
+
+
+def test_a_handle_that_covered_a_story_twice_is_listed_once():
+    """Two posts from one account rendered as "@handle, @handle", which reads
+    as a mistake."""
+    permalinks = {
+        "AAA": ("aaronparnas", "https://www.instagram.com/p/AAA/"),
+        "CCC": ("aaronparnas", "https://www.instagram.com/p/CCC/"),
+        "BBB": ("total.hypocrisy", "https://www.instagram.com/p/BBB/"),
+    }
+    topics = [{
+        "headline": "Covered twice by one account",
+        "body": "b",
+        "tags": ["politics"],
+        "sources": ["@aaronparnas", "@total.hypocrisy"],
+        "posts": ["AAA", "CCC", "BBB"],
+    }]
+
+    out = render.render_day(DAY, topics, STATS, generated=GENERATED,
+                            permalinks=permalinks)
+
+    assert out.count("@aaronparnas") == 2      # once in frontmatter, once in the topic
+    # The first post it was drawn from is the one linked.
+    assert "[@aaronparnas](https://www.instagram.com/p/AAA/)" in out
+    assert "CCC" not in out
