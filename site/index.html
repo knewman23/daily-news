@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Daily News</title>
   <link rel="icon" href="header.PNG?v=7a1599af7f">
-  <link rel="stylesheet" href="style.css?v=ea3a69b64b">
+  <link rel="stylesheet" href="style.css?v=db71f9cf18">
 </head>
 <!-- data-mode is rewritten to "static" by export_static.py. The read-only build
      drops the journal, the source list, and the run history entirely — not with
@@ -28,7 +28,9 @@
 
     <button id="active-filter" class="active-filter" hidden></button>
 
-    <button id="menu-button" class="menu-button" type="button"
+    <!-- Whether the hosted copy is caught up. Live-only: there is nothing to
+         publish from the published build, and no server to ask. -->
+<button id="menu-button" class="menu-button" type="button"
             aria-expanded="false" aria-controls="drawer" aria-haspopup="true">
       <span class="visually-hidden">Days and filters</span>
       <span aria-hidden="true">⋮</span>
@@ -69,6 +71,6 @@
 
 <div id="scrim" class="scrim" hidden></div>
 
-<script src="app.js?v=979cde0255"></script>
+<script src="app.js?v=5c38b949c7"></script>
 </body>
 </html>

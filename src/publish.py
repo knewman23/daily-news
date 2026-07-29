@@ -50,8 +50,14 @@ def publish(
     topic_count: int = 0,
     runner: Runner = subprocess.run,
     exporter: Callable[..., int] | None = None,
+    summary: str | None = None,
 ) -> PublishResult:
-    """Export the site and push it. Never raises."""
+    """Export the site and push it. Never raises.
+
+    `summary` overrides the commit subject. The daily run wants
+    "news: <date> (N topics)"; a hand edit to what is skipped is not a new day's
+    news and should not claim to be one in the log.
+    """
     if not cfg.publish.enabled:
         return PublishResult(True, False, "publishing is disabled in config.toml")
 
@@ -81,11 +87,13 @@ def publish(
             log.info("site is unchanged, nothing to publish")
             return PublishResult(True, False, "no change to publish")
 
-        summary = f"news: {day.isoformat()}"
-        if topic_count:
-            summary += f" ({topic_count} topic{'s' if topic_count != 1 else ''})"
+        subject = summary
+        if not subject:
+            subject = f"news: {day.isoformat()}"
+            if topic_count:
+                subject += f" ({topic_count} topic{'s' if topic_count != 1 else ''})"
 
-        _git(runner, root, "commit", "-m", summary, "--", relative)
+        _git(runner, root, "commit", "-m", subject, "--", relative)
         _git(runner, root, "push", cfg.publish.remote,
              f"HEAD:{cfg.publish.branch}")
     except GitError as exc:

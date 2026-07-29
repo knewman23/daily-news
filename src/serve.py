@@ -61,13 +61,19 @@ def build_server(
     port: int = 8420,
     lookup: Callable[[str], Any] | None = None,
     logs_dir: str | Path | None = None,
+    publisher=None,
 ) -> ThreadingHTTPServer:
-    """Assemble the server. Port 0 binds an ephemeral port, which the tests use."""
+    """Assemble the server. Port 0 binds an ephemeral port, which the tests use.
+
+    `publisher` is an autopublish.Publisher, or None to leave the hosted copy
+    alone. Injected rather than constructed here so the tests never reach git.
+    """
     news = Path(news_dir)
     web = Path(web_dir)
     config_path = Path(sources_path)
     logs = Path(logs_dir) if logs_dir else Path("logs")
     verify = lookup if lookup is not None else _default_lookup
+    publish_to = publisher
 
     class Handler(_Handler):
         news_dir = news
@@ -75,8 +81,11 @@ def build_server(
         sources_path = config_path
         logs_dir = logs
         lookup = staticmethod(verify)
+        publisher = publish_to
 
-    return ThreadingHTTPServer((host, port), Handler)
+    httpd = ThreadingHTTPServer((host, port), Handler)
+    httpd.publisher = publish_to
+    return httpd
 
 
 def serve_in_thread(
@@ -96,6 +105,9 @@ def serve_in_thread(
 
 
 def run(cfg, web_dir: str | Path = "web") -> None:
+    from src import autopublish
+
+    publisher = autopublish.Publisher(cfg)
     httpd = build_server(
         news_dir=cfg.paths.news,
         sources_path=cfg.paths.sources,
@@ -103,15 +115,25 @@ def run(cfg, web_dir: str | Path = "web") -> None:
         host=cfg.serve.host,
         port=cfg.serve.port,
         logs_dir=cfg.paths.logs,
+        publisher=publisher,
     )
     url = f"http://{cfg.serve.host}:{cfg.serve.port}"
     print(f"Daily News reading from {cfg.paths.news}")
     print(f"Open {url}  (ctrl-c to stop)")
+    if publisher.enabled:
+        print("Skipping or restoring a topic republishes the site.")
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
         print("\nstopped")
     finally:
+        # An edit inside the quiet window would otherwise be dropped on ctrl-c,
+        # leaving the hosted copy behind with nothing saying so.
+        if publisher.enabled and publisher.status()["pending"]:
+            print("publishing the last edit(s) before exit…")
+            publisher.flush()
+        else:
+            publisher.cancel()
         httpd.server_close()
 
 
@@ -121,6 +143,7 @@ class _Handler(BaseHTTPRequestHandler):
     sources_path: Path
     logs_dir: Path
     lookup: Callable[[str], Any]
+    publisher: Any = None
 
     server_version = "daily-news"
 
@@ -133,6 +156,7 @@ class _Handler(BaseHTTPRequestHandler):
             "/api/search": self._search,
             "/api/sources": self._list_sources,
             "/api/runs": self._runs,
+            "/api/publish": self._publish_status,
         }, self._static)
 
     def do_POST(self) -> None:
@@ -313,7 +337,25 @@ class _Handler(BaseHTTPRequestHandler):
             # topic in a file the user cannot restore.
             raise ApiError(409, str(exc))
 
-        self._json({"ok": True, "skipped": _skipped_payload(path)})
+        # What the published page should show has changed. Requested after the
+        # write succeeded and never awaited: the edit is already on disk, and a
+        # git push is not something to hold a request open for.
+        if self.publisher is not None:
+            self.publisher.request(path.stem)
+
+        self._json({
+            "ok": True,
+            "skipped": _skipped_payload(path),
+            "publish": self._publish_state(),
+        })
+
+    def _publish_status(self) -> None:
+        self._json(self._publish_state())
+
+    def _publish_state(self) -> dict:
+        if self.publisher is None:
+            return {"state": "off", "message": "", "pending": 0}
+        return self.publisher.status()
 
     # --- sources ----------------------------------------------------------
 

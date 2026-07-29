@@ -334,12 +334,68 @@ async function restoreTopic(date, headline, button) {
 async function afterSkipChange(date) {
   await loadDays();
   await loadTags();
+  watchPublish();
   if (state.activeTag === SKIPPED) {
     renderTags();
     showSkipped();
     return;
   }
   await showDay(date);
+}
+
+/* --- republishing -------------------------------------------------------- */
+
+/* The server coalesces edits and pushes once they stop, so the outcome arrives
+   well after the request that caused it. Poll until it settles.
+
+   Reported rather than left silent: a background push that failed would
+   otherwise leave the reader believing the live site matches when it does not. */
+
+const PUBLISH_TEXT = {
+  pending: 'publishing soon…',
+  publishing: 'publishing…',
+  published: 'published ✓',
+  failed: 'publish failed ⚠',
+};
+
+let publishTimer = null;
+
+function renderPublish(status) {
+  const line = $('publish-status');
+  if (!line) return;                       // absent in the published build
+
+  const text = PUBLISH_TEXT[status.state] || '';
+  line.textContent = text;
+  line.className = `publish-status ${status.state}`;
+  line.title = status.message || '';
+  // A failure is the one state worth interrupting for; the message names the
+  // git error, which the status line has no room for.
+  if (status.state === 'failed' && status.message) line.title = status.message;
+}
+
+function watchPublish() {
+  clearTimeout(publishTimer);
+
+  const poll = async () => {
+    let status;
+    try {
+      status = await api('/api/publish');
+    } catch {
+      // The server going away is not worth a scary message; the edit is on disk.
+      renderPublish({ state: 'idle', message: '' });
+      return;
+    }
+
+    renderPublish(status);
+    // 'published' and 'failed' are terminal but the server clears them itself
+    // after a while, so keep polling until it does — that is what makes the
+    // line disappear on its own rather than sticking around all session.
+    if (['pending', 'publishing', 'published', 'failed'].includes(status.state)) {
+      publishTimer = setTimeout(poll, 2000);
+    }
+  };
+
+  poll();
 }
 
 /* Read straight through the archive without going back to the rail.
@@ -919,7 +975,12 @@ async function start() {
 
   wireToolbar();
   wireDrawer();
-  if (!READ_ONLY) wireAddSource();
+  if (!READ_ONLY) {
+    wireAddSource();
+    // A push left in flight by a previous session should still be visible. This
+    // stops after one request when there is nothing happening.
+    watchPublish();
+  }
 
   try {
     const work = [loadDays(), loadTags()];

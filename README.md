@@ -297,7 +297,16 @@ your mind:
 
 A restored topic is an ordinary topic: searchable, and its tags return to the
 chips. Both directions edit only that one `skipped:` line in `news/<date>.md` and
-never touch your journal. Editing `[interests]` and re-running is still the right
+never touch your journal.
+
+**The hosted site follows along.** With `[publish] enabled`, an edit republishes
+without you touching a terminal — but not once per click. Edits coalesce: each one
+restarts a 15-second timer and one push covers the batch, so triaging six topics
+is one commit and one Pages build rather than six queued ones. A small line in the
+toolbar tracks it (`publishing…` → `published ✓`, or `publish failed ⚠` with the
+git error on hover), because a background push that failed would otherwise leave
+you believing the live page matches. Quitting with an edit still inside the window
+publishes it first rather than dropping it. Editing `[interests]` and re-running is still the right
 move when the filter is wrong *in general* — this is for when it is wrong once.
 
 The run record keeps saying what the 11am run decided, which is why it and the
@@ -451,6 +460,7 @@ src/digest.py        reading digests back: index, topics, search, HTML
 src/notes.py         the journal block — one of two writers to a digest
 src/topics.py        skipping and restoring a topic — the other one
 src/publish.py       export and push
+src/autopublish.py   republishing after a hand edit, once the edits stop
 src/mailer.py        the summary email
 src/runlog.py        run history
 src/sources.py       the handle list

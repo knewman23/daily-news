@@ -16,6 +16,7 @@ Each module owns one stage and is imported by `run_daily.py`, `serve.py`, or
 | `notes.py` | the journal block |
 | `topics.py` | flipping one topic's `skipped:` line |
 | `publish.py` | export and push |
+| `autopublish.py` | coalescing background publisher, for hand edits |
 | `mailer.py` | the summary email |
 | `runlog.py` | run history |
 | `sources.py` | the handle list |

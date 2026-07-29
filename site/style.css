@@ -226,6 +226,20 @@ a:hover { color: var(--red); }
 
 .active-filter::after { content: " ✕"; }
 
+/* In the toolbar's own dark band, so it reads as chrome rather than as news. */
+.publish-status {
+  flex: none;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--parchment) 70%, transparent);
+  white-space: nowrap;
+}
+
+.publish-status:empty { display: none; }
+.publish-status.published { color: var(--gold); }
+.publish-status.failed { color: var(--gold); font-weight: 700; cursor: help; }
+
 .menu-button {
   flex: none;
   width: 2.25rem;

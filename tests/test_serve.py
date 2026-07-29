@@ -586,3 +586,114 @@ def test_a_skip_path_cannot_escape_the_news_directory(server):
         "headline": "Anything", "skipped": True,
     })
     assert status == 400
+
+
+# --- republishing after an edit --------------------------------------------
+
+
+class PublisherSpy:
+    def __init__(self, state="idle"):
+        self.requests = []
+        self.state = state
+
+    def request(self, day):
+        self.requests.append(day)
+        self.state = "pending"
+
+    def status(self):
+        return {"state": self.state, "message": "", "pending": len(self.requests)}
+
+
+@pytest.fixture
+def server_with_publisher(tmp_path):
+    """The same fixture, with a publisher attached. No git is ever reached."""
+    news = tmp_path / "news"
+    news.mkdir()
+    (news / "2026-07-28.md").write_text(DAY_TWO, encoding="utf-8")
+
+    sources_path = tmp_path / "sources.json"
+    sources_path.write_text(json.dumps(SOURCES, indent=2), encoding="utf-8")
+    web = tmp_path / "web"
+    web.mkdir()
+    (web / "index.html").write_text("<h1>Daily News</h1>", encoding="utf-8")
+    logs = tmp_path / "logs"
+    logs.mkdir()
+
+    spy = PublisherSpy()
+    httpd = serve.build_server(
+        news_dir=news, sources_path=sources_path, web_dir=web,
+        host="127.0.0.1", port=0, lookup=lambda handle: None, logs_dir=logs,
+        publisher=spy,
+    )
+    thread = serve.serve_in_thread(httpd)
+    try:
+        yield Client(httpd, news, sources_path), spy
+    finally:
+        httpd.shutdown()
+        httpd.server_close()
+        thread.join(timeout=5)
+
+
+def test_skipping_asks_for_a_republish(server_with_publisher):
+    client, spy = server_with_publisher
+    status, payload = client.json("/api/skip/2026-07-28", "POST", {
+        "headline": "Nvidia earnings beat estimates", "skipped": True,
+    })
+
+    assert status == 200
+    assert spy.requests == ["2026-07-28"]
+    assert payload["publish"]["state"] == "pending"
+
+
+def test_restoring_asks_for_a_republish(server_with_publisher):
+    client, spy = server_with_publisher
+    client.json("/api/skip/2026-07-28", "POST", {
+        "headline": "Nvidia earnings beat estimates", "skipped": True,
+    })
+    client.json("/api/skip/2026-07-28", "POST", {
+        "headline": "Nvidia earnings beat estimates", "skipped": False,
+    })
+
+    assert spy.requests == ["2026-07-28", "2026-07-28"]
+
+
+def test_a_refused_edit_does_not_ask_for_a_republish(server_with_publisher):
+    """Nothing changed on disk, so there is nothing to publish."""
+    client, spy = server_with_publisher
+    status, _ = client.json("/api/skip/2026-07-28", "POST", {
+        "headline": "A story that was never here", "skipped": True,
+    })
+
+    assert status == 409
+    assert spy.requests == []
+
+
+def test_saving_notes_never_asks_for_a_republish(server_with_publisher):
+    """The journal is not published, so it cannot change the site."""
+    client, spy = server_with_publisher
+    client.json("/api/notes/2026-07-28", "POST", {"notes": "private"})
+    assert spy.requests == []
+
+
+def test_the_publish_status_is_readable(server_with_publisher):
+    client, spy = server_with_publisher
+    status, payload = client.json("/api/publish")
+
+    assert status == 200
+    assert payload == {"state": "idle", "message": "", "pending": 0}
+
+
+def test_with_no_publisher_the_status_reports_off(server):
+    status, payload = server.json("/api/publish")
+    assert status == 200
+    assert payload["state"] == "off"
+
+
+def test_with_no_publisher_skipping_still_works(server):
+    """Publishing is optional; editing is not conditional on it."""
+    status, payload = server.json("/api/skip/2026-07-28", "POST", {
+        "headline": "Nvidia earnings beat estimates", "skipped": True,
+    })
+    assert status == 200
+    assert payload["publish"]["state"] == "off"
+    assert payload["skipped"][0]["headline"] == "Nvidia earnings beat estimates"

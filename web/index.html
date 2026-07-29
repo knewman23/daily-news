@@ -28,6 +28,11 @@
 
     <button id="active-filter" class="active-filter" hidden></button>
 
+    <!-- Whether the hosted copy is caught up. Live-only: there is nothing to
+         publish from the published build, and no server to ask. -->
+    <span id="publish-status" class="publish-status" data-live-only
+          role="status" aria-live="polite"></span>
+
     <button id="menu-button" class="menu-button" type="button"
             aria-expanded="false" aria-controls="drawer" aria-haspopup="true">
       <span class="visually-hidden">Days and filters</span>
