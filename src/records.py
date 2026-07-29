@@ -22,12 +22,21 @@ class PostRef:
 
 @dataclass(frozen=True)
 class Transcript:
+    """Extracted text from one post, however it was obtained.
+
+    `kind` distinguishes spoken audio from on-image text. The summarizer labels
+    each block with it, because the two read very differently — speech is
+    conversational and rambling, on-image text is clipped headline fragments —
+    and conflating them produces odd summaries.
+    """
+
     handle: str
     shortcode: str
     text: str
     caption: str = ""
     permalink: str = ""
     posted_at: str | None = None
+    kind: str = "audio"
 
 
 @dataclass

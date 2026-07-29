@@ -491,6 +491,78 @@ git commit -m "feat: fetch recent video posts per handle via instaloader"
 
 ---
 
+### Task 9b: `ocr.py` — text on images
+
+**Files:**
+- Create: `src/ocr.py`
+- Test: `tests/test_ocr.py`
+- Modify: `src/fetch.py`, `tests/test_fetch.py` (download image posts too)
+- Modify: `src/records.py` (add `Transcript.kind`)
+
+Added after live inspection of `oafnation_actual`: it posts news as text-on-image,
+sometimes with a completely empty caption, so the post's entire content exists
+only in the image. Verified with Apple Vision — 0.1–0.4s per image, accurate on
+real posts, no model download and no API key.
+
+Interface: `extract_text(image, recognizer=...) -> str`,
+`ocr_day(raw_dir, out_dir, cfg, recognizer=...) -> (list[Transcript], Stats)`.
+
+- [ ] **Step 1: Add `kind` to `Transcript`**
+Defaults to `"audio"`; OCR sets `"image"`. `summarize.build_prompt` labels each
+block with it so the model knows whether it is reading speech or on-screen text —
+they read very differently and conflating them produces odd summaries.
+
+- [ ] **Step 2: Extend `fetch.py` to download image posts**
+Non-video posts download to `<handle>_<shortcode>.jpg` with the same JSON sidecar.
+Carousels (`GraphSidecar`) save each slide as `<handle>_<shortcode>_<n>.jpg`.
+Update `test_fetch.py`: assert images are downloaded, that a carousel produces one
+file per slide, and that the existing skip-if-present behavior covers images too.
+
+- [ ] **Step 3: Write failing tests for `ocr.py` with the recognizer injected**
+- An image whose `.txt` already exists is skipped, and the recognizer is not called
+- Recognizer returning nothing → skipped, counted but not extracted
+- Text below `min_words` → skipped (watermarks like "OAF NATION" are all that
+  some images yield, and are not news)
+- One image raising does not abort the rest; the day is flagged incomplete
+- Carousel slides are concatenated into one transcript in slide order
+- Returned records carry `kind="image"` and the sidecar's handle/caption
+
+- [ ] **Step 4: Run tests to verify they fail**
+Run: `.venv/bin/pytest tests/test_ocr.py`
+Expected: FAIL — module missing
+
+- [ ] **Step 5: Implement `ocr.py`**
+Exact Vision invocation — the pyobjc bridge is not obvious and a wrong
+recognition level silently degrades quality:
+```python
+url = NSURL.fileURLWithPath_(str(path))
+handler = Vision.VNImageRequestHandler.alloc().initWithURL_options_(url, None)
+request = Vision.VNRecognizeTextRequest.alloc().init()
+request.setRecognitionLevel_(0)          # 0 = accurate, 1 = fast
+request.setUsesLanguageCorrection_(True)
+ok, err = handler.performRequests_error_([request], None)
+lines = [str(o.topCandidates_(1)[0].string()) for o in (request.results() or [])
+         if o.topCandidates_(1)]
+```
+Import Vision lazily, as `transcribe.py` does with whisper, so tests and the web
+app never pay the framework import.
+
+- [ ] **Step 6: Run tests to verify they pass**
+Run: `.venv/bin/pytest tests/test_ocr.py tests/test_fetch.py`
+Expected: PASS
+
+- [ ] **Step 7: Smoke-test against the real account**
+Fetch recent `oafnation_actual` posts and OCR them. Expected: readable news text,
+including from a post with an empty caption.
+
+- [ ] **Step 8: Commit**
+```bash
+git add src/ocr.py tests/test_ocr.py src/fetch.py tests/test_fetch.py src/records.py
+git commit -m "feat: read on-image text from image posts via Apple Vision"
+```
+
+---
+
 ### Task 10: `run_daily.py` — the orchestrator
 
 **Files:**
@@ -674,7 +746,9 @@ git commit -m "feat: launchd schedule at 11:00 and setup documentation"
 
 Out of scope, recorded so they aren't rediscovered as bugs:
 
-- Stories, image-only posts, and carousel video slides — video feed posts and reels only
+- Stories
+- Video slides inside a carousel — carousel *images* are OCR'd (Task 9b), but a
+  video slide within a carousel is not transcribed
 - Cross-day de-duplication — each day stands alone by decision
 - Per-topic journal notes — one notes block per day
 - Any non-Instagram source

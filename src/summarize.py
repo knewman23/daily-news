@@ -41,9 +41,15 @@ class SummarizeError(Exception):
 
 
 PROMPT_HEADER = """\
-You are compiling a daily news digest from transcribed audio of Instagram video
-posts. Below are today's transcripts, one per post, each labelled with the
-account that posted it.
+You are compiling a daily news digest from Instagram posts. Below is one block
+per post, each labelled with the account that posted it and how the text was
+obtained:
+
+- "spoken audio" is a transcript of someone talking, so it is conversational and
+  may ramble or trail off mid-sentence.
+- "text in image" is text read off a graphic by OCR, so it arrives as clipped
+  headline fragments, sometimes with the account's own watermark mixed in.
+  Ignore watermarks and channel branding.
 
 Group them into distinct news topics and return ONLY a JSON object of this shape:
 
@@ -74,14 +80,15 @@ def build_prompt(transcripts: Sequence[Transcript]) -> str:
 
     blocks = []
     for t in transcripts:
-        lines = [f"[@{t.handle}]"]
+        source = "text in image" if t.kind == "image" else "spoken audio"
+        lines = [f"[@{t.handle}] ({source})"]
         if t.posted_at:
             lines.append(f"posted: {t.posted_at}")
         if t.permalink:
             lines.append(f"link: {t.permalink}")
         if t.caption.strip():
             lines.append(f"caption: {t.caption.strip()}")
-        lines.append(f"transcript: {t.text.strip()}")
+        lines.append(f"content: {t.text.strip()}")
         blocks.append("\n".join(lines))
 
     return PROMPT_HEADER + "\n" + "\n\n".join(blocks) + "\n"

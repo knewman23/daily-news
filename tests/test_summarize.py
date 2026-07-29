@@ -108,6 +108,19 @@ def test_prompt_survives_an_empty_transcript_list():
     assert summarize.build_prompt([]).strip()
 
 
+def test_prompt_labels_spoken_audio_apart_from_on_image_text():
+    """The two read very differently; conflating them produces odd summaries."""
+    prompt = summarize.build_prompt([
+        TRANSCRIPTS[0],
+        Transcript(handle="oafnation_actual", shortcode="IMG",
+                   text="PROSECUTORS SAY BERLIN PRIDE ATTACK", kind="image"),
+    ])
+
+    assert "[@aaronparnas] (spoken audio)" in prompt
+    assert "[@oafnation_actual] (text in image)" in prompt
+    assert "Ignore watermarks" in prompt
+
+
 # --- call_claude -----------------------------------------------------------
 
 

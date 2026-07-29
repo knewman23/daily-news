@@ -28,7 +28,7 @@ Instagram itself.
 ## Non-goals
 
 - Any news source other than Instagram.
-- Stories, image-only posts, or carousels. Video feed posts and reels only.
+- Stories.
 - Multi-run-per-day polling. One run, 11am.
 - Remote hosting, authentication, or multi-user support. Localhost only.
 - Cross-day de-duplication. Each day stands alone (see Decisions).
@@ -47,6 +47,8 @@ Instagram itself.
 | Journaling | Local server writes into the same day's `.md` | One file per day holds news and reactions together. Marker comments isolate the writable region. |
 | Source list | `config/sources.json`, server-writable, managed from the web UI | Keeps machine-written state out of the hand-edited `config.toml`. A malformed write can't break whisper settings or the port. |
 | Removing a source | Disable by default, hard delete available | Disabling keeps the handle's past contributions attributable without pulling new posts. Delete is a separate, explicit action. |
+| Image posts | Included, with the on-image text read by OCR | Some followed accounts (`oafnation_actual`) post news as text-on-image, frequently with an empty caption — verified on a live post whose entire content existed only in the image. Excluding them drops that account's output almost entirely. |
+| OCR engine | Apple Vision via `pyobjc`, local | Built into macOS: no model download, no API key, no per-image cost. Measured 0.1–0.4s per image with accurate results on real posts. Tesseract would need a Homebrew dependency and reads stylised headline text less reliably. |
 | Fetch window | Per-handle `last_pull_at` watermark, not a fixed lookback | Everything posted since that handle's last successful pull is collected, so a missed or failed run is made up on the next one instead of silently losing posts. Per-handle rather than global means one rate-limited account doesn't cost the others their window. Capped by `max_lookback_days` so a long-stale watermark can't trigger a full profile crawl. |
 
 ## Architecture
@@ -96,6 +98,13 @@ own `last_pull_at` watermark as the cutoff rather than a fixed window. Writes
 `<handle>_<shortcode>.json` holding caption, timestamp, and permalink.
 Skips any post whose mp4 already exists. Advances the handle's watermark only
 after that handle's fetch succeeds. Depends on: instaloader, filesystem.
+
+**`ocr.py`** — `ocr_day(raw_dir, out_dir, cfg) -> (list[Transcript], Stats)`
+For each downloaded image without an extracted-text file: run Apple Vision text
+recognition and write `data/transcripts/<date>/<handle>_<shortcode>.txt`. Returns
+the same `Transcript` record `transcribe.py` produces, tagged `kind="image"`, so
+everything downstream treats spoken and on-image text identically. Carousels OCR
+each slide and concatenate. Depends on: pyobjc Vision, filesystem.
 
 **`transcribe.py`** — `transcribe_day(date) -> list[Transcript]`
 For each mp4 without a matching transcript: extract 16kHz mono wav via ffmpeg,

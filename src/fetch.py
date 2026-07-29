@@ -116,6 +116,24 @@ class InstaloaderClient:
         dest.parent.mkdir(parents=True, exist_ok=True)
         self._loader.context.get_and_write_raw(post.video_url, str(dest))
 
+    def download_image(self, url: str, dest: Path) -> None:
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        self._loader.context.get_and_write_raw(url, str(dest))
+
+    def slide_urls(self, post: Any) -> list[str]:
+        """Image URLs for a post: one for a single image, one per slide for a carousel.
+
+        Video slides inside a carousel are skipped — only their thumbnail would be
+        available here, and a thumbnail is not the post's content.
+        """
+        if getattr(post, "typename", "") != "GraphSidecar":
+            return [post.url]
+
+        return [
+            node.display_url for node in post.get_sidecar_nodes()
+            if not node.is_video
+        ]
+
 
 def make_loader(cfg: FetchConfig) -> InstaloaderClient:
     return InstaloaderClient(cfg)
@@ -174,12 +192,6 @@ def fetch_handle(
             continue
 
         consecutive_old = 0
-        if not post.is_video:
-            continue
-
-        mp4 = dest / f"{source.handle}_{post.shortcode}.mp4"
-        if not mp4.exists():
-            loader.download(post, mp4)
 
         ref = PostRef(
             handle=source.handle,
@@ -188,7 +200,16 @@ def fetch_handle(
             permalink=f"https://www.instagram.com/p/{post.shortcode}/",
             caption=post.caption or "",
         )
-        _write_sidecar(mp4.with_suffix(".json"), ref)
+        stem = f"{source.handle}_{post.shortcode}"
+
+        if post.is_video:
+            mp4 = dest / f"{stem}.mp4"
+            if not mp4.exists():
+                loader.download(post, mp4)
+        elif not _download_slides(loader, post, dest, stem):
+            continue        # nothing usable on this post
+
+        _write_sidecar(dest / f"{stem}.json", ref)
         refs.append(ref)
 
     return refs
@@ -275,6 +296,24 @@ def _with_retries(
                 pause(delay)
 
     raise last if last else RuntimeError(f"{source.handle}: no attempt was made")
+
+
+def _download_slides(loader: Any, post: Any, dest: Path, stem: str) -> bool:
+    """Save a post's images. Returns False when there was nothing to save.
+
+    A single image lands at `<stem>.jpg`; a carousel becomes `<stem>_1.jpg`,
+    `<stem>_2.jpg`, … in slide order, which is the order ocr.py concatenates them.
+    """
+    urls = loader.slide_urls(post)
+    if not urls:
+        return False
+
+    single = len(urls) == 1
+    for index, url in enumerate(urls, start=1):
+        target = dest / (f"{stem}.jpg" if single else f"{stem}_{index}.jpg")
+        if not target.exists():
+            loader.download_image(url, target)
+    return True
 
 
 def _write_sidecar(path: Path, ref: PostRef) -> None:

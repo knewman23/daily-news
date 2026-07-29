@@ -30,13 +30,26 @@ SEED = {
 }
 
 
+class FakeNode:
+    def __init__(self, index, is_video=False):
+        self.is_video = is_video
+        self.display_url = f"https://cdn.test/slide{index}.jpg"
+
+
 class FakePost:
-    def __init__(self, shortcode, hours_ago, is_video=True, caption="a caption"):
+    def __init__(self, shortcode, hours_ago, is_video=True, caption="a caption",
+                 typename=None, slides=None):
         self.shortcode = shortcode
         self.date_utc = (NOW - timedelta(hours=hours_ago)).replace(tzinfo=None)
         self.is_video = is_video
         self.caption = caption
         self.video_url = f"https://cdn.test/{shortcode}.mp4"
+        self.url = f"https://cdn.test/{shortcode}.jpg"
+        self.typename = typename or ("GraphVideo" if is_video else "GraphImage")
+        self._slides = slides or []
+
+    def get_sidecar_nodes(self):
+        return self._slides
 
 
 class FakeLoader:
@@ -64,6 +77,16 @@ class FakeLoader:
         self.downloaded.append((post.shortcode, dest))
         dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_bytes(b"fake-mp4")
+
+    def download_image(self, url, dest):
+        self.downloaded.append((url, dest))
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_bytes(b"fake-jpg")
+
+    def slide_urls(self, post):
+        if post.typename != "GraphSidecar":
+            return [post.url]
+        return [n.display_url for n in post.get_sidecar_nodes() if not n.is_video]
 
 
 @pytest.fixture
@@ -122,7 +145,7 @@ def test_cutoff_is_always_utc_aware():
 # --- selecting posts -------------------------------------------------------
 
 
-def test_only_video_posts_are_downloaded(sources_path, dest):
+def test_videos_download_as_mp4_and_images_as_jpg(sources_path, dest):
     loader = FakeLoader({"aaronparnas": [
         FakePost("VID", hours_ago=2),
         FakePost("IMG", hours_ago=3, is_video=False),
@@ -130,9 +153,50 @@ def test_only_video_posts_are_downloaded(sources_path, dest):
 
     posts, stats = run(sources_path, dest, loader)
 
-    assert [p.shortcode for p in posts] == ["VID"]
-    assert [s for s, _ in loader.downloaded] == ["VID"]
-    assert stats.post_count == 1
+    assert [p.shortcode for p in posts] == ["VID", "IMG"]
+    assert (dest / "aaronparnas_VID.mp4").exists()
+    assert (dest / "aaronparnas_IMG.jpg").exists()
+    assert stats.post_count == 2
+
+
+def test_a_carousel_saves_one_file_per_image_slide_in_order(sources_path, dest):
+    loader = FakeLoader({"aaronparnas": [
+        FakePost("CAR", hours_ago=2, is_video=False, typename="GraphSidecar",
+                 slides=[FakeNode(1), FakeNode(2), FakeNode(3, is_video=True)]),
+    ]})
+
+    posts, _ = run(sources_path, dest, loader)
+
+    assert [p.shortcode for p in posts] == ["CAR"]
+    assert (dest / "aaronparnas_CAR_1.jpg").exists()
+    assert (dest / "aaronparnas_CAR_2.jpg").exists()
+    # The video slide is skipped: only its thumbnail is reachable, and a
+    # thumbnail is not the post's content.
+    assert not (dest / "aaronparnas_CAR_3.jpg").exists()
+
+
+def test_a_carousel_of_only_video_slides_is_skipped(sources_path, dest):
+    loader = FakeLoader({"aaronparnas": [
+        FakePost("VONLY", hours_ago=2, is_video=False, typename="GraphSidecar",
+                 slides=[FakeNode(1, is_video=True)]),
+    ]})
+
+    posts, stats = run(sources_path, dest, loader)
+
+    assert posts == []
+    assert stats.post_count == 0
+    assert not (dest / "aaronparnas_VONLY.json").exists()
+
+
+def test_an_already_downloaded_image_is_not_fetched_again(sources_path, dest):
+    dest.mkdir(parents=True)
+    (dest / "aaronparnas_IMG.jpg").write_bytes(b"already here")
+    loader = FakeLoader({"aaronparnas": [FakePost("IMG", hours_ago=2, is_video=False)]})
+
+    posts, _ = run(sources_path, dest, loader)
+
+    assert loader.downloaded == []
+    assert [p.shortcode for p in posts] == ["IMG"]
 
 
 def test_pinned_old_posts_at_the_head_do_not_hide_recent_ones(sources_path, dest):
