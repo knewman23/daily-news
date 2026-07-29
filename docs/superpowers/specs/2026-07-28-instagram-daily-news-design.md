@@ -28,6 +28,12 @@ Instagram itself.
    without editing a file. The next 11am run honors the change.
 7. Re-running after a partial failure completes the day without redoing
    already-finished work.
+8. Only news matching the reader's stated interests is kept, and everything left
+   out is reported with a reason rather than dropped silently.
+9. The laptop does not fill up: media is deleted once transcribed, and the
+   transcripts and digests that remain are enough to re-summarize any past day
+   offline.
+10. Past days can be collected without a request pattern that risks the account.
 
 ## Non-goals
 
@@ -55,6 +61,9 @@ Instagram itself.
 | OCR engine | Apple Vision via `pyobjc`, local | Built into macOS: no model download, no API key, no per-image cost. Measured 0.1–0.4s per image with accurate results on real posts. Tesseract would need a Homebrew dependency and reads stylised headline text less reliably. |
 | Source links | Model returns the shortcodes it drew from; the renderer turns them into links | Attribution by handle alone is not checkable — a topic says "@aaronparnas" but he posted five times that day. The shortcode identifies the actual post, and the prompt already shows one per block, so asking for it back is nearly free. Handles stay parseable as bare text for tag/source filtering; the links are added alongside. |
 | Run history | `logs/runs.json`, one record per run, plus the per-day log files already written | A failure at 11am is invisible until someone opens a terminal. The digest's `incomplete` flag says *that* something went wrong but not *what* — the run record carries the failure notes and links to the full log. |
+| Interest filter | Plain-language `include`/`exclude` in the same summarize call | Relevance is a judgement about what a story is *about*, so keywords cannot express it — "the war in Iran" must catch a report that never says "Iran". Judged in the existing call because the model is already reading the text; a per-post pass would multiply the ~27k-token base overhead by the post count. Everything dropped is reported, since an invisible filter is indistinguishable from one discarding news. |
+| Old media | Deleted once transcribed, not compressed | Measured: one day is ~270 MB and `gzip -9` on a real reel returns 99.3% of the original, because mp4 and jpg are already compressed. Deleting is the only thing that reclaims the space. Transcripts and caption sidecars are kept forever (~150 KB/day) and are sufficient to re-summarize offline, which is why the extract stages read the sidecars rather than globbing media. |
+| Backfilling | One profile walk per handle, not one per day | The request pattern is what risks an account, not CDN volume. Thirty days across seven handles is 7 walks this way and 210 the naive way. A plan runs before any download, and a rate-limit response aborts the run rather than being retried. |
 | Fetch window | Per-handle `last_pull_at` watermark, not a fixed lookback | Everything posted since that handle's last successful pull is collected, so a missed or failed run is made up on the next one instead of silently losing posts. Per-handle rather than global means one rate-limited account doesn't cost the others their window. Capped by `max_lookback_days` so a long-stale watermark can't trigger a full profile crawl. |
 
 ## Architecture
@@ -64,13 +73,22 @@ daily-news/
 ├── config.toml              whisper model, port, paths — hand-edited
 ├── config/sources.json      handle list — written by the web UI
 ├── run_daily.py             orchestrator; entry point for launchd
+├── backfill.py              past days, one profile walk per handle
+├── export_static.py         the read-only site/ build
 ├── src/
 │   ├── sources.py           load/add/remove/toggle handles
 │   ├── fetch.py             instaloader → data/raw/<date>/
+│   ├── posts.py             the day's posts, per the caption sidecars
 │   ├── transcribe.py        ffmpeg + faster-whisper → data/transcripts/<date>/
+│   ├── ocr.py               Apple Vision, for text on images
 │   ├── summarize.py         transcripts → claude -p → news/<date>.md
+│   ├── render.py            topics → markdown (pure)
 │   ├── notes.py             read/write the notes marker block
 │   ├── digest.py            frontmatter parse, day index, search index
+│   ├── prune.py             delete transcribed media to reclaim disk
+│   ├── publish.py           export and push
+│   ├── mailer.py            the summary email
+│   ├── runlog.py            run history
 │   └── serve.py             stdlib HTTP server + JSON endpoints
 ├── web/
 │   ├── index.html
@@ -104,6 +122,16 @@ own `last_pull_at` watermark as the cutoff rather than a fixed window. Writes
 `<handle>_<shortcode>.json` holding caption, timestamp, and permalink.
 Skips any post whose mp4 already exists. Advances the handle's watermark only
 after that handle's fetch succeeds. Depends on: instaloader, filesystem.
+
+**`posts.py`** — `load(raw_dir) -> list[Post]`, `of_kind(...)`, `orphans(...)`
+The day's posts as recorded by the caption sidecars. The sidecar, not the presence
+of media, defines the day — which is what lets the media be deleted once
+transcribed without a re-run seeing an empty day. Records `kind` so a pruned post
+is still classifiable, and heals sidecars written before that field existed.
+
+**`prune.py`** — `prune(raw, transcripts, news, keep_days) -> PruneResult`
+Deletes transcribed media outside the retention window. Only prunes a day that has
+a digest, only a post that has a transcript, and never today.
 
 **`ocr.py`** — `ocr_day(raw_dir, out_dir, cfg) -> (list[Transcript], Stats)`
 For each downloaded image without an extracted-text file: run Apple Vision text
