@@ -215,3 +215,28 @@ def test_a_missing_to_address_is_refused(tmp_path):
     assert result.ok is False
     assert "to address" in result.message
     assert transport.sent == []
+
+
+def test_a_grouped_app_password_is_normalised(cfg):
+    """Google shows app passwords as four groups of four and people paste them
+    verbatim, but SMTP AUTH wants the 16 characters alone."""
+    seen = {}
+
+    def transport(message, host, port, _unused):
+        seen["ok"] = True
+
+    captured = {}
+
+    def runner(cmd, **kwargs):
+        return subprocess.CompletedProcess(cmd, 0, "abcd efgh ijkl mnop\n", "")
+
+    password = mailer.keychain_password("svc", "acct", runner=runner)
+    assert password == "abcdefghijklmnop"
+
+
+def test_a_whitespace_only_keychain_item_is_an_error():
+    def runner(cmd, **kwargs):
+        return subprocess.CompletedProcess(cmd, 0, "   \n", "")
+
+    with pytest.raises(mailer.MailError):
+        mailer.keychain_password("svc", "acct", runner=runner)

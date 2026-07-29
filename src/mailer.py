@@ -43,7 +43,14 @@ def keychain_password(
     account: str,
     runner: Callable[..., subprocess.CompletedProcess] = subprocess.run,
 ) -> str:
-    """Read the SMTP app password from the login Keychain."""
+    """Read the SMTP app password from the login Keychain.
+
+    All whitespace is removed, not just trimmed. Google presents an app password
+    as four groups of four ("abcd efgh ijkl mnop") and people paste it verbatim,
+    but SMTP AUTH wants the 16 characters alone — so the obvious way to store it
+    is the way that fails to authenticate. This is aimed at app passwords, which
+    are alphanumeric; a passphrase with meaningful spaces would be mangled.
+    """
     completed = runner(
         ["security", "find-generic-password", "-s", service, "-a", account, "-w"],
         capture_output=True, text=True,
@@ -54,7 +61,7 @@ def keychain_password(
             f"  security add-generic-password -s {service} -a {account} -w"
         )
 
-    password = (completed.stdout or "").strip()
+    password = "".join((completed.stdout or "").split())
     if not password:
         raise MailError(f"the Keychain item {service!r}/{account!r} is empty")
     return password
