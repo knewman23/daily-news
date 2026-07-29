@@ -91,7 +91,10 @@ def test_prompt_includes_every_transcript_with_attribution():
         assert t.handle in prompt
         assert t.text in prompt
     assert "Breaking: spending bill" in prompt
-    assert "https://www.instagram.com/p/AAA/" in prompt
+    # The post id, not the URL: it is what the model echoes back so the renderer
+    # can build a link, and a bare id is harder to garble than a URL.
+    for t in TRANSCRIPTS:
+        assert f"id: {t.shortcode}" in prompt
 
 
 def test_prompt_states_the_same_day_dedup_rule_and_the_schema():
