@@ -35,6 +35,10 @@ const state = {
   query: '',
   notesDirty: false,
   searchIndex: null,     // static mode only
+  /* Which month sections are expanded, as "YYYY-MM". Held here rather than read
+     off the <details> elements because renderDays() rebuilds them on every
+     showDay(), which would throw a DOM-only answer away. */
+  openMonths: new Set(),
 };
 
 const $ = (id) => document.getElementById(id);
@@ -115,40 +119,83 @@ function skippedForVisibleDays() {
   );
 }
 
+/* Days newest-first into month runs, preserving order. Sequential rather than a
+   keyed map because the input is already sorted, so a run break is a new month. */
+function groupByMonth(days) {
+  const groups = [];
+  for (const day of days) {
+    const month = monthOf(day.date);
+    const last = groups[groups.length - 1];
+    if (last && last.month === month) last.days.push(day);
+    else groups.push({ month, days: [day] });
+  }
+  return groups;
+}
+
 function renderDays() {
   const list = $('days');
 
   if (!state.days.length) {
-    list.replaceChildren(el('li', {}, el('p', {
-      className: 'empty', textContent: 'No digests yet.',
-    })));
+    list.replaceChildren(el('p', { className: 'empty', textContent: 'No digests yet.' }));
     return;
   }
 
-  list.replaceChildren(...state.days.map((day) => {
-    const count = el('span', {
-      className: 'topics',
-      textContent: day.post_count ? `${day.post_count}` : '—',
-    });
-    const button = el('button', { type: 'button' }, [
-      el('span', { className: 'label', textContent: prettyDate(day.date) }),
-      count,
-    ]);
+  // The day being read must be reachable, so its month is always expanded —
+  // otherwise opening a search hit from March scrolls to a day the rail hides.
+  // With nothing active yet, the newest month opens so the panel is not all shut.
+  if (state.activeDate) state.openMonths.add(monthOf(state.activeDate));
+  else if (!state.openMonths.size) state.openMonths.add(monthOf(state.days[0].date));
 
-    if (day.incomplete) {
-      count.append(el('span', { className: 'flag', textContent: ' !' }));
-      button.title = READ_ONLY
-        ? 'This day may be missing posts'
-        : 'This run was incomplete — see the Runs panel';
-    }
-    if (day.date === state.activeDate) button.setAttribute('aria-current', 'true');
-    button.addEventListener('click', () => {
-      closeDrawer();
-      showDay(day.date);
+  list.replaceChildren(...groupByMonth(state.days).map((group) => {
+    const section = el('details', {
+      className: 'month',
+      open: state.openMonths.has(group.month),
     });
 
-    return el('li', {}, button);
+    section.append(
+      el('summary', { className: 'month-head' }, [
+        el('span', { className: 'month-label', textContent: prettyMonth(group.month) }),
+        el('span', {
+          className: 'month-count',
+          textContent: `${group.days.length}`,
+          title: `${group.days.length} day${group.days.length === 1 ? '' : 's'}`,
+        }),
+      ]),
+      el('ol', { className: 'month-days' }, group.days.map(dayRow)),
+    );
+
+    section.addEventListener('toggle', () => {
+      if (section.open) state.openMonths.add(group.month);
+      else state.openMonths.delete(group.month);
+    });
+
+    return section;
   }));
+}
+
+function dayRow(day) {
+  const count = el('span', {
+    className: 'topics',
+    textContent: day.post_count ? `${day.post_count}` : '—',
+  });
+  const button = el('button', { type: 'button' }, [
+    el('span', { className: 'label', textContent: prettyDate(day.date) }),
+    count,
+  ]);
+
+  if (day.incomplete) {
+    count.append(el('span', { className: 'flag', textContent: ' !' }));
+    button.title = READ_ONLY
+      ? 'This day may be missing posts'
+      : 'This run was incomplete — see the Runs panel';
+  }
+  if (day.date === state.activeDate) button.setAttribute('aria-current', 'true');
+  button.addEventListener('click', () => {
+    closeDrawer();
+    showDay(day.date);
+  });
+
+  return el('li', {}, button);
 }
 
 async function showDay(date, scrollToHeadline) {
@@ -188,6 +235,9 @@ async function showDay(date, scrollToHeadline) {
   article.innerHTML = day.html;      // locally generated markdown; see file header
 
   const parts = [head, article];
+  const nav = dayNav(date);
+  if (nav) parts.push(nav);
+  // The journal stays last: the nav closes the reading, the notes box follows it.
   if (!READ_ONLY) parts.push(journal(date, day.notes));
   main.replaceChildren(...parts);
 
@@ -200,6 +250,45 @@ async function showDay(date, scrollToHeadline) {
     }
   }
   window.scrollTo({ top: 0 });
+}
+
+/* Read straight through the archive without going back to the rail.
+   Returns null when there is nowhere to go, rather than a nav of two dashes. */
+function dayNav(date) {
+  const at = state.days.findIndex((day) => day.date === date);
+  if (at < 0 || state.days.length < 2) return null;
+
+  /* state.days is newest-first, so the *next* index is the *older* day.
+     Reversing these two lines is silent — nothing would look broken. */
+  const older = state.days[at + 1];
+  const newer = at > 0 ? state.days[at - 1] : null;
+
+  const side = (neighbour, kind, label) => {
+    const inner = [
+      el('span', { className: 'day-nav-label', textContent: label }),
+      el('span', {
+        className: 'day-nav-date',
+        // An em dash rather than nothing, so reaching either end of the archive
+        // does not shift what is next to it.
+        textContent: neighbour ? prettyDate(neighbour.date) : '—',
+      }),
+    ];
+
+    if (!neighbour) return el('span', { className: `day-nav-side ${kind} end` }, inner);
+
+    const button = el('button', { type: 'button', className: `day-nav-side ${kind}` }, inner);
+    // Through showDay, which already guards unsaved notes — so this new way of
+    // leaving a day inherits the prompt instead of needing its own.
+    button.addEventListener('click', () => showDay(neighbour.date));
+    return button;
+  };
+
+  const nav = el('nav', { className: 'day-nav' }, [
+    side(older, 'older', '← Older'),
+    side(newer, 'newer', 'Newer →'),
+  ]);
+  nav.setAttribute('aria-label', 'Nearby days');
+  return nav;
 }
 
 /* --- journal (live only) ------------------------------------------------- */
@@ -682,6 +771,14 @@ function wireDrawer() {
 }
 
 /* --- dates --------------------------------------------------------------- */
+
+const monthOf = (iso) => iso.slice(0, 7);      // "2026-07-29" → "2026-07"
+
+function prettyMonth(month) {
+  const [year, index] = month.split('-').map(Number);
+  return new Date(year, index - 1, 1)
+    .toLocaleDateString(undefined, { month: 'long', year: 'numeric' });
+}
 
 function prettyDate(iso, long = false) {
   const [year, month, day] = iso.split('-').map(Number);

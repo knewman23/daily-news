@@ -255,7 +255,46 @@ details.panel[open] > .panel-title { margin-bottom: 0.6rem; }
 
 /* --- day list ----------------------------------------------------------- */
 
-.days { list-style: none; margin: 0; padding: 0; max-height: 40vh; overflow-y: auto; }
+/* The cap still earns its place: one expanded month is up to 31 rows. It is no
+   longer the only thing between the reader and the whole archive, though. */
+.days { max-height: 40vh; overflow-y: auto; }
+
+.month + .month { border-top: 1px dotted var(--rule); }
+
+.month-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 0.3rem 0.45rem;
+  cursor: pointer;
+  font: 700 0.72rem/1.4 var(--sans);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--slate);
+  list-style: none;                       /* the default marker, replaced below */
+}
+
+.month-head::-webkit-details-marker { display: none; }
+
+.month-head::before {
+  content: "▸";
+  flex: none;
+  font-size: 0.7rem;
+  color: var(--gold);
+  transition: transform 120ms ease;
+}
+
+.month[open] > .month-head::before { transform: rotate(90deg); }
+.month-head:hover { color: var(--ink); }
+
+.month-label { flex: 1; min-width: 0; }
+
+/* Only while collapsed: an open month shows its days, which is a better count
+   than a number. */
+.month-count { font-weight: 400; letter-spacing: 0; }
+.month[open] > .month-head .month-count { display: none; }
+
+.month-days { list-style: none; margin: 0 0 0.35rem; padding: 0; }
 
 .days button {
   display: flex;
@@ -486,6 +525,42 @@ details.panel[open] > .panel-title { margin-bottom: 0.6rem; }
 
 .article pre { font-family: var(--mono); font-size: 0.8rem; }
 
+/* --- older / newer ------------------------------------------------------ */
+
+.day-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 2.5rem 0 0;
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.day-nav-side {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--navy);
+  font: inherit;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.day-nav-side.newer { text-align: right; align-items: flex-end; }
+
+.day-nav-label { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.day-nav-date { font-family: var(--serif); }
+
+button.day-nav-side:hover { color: var(--red); }
+
+/* Either end of the archive: present, so the other side does not move. */
+.day-nav-side.end { color: var(--slate); cursor: default; }
+
 /* --- journal ------------------------------------------------------------ */
 
 .journal {
@@ -571,6 +646,11 @@ details.panel[open] > .panel-title { margin-bottom: 0.6rem; }
     border-left: 3px solid var(--gold);
     box-shadow: -4px 0 18px color-mix(in srgb, var(--ink) 25%, transparent);
   }
+
+  /* The drawer scrolls itself, so a second scroller nested inside it fights the
+     touch gesture — a drag near the day list moves the wrong thing. The month
+     sections already bound the height, so let it run naturally here. */
+  .drawer .days { max-height: none; overflow-y: visible; }
 
   /* Flat inside the drawer: the drawer is already a raised surface, so cards
      within it read as boxes inside a box. */

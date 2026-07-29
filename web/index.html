@@ -49,7 +49,9 @@
 
   <section class="panel">
     <h3 class="panel-title">Days</h3>
-    <ol id="days" class="days"></ol>
+    <!-- Filled with one <details> per month. A flat list is unusable once the
+         archive runs to hundreds of days. -->
+    <div id="days" class="days"></div>
   </section>
 
   <section class="panel">
