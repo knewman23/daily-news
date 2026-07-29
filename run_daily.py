@@ -46,6 +46,8 @@ def run_day(
     notifier=None,
     generated: datetime | None = None,
     full: bool = False,
+    skip_fetch: bool = False,
+    quiet: bool = False,
 ) -> int:
     """Run one day end to end. Returns a process exit code."""
     _setup_logging(cfg, day)
@@ -71,7 +73,7 @@ def run_day(
         ))
         return 0 if ok else 1
 
-    notify = notifier or _notify
+    notify = (lambda _m: None) if quiet else (notifier or _notify)
     do_fetch = fetcher or fetch.fetch_day
     do_transcribe = transcriber or transcribe.transcribe_day
     do_ocr = ocr_runner or ocr.ocr_day
@@ -90,12 +92,19 @@ def run_day(
     raw = cfg.raw_dir(day)
     extracted = cfg.transcripts_dir(day)
 
-    try:
+    if skip_fetch:
+        # Backfilled days already have their media and sidecars on disk. Fetching
+        # would walk every profile again for nothing, which is exactly the request
+        # pattern worth avoiding.
+        log.info("skipping fetch: working from what is already on disk")
+        fetched, fetch_stats = [], Stats()
+    else:
+      try:
         since = fetch.start_of_day(day) if full else None
         if full:
             log.info("full pull: ignoring watermarks, scanning from %s", since.isoformat())
         fetched, fetch_stats = do_fetch(cfg.paths.sources, raw, cfg.fetch, since=since)
-    except fetch.SessionExpired as exc:
+      except fetch.SessionExpired as exc:
         log.error("Instagram session is not usable: %s", exc)
         log.error(
             "Re-authenticate with:\n"
@@ -105,7 +114,7 @@ def run_day(
         )
         notify("Instagram session expired — re-authenticate")
         return record(False, error=f"session expired: {exc}")
-    except Exception as exc:
+      except Exception as exc:
         log.exception("fetch failed outright: %s", exc)
         notify(f"Daily news fetch failed: {exc}")
         return record(False, error=f"fetch failed: {exc}")
@@ -166,6 +175,11 @@ def run_day(
     # Publishing comes last and cannot fail the run: the digest is written and
     # readable locally, so being unable to reach GitHub is worth reporting
     # rather than worth discarding a successful run over.
+    if quiet:
+        log.info("quiet: not publishing or emailing this day")
+        return record(True, stats=stats, spoken=len(spoken),
+                      on_image=len(on_image), topics=topics)
+
     outcome = do_publish(cfg, day, topic_count=topics)
     if not outcome.ok:
         log.warning("publish did not complete: %s", outcome.message)
@@ -210,6 +224,15 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "--config", default=config.CONFIG_FILE, help="Path to config.toml.",
     )
     parser.add_argument(
+        "--no-fetch", dest="no_fetch", action="store_true",
+        help="Summarize from media already on disk, without contacting Instagram. "
+             "Use for days collected by backfill.py.",
+    )
+    parser.add_argument(
+        "--quiet", action="store_true",
+        help="Do not publish, email, or notify. Use when backfilling many days.",
+    )
+    parser.add_argument(
         "--full", action="store_true",
         help="Ignore the per-handle watermarks and re-scan the whole day. Use "
              "after a partial run, or to pick up posts an earlier run missed.",
@@ -219,7 +242,8 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
-    return run_day(args.date, config.load(args.config), full=args.full)
+    return run_day(args.date, config.load(args.config), full=args.full,
+                   skip_fetch=args.no_fetch, quiet=args.quiet)
 
 
 # --- internals -------------------------------------------------------------
