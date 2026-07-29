@@ -20,9 +20,13 @@ Instagram itself.
 3. `python serve.py` opens a page listing every past date, renders the selected
    day, filters by search text and topic tag, and saves journal notes back into
    that day's markdown file without altering the generated summary.
-4. The same page manages the source list: add a handle, remove it, or disable it
+4. Every topic section links to the originating post(s), so a claim can be
+   checked against the source video or image in one click.
+5. The page shows a history of runs, with failures surfaced and the run's log
+   readable, so a thin or missing digest can be diagnosed without a terminal.
+6. The same page manages the source list: add a handle, remove it, or disable it
    without editing a file. The next 11am run honors the change.
-5. Re-running after a partial failure completes the day without redoing
+7. Re-running after a partial failure completes the day without redoing
    already-finished work.
 
 ## Non-goals
@@ -49,6 +53,8 @@ Instagram itself.
 | Removing a source | Disable by default, hard delete available | Disabling keeps the handle's past contributions attributable without pulling new posts. Delete is a separate, explicit action. |
 | Image posts | Included, with the on-image text read by OCR | Some followed accounts (`oafnation_actual`) post news as text-on-image, frequently with an empty caption — verified on a live post whose entire content existed only in the image. Excluding them drops that account's output almost entirely. |
 | OCR engine | Apple Vision via `pyobjc`, local | Built into macOS: no model download, no API key, no per-image cost. Measured 0.1–0.4s per image with accurate results on real posts. Tesseract would need a Homebrew dependency and reads stylised headline text less reliably. |
+| Source links | Model returns the shortcodes it drew from; the renderer turns them into links | Attribution by handle alone is not checkable — a topic says "@aaronparnas" but he posted five times that day. The shortcode identifies the actual post, and the prompt already shows one per block, so asking for it back is nearly free. Handles stay parseable as bare text for tag/source filtering; the links are added alongside. |
+| Run history | `logs/runs.json`, one record per run, plus the per-day log files already written | A failure at 11am is invisible until someone opens a terminal. The digest's `incomplete` flag says *that* something went wrong but not *what* — the run record carries the failure notes and links to the full log. |
 | Fetch window | Per-handle `last_pull_at` watermark, not a fixed lookback | Everything posted since that handle's last successful pull is collected, so a missed or failed run is made up on the next one instead of silently losing posts. Per-handle rather than global means one rate-limited account doesn't cost the others their window. Capped by `max_lookback_days` so a long-stale watermark can't trigger a full profile crawl. |
 
 ## Architecture

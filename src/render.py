@@ -26,11 +26,12 @@ def render_day(
     topics: Sequence[Mapping[str, Any]],
     stats: Mapping[str, Any],
     generated: datetime,
+    permalinks: Mapping[str, str] | None = None,
 ) -> str:
     if generated.tzinfo is None:
         raise ValueError("generated timestamp must be timezone-aware")
 
-    cleaned = [_clean_topic(t) for t in topics]
+    cleaned = [_clean_topic(t, permalinks or {}) for t in topics]
 
     frontmatter = _frontmatter(day, cleaned, stats, generated)
     title = f"# {day.strftime('%B')} {day.day}, {day.year}"
@@ -47,7 +48,10 @@ def render_day(
 # --- internals -------------------------------------------------------------
 
 
-def _clean_topic(topic: Mapping[str, Any]) -> dict[str, Any]:
+def _clean_topic(
+    topic: Mapping[str, Any],
+    permalinks: Mapping[str, str],
+) -> dict[str, Any]:
     headline = _collapse(topic.get("headline", ""))
     if not headline:
         raise ValueError(f"topic has no headline: {topic!r}")
@@ -56,11 +60,20 @@ def _clean_topic(topic: Mapping[str, Any]) -> dict[str, Any]:
     if not isinstance(body, str) or not body.strip():
         raise ValueError(f"topic {headline!r} has no body")
 
+    # Only ids we already know are kept. The model echoes these back, and an
+    # invented one would render as a link to a post that does not exist —
+    # worse than no link, because it looks checkable and is not.
+    posts = [
+        p.strip() for p in _as_list(topic.get("posts"))
+        if p.strip() in permalinks
+    ]
+
     return {
         "headline": headline,
         "body": body.strip(),
         "tags": [t.strip().lower() for t in _as_list(topic.get("tags")) if t.strip()],
         "sources": [_handle(s) for s in _as_list(topic.get("sources")) if s.strip()],
+        "links": [(p, permalinks[p]) for p in dict.fromkeys(posts)],
     }
 
 
@@ -70,6 +83,11 @@ def _section(topic: Mapping[str, Any]) -> str:
         lines.append(f"tags: {', '.join(topic['tags'])}")
     if topic["sources"]:
         lines.append(f"sources: {', '.join('@' + s for s in topic['sources'])}")
+    if topic["links"]:
+        # Kept on their own line so `sources:` stays bare handles for filtering.
+        lines.append("posts: " + ", ".join(
+            f"[{shortcode}]({url})" for shortcode, url in topic["links"]
+        ))
     return "\n".join(lines) + f"\n\n{topic['body']}"
 
 

@@ -159,3 +159,60 @@ def test_malformed_topic_raises(topic):
 def test_generated_timestamp_must_be_aware():
     with pytest.raises(ValueError):
         render.render_day(DAY, TOPICS, STATS, generated=datetime(2026, 7, 28, 11, 0))
+
+
+# --- source links ----------------------------------------------------------
+
+TOPICS_WITH_POSTS = [{
+    "headline": "Senate passes the spending bill",
+    "body": "The chamber cleared the measure.",
+    "tags": ["politics"],
+    "sources": ["@aaronparnas", "@total.hypocrisy"],
+    "posts": ["AAA", "BBB"],
+}]
+
+PERMALINKS = {
+    "AAA": "https://www.instagram.com/p/AAA/",
+    "BBB": "https://www.instagram.com/p/BBB/",
+}
+
+
+def test_posts_render_as_links_to_the_original():
+    out = render.render_day(
+        DAY, TOPICS_WITH_POSTS, STATS, generated=GENERATED, permalinks=PERMALINKS,
+    )
+    assert "posts: [AAA](https://www.instagram.com/p/AAA/), " \
+           "[BBB](https://www.instagram.com/p/BBB/)" in out
+
+
+def test_sources_stay_bare_handles_so_filtering_still_works():
+    out = render.render_day(
+        DAY, TOPICS_WITH_POSTS, STATS, generated=GENERATED, permalinks=PERMALINKS,
+    )
+    assert "sources: @aaronparnas, @total.hypocrisy" in out
+
+
+def test_an_invented_post_id_is_dropped_rather_than_linked():
+    """A link to a post that does not exist is worse than no link: it looks
+    checkable and is not."""
+    topics = [{**TOPICS_WITH_POSTS[0], "posts": ["AAA", "MADE-UP"]}]
+    out = render.render_day(DAY, topics, STATS, generated=GENERATED, permalinks=PERMALINKS)
+
+    assert "MADE-UP" not in out
+    assert "[AAA]" in out
+
+
+def test_duplicate_post_ids_are_listed_once():
+    topics = [{**TOPICS_WITH_POSTS[0], "posts": ["AAA", "AAA"]}]
+    out = render.render_day(DAY, topics, STATS, generated=GENERATED, permalinks=PERMALINKS)
+    assert out.count("[AAA]") == 1
+
+
+def test_a_topic_with_no_posts_omits_the_line():
+    out = render.render_day(DAY, TOPICS, STATS, generated=GENERATED, permalinks=PERMALINKS)
+    assert "posts:" not in out
+
+
+def test_links_are_absent_when_no_permalinks_are_supplied():
+    out = render.render_day(DAY, TOPICS_WITH_POSTS, STATS, generated=GENERATED)
+    assert "posts:" not in out

@@ -84,9 +84,24 @@ def server(tmp_path):
     (web / "index.html").write_text("<h1>Daily News</h1>", encoding="utf-8")
     (web / "header.PNG").write_bytes(b"\x89PNG fake")
 
+    logs = tmp_path / "logs"
+    logs.mkdir()
+    (logs / "2026-07-28.log").write_text(
+        "2026-07-28 11:00:00 INFO starting\n"
+        "2026-07-28 11:04:00 WARNING partial failure: fetch total.hipocrisy\n",
+        encoding="utf-8",
+    )
+    from src import runlog
+    runlog.append(logs, runlog.RunRecord(
+        started_at="2026-07-28T11:00:00+00:00", finished_at="2026-07-28T11:04:30+00:00",
+        date="2026-07-28", ok=True, post_count=28, transcribed_count=28,
+        topic_count=26, incomplete=True,
+        failures=["fetch total.hipocrisy: Profile does not exist."],
+    ))
+
     httpd = serve.build_server(
         news_dir=news, sources_path=sources_path, web_dir=web,
-        host="127.0.0.1", port=0, lookup=lambda handle: None,
+        host="127.0.0.1", port=0, lookup=lambda handle: None, logs_dir=logs,
     )
     thread = serve.serve_in_thread(httpd)
     try:
@@ -358,3 +373,51 @@ def test_the_server_binds_loopback_only(server):
 def test_an_unknown_path_is_404(server):
     status, _ = server.request("/nope.html")
     assert status == 404
+
+
+# --- runs ------------------------------------------------------------------
+
+
+def test_run_history_is_exposed(server):
+    status, payload = server.json("/api/runs")
+
+    assert status == 200
+    assert len(payload["runs"]) == 1
+    run = payload["runs"][0]
+    assert run["date"] == "2026-07-28"
+    assert run["topic_count"] == 26
+    assert run["duration_seconds"] == 270.0
+
+
+def test_the_problem_count_lets_the_ui_badge_the_panel(server):
+    """An incomplete run counts as a problem even though it exited zero."""
+    _, payload = server.json("/api/runs")
+    assert payload["problems"] == 1
+
+
+def test_failure_notes_reach_the_ui(server):
+    _, payload = server.json("/api/runs")
+    assert "total.hipocrisy" in payload["runs"][0]["failures"][0]
+
+
+def test_a_run_log_is_readable(server):
+    status, payload = server.json("/api/log/2026-07-28")
+
+    assert status == 200
+    assert "partial failure" in payload["log"]
+
+
+def test_a_missing_run_log_is_404(server):
+    status, _ = server.request("/api/log/2020-01-01")
+    assert status == 404
+
+
+@pytest.mark.parametrize("path", [
+    "/api/log/not-a-date",
+    "/api/log/../../etc/passwd",
+    "/api/log/..%2f..%2fetc%2fpasswd",
+])
+def test_a_traversing_log_path_is_rejected(server, path):
+    status, raw = server.request(path)
+    assert status in (400, 404)
+    assert b"root:" not in raw

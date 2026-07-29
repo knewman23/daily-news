@@ -26,7 +26,7 @@ import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
 
-from src import config, fetch, notes, ocr, sources, summarize, transcribe
+from src import config, digest, fetch, notes, ocr, runlog, sources, summarize, transcribe
 from src.records import Stats
 
 log = logging.getLogger("daily-news")
@@ -44,6 +44,27 @@ def run_day(
 ) -> int:
     """Run one day end to end. Returns a process exit code."""
     _setup_logging(cfg, day)
+    started = runlog.now()
+
+    def record(ok: bool, error: str | None = None, stats: Stats | None = None,
+               spoken: int = 0, on_image: int = 0, topics: int = 0) -> int:
+        """Write the run history entry and return the exit code."""
+        runlog.append(cfg.paths.logs, runlog.RunRecord(
+            started_at=started,
+            finished_at=runlog.now(),
+            date=day.isoformat(),
+            ok=ok,
+            post_count=stats.post_count if stats else 0,
+            transcribed_count=stats.transcribed_count if stats else 0,
+            spoken_count=spoken,
+            image_count=on_image,
+            topic_count=topics,
+            incomplete=bool(stats.incomplete) if stats else False,
+            error=error,
+            failures=list(stats.notes) if stats else [],
+        ))
+        return 0 if ok else 1
+
     notify = notifier or _notify
     do_fetch = fetcher or fetch.fetch_day
     do_transcribe = transcriber or transcribe.transcribe_day
@@ -55,7 +76,7 @@ def run_day(
     enabled = sources.enabled_sources(cfg.paths.sources)
     if not enabled:
         log.info("every source is disabled, nothing to do")
-        return 0
+        return record(True, error="every source is disabled")
 
     raw = cfg.raw_dir(day)
     extracted = cfg.transcripts_dir(day)
@@ -71,11 +92,11 @@ def run_day(
             cfg.fetch.session_user,
         )
         notify("Instagram session expired — re-authenticate")
-        return 1
+        return record(False, error=f"session expired: {exc}")
     except Exception as exc:
         log.exception("fetch failed outright: %s", exc)
         notify(f"Daily news fetch failed: {exc}")
-        return 1
+        return record(False, error=f"fetch failed: {exc}")
 
     spoken, audio_stats = do_transcribe(raw, extracted, cfg.transcribe)
     on_image, image_stats = do_ocr(raw, extracted, cfg.transcribe)
@@ -96,7 +117,8 @@ def run_day(
         log.exception("summarize failed: %s", exc)
         log.error("transcripts are on disk, so re-running this date is cheap")
         notify(f"Daily news summary failed: {exc}")
-        return 1
+        return record(False, error=f"summarize failed: {exc}", stats=stats,
+                      spoken=len(spoken), on_image=len(on_image))
 
     if carried:
         notes.write_notes(path, carried)
@@ -105,8 +127,16 @@ def run_day(
     for note in stats.notes:
         log.warning("partial failure: %s", note)
 
-    log.info("wrote %s%s", path, " (incomplete)" if stats.incomplete else "")
-    return 0
+    topics = len(digest.topics_of(path)) if path.exists() else 0
+    log.info("wrote %s with %d topic(s)%s", path, topics,
+             " (incomplete)" if stats.incomplete else "")
+
+    if stats.incomplete:
+        notify(f"Daily news for {day.isoformat()} is incomplete "
+               f"({len(stats.notes)} problem(s)) — see the Runs panel")
+
+    return record(True, stats=stats, spoken=len(spoken),
+                  on_image=len(on_image), topics=topics)
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:

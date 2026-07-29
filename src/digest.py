@@ -26,7 +26,8 @@ NOTES_HEADING = "## My Notes"
 
 _SECTION_SPLIT = re.compile(r"^## ", re.MULTILINE)
 _FRONTMATTER = re.compile(r"\A---\n(.*?)\n---\n?", re.DOTALL)
-_META_LINE = re.compile(r"^(tags|sources):\s*(.*)$", re.IGNORECASE)
+_META_LINE = re.compile(r"^(tags|sources|posts):\s*(.*)$", re.IGNORECASE)
+_MD_LINK = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
 
 
 @dataclass(frozen=True)
@@ -46,6 +47,7 @@ class Topic:
     tags: list[str]
     sources: list[str]
     body: str
+    links: list[tuple[str, str]] = field(default_factory=list)
 
 
 @dataclass(frozen=True)
@@ -157,6 +159,7 @@ def _topic(chunk: str) -> Topic | None:
 
     tags: list[str] = []
     sources: list[str] = []
+    links: list[tuple[str, str]] = []
     lines = rest.splitlines()
 
     consumed = 0
@@ -164,14 +167,21 @@ def _topic(chunk: str) -> Topic | None:
         match = _META_LINE.match(line.strip())
         if not match:
             break
-        values = [v.strip() for v in match.group(2).split(",") if v.strip()]
-        if match.group(1).lower() == "tags":
-            tags = [v.lower() for v in values]
+
+        field_name = match.group(1).lower()
+        raw = match.group(2)
+
+        if field_name == "posts":
+            links = [(m.group(1), m.group(2)) for m in _MD_LINK.finditer(raw)]
         else:
-            sources = values
+            values = [v.strip() for v in raw.split(",") if v.strip()]
+            if field_name == "tags":
+                tags = [v.lower() for v in values]
+            else:
+                sources = values
         consumed += 1
 
-    return Topic(headline, tags, sources, "\n".join(lines[consumed:]).strip())
+    return Topic(headline, tags, sources, "\n".join(lines[consumed:]).strip(), links)
 
 
 def _snippet(body: str, limit: int = 200) -> str:

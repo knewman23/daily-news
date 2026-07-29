@@ -216,3 +216,53 @@ def test_tag_filter_combines_with_a_query(news):
 
 def test_all_tags_lists_every_topic_tag_once(news):
     assert sorted(digest.all_tags(news)) == ["markets", "politics", "tech"]
+
+
+# --- source links ----------------------------------------------------------
+
+DAY_WITH_LINKS = """---
+date: 2026-07-29
+tags: [politics]
+---
+
+# July 29, 2026
+
+## Senate passes the spending bill
+tags: politics
+sources: @aaronparnas, @total.hypocrisy
+posts: [AAA](https://www.instagram.com/p/AAA/), [BBB](https://www.instagram.com/p/BBB/)
+
+The chamber cleared the measure.
+
+## My Notes
+<!-- notes:start -->
+<!-- notes:end -->
+"""
+
+
+def test_topic_links_are_parsed_back_out(news):
+    (news / "2026-07-29.md").write_text(DAY_WITH_LINKS, encoding="utf-8")
+
+    topic = digest.topics_of(news / "2026-07-29.md")[0]
+
+    assert topic.links == [
+        ("AAA", "https://www.instagram.com/p/AAA/"),
+        ("BBB", "https://www.instagram.com/p/BBB/"),
+    ]
+    assert topic.sources == ["@aaronparnas", "@total.hypocrisy"]
+    assert topic.body == "The chamber cleared the measure."
+
+
+def test_the_posts_line_is_not_treated_as_body_text(news):
+    (news / "2026-07-29.md").write_text(DAY_WITH_LINKS, encoding="utf-8")
+    assert "instagram.com" not in digest.topics_of(news / "2026-07-29.md")[0].body
+
+
+def test_links_render_as_anchors_in_html(news):
+    (news / "2026-07-29.md").write_text(DAY_WITH_LINKS, encoding="utf-8")
+    html = digest.render_html(news / "2026-07-29.md")
+    assert 'href="https://www.instagram.com/p/AAA/"' in html
+
+
+def test_a_topic_without_a_posts_line_has_no_links(news):
+    assert digest.topics_of(news / "2026-07-28.md")[0].links == []

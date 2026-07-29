@@ -26,7 +26,7 @@ from pathlib import Path
 from typing import Any, Callable
 from urllib.parse import parse_qs, unquote, urlparse
 
-from src import digest, notes, sources
+from src import digest, notes, runlog, sources
 
 log = logging.getLogger(__name__)
 
@@ -60,17 +60,20 @@ def build_server(
     host: str = "127.0.0.1",
     port: int = 8420,
     lookup: Callable[[str], Any] | None = None,
+    logs_dir: str | Path | None = None,
 ) -> ThreadingHTTPServer:
     """Assemble the server. Port 0 binds an ephemeral port, which the tests use."""
     news = Path(news_dir)
     web = Path(web_dir)
     config_path = Path(sources_path)
+    logs = Path(logs_dir) if logs_dir else Path("logs")
     verify = lookup if lookup is not None else _default_lookup
 
     class Handler(_Handler):
         news_dir = news
         web_dir = web
         sources_path = config_path
+        logs_dir = logs
         lookup = staticmethod(verify)
 
     return ThreadingHTTPServer((host, port), Handler)
@@ -99,6 +102,7 @@ def run(cfg, web_dir: str | Path = "web") -> None:
         web_dir=web_dir,
         host=cfg.serve.host,
         port=cfg.serve.port,
+        logs_dir=cfg.paths.logs,
     )
     url = f"http://{cfg.serve.host}:{cfg.serve.port}"
     print(f"Daily News reading from {cfg.paths.news}")
@@ -115,6 +119,7 @@ class _Handler(BaseHTTPRequestHandler):
     news_dir: Path
     web_dir: Path
     sources_path: Path
+    logs_dir: Path
     lookup: Callable[[str], Any]
 
     server_version = "daily-news"
@@ -127,6 +132,7 @@ class _Handler(BaseHTTPRequestHandler):
             "/api/tags": self._tags,
             "/api/search": self._search,
             "/api/sources": self._list_sources,
+            "/api/runs": self._runs,
         }, self._static)
 
     def do_POST(self) -> None:
@@ -149,6 +155,7 @@ class _Handler(BaseHTTPRequestHandler):
                 ("/api/day/", self._day),
                 ("/api/notes/", self._save_notes),
                 ("/api/sources/", self._source_action),
+                ("/api/log/", self._run_log),
             ):
                 if path.startswith(prefix):
                     handler(path[len(prefix):])
@@ -217,6 +224,30 @@ class _Handler(BaseHTTPRequestHandler):
             }
             for hit in hits
         ]})
+
+    # --- runs -------------------------------------------------------------
+
+    def _runs(self) -> None:
+        runs = runlog.load(self.logs_dir)
+        self._json({
+            "runs": runs,
+            "problems": sum(1 for r in runs if not r.get("ok") or r.get("incomplete")),
+        })
+
+    def _run_log(self, raw: str) -> None:
+        """The raw log for one date. Validated like a digest date, for the same reason."""
+        day = unquote(raw).strip("/")
+        if not DATE_RE.match(day):
+            raise ApiError(400, f"expected a YYYY-MM-DD date, got {day!r}")
+
+        path = (self.logs_dir / f"{day}.log").resolve()
+        if not _inside(path, self.logs_dir):
+            raise ApiError(400, "path escapes the log directory")
+
+        text = runlog.read_log(self.logs_dir, day)
+        if not text:
+            raise ApiError(404, f"no log for {day}")
+        self._json({"date": day, "log": text})
 
     # --- notes ------------------------------------------------------------
 

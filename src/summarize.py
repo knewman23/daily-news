@@ -53,9 +53,14 @@ obtained:
 
 Group them into distinct news topics and return ONLY a JSON object of this shape:
 
-{"topics": [{"headline": str, "body": str, "tags": [str], "sources": [str]}]}
+{"topics": [{"headline": str, "body": str, "tags": [str],
+             "sources": [str], "posts": [str]}]}
 
 Rules:
+- "posts" lists the id of every post the topic was drawn from, copied exactly
+  from the "id:" line of the blocks you used. This is what lets a reader open
+  the original post, so it must be accurate: never invent an id, and never
+  include one you did not actually use.
 - Collapse the same story into ONE topic even when several accounts cover it,
   and list every contributing account in that topic's "sources".
 - Order topics by significance, most significant first.
@@ -81,11 +86,9 @@ def build_prompt(transcripts: Sequence[Transcript]) -> str:
     blocks = []
     for t in transcripts:
         source = "text in image" if t.kind == "image" else "spoken audio"
-        lines = [f"[@{t.handle}] ({source})"]
+        lines = [f"[@{t.handle}] ({source})", f"id: {t.shortcode}"]
         if t.posted_at:
             lines.append(f"posted: {t.posted_at}")
-        if t.permalink:
-            lines.append(f"link: {t.permalink}")
         if t.caption.strip():
             lines.append(f"caption: {t.caption.strip()}")
         lines.append(f"content: {t.text.strip()}")
@@ -153,8 +156,23 @@ def summarize_day(
     atomic.write_text(path, render.render_day(
         day, topics, stats.as_dict(),
         generated=generated or datetime.now(timezone.utc),
+        permalinks=permalink_index(transcripts),
     ))
     return path
+
+
+def permalink_index(transcripts: Sequence[Transcript]) -> dict[str, str]:
+    """Map post id to (handle, url) so the renderer can link each source.
+
+    Built from the transcripts rather than from the model's output: the model is
+    asked to echo ids back, and echoed ids are only trustworthy as keys into
+    something we already know.
+    """
+    return {
+        t.shortcode: t.permalink
+        for t in transcripts
+        if t.shortcode and t.permalink
+    }
 
 
 # --- internals -------------------------------------------------------------
