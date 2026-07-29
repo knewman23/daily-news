@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-29T16:57:43.198809+00:00",
+  "last_updated": "2026-07-29T17:11:14.487896+00:00",
   "days": [
     {
       "date": "2026-07-29",
@@ -23,37 +23,109 @@
       "transcribed_count": 10,
       "incomplete": false,
       "skipped": [
-        "Commentary on photo of Rubio, Netanyahu and Hegseth at Lindsey Graham's funeral: Reaction commentary speculating about routine behind-closed-doors contact; reports no new information."
+        "Commentary on a photo of Rubio, Netanyahu and Hegseth at Lindsey Graham's funeral: Reaction commentary speculating about private meetings; reports no new information."
       ]
     },
     {
       "date": "2026-07-28",
       "tags": [
-        "military",
+        "war",
         "politics",
-        "diplomacy",
-        "media",
-        "health",
-        "sports",
+        "markets",
         "immigration",
         "legal",
+        "surveillance",
         "climate",
         "tech",
-        "markets",
-        "conflict"
+        "health",
+        "defence",
+        "sports"
       ],
       "sources": [
         "@oafnation_actual",
         "@total.hypocrisy",
         "@hunteralexanderhowell",
+        "@ericmoutsos",
         "@aaronparnas",
-        "@carolinegleich",
-        "@ericmoutsos"
+        "@carolinegleich"
       ],
-      "post_count": 37,
-      "transcribed_count": 36,
+      "post_count": 39,
+      "transcribed_count": 37,
       "incomplete": false,
-      "skipped": []
+      "skipped": [
+        "Hiker walks 10 miles down Montana peak after impaling himself to avoid air ambulance bill: Human interest survival story; the health care cost angle is framing rather than policy news",
+        "Trump veers off script during Graham eulogy: Viral clip of funeral conduct with no policy or governing substance",
+        "Trump's remark that Graham's heart 'gave out': Commentary on funeral decorum, reports nothing new",
+        "Tradwife influencer's comments on consent in marriage: Social commentary on an influencer, no policy or political angle",
+        "PSA against political social media trends, plus a job pitch: Self-promotion and media criticism rather than news",
+        "Single-day ascent of Mt. Emmons in the Uintas: Creator's personal hiking trip"
+      ]
+    },
+    {
+      "date": "2026-07-27",
+      "tags": [
+        "war",
+        "politics",
+        "legal",
+        "health",
+        "climate",
+        "tech",
+        "elections",
+        "policing",
+        "defence",
+        "markets"
+      ],
+      "sources": [
+        "@oafnation_actual",
+        "@hunteralexanderhowell",
+        "@total.hypocrisy",
+        "@ericmoutsos",
+        "@aaronparnas",
+        "@carolinegleich"
+      ],
+      "post_count": 29,
+      "transcribed_count": 29,
+      "incomplete": false,
+      "skipped": [
+        "Major T-Mobile outage hits thousands of customers: Consumer service disruption with no policy, political or security angle",
+        "Gen Z drinking rate rises to 74%, matching adults overall: Consumer and lifestyle trend research, not public health policy",
+        "Creator responds to question about what impresses women in 2026: Personal dating and lifestyle commentary, no news content",
+        "Taylor Swift lyric referencing the turtle club: Joke post with no news content"
+      ]
+    },
+    {
+      "date": "2026-07-26",
+      "tags": [
+        "war",
+        "defence",
+        "politics",
+        "immigration",
+        "media",
+        "legal",
+        "privacy",
+        "surveillance",
+        "policing",
+        "diplomacy",
+        "tech",
+        "climate",
+        "environment"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@oafnation_actual",
+        "@total.hypocrisy",
+        "@carolinegleich"
+      ],
+      "post_count": 22,
+      "transcribed_count": 22,
+      "incomplete": false,
+      "skipped": [
+        "Claim that wildfires are caused by microwave-assisted combustion: Unverified conspiracy argument built on reinterpreted photos rather than any reported development",
+        "Commentary on Palantir, AI surveillance and tech executives' claims: Reaction video stitched from existing executive interview clips; reports nothing new",
+        "Argument that Americans will never mount a general strike: Personal opinion piece with no news content",
+        "Creator reflects on a difficult year and their support system: Personal life and career story with no policy angle"
+      ]
     },
     {
       "date": "2026-07-25",
