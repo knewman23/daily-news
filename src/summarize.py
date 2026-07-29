@@ -161,17 +161,19 @@ def summarize_day(
     return path
 
 
-def permalink_index(transcripts: Sequence[Transcript]) -> dict[str, str]:
+def permalink_index(
+    transcripts: Sequence[Transcript],
+) -> dict[str, tuple[str, str]]:
     """Map post id to (handle, url) so the renderer can link each source.
 
     Built from the transcripts rather than from the model's output: the model is
-    asked to echo ids back, and echoed ids are only trustworthy as keys into
-    something we already know.
+    asked to echo ids back, and an echoed id is only trustworthy as a key into
+    something already known.
     """
     return {
-        t.shortcode: t.permalink
+        t.shortcode: (t.handle, t.permalink)
         for t in transcripts
-        if t.shortcode and t.permalink
+        if t.shortcode and t.permalink and t.handle
     }
 
 

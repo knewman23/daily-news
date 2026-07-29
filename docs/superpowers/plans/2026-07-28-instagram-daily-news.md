@@ -768,6 +768,65 @@ git commit -m "feat: launchd schedule at 11:00 and setup documentation"
 
 ---
 
+### Task 14: Static export for GitHub Pages (read-only)
+
+**Files:**
+- Create: `export_static.py`, `tests/test_export_static.py`
+- Modify: `web/app.js` (data-source indirection), `web/index.html`
+
+Requested: host the archive as a GitHub Page for reading on the move. The hosted
+copy is **read-only** — no adding, removing, or toggling sources, and no saving
+notes, because there is no server behind it and the source list is not something
+to expose publicly.
+
+- [ ] **Step 1: Give `app.js` one place that decides where data comes from**
+Replace the hardcoded `/api/...` paths with a small resolver that returns either
+the live API path or a static file path. Detect the mode from a `<body
+data-mode="static">` attribute the exporter writes, not from the hostname —
+hostname sniffing breaks the moment the live server is reached by anything other
+than `127.0.0.1`.
+
+- [ ] **Step 2: Hide every mutating control in static mode**
+The sources panel is omitted entirely; the journal renders existing notes as read
+-only text with a line explaining edits happen in the local copy. Do this by not
+emitting the markup, not by CSS — a `display: none` sources panel is still a
+working add-a-handle form to anyone who opens devtools.
+
+- [ ] **Step 3: Write failing tests for the exporter**
+- Every digest becomes `data/day/<date>.json` with the same shape the API returns
+- `data/days.json`, `data/tags.json`, `data/runs.json` are written
+- A search index is written covering every topic on every day
+- `index.html`, `style.css`, `app.js`, and `header.PNG` are copied
+- The exported `index.html` carries `data-mode="static"` and has no sources panel
+- Notes present in a digest still appear in the exported day JSON
+- `.nojekyll` is written (GitHub Pages otherwise ignores `_`-prefixed paths)
+- Re-exporting is idempotent and removes days deleted since the last export
+
+- [ ] **Step 4: Implement `export_static.py`**
+Reuse `digest.py` for parsing and rendering so the static and live views cannot
+drift. Default output `site/`, overridable, and refuse to write into a directory
+that is not either empty or a previous export (look for a marker file) — the
+target gets cleaned, and pointing it at the wrong directory should not delete
+someone's work.
+
+- [ ] **Step 5: Client-side search in static mode**
+With no server, `/api/search` cannot exist. Filter the exported search index in
+the browser. Keep the ranking identical to `digest.search` so results do not
+differ between the two views.
+
+- [ ] **Step 6: Verify both modes**
+Serve `site/` with `python -m http.server` and confirm: days load, search works,
+tags filter, notes are visible but not editable, no sources panel. Then confirm
+the live app still behaves exactly as before.
+
+- [ ] **Step 7: Commit**
+```bash
+git add export_static.py tests/test_export_static.py web/
+git commit -m "feat: static read-only export for GitHub Pages"
+```
+
+---
+
 ## Deferred
 
 Out of scope, recorded so they aren't rediscovered as bugs:

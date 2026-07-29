@@ -78,8 +78,14 @@ def topics_of(path: str | Path) -> list[Topic]:
 
 
 def render_html(path: str | Path) -> str:
+    """Render the day's news as HTML.
+
+    `nl2br` matters: each topic's `tags:` / `sources:` / `posts:` lines form one
+    markdown paragraph, and without it they collapse onto a single run-together
+    line ("tags: politics sources: @handle").
+    """
     body = _news_body(Path(path).read_text(encoding="utf-8"))
-    return markdown.markdown(body, extensions=["extra", "sane_lists"])
+    return markdown.markdown(body, extensions=["extra", "sane_lists", "nl2br"])
 
 
 def search(
@@ -171,14 +177,19 @@ def _topic(chunk: str) -> Topic | None:
         field_name = match.group(1).lower()
         raw = match.group(2)
 
-        if field_name == "posts":
-            links = [(m.group(1), m.group(2)) for m in _MD_LINK.finditer(raw)]
+        if field_name == "tags":
+            tags = [v.strip().lower() for v in raw.split(",") if v.strip()]
         else:
-            values = [v.strip() for v in raw.split(",") if v.strip()]
-            if field_name == "tags":
-                tags = [v.lower() for v in values]
-            else:
-                sources = values
+            # The sources line carries markdown links: `[@handle](url)`. Strip the
+            # markup back off so filtering still compares bare handles, and keep
+            # the urls alongside. `posts:` is the older shape, still parsed so
+            # digests written before the change keep working.
+            links.extend((m.group(1).lstrip("@"), m.group(2))
+                         for m in _MD_LINK.finditer(raw))
+            if field_name == "sources":
+                sources = [
+                    v.strip() for v in _MD_LINK.sub(r"\1", raw).split(",") if v.strip()
+                ]
         consumed += 1
 
     return Topic(headline, tags, sources, "\n".join(lines[consumed:]).strip(), links)

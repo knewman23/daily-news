@@ -172,24 +172,19 @@ TOPICS_WITH_POSTS = [{
 }]
 
 PERMALINKS = {
-    "AAA": "https://www.instagram.com/p/AAA/",
-    "BBB": "https://www.instagram.com/p/BBB/",
+    "AAA": ("aaronparnas", "https://www.instagram.com/p/AAA/"),
+    "BBB": ("total.hypocrisy", "https://www.instagram.com/p/BBB/"),
 }
 
 
-def test_posts_render_as_links_to_the_original():
+def test_the_handle_itself_becomes_the_link():
+    """Nobody recognises a shortcode, so a line of bare post ids reads as noise."""
     out = render.render_day(
         DAY, TOPICS_WITH_POSTS, STATS, generated=GENERATED, permalinks=PERMALINKS,
     )
-    assert "posts: [AAA](https://www.instagram.com/p/AAA/), " \
-           "[BBB](https://www.instagram.com/p/BBB/)" in out
-
-
-def test_sources_stay_bare_handles_so_filtering_still_works():
-    out = render.render_day(
-        DAY, TOPICS_WITH_POSTS, STATS, generated=GENERATED, permalinks=PERMALINKS,
-    )
-    assert "sources: @aaronparnas, @total.hypocrisy" in out
+    assert ("sources: [@aaronparnas](https://www.instagram.com/p/AAA/), "
+            "[@total.hypocrisy](https://www.instagram.com/p/BBB/)") in out
+    assert "posts:" not in out
 
 
 def test_an_invented_post_id_is_dropped_rather_than_linked():
@@ -199,20 +194,23 @@ def test_an_invented_post_id_is_dropped_rather_than_linked():
     out = render.render_day(DAY, topics, STATS, generated=GENERATED, permalinks=PERMALINKS)
 
     assert "MADE-UP" not in out
-    assert "[AAA]" in out
+    assert "[@aaronparnas](https://www.instagram.com/p/AAA/)" in out
 
 
 def test_duplicate_post_ids_are_listed_once():
     topics = [{**TOPICS_WITH_POSTS[0], "posts": ["AAA", "AAA"]}]
     out = render.render_day(DAY, topics, STATS, generated=GENERATED, permalinks=PERMALINKS)
-    assert out.count("[AAA]") == 1
+    assert out.count("[@aaronparnas]") == 1
 
 
-def test_a_topic_with_no_posts_omits_the_line():
-    out = render.render_day(DAY, TOPICS, STATS, generated=GENERATED, permalinks=PERMALINKS)
-    assert "posts:" not in out
+def test_a_handle_the_model_named_without_a_post_id_is_still_credited():
+    topics = [{**TOPICS_WITH_POSTS[0], "posts": ["AAA"]}]
+    out = render.render_day(DAY, topics, STATS, generated=GENERATED, permalinks=PERMALINKS)
+
+    assert "[@aaronparnas](https://www.instagram.com/p/AAA/)" in out
+    assert "@total.hypocrisy" in out          # named by the model, no id, still listed
 
 
-def test_links_are_absent_when_no_permalinks_are_supplied():
+def test_sources_are_plain_when_no_permalinks_are_supplied():
     out = render.render_day(DAY, TOPICS_WITH_POSTS, STATS, generated=GENERATED)
-    assert "posts:" not in out
+    assert "sources: @aaronparnas, @total.hypocrisy" in out

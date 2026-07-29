@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daily News</title>
+  <link rel="icon" href="header.PNG">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <img class="crest" src="header.PNG" alt="Eagle and flag over a Born Free banner">
+  <h1>Daily News</h1>
+  <p class="tagline">Transcribed and summarized from the accounts you follow</p>
+</header>
+
+<nav class="toolbar" aria-label="Search and filter">
+  <div class="toolbar-inner">
+    <label class="search">
+      <span class="visually-hidden">Search all days</span>
+      <input id="search" type="search" placeholder="Search every day…" autocomplete="off">
+    </label>
+    <div id="tags" class="chips" role="group" aria-label="Filter by topic"></div>
+    <button id="clear" class="clear" hidden>Clear filters</button>
+  </div>
+</nav>
+
+<div class="layout">
+
+  <aside class="rail">
+    <section class="panel">
+      <h2 class="panel-title">Days</h2>
+      <ol id="days" class="days"></ol>
+    </section>
+
+    <details class="panel" id="sources-panel">
+      <summary class="panel-title">
+        Sources <span id="sources-count" class="count"></span>
+      </summary>
+      <ul id="sources" class="sources"></ul>
+      <form id="add-source" class="add">
+        <label class="visually-hidden" for="new-handle">Instagram handle</label>
+        <input id="new-handle" type="text" placeholder="add a handle" autocomplete="off">
+        <button type="submit">Add</button>
+        <p id="add-error" class="error" hidden></p>
+      </form>
+    </details>
+
+    <details class="panel" id="runs-panel">
+      <summary class="panel-title">
+        Runs <span id="runs-badge" class="badge" hidden></span>
+      </summary>
+      <ul id="runs" class="runs"></ul>
+    </details>
+  </aside>
+
+  <main id="main" class="main" aria-live="polite">
+    <p class="empty">Loading…</p>
+  </main>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

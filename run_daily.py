@@ -82,7 +82,7 @@ def run_day(
     extracted = cfg.transcripts_dir(day)
 
     try:
-        _, fetch_stats = do_fetch(cfg.paths.sources, raw, cfg.fetch)
+        fetched, fetch_stats = do_fetch(cfg.paths.sources, raw, cfg.fetch)
     except fetch.SessionExpired as exc:
         log.error("Instagram session is not usable: %s", exc)
         log.error(
@@ -104,8 +104,10 @@ def run_day(
     transcripts = list(spoken) + list(on_image)
     stats = _merge(fetch_stats, audio_stats, image_stats)
     log.info(
-        "%d post(s), %d with usable text (%d spoken, %d on-image)",
-        stats.post_count, stats.transcribed_count, len(spoken), len(on_image),
+        "%d post(s) for the day (%d newly fetched), %d with usable text "
+        "(%d spoken, %d on-image)",
+        stats.post_count, len(fetched), stats.transcribed_count,
+        len(spoken), len(on_image),
     )
 
     path = cfg.paths.news / f"{day.isoformat()}.md"
@@ -159,15 +161,20 @@ def main(argv: list[str] | None = None) -> int:
 # --- internals -------------------------------------------------------------
 
 
-def _merge(*parts: Stats) -> Stats:
-    """Combine stage stats.
+def _merge(fetched: Stats, spoken: Stats, on_image: Stats) -> Stats:
+    """Combine stage stats into the day's totals.
 
-    post_count comes from fetch alone — the later stages each count the files
-    they looked at, so summing all of them would report every post two or three
-    times over.
+    post_count is the sum of the *extract* stages, not fetch's count. Fetch only
+    reports what it newly downloaded, so on a re-run — where everything is
+    already on disk and nothing is fetched — taking its count would report a day
+    of 28 posts as a day of 0. transcribe counts the videos and ocr counts the
+    image posts, and the two sets do not overlap, so their sum is the real total.
+
+    Fetch still contributes its failures: a handle that could not be reached is
+    the main reason a day is incomplete.
     """
-    merged = Stats(post_count=parts[0].post_count if parts else 0)
-    for part in parts:
+    merged = Stats(post_count=spoken.post_count + on_image.post_count)
+    for part in (fetched, spoken, on_image):
         merged.transcribed_count += part.transcribed_count
         merged.incomplete = merged.incomplete or part.incomplete
         merged.notes.extend(part.notes)

@@ -67,27 +67,40 @@ def _clean_topic(
         p.strip() for p in _as_list(topic.get("posts"))
         if p.strip() in permalinks
     ]
+    links = [(permalinks[p][0], permalinks[p][1]) for p in dict.fromkeys(posts)]
+
+    handles = [_handle(s) for s in _as_list(topic.get("sources")) if s.strip()]
+    linked = {handle for handle, _ in links}
 
     return {
         "headline": headline,
         "body": body.strip(),
         "tags": [t.strip().lower() for t in _as_list(topic.get("tags")) if t.strip()],
-        "sources": [_handle(s) for s in _as_list(topic.get("sources")) if s.strip()],
-        "links": [(p, permalinks[p]) for p in dict.fromkeys(posts)],
+        # Order matters: linked handles first, then any the model named without
+        # a usable post id, so nothing the model attributed is silently dropped.
+        "sources": [h for h, _ in links] + [h for h in handles if h not in linked],
+        "links": links,
     }
 
 
 def _section(topic: Mapping[str, Any]) -> str:
+    """One topic. The sources line carries the links.
+
+    A separate line of bare post ids reads as noise — nobody recognises
+    "DbWomCQPL7Y" — so the handle itself is the link. digest.py strips the
+    markdown back off when it needs bare handles for filtering.
+    """
     lines = [f"## {topic['headline']}"]
     if topic["tags"]:
         lines.append(f"tags: {', '.join(topic['tags'])}")
+
     if topic["sources"]:
-        lines.append(f"sources: {', '.join('@' + s for s in topic['sources'])}")
-    if topic["links"]:
-        # Kept on their own line so `sources:` stays bare handles for filtering.
-        lines.append("posts: " + ", ".join(
-            f"[{shortcode}]({url})" for shortcode, url in topic["links"]
+        linked = dict(topic["links"])
+        lines.append("sources: " + ", ".join(
+            f"[@{handle}]({linked[handle]})" if handle in linked else f"@{handle}"
+            for handle in topic["sources"]
         ))
+
     return "\n".join(lines) + f"\n\n{topic['body']}"
 
 

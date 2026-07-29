@@ -1,0 +1,572 @@
+/* Palette sampled from header.PNG with k-means, not estimated. Substituting
+   eyeballed values will not sit right against the artwork. */
+:root {
+  --parchment: #ECEEE2;       /* 35% of the image */
+  --parchment-aged: #DDDACB;  /* 28% of the image */
+  --ink: #191B3F;             /* outline ink */
+  --navy: #10297C;            /* flag canton */
+  --red: #C51C22;             /* flag stripes */
+  --gold: #DDA519;            /* banner and talons */
+  --slate: #59565C;           /* eagle wings */
+
+  --rule: color-mix(in srgb, var(--ink) 18%, transparent);
+  --shadow: 0 1px 2px color-mix(in srgb, var(--ink) 12%, transparent);
+
+  --serif: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+  --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --rail: 15rem;
+}
+
+/* Deliberately a single light treatment. The artwork is painted on cream stock,
+   and a dark inversion fights it rather than complementing it. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;   /* stop iOS inflating text in landscape */
+}
+
+body {
+  margin: 0;
+  background: var(--parchment);
+  color: var(--ink);
+  font: 16px/1.6 var(--sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-wrap: break-word;        /* long ids and urls must not widen the page */
+}
+
+a { color: var(--navy); }
+a:hover { color: var(--red); }
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* --- masthead ----------------------------------------------------------- */
+
+/* Background matches --parchment deliberately: that is the colour sampled from
+   the scan's own paper, so the artwork melts into the header instead of sitting
+   on it as a lighter rectangle. The gold rule does the separating. */
+.masthead {
+  background: var(--parchment);
+  border-bottom: 3px solid var(--gold);
+  padding: 1.75rem 1rem 1.25rem;
+  text-align: center;
+}
+
+/* Framed rather than blended. The scan's paper is unevenly lit — its edges run
+   from #D8DAD3 at the top-left to #BFBBAC at the bottom-right — so no flat
+   background can match it and any attempt to melt it in leaves a visible patch.
+   A frame makes that edge deliberate: a photographed flash sheet, pinned up. */
+.crest {
+  display: block;
+  width: auto;
+  max-width: min(300px, 70vw);
+  height: auto;                    /* never force the page to scroll sideways */
+  margin: 0 auto 0.7rem;
+  border: 1px solid color-mix(in srgb, var(--ink) 22%, transparent);
+  border-radius: 2px;
+  box-shadow:
+    0 1px 0 color-mix(in srgb, var(--parchment) 90%, white),
+    0 2px 6px color-mix(in srgb, var(--ink) 16%, transparent);
+}
+
+.masthead h1 {
+  margin: 0;
+  font: 400 2rem/1.1 var(--serif);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.tagline {
+  margin: 0.4rem 0 0;
+  color: var(--slate);
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+/* --- toolbar ------------------------------------------------------------ */
+
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--ink);
+  border-bottom: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
+}
+
+.toolbar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: 74rem;
+  margin: 0 auto;
+  padding: 0.6rem 1rem;
+}
+
+.search { flex: 0 1 18rem; }
+
+.search input {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid color-mix(in srgb, var(--parchment) 35%, transparent);
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--parchment) 96%, var(--ink));
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+
+.chip {
+  padding: 0.2rem 0.6rem;
+  border: 1px solid color-mix(in srgb, var(--gold) 60%, transparent);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--parchment);
+  font: inherit;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+}
+
+.chip:hover { border-color: var(--gold); color: var(--gold); }
+
+.chip[aria-pressed="true"] {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+}
+
+.clear {
+  margin-left: auto;
+  border: 0;
+  background: none;
+  color: var(--gold);
+  font: inherit;
+  font-size: 0.75rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* --- layout ------------------------------------------------------------- */
+
+.layout {
+  display: grid;
+  grid-template-columns: var(--rail) minmax(0, 1fr);
+  gap: 1.5rem;
+  max-width: 74rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 4rem;
+  align-items: start;
+}
+
+.rail { display: flex; flex-direction: column; gap: 0.9rem; }
+
+.panel {
+  background: var(--parchment-aged);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 0.7rem 0.85rem;
+  box-shadow: var(--shadow);
+}
+
+.panel-title {
+  margin: 0 0 0.5rem;
+  font: 700 0.7rem/1.4 var(--sans);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--slate);
+  cursor: pointer;
+}
+
+details.panel > .panel-title { margin-bottom: 0; }
+details.panel[open] > .panel-title { margin-bottom: 0.6rem; }
+
+.count, .badge {
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* An explicit display value beats the `hidden` attribute, so [hidden] has to be
+   restated or an empty badge shows a red "0". */
+.badge[hidden] { display: none; }
+
+.badge {
+  display: inline-block;
+  min-width: 1.15rem;
+  padding: 0 0.3rem;
+  border-radius: 999px;
+  background: var(--red);
+  color: #fff;
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+/* --- day list ----------------------------------------------------------- */
+
+.days { list-style: none; margin: 0; padding: 0; }
+
+.days button {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 0.3rem 0.4rem;
+  border: 0;
+  border-radius: 3px;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.85rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.days button:hover { background: color-mix(in srgb, var(--gold) 22%, transparent); }
+
+.days button[aria-current="true"] {
+  background: var(--navy);
+  color: var(--parchment);
+}
+
+.days .topics { color: var(--slate); font-size: 0.75rem; }
+.days button[aria-current="true"] .topics { color: color-mix(in srgb, var(--parchment) 75%, transparent); }
+.days .flag { color: var(--red); font-weight: 700; }
+.days button[aria-current="true"] .flag { color: var(--gold); }
+
+/* --- sources ------------------------------------------------------------ */
+
+.sources { list-style: none; margin: 0 0 0.6rem; padding: 0; font-size: 0.82rem; }
+
+.sources li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.22rem 0;
+  border-bottom: 1px dotted var(--rule);
+}
+
+.sources .handle { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.sources li.off .handle { color: var(--slate); text-decoration: line-through; }
+.sources .stale { color: var(--red); cursor: help; }
+
+.icon-button {
+  border: 0;
+  background: none;
+  color: var(--slate);
+  font: inherit;
+  font-size: 0.9rem;
+  line-height: 1;
+  padding: 0.15rem 0.25rem;
+  cursor: pointer;
+}
+
+.icon-button:hover { color: var(--red); }
+
+.add { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+
+.add input {
+  flex: 1 1 6rem;
+  min-width: 0;
+  padding: 0.3rem 0.4rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--parchment);
+  font: inherit;
+  font-size: 0.8rem;
+}
+
+.add button, .notes-save {
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--navy);
+  border-radius: 3px;
+  background: var(--navy);
+  color: var(--parchment);
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.add button:hover, .notes-save:hover { background: var(--red); border-color: var(--red); }
+
+.error {
+  flex: 1 0 100%;
+  margin: 0.2rem 0 0;
+  color: var(--red);
+  font-size: 0.75rem;
+}
+
+/* --- runs --------------------------------------------------------------- */
+
+.runs { list-style: none; margin: 0; padding: 0; font-size: 0.8rem; }
+
+.runs > li { padding: 0.3rem 0; border-bottom: 1px dotted var(--rule); }
+
+.run-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  width: 100%;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.run-dot { flex: none; font-size: 0.7rem; }
+.run-dot.ok { color: #2E7D32; }
+.run-dot.warn { color: var(--gold); }
+.run-dot.bad { color: var(--red); }
+.run-meta { margin-left: auto; color: var(--slate); font-size: 0.72rem; }
+
+.run-detail { margin: 0.3rem 0 0.4rem; padding-left: 1rem; }
+.run-detail li { color: var(--red); font-size: 0.75rem; }
+.run-log-button {
+  border: 0; background: none; padding: 0;
+  color: var(--navy); font: inherit; font-size: 0.75rem;
+  text-decoration: underline; cursor: pointer;
+}
+
+/* --- main pane ---------------------------------------------------------- */
+
+.main { min-width: 0; }
+
+.day-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--gold);
+  margin-bottom: 1.2rem;
+}
+
+.day-head h2 {
+  margin: 0;
+  font: 400 1.5rem/1.2 var(--serif);
+}
+
+.day-meta { color: var(--slate); font-size: 0.78rem; }
+
+.warn-banner {
+  flex: 1 0 100%;
+  margin: 0.4rem 0 0;
+  padding: 0.4rem 0.6rem;
+  border-left: 3px solid var(--red);
+  background: color-mix(in srgb, var(--red) 8%, transparent);
+  font-size: 0.8rem;
+}
+
+/* The file carries an `# July 28, 2026` title so it reads standalone in an
+   editor. On the page the day header already says that, so hide the duplicate
+   rather than removing it from the markdown. */
+.article > h1 { display: none; }
+
+.article h2 {
+  margin: 1.9rem 0 0.15rem;
+  font: 600 1.16rem/1.3 var(--serif);
+}
+
+.article > h1 + h2,
+.article h2:first-child { margin-top: 0; }
+
+/* The renderer emits `tags:` / `sources:` / `posts:` as the paragraph directly
+   after each headline. Styling it as a byline keeps it out of the reading line. */
+.article h2 + p {
+  margin: 0 0 0.6rem;
+  color: var(--slate);
+  font-size: 0.76rem;
+  letter-spacing: 0.02em;
+}
+
+.article h2 + p a {
+  color: var(--navy);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--navy) 35%, transparent);
+}
+
+.article h2 + p a:hover { color: var(--red); border-bottom-color: var(--red); }
+
+.article p { margin: 0 0 0.9rem; max-width: 62ch; }
+.article em { color: var(--slate); }
+
+.article pre, .article table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;          /* wide content scrolls in its own box */
+}
+
+.article pre { font-family: var(--mono); font-size: 0.8rem; }
+
+/* --- journal ------------------------------------------------------------ */
+
+.journal {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--gold);
+}
+
+.journal h3 {
+  margin: 0 0 0.5rem;
+  font: 700 0.72rem/1.4 var(--sans);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+.journal textarea {
+  display: block;
+  width: 100%;
+  min-height: 8rem;
+  padding: 0.7rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--parchment-aged);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.92rem;
+  resize: vertical;
+}
+
+.journal-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.status { font-size: 0.78rem; color: var(--slate); }
+.status.saved { color: #2E7D32; }
+.status.failed { color: var(--red); }
+
+/* --- search results ----------------------------------------------------- */
+
+.hits { list-style: none; margin: 0; padding: 0; }
+
+.hits li {
+  padding: 0.7rem 0;
+  border-bottom: 1px dotted var(--rule);
+}
+
+.hit-head {
+  border: 0; background: none; padding: 0;
+  color: var(--navy); font: inherit; font-weight: 600;
+  text-align: left; cursor: pointer;
+}
+
+.hit-head:hover { color: var(--red); }
+.hit-date { color: var(--slate); font-size: 0.75rem; }
+.hit-snippet { margin: 0.2rem 0 0; color: var(--ink); font-size: 0.85rem; max-width: 70ch; }
+
+.empty { color: var(--slate); font-style: italic; }
+
+.log-view {
+  max-height: 24rem;
+  overflow: auto;
+  margin: 0.4rem 0 0;
+  padding: 0.5rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--parchment);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.log-view .line-warn { color: var(--gold); }
+.log-view .line-error { color: var(--red); font-weight: 700; }
+
+/* --- narrow windows and phones ------------------------------------------ */
+
+@media (max-width: 46rem) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    padding: 1rem 0.85rem 3rem;
+  }
+
+  /* Reading comes first; the rail's panels drop below the day. */
+  .main { order: 1; }
+  .rail { order: 2; }
+
+  .masthead { padding: 1rem 0.85rem 0.85rem; }
+  .crest { max-width: min(160px, 45vw); }
+  .masthead h1 { font-size: 1.35rem; letter-spacing: 0.1em; }
+  .tagline { font-size: 0.72rem; }
+
+  .toolbar-inner { padding: 0.5rem 0.7rem; gap: 0.5rem; }
+  .search { flex: 1 1 100%; }
+
+  /* Chips scroll sideways in their own strip rather than stacking into a wall
+     of rows that pushes the day off screen. */
+  .chips {
+    flex: 1 1 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 0.15rem;
+  }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip { flex: none; }
+
+  .clear { margin-left: 0; }
+
+  /* Same treatment for the day list: a horizontal strip of dates. */
+  .days {
+    display: flex;
+    gap: 0.35rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .days::-webkit-scrollbar { display: none; }
+  .days li { flex: none; }
+  .days button {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0.35rem 0.6rem;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+
+  .day-head h2 { font-size: 1.2rem; }
+  .article h2 { font-size: 1.08rem; margin-top: 1.5rem; }
+  .article p { max-width: none; }
+  .journal textarea { min-height: 6.5rem; }
+}
+
+/* Touch pointers get real tap targets. The 44px floor is Apple's guidance and
+   the icon buttons are nowhere near it by default. */
+@media (hover: none) and (pointer: coarse) {
+  .icon-button {
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    font-size: 1.1rem;
+  }
+  .sources li { padding: 0.15rem 0; }
+  .chip { padding: 0.4rem 0.8rem; font-size: 0.8rem; }
+  .days button { min-height: 2.5rem; }
+  .add button, .notes-save { padding: 0.55rem 0.9rem; }
+  .search input, .add input { font-size: 1rem; }  /* < 16px makes iOS zoom on focus */
+}

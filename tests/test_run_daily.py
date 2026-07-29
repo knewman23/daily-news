@@ -205,8 +205,8 @@ def test_audio_and_image_text_are_both_handed_to_the_summarizer(project):
 
 def test_transcribed_count_sums_audio_and_image(project):
     run(project, stage_kwargs={
-        "audio": [AUDIO], "audio_stats": Stats(transcribed_count=1),
-        "images": [IMAGE], "image_stats": Stats(transcribed_count=1),
+        "audio": [AUDIO], "audio_stats": Stats(post_count=1, transcribed_count=1),
+        "images": [IMAGE], "image_stats": Stats(post_count=1, transcribed_count=1),
         "fetch_stats": Stats(post_count=2),
     })
 
@@ -361,3 +361,36 @@ def test_date_defaults_to_today(project):
 def test_a_malformed_date_is_rejected(project):
     with pytest.raises(SystemExit):
         run_daily.parse_args(["--date", "not-a-date"])
+
+
+# --- counting across a re-run ---------------------------------------------
+
+
+def test_post_count_comes_from_the_extract_stages_not_fetch(project):
+    """On a re-run nothing is newly fetched, but the day still has its posts.
+
+    Taking fetch's count would report a 28-post day as a 0-post day the moment
+    the files were already on disk.
+    """
+    run(project, stage_kwargs={
+        "posts": [],                                  # nothing newly downloaded
+        "fetch_stats": Stats(post_count=0),
+        "audio": [AUDIO], "audio_stats": Stats(post_count=18, transcribed_count=18),
+        "images": [IMAGE], "image_stats": Stats(post_count=14, transcribed_count=14),
+    })
+
+    meta = digest.list_days(project / "news")[0]
+    assert meta.post_count == 32
+    assert meta.transcribed_count == 32
+
+
+def test_a_fetch_failure_still_marks_a_rerun_incomplete(project):
+    failed = Stats(post_count=0)
+    failed.fail("fetch total.hipocrisy: Profile does not exist.")
+
+    run(project, stage_kwargs={
+        "posts": [], "fetch_stats": failed,
+        "audio_stats": Stats(post_count=1, transcribed_count=1),
+    })
+
+    assert digest.list_days(project / "news")[0].incomplete is True
