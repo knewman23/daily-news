@@ -145,8 +145,36 @@ markdown to HTML via the `markdown` package. Read-only with respect to `news/`.
 skipping completed work. Reads enabled handles from `sources.py`. Logs to
 `logs/YYYY-MM-DD.log`. Non-zero exit and a macOS notification on failure.
 
+### Visual design
+
+The page is built around `header.PNG` — a Sailor Jerry-style American traditional
+tattoo (eagle, flag, "BORN FREE" banner) painted on aged parchment. The image sits
+centered in the header, and the rest of the page takes its palette from the artwork
+so the chrome reads as part of it rather than a frame around it.
+
+Palette sampled from the image itself rather than estimated:
+
+| Token | Hex | Sampled from | Used for |
+|---|---|---|---|
+| `--parchment` | `#ECEEE2` | 35% of the image | Page background |
+| `--parchment-aged` | `#DDDACB` | 28% of the image | Header backdrop, rail, card edges |
+| `--ink` | `#191B3F` | Outline ink | Body text, navigation bar |
+| `--navy` | `#10297C` | Flag canton | Links, active nav, tag chip borders |
+| `--red` | `#C51C22` | Flag stripes | Active tag, save confirmation, alerts |
+| `--gold` | `#DDA519` | Banner and talons | Accent rules, hover, focus rings |
+| `--slate` | `#59565C` | Eagle wings | Secondary text, metadata |
+
+Deliberately a single light parchment treatment rather than a light/dark pair — the
+artwork is painted on cream stock and a dark inversion fights it. Ink navy on
+parchment clears WCAG AA comfortably; gold is used for accents and never for body
+text, where it would not.
+
 ### Web UI layout
 
+- **Header** — `header.PNG` centered on aged parchment, with the site title and a
+  gold rule beneath it
+- **Navigation** — ink-navy bar under the header holding the search box and tag
+  chips; active chips fill red, hover states use gold
 - **Left rail** — every past date, newest first
 - **Main pane** — the selected day's summary, markdown rendered server-side via
   the `markdown` package. No CDN, no JS dependencies.

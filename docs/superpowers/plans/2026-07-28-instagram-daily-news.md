@@ -646,11 +646,37 @@ git commit -m "feat: localhost API for days, search, notes, and sources"
 
 **Files:**
 - Create: `web/index.html`, `web/app.js`, `web/style.css`
+- Move: `header.PNG` → `web/header.PNG` (so the static route serves it; the repo
+  root is not served)
 
 No test task — this is verified by driving the real page. Vanilla JS, no build step, no CDN.
 
+- [ ] **Step 0: Move the header image and define the palette**
+`git mv header.PNG web/header.PNG`, then declare the sampled palette as CSS custom
+properties on `:root`. Exact values — these were sampled from the artwork with
+k-means, not estimated, and eyeballed substitutes will not sit right against it:
+```css
+:root {
+  --parchment: #ECEEE2;      /* 35% of the image — page background */
+  --parchment-aged: #DDDACB; /* 28% — header backdrop, rail, card edges */
+  --ink: #191B3F;            /* outline ink — body text, nav bar */
+  --navy: #10297C;           /* flag canton — links, active nav, chip borders */
+  --red: #C51C22;            /* flag stripes — active tag, alerts */
+  --gold: #DDA519;           /* banner and talons — rules, hover, focus */
+  --slate: #59565C;          /* eagle wings — secondary text, metadata */
+}
+```
+Single light treatment, no dark-mode pair: the artwork is painted on cream stock and
+a dark inversion fights it. Keep gold for accents only — it fails contrast as body
+text on parchment.
+
 - [ ] **Step 1: Build the shell**
-Left rail of dates (newest first), main pane for the rendered day, top bar with a search box and tag chips. Clicking a date loads it; clicking a tag filters.
+Header with `header.PNG` centered on `--parchment-aged` and a `--gold` rule beneath.
+Ink-navy navigation bar under it holding the search box and tag chips. Left rail of
+dates (newest first), main pane for the rendered day. Clicking a date loads it;
+clicking a tag filters. Constrain the header image with `max-width` and
+`height: auto` so it scales down on a narrow window rather than forcing the page to
+scroll sideways.
 
 - [ ] **Step 2: Wire search**
 Debounced calls to `/api/search`, results grouped by date and showing the matching topic headline. Clicking a result opens that day scrolled to the topic.
