@@ -26,8 +26,8 @@ import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
 
-from src import (config, digest, fetch, notes, ocr, publish, runlog, sources,
-                 summarize, transcribe)
+from src import (config, digest, fetch, mailer, notes, ocr, publish, runlog,
+                 sources, summarize, transcribe)
 from src.records import Stats
 
 log = logging.getLogger("daily-news")
@@ -41,6 +41,7 @@ def run_day(
     ocr_runner=None,
     summarizer=None,
     publisher=None,
+    emailer=None,
     notifier=None,
     generated: datetime | None = None,
 ) -> int:
@@ -73,6 +74,7 @@ def run_day(
     do_ocr = ocr_runner or ocr.ocr_day
     do_summarize = summarizer or summarize.summarize_day
     do_publish = publisher or publish.publish
+    do_email = emailer or mailer.send
 
     log.info("starting run for %s", day.isoformat())
 
@@ -148,6 +150,19 @@ def run_day(
         log.warning("publish did not complete: %s", outcome.message)
         notify(f"Daily news published locally but not pushed: {outcome.message}")
         stats.fail(f"publish: {outcome.message}")
+
+    # The email is the last thing and, like publishing, cannot fail the run.
+    # It is sent after publishing so the link in it points at a live page.
+    subject, body = mailer.build_message(
+        day,
+        [t.headline for t in digest.topics_of(path)] if path.exists() else [],
+        stats,
+        site_url=cfg.email.site_url,
+        failures=stats.notes,
+    )
+    delivery = do_email(cfg, subject, body)
+    if not delivery.ok:
+        log.warning("email did not send: %s", delivery.message)
 
     return record(True, stats=stats, spoken=len(spoken),
                   on_image=len(on_image), topics=topics)

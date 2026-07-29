@@ -27,3 +27,16 @@ enabled = true               # after a successful run, export site/ and push it
 remote = "origin"
 branch = "main"
 site = "site"
+
+[email]
+enabled = true               # email a summary when the run finishes
+to = "krys.newman@gmail.com"
+sender = "krys.newman@gmail.com"
+smtp_host = "smtp.gmail.com"
+smtp_port = 587
+# The app password lives in the login Keychain, never in this file — this file
+# is committed. Store it once with:
+#   security add-generic-password -s daily-news-smtp -a krys.newman@gmail.com -w
+keychain_service = "daily-news-smtp"
+keychain_account = "krys.newman@gmail.com"
+site_url = ""                # filled in once GitHub Pages is live

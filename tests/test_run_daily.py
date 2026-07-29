@@ -455,3 +455,65 @@ def test_a_summarize_failure_skips_publishing_entirely(project):
     })
 
     assert spy.calls == []
+
+
+# --- email -----------------------------------------------------------------
+
+
+class EmailerSpy:
+    def __init__(self, ok=True):
+        self.ok = ok
+        self.calls = []
+
+    def __call__(self, cfg, subject, body):
+        self.calls.append({"subject": subject, "body": body})
+        from src.mailer import MailResult
+        return MailResult(self.ok, self.ok, "sent" if self.ok else "smtp refused")
+
+
+def test_the_email_carries_the_days_headlines(project):
+    spy = EmailerSpy()
+    run(project, emailer=spy)
+
+    assert len(spy.calls) == 1
+    assert "1 topic for July 28" in spy.calls[0]["subject"]
+    assert "Senate passes the spending bill" in spy.calls[0]["body"]
+
+
+def test_the_email_is_sent_after_publishing_so_the_link_is_live(project):
+    order = []
+
+    def publisher(cfg, day, topic_count=0):
+        order.append("publish")
+        return publish.PublishResult(True, True, "ok")
+
+    def emailer(cfg, subject, body):
+        order.append("email")
+        from src.mailer import MailResult
+        return MailResult(True, True, "sent")
+
+    run(project, publisher=publisher, emailer=emailer)
+    assert order == ["publish", "email"]
+
+
+def test_an_email_failure_does_not_fail_the_run(project):
+    code, _, _ = run(project, emailer=EmailerSpy(ok=False))
+    assert code == 0
+
+
+def test_a_publish_failure_reaches_the_email_body(project):
+    """The email is the one place a failure is guaranteed to be seen."""
+    spy = EmailerSpy()
+    run(project, publisher=PublisherSpy(ok=False, message="no upstream"), emailer=spy)
+
+    assert "(incomplete)" in spy.calls[0]["subject"]
+    assert "no upstream" in spy.calls[0]["body"]
+
+
+def test_a_quiet_day_still_sends(project):
+    spy = EmailerSpy()
+    run(project, emailer=spy, stage_kwargs={
+        "posts": [], "fetch_stats": Stats(), "audio": [], "topics": [],
+    })
+
+    assert "no news" in spy.calls[0]["subject"]

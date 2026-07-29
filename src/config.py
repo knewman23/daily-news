@@ -59,12 +59,25 @@ class PublishConfig:
 
 
 @dataclass(frozen=True)
+class EmailConfig:
+    enabled: bool = False
+    to: str = ""
+    sender: str = ""
+    smtp_host: str = "smtp.gmail.com"
+    smtp_port: int = 587
+    keychain_service: str = "daily-news-smtp"
+    keychain_account: str = ""
+    site_url: str = ""
+
+
+@dataclass(frozen=True)
 class Config:
     paths: Paths
     fetch: FetchConfig
     transcribe: TranscribeConfig
     serve: ServeConfig
     publish: PublishConfig
+    email: EmailConfig
 
     def raw_dir(self, day) -> Path:
         return self.paths.raw / day.isoformat()
@@ -101,6 +114,7 @@ def load(path: str | Path = CONFIG_FILE) -> Config:
         transcribe=_section(TranscribeConfig, data.get("transcribe", {}), "transcribe", p),
         serve=_section(ServeConfig, data.get("serve", {}), "serve", p),
         publish=_section(PublishConfig, data.get("publish", {}), "publish", p),
+        email=_section(EmailConfig, data.get("email", {}), "email", p),
     )
 
 
