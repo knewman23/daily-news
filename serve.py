@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import logging
 import sys
+from dataclasses import replace
 
 from src import config, serve
 
@@ -23,10 +24,7 @@ def main(argv: list[str] | None = None) -> int:
 
     cfg = config.load(args.config)
     if args.port:
-        cfg = config.Config(
-            paths=cfg.paths, fetch=cfg.fetch, transcribe=cfg.transcribe,
-            serve=config.ServeConfig(host=cfg.serve.host, port=args.port),
-        )
+        cfg = replace(cfg, serve=config.ServeConfig(host=cfg.serve.host, port=args.port))
 
     serve.run(cfg)
     return 0

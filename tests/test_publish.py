@@ -1,4 +1,5 @@
 import subprocess
+from dataclasses import replace
 from datetime import date
 
 import pytest
@@ -124,10 +125,10 @@ def test_only_the_site_directory_is_staged(cfg):
 
 
 def test_a_site_outside_the_repository_is_refused(cfg, tmp_path):
-    outside = config.Config(
-        paths=cfg.paths, fetch=cfg.fetch, transcribe=cfg.transcribe,
-        serve=cfg.serve,
-        publish=config.PublishConfig(enabled=True, site="/tmp/elsewhere"),
+    # dataclasses.replace, not a full Config(...) call: a positional
+    # reconstruction breaks every time a config section is added.
+    outside = replace(
+        cfg, publish=config.PublishConfig(enabled=True, site="/tmp/elsewhere"),
     )
     git = FakeGit(dirty=True)
 
@@ -153,10 +154,7 @@ def test_an_unchanged_site_is_not_committed(cfg):
 
 
 def test_publishing_can_be_switched_off(cfg):
-    off = config.Config(
-        paths=cfg.paths, fetch=cfg.fetch, transcribe=cfg.transcribe,
-        serve=cfg.serve, publish=config.PublishConfig(enabled=False),
-    )
+    off = replace(cfg, publish=config.PublishConfig(enabled=False))
     git = FakeGit()
     build = fake_export()
 
