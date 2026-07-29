@@ -149,13 +149,36 @@ def lookup_profile(loader: Any, handle: str) -> None:
     next(iter(loader.posts_for(handle)), None)
 
 
-def cutoff_for(source: Source, now: datetime, cfg: FetchConfig) -> datetime:
+def start_of_day(day: date) -> datetime:
+    """Local midnight for a date, as UTC-aware.
+
+    Local, not UTC: the digest is dated by the local day, so "everything from
+    today" has to mean the same day the file is named after. In a negative-offset
+    timezone, UTC midnight is the previous afternoon.
+    """
+    naive = datetime(day.year, day.month, day.day)
+    return naive.astimezone(timezone.utc)
+
+
+def cutoff_for(
+    source: Source,
+    now: datetime,
+    cfg: FetchConfig,
+    override: datetime | None = None,
+) -> datetime:
     """The oldest post timestamp this handle still owes us, as UTC-aware.
 
     Clamped to max_lookback_days so a long-stale watermark — a handle disabled
     for a month, say — cannot trigger a crawl back through a whole profile.
+
+    An override replaces the watermark entirely, which is how a full pull re-scans
+    a day the watermark has already moved past. It is still clamped, so `--full`
+    on an ancient date cannot crawl a whole profile either.
     """
     floor = now - timedelta(days=cfg.max_lookback_days)
+
+    if override is not None:
+        return max(_utc(override), floor)
 
     if not source.last_pull_at:
         return max(now - timedelta(hours=cfg.first_run_lookback_hours), floor)
@@ -225,8 +248,14 @@ def fetch_day(
     loader: Any = None,
     now: datetime | None = None,
     sleep: Callable[[float], None] = None,
+    since: datetime | None = None,
 ) -> tuple[list[PostRef], Stats]:
-    """Fetch every enabled handle. Returns the day's posts and a Stats record."""
+    """Fetch every enabled handle. Returns the day's posts and a Stats record.
+
+    `since` overrides every handle's watermark, for a full re-pull of a day the
+    watermarks have already passed. Posts already on disk are not downloaded
+    again, so the cost is one profile walk per handle.
+    """
     import time
 
     moment = now or datetime.now(timezone.utc)
@@ -245,7 +274,7 @@ def fetch_day(
     client = loader or make_loader(cfg)
 
     for source in enabled:
-        cutoff = cutoff_for(source, moment, cfg)
+        cutoff = cutoff_for(source, moment, cfg, override=since)
         try:
             found = _with_retries(client, source, cutoff, destination, cfg, pause)
         except SessionExpired:

@@ -63,6 +63,7 @@ cd ~/Projects/daily-news
 # Run the pipeline
 .venv/bin/python run_daily.py                   # today
 .venv/bin/python run_daily.py --date 2026-07-20  # a specific day, or a re-run
+.venv/bin/python run_daily.py --full            # re-scan the whole day, ignoring watermarks
 
 # Rebuild the published site without running the pipeline
 .venv/bin/python export_static.py
@@ -103,6 +104,7 @@ no source list, no runs.
 |---|---|
 | Search | Filters topic sections across every day |
 | Topic chips | Filter by tag; the active one shows in the toolbar |
+| `skipped (n)` chip | Lists what the interest filter left out, with reasons. Dashed, because it is a view rather than a topic |
 | My notes | Saved into that day's markdown, inside marker comments |
 | Sources | Add, disable, or delete a handle. Adding verifies the account exists |
 | Runs | Every run with its counts, duration, failures, and full log |
@@ -115,6 +117,7 @@ permanent rail.
 ```bash
 .venv/bin/python run_daily.py                      # today
 .venv/bin/python run_daily.py --date 2026-07-20     # a specific day, or a re-run
+.venv/bin/python run_daily.py --full               # full pull: ignore watermarks
 .venv/bin/python export_static.py                  # rebuild site/ only
 ```
 
@@ -273,8 +276,8 @@ Filtering happens inside the single daily summarize call, not as a second pass p
 post: it is a judgement about text the model is already reading.
 
 **Nothing is dropped silently.** Every topic left out on relevance grounds is
-reported with a one-line reason — in the log, in the run record (visible in the
-Runs panel), and in the email. A filter you cannot see is indistinguishable from
+reported with a one-line reason — behind the `skipped (n)` chip on the page (on
+the published site too), in the log, in the run record, and in the email. A filter you cannot see is indistinguishable from
 one that is throwing away news. Edit the lists and re-run if it is too aggressive;
 skipped topics never mark a day incomplete, because filtering is the feature
 working rather than a failure.
@@ -301,6 +304,21 @@ extract stages find their posts from the sidecars rather than by looking for med
 Three rules make it safe to run unattended: a day is only pruned once its digest
 exists; a post is only pruned once its transcript exists; and today is never
 pruned whatever the setting says. Set `media_days` very high to keep everything.
+
+### Full pulls
+
+A normal run starts from each handle's watermark, so re-running an hour later
+fetches nothing — the watermark has already passed those posts. `--full` ignores
+the watermarks and re-scans from local midnight of the target day:
+
+```bash
+.venv/bin/python run_daily.py --full
+```
+
+Use it after a partial run, or when you suspect an earlier run missed something.
+It is cheap: posts already on disk are not downloaded again and transcripts are
+reused, so the cost is one profile walk per handle. It is still clamped by
+`max_lookback_days`, so `--full` on an old date cannot crawl a whole profile.
 
 ### The fetch window
 

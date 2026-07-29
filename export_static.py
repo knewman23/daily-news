@@ -27,7 +27,7 @@ import shutil
 import sys
 from pathlib import Path
 
-from src import atomic, digest
+from src import atomic, digest, runlog
 
 MARKER = ".daily-news-export"
 NOJEKYLL = ".nojekyll"
@@ -49,11 +49,13 @@ def export(
     news_dir: str | Path,
     web_dir: str | Path,
     out_dir: str | Path,
+    logs_dir: str | Path | None = None,
 ) -> int:
     """Write the static site. Returns the number of days exported."""
     news = Path(news_dir)
     web = Path(web_dir)
     out = Path(out_dir)
+    logs = Path(logs_dir) if logs_dir else news.parent / "logs"
 
     _prepare(out)
 
@@ -67,6 +69,10 @@ def export(
     for day in days:
         stamp = day.date.isoformat()
         topics = digest.topics_of(day.path)
+        # What the filter left out. Published because a filter nobody can see is
+        # indistinguishable from one throwing away news — the reasons are about
+        # the news, not about the reader.
+        skipped = runlog.latest_for(logs, day.date).get("skipped", [])
 
         # Deliberately no "notes" key. The live API returns one; this must not.
         atomic.write_json(data / "day" / f"{stamp}.json", {
@@ -77,6 +83,7 @@ def export(
             "post_count": day.post_count,
             "transcribed_count": day.transcribed_count,
             "incomplete": day.incomplete,
+            "skipped": skipped,
         })
 
         index.append({
@@ -86,6 +93,7 @@ def export(
             "post_count": day.post_count,
             "transcribed_count": day.transcribed_count,
             "incomplete": day.incomplete,
+            "skipped": skipped,
         })
 
         for topic in topics:
@@ -99,7 +107,10 @@ def export(
                 "text": f"{topic.headline}\n{topic.body}".lower(),
             })
 
-    atomic.write_json(data / "days.json", {"days": index})
+    atomic.write_json(data / "days.json", {
+        "last_updated": runlog.last_finished(logs),
+        "days": index,
+    })
     atomic.write_json(data / "tags.json", {"tags": digest.all_tags(news)})
     atomic.write_json(data / "search.json", {"topics": corpus})
 

@@ -60,7 +60,7 @@ def publish(
 
     try:
         build = exporter or _default_exporter
-        days = build(cfg.paths.news, root / "web", site)
+        days = build(cfg.paths.news, root / "web", site, cfg.paths.logs)
         log.info("exported %d day(s) to %s", days, site)
     except Exception as exc:
         log.exception("static export failed: %s", exc)
@@ -123,8 +123,8 @@ def _has_staged_changes(runner: Runner, root: Path, pathspec: str) -> bool:
     return completed.returncode != 0
 
 
-def _default_exporter(news: Path, web: Path, out: Path) -> int:
+def _default_exporter(news: Path, web: Path, out: Path, logs: Path) -> int:
     """Imported lazily so importing publish does not pull in the exporter."""
     import export_static
 
-    return export_static.export(news, web, out)
+    return export_static.export(news, web, out, logs)

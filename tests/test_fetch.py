@@ -1,5 +1,5 @@
 import json
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 
 import pytest
 
@@ -487,3 +487,76 @@ def test_lookup_profile_raises_for_an_unreachable_handle():
 
     with pytest.raises(Exception):
         fetch.lookup_profile(loader, "nosuchaccount")
+
+
+# --- a full pull -----------------------------------------------------------
+
+
+def test_start_of_day_is_local_midnight_as_utc():
+    """Local, not UTC: the digest is dated by the local day, so 'today' has to
+    mean the same day the file is named after."""
+    from datetime import datetime as dt
+
+    start = fetch.start_of_day(date(2026, 7, 29))
+
+    assert start.tzinfo is not None
+    assert start.utcoffset() == timedelta(0)
+    assert start.astimezone().replace(tzinfo=None) == dt(2026, 7, 29, 0, 0)
+
+
+def test_an_override_replaces_the_watermark():
+    source = sources.Source(handle="a", last_pull_at="2026-07-29T16:33:00+00:00")
+    override = datetime(2026, 7, 29, 6, 0, tzinfo=timezone.utc)
+
+    assert fetch.cutoff_for(source, NOW, CFG, override=override) == override
+
+
+def test_an_override_is_still_clamped_to_max_lookback():
+    """--full on an ancient date must not crawl a whole profile."""
+    source = sources.Source(handle="a", last_pull_at=None)
+    ancient = datetime(2020, 1, 1, tzinfo=timezone.utc)
+
+    assert fetch.cutoff_for(source, NOW, CFG, override=ancient) == NOW - timedelta(days=14)
+
+
+def test_a_full_pull_re_scans_posts_the_watermark_had_passed(sources_path, dest):
+    """The point of --full: this morning's run moved the watermark past posts an
+    earlier failure missed."""
+    sources.advance_watermark(sources_path, "aaronparnas", NOW - timedelta(hours=1))
+    loader = FakeLoader({"aaronparnas": [FakePost("EARLIER", hours_ago=5)]})
+
+    # A normal run sees nothing: the post predates the watermark.
+    posts, _ = run(sources_path, dest, loader)
+    assert posts == []
+
+    second = FakeLoader({"aaronparnas": [FakePost("EARLIER", hours_ago=5)]})
+    posts, _ = fetch.fetch_day(
+        sources_path, dest, CFG, loader=second, now=NOW, sleep=no_sleep,
+        since=NOW - timedelta(hours=12),
+    )
+    assert [p.shortcode for p in posts] == ["EARLIER"]
+
+
+def test_a_full_pull_still_advances_the_watermark(sources_path, dest):
+    loader = FakeLoader({"aaronparnas": [], "carolinegleich": []})
+
+    fetch.fetch_day(
+        sources_path, dest, CFG, loader=loader, now=NOW, sleep=no_sleep,
+        since=NOW - timedelta(hours=12),
+    )
+
+    assert watermarks(sources_path)["aaronparnas"] == NOW.isoformat()
+
+
+def test_a_full_pull_does_not_download_what_is_already_on_disk(sources_path, dest):
+    dest.mkdir(parents=True)
+    (dest / "aaronparnas_AAA.mp4").write_bytes(b"already here")
+    loader = FakeLoader({"aaronparnas": [FakePost("AAA", hours_ago=2)]})
+
+    posts, _ = fetch.fetch_day(
+        sources_path, dest, CFG, loader=loader, now=NOW, sleep=no_sleep,
+        since=NOW - timedelta(hours=12),
+    )
+
+    assert loader.downloaded == []
+    assert [p.shortcode for p in posts] == ["AAA"]

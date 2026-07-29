@@ -45,6 +45,7 @@ def run_day(
     pruner=None,
     notifier=None,
     generated: datetime | None = None,
+    full: bool = False,
 ) -> int:
     """Run one day end to end. Returns a process exit code."""
     _setup_logging(cfg, day)
@@ -90,7 +91,10 @@ def run_day(
     extracted = cfg.transcripts_dir(day)
 
     try:
-        fetched, fetch_stats = do_fetch(cfg.paths.sources, raw, cfg.fetch)
+        since = fetch.start_of_day(day) if full else None
+        if full:
+            log.info("full pull: ignoring watermarks, scanning from %s", since.isoformat())
+        fetched, fetch_stats = do_fetch(cfg.paths.sources, raw, cfg.fetch, since=since)
     except fetch.SessionExpired as exc:
         log.error("Instagram session is not usable: %s", exc)
         log.error(
@@ -118,8 +122,11 @@ def run_day(
     if stray:
         stats.fail(f"{len(stray)} media file(s) with no caption sidecar: "
                    f"{', '.join(p.name for p in stray[:3])}")
+    # "in the fetch window", not "downloaded": fetch returns a ref for every post
+    # inside the cutoff whether or not it had to download it, so calling this
+    # "newly fetched" made a full re-pull look like it re-downloaded the day.
     log.info(
-        "%d post(s) for the day (%d newly fetched), %d with usable text "
+        "%d post(s) for the day (%d in the fetch window), %d with usable text "
         "(%d spoken, %d on-image)",
         stats.post_count, len(fetched), stats.transcribed_count,
         len(spoken), len(on_image),
@@ -202,12 +209,17 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--config", default=config.CONFIG_FILE, help="Path to config.toml.",
     )
+    parser.add_argument(
+        "--full", action="store_true",
+        help="Ignore the per-handle watermarks and re-scan the whole day. Use "
+             "after a partial run, or to pick up posts an earlier run missed.",
+    )
     return parser.parse_args(argv)
 
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
-    return run_day(args.date, config.load(args.config))
+    return run_day(args.date, config.load(args.config), full=args.full)
 
 
 # --- internals -------------------------------------------------------------

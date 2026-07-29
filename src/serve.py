@@ -171,17 +171,22 @@ class _Handler(BaseHTTPRequestHandler):
     # --- days -------------------------------------------------------------
 
     def _days(self) -> None:
-        self._json({"days": [
-            {
-                "date": day.date.isoformat(),
-                "tags": day.tags,
-                "sources": day.sources,
-                "post_count": day.post_count,
-                "transcribed_count": day.transcribed_count,
-                "incomplete": day.incomplete,
-            }
-            for day in digest.list_days(self.news_dir)
-        ]})
+        self._json({
+            "last_updated": runlog.last_finished(self.logs_dir),
+            "days": [
+                {
+                    "date": day.date.isoformat(),
+                    "tags": day.tags,
+                    "sources": day.sources,
+                    "post_count": day.post_count,
+                    "transcribed_count": day.transcribed_count,
+                    "incomplete": day.incomplete,
+                    "skipped": runlog.latest_for(
+                        self.logs_dir, day.date).get("skipped", []),
+                }
+                for day in digest.list_days(self.news_dir)
+            ],
+        })
 
     def _day(self, raw: str) -> None:
         path = self._day_path(raw)
@@ -198,6 +203,7 @@ class _Handler(BaseHTTPRequestHandler):
             "date": raw,
             "html": digest.render_html(path),
             "notes": journal,
+            "skipped": runlog.latest_for(self.logs_dir, raw).get("skipped", []),
             "tags": meta.tags if meta else [],
             "sources": meta.sources if meta else [],
             "post_count": meta.post_count if meta else 0,

@@ -342,3 +342,51 @@ def test_the_assets_themselves_keep_their_plain_names(project):
     site = export(project)
     assert (site / "app.js").is_file()
     assert (site / "style.css").is_file()
+
+
+# --- skipped topics in the published build --------------------------------
+
+
+def with_runs(project, skipped, date="2026-07-28"):
+    from src import runlog
+    logs = project / "logs"
+    logs.mkdir(exist_ok=True)
+    runlog.append(logs, runlog.RunRecord(
+        started_at="2026-07-28T11:00:00+00:00",
+        finished_at="2026-07-28T11:04:30+00:00",
+        date=date, ok=True, topic_count=2, skipped=skipped,
+    ))
+    return logs
+
+
+def export_with_logs(project, logs):
+    export_static.export(project / "news", project / "web", project / "site", logs)
+    return project / "site"
+
+
+def test_skipped_topics_reach_the_published_day(project):
+    """Published because a filter nobody can see is indistinguishable from one
+    throwing away news — the reasons are about the news, not the reader."""
+    logs = with_runs(project, ["My trip to Moab: personal vlog"])
+    site = export_with_logs(project, logs)
+
+    assert read(site / "data" / "day" / "2026-07-28.json")["skipped"] == [
+        "My trip to Moab: personal vlog",
+    ]
+
+
+def test_the_published_index_carries_skipped_and_last_updated(project):
+    logs = with_runs(project, ["Something: off topic"])
+    site = export_with_logs(project, logs)
+
+    payload = read(site / "data" / "days.json")
+    assert payload["last_updated"] == "2026-07-28T11:04:30+00:00"
+    by_date = {d["date"]: d for d in payload["days"]}
+    assert by_date["2026-07-28"]["skipped"] == ["Something: off topic"]
+    assert by_date["2026-07-27"]["skipped"] == []
+
+
+def test_no_run_history_still_exports_cleanly(project):
+    site = export(project)
+    assert read(site / "data" / "days.json")["last_updated"] == ""
+    assert read(site / "data" / "day" / "2026-07-28.json")["skipped"] == []

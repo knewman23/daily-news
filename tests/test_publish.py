@@ -55,7 +55,7 @@ class FakeGit:
 def fake_export(count=1):
     calls = []
 
-    def build(news, web, out):
+    def build(news, web, out, logs=None):
         calls.append((news, web, out))
         return count
 
@@ -182,7 +182,7 @@ def test_a_git_failure_is_reported_not_raised(cfg, verb):
 
 
 def test_an_export_failure_stops_before_git(cfg):
-    def boom(news, web, out):
+    def boom(news, web, out, logs=None):
         raise RuntimeError("target is not ours")
 
     git = FakeGit(dirty=True)

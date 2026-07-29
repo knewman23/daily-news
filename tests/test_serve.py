@@ -421,3 +421,56 @@ def test_a_traversing_log_path_is_rejected(server, path):
     status, raw = server.request(path)
     assert status in (400, 404)
     assert b"root:" not in raw
+
+
+# --- skipped topics and the last-updated stamp ----------------------------
+
+
+def test_the_days_index_reports_when_the_last_run_finished(server):
+    _, payload = server.json("/api/days")
+    assert payload["last_updated"] == "2026-07-28T11:04:30+00:00"
+
+
+def test_each_day_carries_what_the_filter_left_out(server):
+    from src import runlog
+
+    _, payload = server.json("/api/days")
+    by_date = {d["date"]: d for d in payload["days"]}
+
+    assert by_date["2026-07-28"]["skipped"] == []
+    assert by_date["2026-07-27"]["skipped"] == []
+
+
+def test_a_day_response_carries_its_skipped_topics(server, tmp_path):
+    from src import runlog
+
+    runlog.append(tmp_path / "logs", runlog.RunRecord(
+        started_at="2026-07-28T12:00:00+00:00",
+        finished_at="2026-07-28T12:03:00+00:00",
+        date="2026-07-28", ok=True,
+        skipped=["My trip to Moab: personal vlog"],
+    ))
+
+    _, payload = server.json("/api/day/2026-07-28")
+    assert payload["skipped"] == ["My trip to Moab: personal vlog"]
+
+
+def test_the_newest_run_for_a_date_wins(server, tmp_path):
+    """An older run's skip list describes a digest that has been replaced."""
+    from src import runlog
+
+    logs = tmp_path / "logs"
+    for note in ("stale: old reason", "fresh: new reason"):
+        runlog.append(logs, runlog.RunRecord(
+            started_at="2026-07-28T12:00:00+00:00",
+            finished_at="2026-07-28T12:03:00+00:00",
+            date="2026-07-28", ok=True, skipped=[note],
+        ))
+
+    _, payload = server.json("/api/day/2026-07-28")
+    assert payload["skipped"] == ["fresh: new reason"]
+
+
+def test_a_date_with_no_run_record_has_no_skipped(server):
+    _, payload = server.json("/api/day/2026-07-27")
+    assert payload["skipped"] == []

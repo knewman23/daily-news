@@ -100,6 +100,26 @@ def read_log(logs_dir: str | Path, day: date | str, tail_bytes: int = LOG_TAIL_B
         return handle.read()
 
 
+def latest_for(logs_dir: str | Path, day: date | str) -> dict:
+    """The most recent run record for a date, or an empty dict.
+
+    Records are newest-first, so the first match is the one whose results are on
+    disk — an earlier run's skip list would describe a digest that has since been
+    replaced.
+    """
+    stamp = day.isoformat() if isinstance(day, date) else str(day)
+    for run in load(logs_dir):
+        if run.get("date") == stamp:
+            return run
+    return {}
+
+
+def last_finished(logs_dir: str | Path) -> str:
+    """When the most recent run of any date finished. Empty if none has."""
+    runs = load(logs_dir)
+    return str(runs[0].get("finished_at", "")) if runs else ""
+
+
 def now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
