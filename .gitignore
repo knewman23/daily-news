@@ -1,5 +1,7 @@
-data/
-logs/
+# Anchored to the root: a bare `data/` also matches site/data/, which silently
+# excluded the exported site's JSON and published an empty page.
+/data/
+/logs/
 __pycache__/
 *.pyc
 .venv/

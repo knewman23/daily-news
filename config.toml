@@ -39,4 +39,4 @@ smtp_port = 587
 #   security add-generic-password -s daily-news-smtp -a krys.newman@gmail.com -w
 keychain_service = "daily-news-smtp"
 keychain_account = "krys.newman@gmail.com"
-site_url = ""                # filled in once GitHub Pages is live
+site_url = "https://knewman23.github.io/daily-news/"
