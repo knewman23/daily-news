@@ -66,6 +66,7 @@ def run_day(
             incomplete=bool(stats.incomplete) if stats else False,
             error=error,
             failures=list(stats.notes) if stats else [],
+            skipped=list(stats.skipped) if stats else [],
         ))
         return 0 if ok else 1
 
@@ -128,7 +129,8 @@ def run_day(
     carried = _existing_notes(path)
 
     try:
-        do_summarize(day, transcripts, stats, cfg.paths.news, generated=generated)
+        do_summarize(day, transcripts, stats, cfg.paths.news,
+                     generated=generated, interests=cfg.interests)
     except Exception as exc:
         log.exception("summarize failed: %s", exc)
         log.error("transcripts are on disk, so re-running this date is cheap")
@@ -142,6 +144,9 @@ def run_day(
 
     for note in stats.notes:
         log.warning("partial failure: %s", note)
+
+    for note in stats.skipped:
+        log.info("off topic, left out: %s", note)
 
     topics = len(digest.topics_of(path)) if path.exists() else 0
     log.info("wrote %s with %d topic(s)%s", path, topics,
@@ -168,6 +173,7 @@ def run_day(
         stats,
         site_url=cfg.email.site_url,
         failures=stats.notes,
+        skipped=stats.skipped,
     )
     delivery = do_email(cfg, subject, body)
     if not delivery.ok:

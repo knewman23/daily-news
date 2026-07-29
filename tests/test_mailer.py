@@ -240,3 +240,30 @@ def test_a_whitespace_only_keychain_item_is_an_error():
 
     with pytest.raises(mailer.MailError):
         mailer.keychain_password("svc", "acct", runner=runner)
+
+
+def test_skipped_topics_are_listed_so_over_filtering_is_visible():
+    """A reader who cannot see what was dropped cannot tell a well-tuned filter
+    from one throwing away news."""
+    _, body = mailer.build_message(
+        DAY, HEADLINES, Stats(),
+        skipped=["My trip to Moab: personal vlog",
+                 "Nurse impaled on trekking pole: human interest"],
+    )
+
+    assert "Left out as off topic (2)" in body
+    assert "My trip to Moab: personal vlog" in body
+
+
+def test_skipping_does_not_mark_the_subject_incomplete():
+    """Filtering is the feature working; only failures are problems."""
+    subject, _ = mailer.build_message(DAY, HEADLINES, Stats(), skipped=["x: y"])
+    assert "(incomplete)" not in subject
+
+
+def test_a_long_skip_list_is_truncated():
+    many = [f"Topic {i}: off topic" for i in range(25)]
+    _, body = mailer.build_message(DAY, HEADLINES, Stats(), skipped=many)
+
+    assert "Left out as off topic (25)" in body
+    assert "and 15 more" in body

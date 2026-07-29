@@ -73,6 +73,7 @@ def build_message(
     stats,
     site_url: str = "",
     failures: Sequence[str] = (),
+    skipped: Sequence[str] = (),
 ) -> tuple[str, str]:
     """Subject and plain-text body.
 
@@ -105,6 +106,13 @@ def build_message(
     if failures:
         lines += ["", "Problems during this run:"]
         lines += [f"  ! {note}" for note in failures]
+
+    # Listed so an over-aggressive filter is visible rather than silent.
+    if skipped:
+        lines += ["", f"Left out as off topic ({len(skipped)}):"]
+        lines += [f"  – {note}" for note in skipped[:10]]
+        if len(skipped) > 10:
+            lines.append(f"  … and {len(skipped) - 10} more")
 
     if site_url:
         lines += ["", f"Read it all: {site_url}"]

@@ -41,6 +41,7 @@ class RunRecord:
     incomplete: bool = False
     error: str | None = None
     failures: list[str] = field(default_factory=list)
+    skipped: list[str] = field(default_factory=list)
 
     @property
     def duration_seconds(self) -> float:

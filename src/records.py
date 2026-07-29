@@ -48,6 +48,11 @@ class Stats:
     incomplete: bool = False
     notes: list[str] = field(default_factory=list)
 
+    # Topics left out because they fell outside the reader's interests. Kept
+    # apart from `notes`: a skipped topic is the filter working, not a failure,
+    # so it must not mark the day incomplete.
+    skipped: list[str] = field(default_factory=list)
+
     def fail(self, note: str) -> None:
         """Record a partial failure. Anything that calls this makes the day incomplete."""
         self.incomplete = True

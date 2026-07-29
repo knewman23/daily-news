@@ -128,10 +128,11 @@ def test_prompt_labels_spoken_audio_apart_from_on_image_text():
 
 
 def test_parses_a_well_formed_response():
-    topics = summarize.call_claude("prompt", runner=ok_runner())
+    topics, skipped = summarize.call_claude("prompt", runner=ok_runner())
     assert [t["headline"] for t in topics] == [
         "Senate passes the spending bill", "Nvidia earnings beat estimates",
     ]
+    assert skipped == []
 
 
 def test_prompt_goes_on_stdin_not_argv():
@@ -158,13 +159,13 @@ def test_invocation_pins_the_model_and_skips_mcp():
 
 def test_tolerates_a_fenced_json_payload():
     fenced = "```json\n" + json.dumps(TOPICS_JSON) + "\n```"
-    topics = summarize.call_claude("prompt", runner=FakeRunner(wrapper(fenced)))
+    topics, _ = summarize.call_claude("prompt", runner=FakeRunner(wrapper(fenced)))
     assert len(topics) == 2
 
 
 def test_tolerates_prose_around_the_json_object():
     noisy = "Here you go:\n" + json.dumps(TOPICS_JSON) + "\nHope that helps."
-    topics = summarize.call_claude("prompt", runner=FakeRunner(wrapper(noisy)))
+    topics, _ = summarize.call_claude("prompt", runner=FakeRunner(wrapper(noisy)))
     assert len(topics) == 2
 
 
@@ -177,7 +178,7 @@ def test_retries_exactly_once_then_raises_on_unparseable_output():
 
 def test_a_retry_that_succeeds_is_used():
     runner = FakeRunner(wrapper("garbage"), wrapper(json.dumps(TOPICS_JSON)))
-    assert len(summarize.call_claude("prompt", runner=runner)) == 2
+    assert len(summarize.call_claude("prompt", runner=runner)[0]) == 2
     assert len(runner.calls) == 2
 
 
@@ -224,7 +225,7 @@ def test_wrong_shape_raises_with_a_clear_message(payload):
 
 def test_zero_topics_is_valid_not_an_error():
     runner = FakeRunner(wrapper(json.dumps({"topics": []})))
-    assert summarize.call_claude("prompt", runner=runner) == []
+    assert summarize.call_claude("prompt", runner=runner) == ([], [])
     assert len(runner.calls) == 1
 
 
@@ -293,3 +294,131 @@ def test_summarize_day_leaves_no_temp_file(tmp_path):
         DAY, TRANSCRIPTS, Stats(), tmp_path, runner=ok_runner(), generated=GENERATED,
     )
     assert list(tmp_path.glob("*.tmp")) == []
+
+
+# --- the interest filter ---------------------------------------------------
+
+
+class Interests:
+    def __init__(self, include=(), exclude=()):
+        self.include = include
+        self.exclude = exclude
+
+
+INTERESTS = Interests(
+    include=("politics and government", "the war in Iran"),
+    exclude=("a creator talking about their own life",),
+)
+
+
+def test_the_prompt_states_the_reader_s_interests():
+    prompt = summarize.build_prompt(TRANSCRIPTS, INTERESTS)
+
+    assert "politics and government" in prompt
+    assert "the war in Iran" in prompt
+    assert "a creator talking about their own life" in prompt
+
+
+def test_the_prompt_asks_for_relevance_by_meaning_not_keywords():
+    """A report on the Iran conflict that never says "Iran" is still relevant."""
+    prompt = summarize.build_prompt(TRANSCRIPTS, INTERESTS)
+    assert "not by keywords" in prompt
+
+
+def test_the_prompt_requires_dropped_topics_to_be_reported():
+    prompt = summarize.build_prompt(TRANSCRIPTS, INTERESTS)
+    assert "skipped" in prompt
+    assert "Do not silently discard" in prompt
+
+
+def test_no_interest_section_when_nothing_is_configured():
+    """An empty config must not add an empty rule the model has to interpret."""
+    prompt = summarize.build_prompt(TRANSCRIPTS, Interests())
+    assert "Keep a topic only if" not in prompt
+
+
+def test_the_interest_section_precedes_the_transcripts():
+    prompt = summarize.build_prompt(TRANSCRIPTS, INTERESTS)
+    assert prompt.index("Keep a topic only if") < prompt.index("--- TRANSCRIPTS ---")
+
+
+def test_skipped_topics_are_parsed_back_out():
+    payload = {
+        **TOPICS_JSON,
+        "skipped": [
+            {"headline": "Nurse walks 10 miles impaled on a trekking pole",
+             "reason": "human interest, no policy angle"},
+            {"headline": "My trip to Moab", "reason": "personal vlog"},
+        ],
+    }
+    _, skipped = summarize.call_claude(
+        "prompt", runner=FakeRunner(wrapper(json.dumps(payload))),
+    )
+
+    assert [s["headline"] for s in skipped] == [
+        "Nurse walks 10 miles impaled on a trekking pole", "My trip to Moab",
+    ]
+    assert skipped[0]["reason"] == "human interest, no policy angle"
+
+
+@pytest.mark.parametrize("bad", [
+    {"skipped": "not a list"},
+    {"skipped": [{"reason": "no headline"}]},
+    {"skipped": ["just a string"]},
+    {"skipped": None},
+])
+def test_a_malformed_skip_list_is_ignored_not_fatal(bad):
+    """The topics are the product; this is only the explanation."""
+    payload = {**TOPICS_JSON, **bad}
+    topics, skipped = summarize.call_claude(
+        "prompt", runner=FakeRunner(wrapper(json.dumps(payload))),
+    )
+
+    assert len(topics) == 2
+    assert skipped == []
+
+
+def test_summarize_day_records_what_was_left_out(tmp_path):
+    payload = {
+        **TOPICS_JSON,
+        "skipped": [{"headline": "My trip to Moab", "reason": "personal vlog"}],
+    }
+    stats = Stats(post_count=4, transcribed_count=4)
+
+    summarize.summarize_day(
+        DAY, TRANSCRIPTS, stats, tmp_path,
+        runner=FakeRunner(wrapper(json.dumps(payload))), generated=GENERATED,
+        interests=INTERESTS,
+    )
+
+    assert stats.skipped == ["My trip to Moab: personal vlog"]
+    # Filtering is the feature working, not a failure.
+    assert stats.incomplete is False
+    assert stats.notes == []
+
+
+def test_a_skipped_topic_is_not_written_into_the_digest(tmp_path):
+    payload = {
+        **TOPICS_JSON,
+        "skipped": [{"headline": "My trip to Moab", "reason": "personal vlog"}],
+    }
+    path = summarize.summarize_day(
+        DAY, TRANSCRIPTS, Stats(), tmp_path,
+        runner=FakeRunner(wrapper(json.dumps(payload))), generated=GENERATED,
+        interests=INTERESTS,
+    )
+
+    assert "Moab" not in path.read_text(encoding="utf-8")
+    assert len(digest.topics_of(path)) == 2
+
+
+def test_a_reason_free_skip_still_reports_something(tmp_path):
+    payload = {**TOPICS_JSON, "skipped": [{"headline": "Something", "reason": ""}]}
+    stats = Stats()
+
+    summarize.summarize_day(
+        DAY, TRANSCRIPTS, stats, tmp_path,
+        runner=FakeRunner(wrapper(json.dumps(payload))), generated=GENERATED,
+    )
+
+    assert stats.skipped == ["Something: off topic"]

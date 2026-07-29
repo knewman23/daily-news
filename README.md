@@ -258,6 +258,27 @@ without it.
 | `Daily news published locally but not pushed` | The digest is written and readable; only the push failed. Re-run, or push by hand. |
 | Nothing ran at 11:00 | `launchctl list \| grep daily-news`. Then `logs/launchd.err.log` — a missing binary on `PATH` is the usual cause. |
 
+### What counts as news
+
+Not everything a followed account posts is news you want. A creator's personal
+video, a merch plug, or a reaction clip that reports nothing new all arrive in the
+same feed as the reporting.
+
+`[interests]` in `config.toml` states what to keep and what to leave out, in plain
+language rather than keywords — relevance is judged by what a story is *about*, so
+"the war in Iran" also catches a report that never says "Iran", and a passing
+political aside in a personal vlog is still a personal vlog.
+
+Filtering happens inside the single daily summarize call, not as a second pass per
+post: it is a judgement about text the model is already reading.
+
+**Nothing is dropped silently.** Every topic left out on relevance grounds is
+reported with a one-line reason — in the log, in the run record (visible in the
+Runs panel), and in the email. A filter you cannot see is indistinguishable from
+one that is throwing away news. Edit the lists and re-run if it is too aggressive;
+skipped topics never mark a day incomplete, because filtering is the feature
+working rather than a failure.
+
 ### Disk usage
 
 One day of posts is roughly **270 MB**, almost all of it mp4 — about 98 GB a year
@@ -302,6 +323,7 @@ hand-edited file means a bad write cannot corrupt the model choice or the port.
 | `[fetch]` | `first_run_lookback_hours` applies only to a handle with no watermark. `max_lookback_days` caps how far a stale watermark can reach back. |
 | `[transcribe]` | `model`: `tiny` … `large-v3`. `min_words` is the floor below which a transcript is discarded — it counts the caption too, since a headline graphic OCRs to very little while its caption carries the story. |
 | `[retain]` | `media_days`: how long to keep downloaded video and images. See *Disk usage*. |
+| `[interests]` | `include` / `exclude`: what counts as news worth keeping. See *What counts as news*. |
 | `[publish]` | `enabled`, and which remote and branch to push. |
 | `[email]` | Addresses and the Keychain lookup keys. Never the password. |
 

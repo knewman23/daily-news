@@ -48,3 +48,31 @@ site_url = "https://knewman23.github.io/daily-news/"
 # Transcripts, caption sidecars, and the digests are kept forever and are enough
 # to re-summarize any day offline. Set to a large number to keep everything.
 media_days = 3
+
+[interests]
+# What counts as news worth keeping. Plain language, not keywords: the summarizer
+# judges meaning, so "the war in Iran" also catches a story that never says
+# "Iran". Anything the model judges outside `include`, or matching `exclude`, is
+# left out of the digest and reported in the log, the run record, and the email —
+# so a filter that is too aggressive is visible rather than silent.
+include = [
+    "politics, government, and elections",
+    "the war in Iran and conflict in the Middle East",
+    "the Epstein files and related investigations",
+    "data centers, their energy and water demand, and AI",
+    "immigration and immigration enforcement",
+    "courts, indictments, policing, and civil liberties",
+    "war, foreign policy, and defence",
+    "surveillance and privacy",
+    "markets and the economy",
+    "climate and the environment",
+    "public health policy",
+]
+
+exclude = [
+    "a creator talking about their own life, family, travel, or hobbies",
+    "merch, giveaways, sponsorships, promotions, or asking people to buy or subscribe",
+    "personal fitness, training, or race reports",
+    "reaction or commentary videos that report nothing new themselves",
+    "human interest stories with no policy or political angle",
+]

@@ -59,6 +59,18 @@ class PublishConfig:
 
 
 @dataclass(frozen=True)
+class InterestsConfig:
+    """What counts as news worth keeping.
+
+    Plain language rather than keywords: the summarizer is judging meaning, and a
+    keyword list would drop a story about Iran that never uses the word.
+    """
+
+    include: tuple[str, ...] = ()
+    exclude: tuple[str, ...] = ()
+
+
+@dataclass(frozen=True)
 class RetainConfig:
     media_days: int = 3
 
@@ -84,6 +96,7 @@ class Config:
     publish: PublishConfig
     email: EmailConfig
     retain: RetainConfig
+    interests: InterestsConfig
 
     def raw_dir(self, day) -> Path:
         return self.paths.raw / day.isoformat()
@@ -122,6 +135,16 @@ def load(path: str | Path = CONFIG_FILE) -> Config:
         publish=_section(PublishConfig, data.get("publish", {}), "publish", p),
         email=_section(EmailConfig, data.get("email", {}), "email", p),
         retain=_section(RetainConfig, data.get("retain", {}), "retain", p),
+        interests=_interests(data.get("interests", {}), p),
+    )
+
+
+def _interests(values: dict, path: Path) -> InterestsConfig:
+    """Lists arrive from TOML as lists; the dataclass is frozen, so tuples."""
+    section = _section(InterestsConfig, values, "interests", path)
+    return InterestsConfig(
+        include=tuple(section.include or ()),
+        exclude=tuple(section.exclude or ()),
     )
 
 

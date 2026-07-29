@@ -54,7 +54,8 @@ obtained:
 Group them into distinct news topics and return ONLY a JSON object of this shape:
 
 {"topics": [{"headline": str, "body": str, "tags": [str],
-             "sources": [str], "posts": [str]}]}
+             "sources": [str], "posts": [str]}],
+ "skipped": [{"headline": str, "reason": str}]}
 
 Rules:
 - "posts" lists the id of every post the topic was drawn from, copied exactly
@@ -74,14 +75,43 @@ Rules:
 - If nothing in the transcripts is news, return {"topics": []}.
 
 Return the JSON object and nothing else.
+"""
 
+INTERESTS_TEMPLATE = """\
+This digest is for one reader with specific interests. Judge relevance by what a
+story is *about*, not by keywords — a report on the Iran conflict that never says
+"Iran" is still relevant, and a passing mention of politics in a personal vlog is
+not.
+
+Keep a topic only if it is genuinely about one of these:
+{include}
+Leave out anything that is mainly:
+{exclude}
+Every topic you leave out on relevance grounds goes in "skipped", with a one-line
+reason. Do not silently discard anything: a reader who cannot see what was
+dropped cannot tell a well-tuned filter from one that is throwing away news.
+"""
+
+TRANSCRIPTS_HEADER = """\
 --- TRANSCRIPTS ---
 """
 
 
-def build_prompt(transcripts: Sequence[Transcript]) -> str:
+def build_prompt(
+    transcripts: Sequence[Transcript],
+    interests=None,
+) -> str:
+    """Assemble the day's prompt.
+
+    The interest filter is part of this one call rather than a second pass per
+    post: relevance is a judgement about the same text the model is already
+    reading, and a per-post call would multiply the ~27k-token base overhead by
+    the number of posts to answer a question it can answer in place.
+    """
+    header = PROMPT_HEADER + _interests_section(interests) + TRANSCRIPTS_HEADER
+
     if not transcripts:
-        return PROMPT_HEADER + "\n(no transcripts)\n"
+        return header + "\n(no transcripts)\n"
 
     blocks = []
     for t in transcripts:
@@ -94,15 +124,27 @@ def build_prompt(transcripts: Sequence[Transcript]) -> str:
         lines.append(f"content: {t.text.strip()}")
         blocks.append("\n".join(lines))
 
-    return PROMPT_HEADER + "\n" + "\n\n".join(blocks) + "\n"
+    return header + "\n" + "\n\n".join(blocks) + "\n"
+
+
+def _interests_section(interests) -> str:
+    include = tuple(getattr(interests, "include", ()) or ())
+    exclude = tuple(getattr(interests, "exclude", ()) or ())
+    if not include and not exclude:
+        return ""
+
+    return "\n" + INTERESTS_TEMPLATE.format(
+        include="".join(f"  - {item}\n" for item in include) or "  - anything newsworthy\n",
+        exclude="".join(f"  - {item}\n" for item in exclude) or "  - nothing in particular\n",
+    )
 
 
 def call_claude(
     prompt: str,
     runner: Callable[..., subprocess.CompletedProcess] = subprocess.run,
     model: str = DEFAULT_MODEL,
-) -> list[dict[str, Any]]:
-    """Run the CLI and return the validated topic list.
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Run the CLI and return (topics, skipped).
 
     Retried once. Beyond that a repeat failure is a real problem — a bad prompt,
     a broken install, an outage — and burning more attempts on it delays the
@@ -137,6 +179,7 @@ def summarize_day(
     runner: Callable[..., subprocess.CompletedProcess] = subprocess.run,
     generated: datetime | None = None,
     model: str = DEFAULT_MODEL,
+    interests=None,
 ) -> Path:
     """Write news/<day>.md and return its path.
 
@@ -144,10 +187,15 @@ def summarize_day(
     summarize, and the day still gets a file so a silent pipeline failure is
     distinguishable from a genuinely quiet news day.
     """
-    topics = (
-        call_claude(build_prompt(transcripts), runner=runner, model=model)
-        if transcripts else []
-    )
+    topics: list[dict[str, Any]] = []
+    if transcripts:
+        topics, skipped = call_claude(
+            build_prompt(transcripts, interests), runner=runner, model=model,
+        )
+        for entry in skipped:
+            stats.skipped.append(
+                f"{entry['headline']}: {entry['reason'] or 'off topic'}"
+            )
 
     directory = Path(news_dir)
     directory.mkdir(parents=True, exist_ok=True)
@@ -180,7 +228,7 @@ def permalink_index(
 # --- internals -------------------------------------------------------------
 
 
-def _parse(completed: subprocess.CompletedProcess) -> list[dict[str, Any]]:
+def _parse(completed: subprocess.CompletedProcess) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     if completed.returncode != 0:
         raise SummarizeError(
             f"claude exited {completed.returncode}: {(completed.stderr or '').strip()[:500]}"
@@ -202,7 +250,8 @@ def _parse(completed: subprocess.CompletedProcess) -> list[dict[str, Any]]:
     if not isinstance(result, str):
         raise SummarizeError("CLI wrapper had no string 'result' field")
 
-    return _topics(_payload(result))
+    payload = _payload(result)
+    return _topics(payload), _skipped(payload)
 
 
 def _payload(result: str) -> Any:
@@ -220,6 +269,26 @@ def _payload(result: str) -> Any:
         return json.loads(match.group(0))
     except json.JSONDecodeError as exc:
         raise SummarizeError(f"model output was not valid JSON: {exc}") from exc
+
+
+def _skipped(payload: Any) -> list[dict[str, Any]]:
+    """What the model left out on relevance grounds. Never fatal.
+
+    A malformed skip list is not worth failing a good digest over — the topics
+    are the product, this is the explanation.
+    """
+    if not isinstance(payload, dict):
+        return []
+    entries = payload.get("skipped")
+    if not isinstance(entries, list):
+        return []
+
+    return [
+        {"headline": str(e.get("headline", "")).strip(),
+         "reason": str(e.get("reason", "")).strip()}
+        for e in entries
+        if isinstance(e, dict) and str(e.get("headline", "")).strip()
+    ]
 
 
 def _topics(payload: Any) -> list[dict[str, Any]]:
