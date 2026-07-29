@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daily News</title>
+  <link rel="icon" href="header.PNG">
+  <link rel="stylesheet" href="style.css">
+</head>
+<!-- data-mode is rewritten to "static" by export_static.py. The read-only build
+     drops the journal, the source list, and the run history entirely — not with
+     CSS, which would leave a working form for anyone who opens devtools. -->
+<body data-mode="static">
+
+<header class="masthead">
+  <img class="crest" src="header.PNG" alt="Eagle and flag over a Born Free banner">
+  <h1>Daily News</h1>
+  <p class="tagline">Transcribed and summarized from the accounts you follow</p>
+</header>
+
+<nav class="toolbar" aria-label="Search and browse">
+  <div class="toolbar-inner">
+    <label class="search">
+      <span class="visually-hidden">Search all days</span>
+      <input id="search" type="search" placeholder="Search every day…" autocomplete="off">
+    </label>
+
+    <button id="active-filter" class="active-filter" hidden></button>
+
+    <button id="menu-button" class="menu-button" type="button"
+            aria-expanded="false" aria-controls="drawer" aria-haspopup="true">
+      <span class="visually-hidden">Days and filters</span>
+      <span aria-hidden="true">⋮</span>
+    </button>
+  </div>
+</nav>
+
+<main id="main" class="main" aria-live="polite">
+  <p class="empty">Loading…</p>
+</main>
+
+<div id="scrim" class="scrim" hidden></div>
+
+<aside id="drawer" class="drawer" hidden aria-label="Days and filters">
+  <div class="drawer-head">
+    <h2>Browse</h2>
+    <button id="drawer-close" class="icon-button" type="button">
+      <span class="visually-hidden">Close</span>
+      <span aria-hidden="true">✕</span>
+    </button>
+  </div>
+
+  <section class="panel">
+    <h3 class="panel-title">Days</h3>
+    <ol id="days" class="days"></ol>
+  </section>
+
+  <section class="panel">
+    <h3 class="panel-title">Topics</h3>
+    <div id="tags" class="chips" role="group" aria-label="Filter by topic"></div>
+  </section>
+
+</aside>
+
+<script src="app.js"></script>
+</body>
+</html>

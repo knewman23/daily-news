@@ -111,7 +111,7 @@ def search(
             if needle and needle not in f"{topic.headline}\n{topic.body}".lower():
                 continue
             hits.append(Hit(day.date, topic.headline, topic.tags,
-                            _snippet(topic.body)))
+                            snippet(topic.body)))
     return hits
 
 
@@ -195,7 +195,7 @@ def _topic(chunk: str) -> Topic | None:
     return Topic(headline, tags, sources, "\n".join(lines[consumed:]).strip(), links)
 
 
-def _snippet(body: str, limit: int = 200) -> str:
+def snippet(body: str, limit: int = 200) -> str:
     flat = " ".join(body.split())
     return flat if len(flat) <= limit else flat[:limit].rstrip() + "…"
 

@@ -42,6 +42,13 @@
       "added": "2026-07-28",
       "last_pull_at": "2026-07-29T01:35:56.991115+00:00",
       "last_seen": "2026-07-29"
+    },
+    {
+      "handle": "ericmoutsos",
+      "enabled": true,
+      "added": "2026-07-29",
+      "last_pull_at": null,
+      "last_seen": null
     }
   ]
 }

@@ -26,7 +26,8 @@ import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
 
-from src import config, digest, fetch, notes, ocr, runlog, sources, summarize, transcribe
+from src import (config, digest, fetch, notes, ocr, publish, runlog, sources,
+                 summarize, transcribe)
 from src.records import Stats
 
 log = logging.getLogger("daily-news")
@@ -39,6 +40,7 @@ def run_day(
     transcriber=None,
     ocr_runner=None,
     summarizer=None,
+    publisher=None,
     notifier=None,
     generated: datetime | None = None,
 ) -> int:
@@ -70,6 +72,7 @@ def run_day(
     do_transcribe = transcriber or transcribe.transcribe_day
     do_ocr = ocr_runner or ocr.ocr_day
     do_summarize = summarizer or summarize.summarize_day
+    do_publish = publisher or publish.publish
 
     log.info("starting run for %s", day.isoformat())
 
@@ -136,6 +139,15 @@ def run_day(
     if stats.incomplete:
         notify(f"Daily news for {day.isoformat()} is incomplete "
                f"({len(stats.notes)} problem(s)) — see the Runs panel")
+
+    # Publishing comes last and cannot fail the run: the digest is written and
+    # readable locally, so being unable to reach GitHub is worth reporting
+    # rather than worth discarding a successful run over.
+    outcome = do_publish(cfg, day, topic_count=topics)
+    if not outcome.ok:
+        log.warning("publish did not complete: %s", outcome.message)
+        notify(f"Daily news published locally but not pushed: {outcome.message}")
+        stats.fail(f"publish: {outcome.message}")
 
     return record(True, stats=stats, spoken=len(spoken),
                   on_image=len(on_image), topics=topics)

@@ -1,0 +1,41 @@
+# Publishes site/ to GitHub Pages whenever the daily run pushes a new digest.
+#
+# GitHub Pages' branch-based setting can only serve the repository root or
+# /docs, and /docs already holds the design documents. Deploying the artifact
+# from a workflow lets site/ stay where it is without shuffling anything.
+#
+# One-time setup: repository Settings -> Pages -> Source -> "GitHub Actions".
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+    paths: ['site/**', '.github/workflows/pages.yml']
+  workflow_dispatch:
+
+# Least privilege: read the repo, write a Pages deployment, nothing else.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# A run already in flight is not worth finishing once a newer digest exists,
+# but let it complete rather than cancel — a half-finished deploy is worse.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deploy
+        uses: actions/deploy-pages@v4

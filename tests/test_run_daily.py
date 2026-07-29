@@ -4,7 +4,7 @@ from datetime import date, datetime, timezone
 import pytest
 
 import run_daily
-from src import config, digest, fetch, notes
+from src import config, digest, fetch, notes, publish
 from src.records import PostRef, Stats, Transcript
 
 
@@ -394,3 +394,64 @@ def test_a_fetch_failure_still_marks_a_rerun_incomplete(project):
     })
 
     assert digest.list_days(project / "news")[0].incomplete is True
+
+
+# --- publishing ------------------------------------------------------------
+
+
+class PublisherSpy:
+    def __init__(self, ok=True, message="published"):
+        self.result = publish.PublishResult(ok, ok, message)
+        self.calls = []
+
+    def __call__(self, cfg, day, topic_count=0):
+        self.calls.append({"day": day, "topic_count": topic_count})
+        return self.result
+
+
+def test_the_publisher_is_told_how_many_topics_were_written(project):
+    spy = PublisherSpy()
+    run(project, publisher=spy)
+
+    assert spy.calls == [{"day": DAY, "topic_count": 1}]
+
+
+def test_publishing_happens_after_the_digest_is_written(project):
+    seen = {}
+
+    def publisher(cfg, day, topic_count=0):
+        seen["exists"] = (project / "news" / "2026-07-28.md").exists()
+        return publish.PublishResult(True, True, "ok")
+
+    run(project, publisher=publisher)
+    assert seen["exists"] is True
+
+
+def test_a_publish_failure_does_not_fail_the_run(project):
+    """The digest is written and readable locally; losing GitHub is not worth
+    discarding a successful run over."""
+    code, _, notified = run(project, publisher=PublisherSpy(
+        ok=False, message="fatal: could not read from remote",
+    ))
+
+    assert code == 0
+    assert any("not pushed" in note for note in notified)
+
+
+def test_a_publish_failure_is_recorded_against_the_run(project):
+    run(project, publisher=PublisherSpy(ok=False, message="no upstream"))
+
+    entry = json.loads((project / "logs" / "runs.json").read_text())["runs"][0]
+    assert entry["incomplete"] is True
+    assert any("publish" in note for note in entry["failures"])
+
+
+def test_a_summarize_failure_skips_publishing_entirely(project):
+    from src.summarize import SummarizeError
+
+    spy = PublisherSpy()
+    run(project, publisher=spy, stage_kwargs={
+        "summarize_raises": SummarizeError("boom"),
+    })
+
+    assert spy.calls == []

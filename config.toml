@@ -21,3 +21,9 @@ min_words = 10             # transcripts below this are treated as empty
 [serve]
 host = "127.0.0.1"
 port = 8420
+
+[publish]
+enabled = true               # after a successful run, export site/ and push it
+remote = "origin"
+branch = "main"
+site = "site"

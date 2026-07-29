@@ -51,11 +51,20 @@ class ServeConfig:
 
 
 @dataclass(frozen=True)
+class PublishConfig:
+    enabled: bool = False
+    remote: str = "origin"
+    branch: str = "main"
+    site: str = "site"
+
+
+@dataclass(frozen=True)
 class Config:
     paths: Paths
     fetch: FetchConfig
     transcribe: TranscribeConfig
     serve: ServeConfig
+    publish: PublishConfig
 
     def raw_dir(self, day) -> Path:
         return self.paths.raw / day.isoformat()
@@ -91,6 +100,7 @@ def load(path: str | Path = CONFIG_FILE) -> Config:
         fetch=_section(FetchConfig, data.get("fetch", {}), "fetch", p),
         transcribe=_section(TranscribeConfig, data.get("transcribe", {}), "transcribe", p),
         serve=_section(ServeConfig, data.get("serve", {}), "serve", p),
+        publish=_section(PublishConfig, data.get("publish", {}), "publish", p),
     )
 
 
