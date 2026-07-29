@@ -1,13 +1,14 @@
 {
+  "last_updated": "2026-07-29T15:36:27.458184+00:00",
   "days": [
     {
       "date": "2026-07-29",
       "tags": [
         "war",
+        "defence",
         "politics",
         "legal",
         "health",
-        "defence",
         "surveillance",
         "tech"
       ],
@@ -19,7 +20,10 @@
       ],
       "post_count": 8,
       "transcribed_count": 7,
-      "incomplete": false
+      "incomplete": false,
+      "skipped": [
+        "Photo of Rubio, Netanyahu and Hegseth at Lindsey Graham's funeral: Commentary reacting to a circulating image without reporting any new information."
+      ]
     },
     {
       "date": "2026-07-28",
@@ -47,7 +51,8 @@
       ],
       "post_count": 37,
       "transcribed_count": 36,
-      "incomplete": false
+      "incomplete": false,
+      "skipped": []
     }
   ]
 }

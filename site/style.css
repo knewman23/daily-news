@@ -91,6 +91,39 @@ a:hover { color: var(--red); }
   font-style: italic;
 }
 
+.updated {
+  margin: 0.3rem 0 0;
+  color: var(--slate);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+.updated:empty { display: none; }   /* no stray gap before the first run */
+
+/* The skipped chip is not a topic, so it does not look like one until used. */
+.chip.skipped-chip {
+  border-style: dashed;
+  border-color: var(--slate);
+  color: var(--slate);
+}
+
+.chip.skipped-chip[aria-pressed="true"] {
+  background: var(--slate);
+  border-color: var(--slate);
+  border-style: solid;
+  color: #fff;
+}
+
+.skipped-list { list-style: none; margin: 0; padding: 0; }
+
+.skipped-list li {
+  padding: 0.65rem 0;
+  border-bottom: 1px dotted var(--rule);
+  font-size: 0.9rem;
+}
+
+.skipped-list .why { color: var(--slate); font-size: 0.8rem; font-style: italic; }
+
 /* --- toolbar ------------------------------------------------------------ */
 
 .toolbar {

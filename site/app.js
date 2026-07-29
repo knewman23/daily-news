@@ -20,6 +20,8 @@
 
 const READ_ONLY = document.body.dataset.mode === 'static';
 
+const SKIPPED = '__skipped__';   // a pseudo-tag: not a topic, a view
+
 const state = {
   days: [],
   activeDate: null,
@@ -73,10 +75,36 @@ const source = {
 /* --- days ---------------------------------------------------------------- */
 
 async function loadDays() {
-  const { days } = await api(source.days());
+  const { days, last_updated: lastUpdated } = await api(source.days());
   state.days = days;
   renderDays();
+  renderLastUpdated(lastUpdated);
   return days;
+}
+
+function renderLastUpdated(stamp) {
+  const line = $('last-updated');
+  if (!stamp) {
+    line.textContent = '';
+    return;
+  }
+  const when = new Date(stamp);
+  if (Number.isNaN(when.getTime())) {
+    line.textContent = '';
+    return;
+  }
+  line.textContent = `Last updated ${when.toLocaleString(undefined, {
+    weekday: 'short', month: 'short', day: 'numeric',
+    hour: 'numeric', minute: '2-digit',
+  })}`;
+}
+
+function skippedForVisibleDays() {
+  /* Every skip across the archive, newest day first, so the chip answers "what
+     has the filter been dropping" rather than only "what did today drop". */
+  return state.days.flatMap(
+    (day) => (day.skipped || []).map((note) => ({ date: day.date, note })),
+  );
 }
 
 function renderDays() {
@@ -239,7 +267,7 @@ async function loadTags() {
 }
 
 function renderTags() {
-  $('tags').replaceChildren(...allTags.map((tag) => {
+  const chips = allTags.map((tag) => {
     const chip = el('button', { type: 'button', className: 'chip', textContent: tag });
     chip.setAttribute('aria-pressed', String(state.activeTag === tag));
     chip.addEventListener('click', () => {
@@ -249,9 +277,31 @@ function renderTags() {
       runSearch();
     });
     return chip;
-  }));
+  });
 
-  if (!allTags.length) {
+  // Alongside the topic chips rather than in its own panel: it answers the same
+  // question they do — what am I looking at — just from the other side.
+  const dropped = skippedForVisibleDays();
+  if (dropped.length) {
+    const chip = el('button', {
+      type: 'button',
+      className: 'chip skipped-chip',
+      textContent: `skipped (${dropped.length})`,
+      title: 'Topics left out as off topic. Tune the lists in config.toml.',
+    });
+    chip.setAttribute('aria-pressed', String(state.activeTag === SKIPPED));
+    chip.addEventListener('click', () => {
+      state.activeTag = state.activeTag === SKIPPED ? '' : SKIPPED;
+      renderTags();
+      closeDrawer();
+      runSearch();
+    });
+    chips.push(chip);
+  }
+
+  $('tags').replaceChildren(...chips);
+
+  if (!chips.length) {
     $('tags').replaceChildren(el('p', { className: 'empty', textContent: 'No topics yet.' }));
   }
 }
@@ -264,6 +314,11 @@ async function runSearch() {
     return;
   }
   if (!(await confirmDiscardNotes())) return;
+
+  if (state.activeTag === SKIPPED) {
+    showSkipped();
+    return;
+  }
 
   const hits = READ_ONLY
     ? searchLocally(state.query, state.activeTag)
@@ -317,18 +372,60 @@ function searchLocally(query, tag) {
   });
 }
 
+function showSkipped() {
+  const dropped = skippedForVisibleDays().filter((entry) => {
+    const needle = state.query.trim().toLowerCase();
+    return !needle || entry.note.toLowerCase().includes(needle);
+  });
+
+  const heading = el('div', { className: 'day-head' }, [
+    el('h2', { textContent: dropped.length
+      ? `${dropped.length} left out as off topic`
+      : 'Nothing left out' }),
+    el('span', {
+      className: 'day-meta',
+      textContent: 'Judged outside your interests. Edit [interests] in config.toml to change this.',
+    }),
+  ]);
+
+  if (!dropped.length) {
+    $('main').replaceChildren(heading, el('p', {
+      className: 'empty', textContent: 'The filter has dropped nothing yet.',
+    }));
+    return;
+  }
+
+  // Each entry is "headline: reason" — split so the reason can be de-emphasised.
+  const list = el('ul', { className: 'skipped-list' }, dropped.map(({ date, note }) => {
+    const cut = note.indexOf(': ');
+    const headline = cut > 0 ? note.slice(0, cut) : note;
+    const why = cut > 0 ? note.slice(cut + 2) : '';
+
+    return el('li', {}, [
+      el('div', { textContent: headline }),
+      el('div', { className: 'hit-date', textContent: prettyDate(date, true) }),
+      why ? el('div', { className: 'why', textContent: why }) : null,
+    ]);
+  }));
+
+  $('main').replaceChildren(heading, list);
+  window.scrollTo({ top: 0 });
+}
+
 function describeFilters() {
   const parts = [];
   if (state.query.trim()) parts.push(`“${state.query.trim()}”`);
-  if (state.activeTag) parts.push(`tagged ${state.activeTag}`);
+  if (state.activeTag === SKIPPED) parts.push('left out as off topic');
+  else if (state.activeTag) parts.push(`tagged ${state.activeTag}`);
   return parts.join(' · ');
 }
 
 function syncActiveFilter() {
   const button = $('active-filter');
   button.hidden = !state.activeTag;
-  button.textContent = state.activeTag;
-  button.title = `Clear the ${state.activeTag} filter`;
+  const label = state.activeTag === SKIPPED ? 'skipped' : state.activeTag;
+  button.textContent = label;
+  button.title = `Clear the ${label} filter`;
 }
 
 /* --- sources (live only) ------------------------------------------------- */
@@ -631,6 +728,7 @@ async function start() {
     }
 
     const [days] = await Promise.all(work);
+    renderTags();               // the skipped chip needs the day list to exist
 
     if (days.length) {
       await showDay(days[0].date);
