@@ -40,3 +40,11 @@ smtp_port = 587
 keychain_service = "daily-news-smtp"
 keychain_account = "krys.newman@gmail.com"
 site_url = "https://knewman23.github.io/daily-news/"
+
+[retain]
+# Days of downloaded video and images to keep. One day is roughly 270 MB and
+# compressing it is pointless (mp4 and jpg are already compressed — gzip -9 on a
+# real reel came back at 99.3%), so old media is deleted rather than archived.
+# Transcripts, caption sidecars, and the digests are kept forever and are enough
+# to re-summarize any day offline. Set to a large number to keep everything.
+media_days = 3

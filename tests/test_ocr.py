@@ -47,6 +47,7 @@ def make_image(raw_dir, handle="oafnation_actual", shortcode="AAA",
         (raw_dir / f"{stem}.json").write_text(json.dumps({
             "handle": handle,
             "shortcode": shortcode,
+            "kind": "image",
             "caption": caption,
             "permalink": f"https://www.instagram.com/p/{shortcode}/",
             "posted_at": "2026-07-28T09:00:00+00:00",
@@ -267,15 +268,46 @@ def test_one_failing_carousel_slide_does_not_lose_the_rest(dirs):
     assert stats.incomplete is True
 
 
-def test_missing_sidecar_falls_back_to_the_filename_and_flags_the_day(dirs):
+def test_an_image_with_no_sidecar_is_not_treated_as_a_post(dirs):
+    from src import posts
+
     raw, out = dirs
     make_image(raw, handle="oafnation_actual", shortcode="XYZ", sidecar=False)
 
     transcripts, stats = ocr.ocr_day(raw, out, CFG, recognizer=FakeRecognizer())
 
-    assert transcripts[0].handle == "oafnation_actual"
-    assert transcripts[0].shortcode == "XYZ"
+    assert transcripts == []
+    assert stats.post_count == 0
+    assert [p.name for p in posts.orphans(raw)] == ["oafnation_actual_XYZ.jpg"]
+
+
+def test_images_pruned_before_extraction_are_flagged(dirs):
+    raw, out = dirs
+    make_image(raw)
+    (raw / "oafnation_actual_AAA.jpg").unlink()
+
+    transcripts, stats = ocr.ocr_day(raw, out, CFG, recognizer=FakeRecognizer())
+
+    assert transcripts == []
+    assert stats.post_count == 1
     assert stats.incomplete is True
+    assert any("pruned" in note for note in stats.notes)
+
+
+def test_an_existing_extraction_survives_the_images_being_pruned(dirs):
+    raw, out = dirs
+    make_image(raw)
+    out.mkdir(parents=True)
+    (out / "oafnation_actual_AAA.txt").write_text(
+        "plenty of extracted words here for the floor", encoding="utf-8")
+    (raw / "oafnation_actual_AAA.jpg").unlink()
+
+    recognizer = FakeRecognizer()
+    transcripts, stats = ocr.ocr_day(raw, out, CFG, recognizer=recognizer)
+
+    assert len(transcripts) == 1
+    assert stats.incomplete is False
+    assert recognizer.calls == []
 
 
 def test_posts_come_back_in_a_stable_order(dirs):

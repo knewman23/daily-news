@@ -17,20 +17,15 @@ so everything downstream treats spoken and on-image text identically. Only
 
 from __future__ import annotations
 
-import json
 import logging
-import re
 from pathlib import Path
 from typing import Callable
 
+from src import posts
 from src.config import TranscribeConfig
 from src.records import Stats, Transcript
 
 log = logging.getLogger(__name__)
-
-# `<handle>_<shortcode>.jpg` for a single image, `<handle>_<shortcode>_<n>.jpg`
-# for carousel slide n.
-SLIDE_SUFFIX = re.compile(r"_(\d+)$")
 
 # 0 = accurate, 1 = fast. Accurate is the point of doing this at all, and at a
 # few tenths of a second per image the difference does not matter here.
@@ -83,17 +78,22 @@ def ocr_day(
     stats = Stats()
     transcripts: list[Transcript] = []
 
-    if not raw.is_dir():
-        return transcripts, stats
-
-    for stem, slides in sorted(_group_by_post(raw).items()):
+    for post in posts.of_kind(raw, posts.IMAGE):
         stats.post_count += 1
-        existing = out / f"{stem}.txt"
-        meta = _sidecar(raw, stem, stats)
+        existing = post.transcript(out)
+        meta = post.meta
 
         if existing.exists():
             transcripts.append(_transcript(meta, existing.read_text(encoding="utf-8").strip()))
             stats.transcribed_count += 1
+            continue
+
+        slides = post.images(raw)
+        if not slides:
+            # Pruned before it was read. The text is unrecoverable, so say so
+            # rather than reporting a quietly thinner day.
+            log.warning("%s has no extraction and its images are gone", post.stem)
+            stats.fail(f"ocr {post.stem}: images pruned before extraction")
             continue
 
         pieces = []
@@ -112,9 +112,9 @@ def ocr_day(
         # The floor counts the caption too. A headline graphic often OCRs to a
         # handful of stylised words while the caption carries the actual story —
         # judging the image alone would discard the post and its caption with it.
-        caption = str(meta.get("caption") or "")
+        caption = post.caption
         if len(f"{combined} {caption}".split()) < cfg.min_words:
-            log.info("%s yielded too little text, skipping", stem)
+            log.info("%s yielded too little text, skipping", post.stem)
             continue
 
         out.mkdir(parents=True, exist_ok=True)
@@ -126,51 +126,6 @@ def ocr_day(
 
 
 # --- internals -------------------------------------------------------------
-
-
-def _group_by_post(raw: Path) -> dict[str, list[Path]]:
-    """Map post stem to its image files, slides ordered numerically.
-
-    Sorting slide paths as strings would put slide 10 before slide 2 and scramble
-    a long carousel's narrative.
-    """
-    groups: dict[str, list[tuple[int, Path]]] = {}
-
-    for image in raw.glob("*.jpg"):
-        stem, index = _post_stem(image.stem)
-        groups.setdefault(stem, []).append((index, image))
-
-    return {
-        stem: [path for _, path in sorted(entries)]
-        for stem, entries in groups.items()
-    }
-
-
-def _post_stem(filename: str) -> tuple[str, int]:
-    match = SLIDE_SUFFIX.search(filename)
-    if match:
-        return filename[: match.start()], int(match.group(1))
-    return filename, 0
-
-
-def _sidecar(raw: Path, stem: str, stats: Stats) -> dict:
-    """Attribution written by fetch.py beside the images.
-
-    Falling back to the filename is a last resort: both handles and Instagram
-    shortcodes may contain underscores, so the split is ambiguous and the day is
-    flagged rather than risk silently mis-attributing a post.
-    """
-    path = raw / f"{stem}.json"
-    try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-        if isinstance(data, dict) and data.get("handle"):
-            return data
-    except (OSError, json.JSONDecodeError):
-        pass
-
-    handle, _, shortcode = stem.rpartition("_")
-    stats.fail(f"missing caption sidecar for {stem}")
-    return {"handle": handle or stem, "shortcode": shortcode}
 
 
 def _transcript(meta: dict, text: str) -> Transcript:

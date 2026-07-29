@@ -16,13 +16,13 @@ publishing; the loss is recorded so the digest can be marked incomplete.
 
 from __future__ import annotations
 
-import json
 import logging
 import shutil
 import subprocess
 from pathlib import Path
 from typing import Callable
 
+from src import posts
 from src.config import TranscribeConfig
 from src.records import Stats, Transcript
 
@@ -107,20 +107,24 @@ def transcribe_day(
     stats = Stats()
     transcripts: list[Transcript] = []
 
-    if not raw.is_dir():
-        return transcripts, stats
-
     factory = model_factory or _load_model
     model = None  # built on first real transcription, never if there is none
 
-    for mp4 in sorted(raw.glob("*.mp4")):
+    for post in posts.of_kind(raw, posts.VIDEO):
         stats.post_count += 1
-        meta = _sidecar(mp4, stats)
-        existing = out / f"{mp4.stem}.txt"
+        existing = post.transcript(out)
 
         if existing.exists():
-            transcripts.append(_transcript(meta, existing.read_text(encoding="utf-8").strip()))
+            transcripts.append(_transcript(post.meta, existing.read_text(encoding="utf-8").strip()))
             stats.transcribed_count += 1
+            continue
+
+        mp4 = post.video(raw)
+        if not mp4.is_file():
+            # Pruned before it was transcribed. Nothing can recover the audio,
+            # so say so rather than reporting a quietly thinner day.
+            log.warning("%s has no transcript and its video is gone", post.stem)
+            stats.fail(f"transcribe {post.stem}: video pruned before transcription")
             continue
 
         try:
@@ -144,7 +148,7 @@ def transcribe_day(
 
         out.mkdir(parents=True, exist_ok=True)
         existing.write_text(text + "\n", encoding="utf-8")
-        transcripts.append(_transcript(meta, text))
+        transcripts.append(_transcript(post.meta, text))
         stats.transcribed_count += 1
 
     return transcripts, stats
@@ -162,26 +166,6 @@ def _run(mp4: Path, out: Path, model, runner) -> str:
         return transcribe_file(wav, model)
     finally:
         wav.unlink(missing_ok=True)
-
-
-def _sidecar(mp4: Path, stats: Stats) -> dict:
-    """Attribution for one post, from the JSON fetch.py wrote beside the mp4.
-
-    Falling back to the filename is a last resort: the split is ambiguous when a
-    handle or shortcode contains an underscore, so the day is flagged rather than
-    silently mis-attributed.
-    """
-    path = mp4.with_suffix(".json")
-    try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-        if isinstance(data, dict) and data.get("handle"):
-            return data
-    except (OSError, json.JSONDecodeError):
-        pass
-
-    handle, _, shortcode = mp4.stem.rpartition("_")
-    stats.fail(f"missing caption sidecar for {mp4.name}")
-    return {"handle": handle or mp4.stem, "shortcode": shortcode}
 
 
 def _transcript(meta: dict, text: str) -> Transcript:

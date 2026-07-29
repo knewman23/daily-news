@@ -26,8 +26,8 @@ import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
 
-from src import (config, digest, fetch, mailer, notes, ocr, publish, runlog,
-                 sources, summarize, transcribe)
+from src import (config, digest, fetch, mailer, notes, ocr, posts, prune,
+                 publish, runlog, sources, summarize, transcribe)
 from src.records import Stats
 
 log = logging.getLogger("daily-news")
@@ -42,6 +42,7 @@ def run_day(
     summarizer=None,
     publisher=None,
     emailer=None,
+    pruner=None,
     notifier=None,
     generated: datetime | None = None,
 ) -> int:
@@ -75,6 +76,7 @@ def run_day(
     do_summarize = summarizer or summarize.summarize_day
     do_publish = publisher or publish.publish
     do_email = emailer or mailer.send
+    do_prune = pruner or prune.prune
 
     log.info("starting run for %s", day.isoformat())
 
@@ -108,6 +110,13 @@ def run_day(
 
     transcripts = list(spoken) + list(on_image)
     stats = _merge(fetch_stats, audio_stats, image_stats)
+
+    # Media with no sidecar belongs to no post, so nothing would ever transcribe
+    # it and it would vanish from the digest without a word.
+    stray = posts.orphans(raw)
+    if stray:
+        stats.fail(f"{len(stray)} media file(s) with no caption sidecar: "
+                   f"{', '.join(p.name for p in stray[:3])}")
     log.info(
         "%d post(s) for the day (%d newly fetched), %d with usable text "
         "(%d spoken, %d on-image)",
@@ -163,6 +172,16 @@ def run_day(
     delivery = do_email(cfg, subject, body)
     if not delivery.ok:
         log.warning("email did not send: %s", delivery.message)
+
+    # Reclaiming disk comes last, after the day is summarized, published, and
+    # sent — nothing downstream can then be missing its source.
+    reclaimed = do_prune(
+        cfg.paths.raw, cfg.paths.transcripts, cfg.paths.news,
+        cfg.retain.media_days,
+    )
+    if reclaimed.files:
+        log.info("reclaimed %s MB from %d old media file(s)",
+                 reclaimed.megabytes_freed, reclaimed.files)
 
     return record(True, stats=stats, spoken=len(spoken),
                   on_image=len(on_image), topics=topics)

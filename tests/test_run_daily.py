@@ -4,7 +4,7 @@ from datetime import date, datetime, timezone
 import pytest
 
 import run_daily
-from src import config, digest, fetch, notes, publish
+from src import config, digest, fetch, notes, prune, publish
 from src.records import PostRef, Stats, Transcript
 
 
@@ -517,3 +517,67 @@ def test_a_quiet_day_still_sends(project):
     })
 
     assert "no news" in spy.calls[0]["subject"]
+
+
+# --- disk reclamation ------------------------------------------------------
+
+
+class PrunerSpy:
+    def __init__(self, files=0, mb=0.0):
+        self.files = files
+        self.mb = mb
+        self.calls = []
+
+    def __call__(self, raw, transcripts, news, keep_days):
+        self.calls.append({"raw": raw, "keep_days": keep_days})
+        result = prune.PruneResult(days=1 if self.files else 0, files=self.files)
+        result.bytes_freed = int(self.mb * 1_048_576)
+        return result
+
+
+def test_pruning_runs_last_with_the_configured_window(project):
+    spy = PrunerSpy(files=12, mb=260.0)
+    run(project, pruner=spy)
+
+    assert len(spy.calls) == 1
+    assert spy.calls[0]["keep_days"] == 3          # the default
+
+
+def test_pruning_happens_after_the_email(project):
+    order = []
+
+    def emailer(cfg, subject, body):
+        order.append("email")
+        from src.mailer import MailResult
+        return MailResult(True, True, "sent")
+
+    def pruner(raw, transcripts, news, keep_days):
+        order.append("prune")
+        return prune.PruneResult()
+
+    run(project, emailer=emailer, pruner=pruner)
+    assert order == ["email", "prune"]
+
+
+def test_a_summarize_failure_skips_pruning(project):
+    """Nothing is deleted for a day that never got a digest."""
+    from src.summarize import SummarizeError
+
+    spy = PrunerSpy()
+    run(project, pruner=spy, stage_kwargs={"summarize_raises": SummarizeError("boom")})
+
+    assert spy.calls == []
+
+
+def test_orphan_media_is_flagged_against_the_day(project):
+    """Media with no sidecar belongs to no post, so nothing would transcribe it
+    and it would vanish from the digest without a word."""
+    raw = project / "data" / "raw" / "2026-07-28"
+    raw.mkdir(parents=True)
+    (raw / "aaronparnas_LOST.mp4").write_bytes(b"orphan")
+
+    run(project, pruner=PrunerSpy())
+
+    assert digest.list_days(project / "news")[0].incomplete is True
+    entry = json.loads((project / "logs" / "runs.json").read_text())["runs"][0]
+    assert any("no caption sidecar" in note for note in entry["failures"])

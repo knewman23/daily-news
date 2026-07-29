@@ -59,6 +59,11 @@ class PublishConfig:
 
 
 @dataclass(frozen=True)
+class RetainConfig:
+    media_days: int = 3
+
+
+@dataclass(frozen=True)
 class EmailConfig:
     enabled: bool = False
     to: str = ""
@@ -78,6 +83,7 @@ class Config:
     serve: ServeConfig
     publish: PublishConfig
     email: EmailConfig
+    retain: RetainConfig
 
     def raw_dir(self, day) -> Path:
         return self.paths.raw / day.isoformat()
@@ -115,6 +121,7 @@ def load(path: str | Path = CONFIG_FILE) -> Config:
         serve=_section(ServeConfig, data.get("serve", {}), "serve", p),
         publish=_section(PublishConfig, data.get("publish", {}), "publish", p),
         email=_section(EmailConfig, data.get("email", {}), "email", p),
+        retain=_section(RetainConfig, data.get("retain", {}), "retain", p),
     )
 
 

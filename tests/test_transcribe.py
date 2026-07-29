@@ -81,6 +81,7 @@ def make_post(raw_dir, handle="aaronparnas", shortcode="AAA", sidecar=True):
         (raw_dir / f"{stem}.json").write_text(json.dumps({
             "handle": handle,
             "shortcode": shortcode,
+            "kind": "video",
             "caption": "Breaking news",
             "permalink": f"https://www.instagram.com/p/{shortcode}/",
             "posted_at": "2026-07-28T09:00:00+00:00",
@@ -283,7 +284,12 @@ def test_ffmpeg_failure_marks_the_day_incomplete(dirs):
     assert any("ffmpeg" in note for note in stats.notes)
 
 
-def test_missing_sidecar_falls_back_to_the_filename_and_flags_the_day(dirs):
+def test_media_with_no_sidecar_is_not_treated_as_a_post(dirs):
+    """The sidecar defines the post. Guessing a handle out of the filename
+    risked attributing it to the wrong account, since both handles and
+    shortcodes may contain underscores."""
+    from src import posts
+
     raw, out = dirs
     make_post(raw, handle="oafnation_actual", shortcode="XYZ", sidecar=False)
 
@@ -291,10 +297,46 @@ def test_missing_sidecar_falls_back_to_the_filename_and_flags_the_day(dirs):
         raw, out, CFG, model_factory=CountingFactory(), runner=FakeRunner(),
     )
 
-    assert len(transcripts) == 1
-    assert transcripts[0].handle == "oafnation_actual"
-    assert transcripts[0].shortcode == "XYZ"
+    assert transcripts == []
+    assert stats.post_count == 0
+    # It is still visible rather than silently dropped.
+    assert [p.name for p in posts.orphans(raw)] == ["oafnation_actual_XYZ.mp4"]
+
+
+def test_a_video_pruned_before_transcription_is_flagged(dirs):
+    """Nothing can recover the audio, so the day must say it is incomplete
+    rather than quietly report a thinner day."""
+    raw, out = dirs
+    make_post(raw)
+    (raw / "aaronparnas_AAA.mp4").unlink()
+
+    transcripts, stats = transcribe.transcribe_day(
+        raw, out, CFG, model_factory=CountingFactory(), runner=FakeRunner(),
+    )
+
+    assert transcripts == []
+    assert stats.post_count == 1
     assert stats.incomplete is True
+    assert any("pruned" in note for note in stats.notes)
+
+
+def test_an_existing_transcript_survives_the_media_being_pruned(dirs):
+    """The whole point of pruning: a day still summarizes with media gone."""
+    raw, out = dirs
+    make_post(raw)
+    out.mkdir(parents=True)
+    (out / "aaronparnas_AAA.txt").write_text("plenty of words here for the floor", encoding="utf-8")
+    (raw / "aaronparnas_AAA.mp4").unlink()
+
+    runner = FakeRunner()
+    transcripts, stats = transcribe.transcribe_day(
+        raw, out, CFG, model_factory=CountingFactory(), runner=runner,
+    )
+
+    assert len(transcripts) == 1
+    assert transcripts[0].handle == "aaronparnas"
+    assert stats.incomplete is False
+    assert runner.calls == []
 
 
 def test_transcripts_come_back_in_a_stable_order(dirs):

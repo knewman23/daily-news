@@ -48,6 +48,47 @@ so. Otherwise a silently broken pipeline looks exactly like a quiet news day.
 
 ---
 
+## Commands
+
+Every command uses `.venv/bin/python`, not a bare `python` — the dependencies
+live in the virtualenv and a bare interpreter will not find them.
+
+```bash
+cd ~/Projects/daily-news
+
+# Read the archive: the local app, with the journal, sources, and run history
+.venv/bin/python serve.py                       # → http://127.0.0.1:8420
+.venv/bin/python serve.py --port 9000           # if 8420 is taken
+
+# Run the pipeline
+.venv/bin/python run_daily.py                   # today
+.venv/bin/python run_daily.py --date 2026-07-20  # a specific day, or a re-run
+
+# Rebuild the published site without running the pipeline
+.venv/bin/python export_static.py
+
+# Tests
+.venv/bin/pytest
+.venv/bin/pytest tests/test_notes.py -v
+
+# The schedule
+launchctl list | grep daily-news                          # is it registered?
+launchctl kickstart -p gui/$UID/com.krys.daily-news       # run it now
+launchctl bootout gui/$UID ~/Library/LaunchAgents/com.krys.daily-news.plist
+
+# Logs
+tail -f logs/$(date +%F).log      # the run in progress
+tail -f logs/launchd.err.log      # scheduled-run failures
+```
+
+Open the app and the browser in one go:
+
+```bash
+cd ~/Projects/daily-news && .venv/bin/python serve.py & sleep 1 && open http://127.0.0.1:8420
+```
+
+---
+
 ## Daily use
 
 ```bash
@@ -76,6 +117,50 @@ permanent rail.
 .venv/bin/python run_daily.py --date 2026-07-20     # a specific day, or a re-run
 .venv/bin/python export_static.py                  # rebuild site/ only
 ```
+
+---
+
+## Using this for your own accounts
+
+This is built for one person's machine, but nothing in it is specific to that
+person. To run your own:
+
+**What you need.** macOS (the OCR uses the Vision framework built into the OS, and
+the scheduler is launchd), Python 3.11+, Homebrew for ffmpeg, an Instagram account
+that follows the handles you want, and Claude Code installed and logged in — the
+summarizer shells out to `claude -p`, so it uses your existing subscription rather
+than an API key.
+
+**Steps.** Fork or clone, then work through *One-time setup* below and change these
+five things:
+
+| Where | Change |
+|---|---|
+| `config/sources.json` | Replace the handles with yours. Or leave it empty and add them from the web UI, which verifies each account exists before saving. |
+| `config.toml` → `[fetch] session_user` | Your Instagram username. |
+| `config.toml` → `[email]` | Your address, or `enabled = false`. |
+| `config.toml` → `[publish]` | `enabled = false` unless you want a public site. |
+| `launchd/*.plist` | The paths are absolute and contain a username. Rewrite all four, and pick your own `Label`. |
+
+**A word on the tradeoffs**, since they are choices rather than facts:
+
+- **instaloader with a browser cookie** is against Instagram's terms of service.
+  It is a single request per handle per day, which is why it has been fine here,
+  but the risk is yours and it is your account. There is no official API for
+  reading accounts you do not own.
+- **`claude -p` costs no API key but does draw on your subscription usage.** One
+  call per day; the base system prompt is ~27k tokens regardless of prompt size,
+  which is why the whole day is summarized in a single call. Swap
+  `DEFAULT_MODEL` in `src/summarize.py` for a cheaper model if you prefer.
+- **Everything is local.** No database, no cloud service, no API keys beyond the
+  ones you already have. The cost of that is that it only runs when your laptop
+  is awake — launchd catches up on wake, but a machine left shut for a week will
+  produce one catch-up digest, not seven.
+
+**Porting off macOS** would mean replacing two things: `src/ocr.py` (Vision →
+Tesseract or PaddleOCR) and the launchd plist (→ a systemd timer or cron). The
+rest is portable, and both are behind narrow interfaces with injected
+dependencies, so their tests do not need rewriting.
 
 ---
 
@@ -173,6 +258,29 @@ without it.
 | `Daily news published locally but not pushed` | The digest is written and readable; only the push failed. Re-run, or push by hand. |
 | Nothing ran at 11:00 | `launchctl list \| grep daily-news`. Then `logs/launchd.err.log` — a missing binary on `PATH` is the usual cause. |
 
+### Disk usage
+
+One day of posts is roughly **270 MB**, almost all of it mp4 — about 98 GB a year
+if nothing is cleaned up. Compressing it does not help: mp4 and jpg are already
+compressed, and `gzip -9` on a real reel came back at **99.3%** of the original.
+So old media is deleted rather than archived.
+
+After each successful run, media older than `[retain] media_days` (default 3) is
+removed. What survives is what has lasting value and costs nothing:
+
+| Kept forever | Size |
+|---|---|
+| `data/transcripts/<date>/*.txt` — the extracted text | ~150 KB/day |
+| `data/raw/<date>/*.json` — the caption sidecars | ~1 KB/post |
+| `news/<date>.md` — the digest | ~15 KB/day |
+
+Those three are enough to re-summarize any past day **offline**, which is why the
+extract stages find their posts from the sidecars rather than by looking for media.
+
+Three rules make it safe to run unattended: a day is only pruned once its digest
+exists; a post is only pruned once its transcript exists; and today is never
+pruned whatever the setting says. Set `media_days` very high to keep everything.
+
 ### The fetch window
 
 Each handle carries its own `last_pull_at` watermark, and everything posted since
@@ -193,6 +301,7 @@ hand-edited file means a bad write cannot corrupt the model choice or the port.
 |---|---|
 | `[fetch]` | `first_run_lookback_hours` applies only to a handle with no watermark. `max_lookback_days` caps how far a stale watermark can reach back. |
 | `[transcribe]` | `model`: `tiny` … `large-v3`. `min_words` is the floor below which a transcript is discarded — it counts the caption too, since a headline graphic OCRs to very little while its caption carries the story. |
+| `[retain]` | `media_days`: how long to keep downloaded video and images. See *Disk usage*. |
 | `[publish]` | `enabled`, and which remote and branch to push. |
 | `[email]` | Addresses and the Keychain lookup keys. Never the password. |
 
@@ -231,6 +340,8 @@ src/publish.py       export and push
 src/mailer.py        the summary email
 src/runlog.py        run history
 src/sources.py       the handle list
+src/posts.py         the day's posts, as recorded by the caption sidecars
+src/prune.py         deletes transcribed media to reclaim disk
 src/serve.py         the HTTP layer
 
 docs/superpowers/    the design spec and implementation plan

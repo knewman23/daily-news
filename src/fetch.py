@@ -206,10 +206,13 @@ def fetch_handle(
             mp4 = dest / f"{stem}.mp4"
             if not mp4.exists():
                 loader.download(post, mp4)
-        elif not _download_slides(loader, post, dest, stem):
+            kind = "video"
+        elif _download_slides(loader, post, dest, stem):
+            kind = "image"
+        else:
             continue        # nothing usable on this post
 
-        _write_sidecar(dest / f"{stem}.json", ref)
+        _write_sidecar(dest / f"{stem}.json", ref, kind)
         refs.append(ref)
 
     return refs
@@ -316,12 +319,19 @@ def _download_slides(loader: Any, post: Any, dest: Path, stem: str) -> bool:
     return True
 
 
-def _write_sidecar(path: Path, ref: PostRef) -> None:
-    """Attribution for transcribe.py, which must not parse it out of the filename."""
+def _write_sidecar(path: Path, ref: PostRef, kind: str) -> None:
+    """The durable record of a post.
+
+    Attribution for transcribe.py, which must not parse it out of the filename.
+    `kind` is what lets the extract stages find their posts from the sidecars
+    rather than by globbing media, so the media can be deleted once transcribed
+    without a re-run seeing an empty day.
+    """
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps({
         "handle": ref.handle,
         "shortcode": ref.shortcode,
+        "kind": kind,
         "posted_at": ref.posted_at,
         "permalink": ref.permalink,
         "caption": ref.caption,
