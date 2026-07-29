@@ -461,6 +461,16 @@ function renderRun(run) {
   if (run.failures && run.failures.length) {
     detail.append(el('ul', {}, run.failures.map((note) => el('li', { textContent: note }))));
   }
+
+  // Shown so an over-aggressive interest filter is visible rather than silent.
+  if (run.skipped && run.skipped.length) {
+    detail.append(el('p', {
+      className: 'status',
+      textContent: `Left out as off topic (${run.skipped.length}):`,
+    }));
+    detail.append(el('ul', { className: 'skipped' },
+      run.skipped.map((note) => el('li', { textContent: note }))));
+  }
   if (!run.error && !(run.failures || []).length) {
     detail.append(el('p', {
       className: 'status',

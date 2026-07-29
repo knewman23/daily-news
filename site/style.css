@@ -365,6 +365,9 @@ details.panel[open] > .panel-title { margin-bottom: 0.6rem; }
 .run-detail { margin: 0.3rem 0 0.4rem; padding-left: 1rem; }
 .run-detail li { color: var(--red); font-size: 0.75rem; }
 
+/* Skipped topics are the filter working, not failures, so they are not red. */
+.run-detail .skipped li { color: var(--slate); }
+
 .run-log-button {
   border: 0; background: none; padding: 0;
   color: var(--navy); font: inherit; font-size: 0.75rem;
