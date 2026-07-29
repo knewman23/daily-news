@@ -6,3 +6,7 @@ __pycache__/
 venv/
 *.session
 .DS_Store
+
+# Journal notes live inside news/*.md, so the raw digests stay local.
+# Only the generated site/ (which renders the news body without notes) is published.
+news/

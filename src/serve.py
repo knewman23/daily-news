@@ -347,6 +347,10 @@ class _Handler(BaseHTTPRequestHandler):
             CONTENT_TYPES.get(target.suffix.lower(), "application/octet-stream"),
         )
         self.send_header("Content-Length", str(len(body)))
+        # No caching. This server exists to look at files that are being edited,
+        # and a cached app.js silently serving yesterday's code is a genuinely
+        # confusing way to lose an afternoon.
+        self.send_header("Cache-Control", "no-store, must-revalidate")
         self.end_headers()
         self.wfile.write(body)
 

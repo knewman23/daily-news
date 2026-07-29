@@ -7,7 +7,10 @@
   <link rel="icon" href="header.PNG">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<!-- data-mode is rewritten to "static" by export_static.py. The read-only build
+     drops the journal, the source list, and the run history entirely — not with
+     CSS, which would leave a working form for anyone who opens devtools. -->
+<body data-mode="live">
 
 <header class="masthead">
   <img class="crest" src="header.PNG" alt="Eagle and flag over a Born Free banner">
@@ -15,51 +18,68 @@
   <p class="tagline">Transcribed and summarized from the accounts you follow</p>
 </header>
 
-<nav class="toolbar" aria-label="Search and filter">
+<nav class="toolbar" aria-label="Search and browse">
   <div class="toolbar-inner">
     <label class="search">
       <span class="visually-hidden">Search all days</span>
       <input id="search" type="search" placeholder="Search every day…" autocomplete="off">
     </label>
-    <div id="tags" class="chips" role="group" aria-label="Filter by topic"></div>
-    <button id="clear" class="clear" hidden>Clear filters</button>
+
+    <button id="active-filter" class="active-filter" hidden></button>
+
+    <button id="menu-button" class="menu-button" type="button"
+            aria-expanded="false" aria-controls="drawer" aria-haspopup="true">
+      <span class="visually-hidden">Days and filters</span>
+      <span aria-hidden="true">⋮</span>
+    </button>
   </div>
 </nav>
 
-<div class="layout">
+<main id="main" class="main" aria-live="polite">
+  <p class="empty">Loading…</p>
+</main>
 
-  <aside class="rail">
-    <section class="panel">
-      <h2 class="panel-title">Days</h2>
-      <ol id="days" class="days"></ol>
-    </section>
+<div id="scrim" class="scrim" hidden></div>
 
-    <details class="panel" id="sources-panel">
-      <summary class="panel-title">
-        Sources <span id="sources-count" class="count"></span>
-      </summary>
-      <ul id="sources" class="sources"></ul>
-      <form id="add-source" class="add">
-        <label class="visually-hidden" for="new-handle">Instagram handle</label>
-        <input id="new-handle" type="text" placeholder="add a handle" autocomplete="off">
-        <button type="submit">Add</button>
-        <p id="add-error" class="error" hidden></p>
-      </form>
-    </details>
+<aside id="drawer" class="drawer" hidden aria-label="Days and filters">
+  <div class="drawer-head">
+    <h2>Browse</h2>
+    <button id="drawer-close" class="icon-button" type="button">
+      <span class="visually-hidden">Close</span>
+      <span aria-hidden="true">✕</span>
+    </button>
+  </div>
 
-    <details class="panel" id="runs-panel">
-      <summary class="panel-title">
-        Runs <span id="runs-badge" class="badge" hidden></span>
-      </summary>
-      <ul id="runs" class="runs"></ul>
-    </details>
-  </aside>
+  <section class="panel">
+    <h3 class="panel-title">Days</h3>
+    <ol id="days" class="days"></ol>
+  </section>
 
-  <main id="main" class="main" aria-live="polite">
-    <p class="empty">Loading…</p>
-  </main>
+  <section class="panel">
+    <h3 class="panel-title">Topics</h3>
+    <div id="tags" class="chips" role="group" aria-label="Filter by topic"></div>
+  </section>
 
-</div>
+  <details class="panel" id="sources-panel" data-live-only open>
+    <summary class="panel-title">
+      Sources <span id="sources-count" class="count"></span>
+    </summary>
+    <ul id="sources" class="sources"></ul>
+    <form id="add-source" class="add">
+      <label class="visually-hidden" for="new-handle">Instagram handle</label>
+      <input id="new-handle" type="text" placeholder="add a handle" autocomplete="off">
+      <button type="submit">Add</button>
+      <p id="add-error" class="error" hidden></p>
+    </form>
+  </details>
+
+  <details class="panel" id="runs-panel" data-live-only open>
+    <summary class="panel-title">
+      Runs <span id="runs-badge" class="badge" hidden></span>
+    </summary>
+    <ul id="runs" class="runs"></ul>
+  </details>
+</aside>
 
 <script src="app.js"></script>
 </body>

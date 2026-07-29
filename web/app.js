@@ -1,21 +1,32 @@
 /* Daily News — vanilla, no build step, no CDN.
  *
+ * Two modes, decided by `<body data-mode>`:
+ *
+ *   live    — talks to the local Python server. Everything works.
+ *   static  — the exported GitHub Pages build. Reads pre-generated JSON, and the
+ *             journal, source list, and run history are absent, because there is
+ *             no server to write to and the source list is not for publishing.
+ *
+ * The mode comes from the markup rather than the hostname: hostname sniffing
+ * breaks the moment the local server is reached by anything but 127.0.0.1.
+ *
  * The server renders each day's markdown to HTML, so the main pane sets
  * innerHTML from it. That content is generated locally by this project from the
- * user's own files and never leaves the machine, so there is no untrusted author
- * in the loop. Everything that *does* come from outside — handles, headlines,
- * log lines — goes in as textContent.
+ * user's own files. Everything that comes from outside — handles, headlines, log
+ * lines — goes in as textContent.
  */
 
 'use strict';
 
+const READ_ONLY = document.body.dataset.mode === 'static';
+
 const state = {
   days: [],
-  tags: [],
   activeDate: null,
   activeTag: '',
   query: '',
   notesDirty: false,
+  searchIndex: null,     // static mode only
 };
 
 const $ = (id) => document.getElementById(id);
@@ -48,10 +59,21 @@ const postJSON = (path, body, method = 'POST') => api(path, {
   body: JSON.stringify(body),
 });
 
+/* One place decides where data comes from, so adding the static build did not
+   mean sprinkling conditionals through every fetch. */
+const source = {
+  days: () => READ_ONLY ? 'data/days.json' : '/api/days',
+  tags: () => READ_ONLY ? 'data/tags.json' : '/api/tags',
+  runs: () => '/api/runs',
+  day: (date) => READ_ONLY ? `data/day/${date}.json` : `/api/day/${date}`,
+  log: (date) => `/api/log/${date}`,
+  searchIndex: () => 'data/search.json',
+};
+
 /* --- days ---------------------------------------------------------------- */
 
 async function loadDays() {
-  const { days } = await api('/api/days');
+  const { days } = await api(source.days());
   state.days = days;
   renderDays();
   return days;
@@ -59,29 +81,38 @@ async function loadDays() {
 
 function renderDays() {
   const list = $('days');
-  list.replaceChildren(...state.days.map((day) => {
-    const label = el('span', { className: 'label', textContent: prettyDate(day.date) });
-    const count = el('span', {
-      className: 'topics',
-      textContent: day.post_count ? `${day.post_count}` : '—',
-    });
-
-    const button = el('button', { type: 'button' }, [label, count]);
-    if (day.incomplete) {
-      count.append(el('span', { className: 'flag', textContent: ' !' }));
-      button.title = 'This run was incomplete — see the Runs panel';
-    }
-    if (day.date === state.activeDate) button.setAttribute('aria-current', 'true');
-    button.addEventListener('click', () => showDay(day.date));
-
-    return el('li', {}, button);
-  }));
 
   if (!state.days.length) {
     list.replaceChildren(el('li', {}, el('p', {
       className: 'empty', textContent: 'No digests yet.',
     })));
+    return;
   }
+
+  list.replaceChildren(...state.days.map((day) => {
+    const count = el('span', {
+      className: 'topics',
+      textContent: day.post_count ? `${day.post_count}` : '—',
+    });
+    const button = el('button', { type: 'button' }, [
+      el('span', { className: 'label', textContent: prettyDate(day.date) }),
+      count,
+    ]);
+
+    if (day.incomplete) {
+      count.append(el('span', { className: 'flag', textContent: ' !' }));
+      button.title = READ_ONLY
+        ? 'This day may be missing posts'
+        : 'This run was incomplete — see the Runs panel';
+    }
+    if (day.date === state.activeDate) button.setAttribute('aria-current', 'true');
+    button.addEventListener('click', () => {
+      closeDrawer();
+      showDay(day.date);
+    });
+
+    return el('li', {}, button);
+  }));
 }
 
 async function showDay(date, scrollToHeadline) {
@@ -89,11 +120,13 @@ async function showDay(date, scrollToHeadline) {
 
   state.activeDate = date;
   state.query = '';
+  state.activeTag = '';
   $('search').value = '';
   renderDays();
-  syncClearButton();
+  renderTags();
+  syncActiveFilter();
 
-  const day = await api(`/api/day/${date}`);
+  const day = await api(source.day(date));
   const main = $('main');
 
   const head = el('div', { className: 'day-head' }, [
@@ -108,26 +141,32 @@ async function showDay(date, scrollToHeadline) {
   if (day.incomplete) {
     head.append(el('p', {
       className: 'warn-banner',
-      textContent: 'This run did not finish cleanly, so the day may be missing '
-        + 'posts. Open the Runs panel for the reason.',
+      textContent: READ_ONLY
+        ? 'This run did not finish cleanly, so the day may be missing posts.'
+        : 'This run did not finish cleanly, so the day may be missing posts. '
+          + 'Open the Runs panel for the reason.',
     }));
   }
 
   const article = el('article', { className: 'article' });
   article.innerHTML = day.html;      // locally generated markdown; see file header
 
-  main.replaceChildren(head, article, journal(date, day.notes));
+  const parts = [head, article];
+  if (!READ_ONLY) parts.push(journal(date, day.notes));
+  main.replaceChildren(...parts);
 
   if (scrollToHeadline) {
     const match = [...article.querySelectorAll('h2')]
       .find((h) => h.textContent.trim() === scrollToHeadline.trim());
-    if (match) match.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  } else {
-    window.scrollTo({ top: 0 });
+    if (match) {
+      match.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
   }
+  window.scrollTo({ top: 0 });
 }
 
-/* --- journal ------------------------------------------------------------- */
+/* --- journal (live only) ------------------------------------------------- */
 
 function journal(date, existing) {
   const box = el('textarea', {
@@ -192,26 +231,33 @@ async function confirmDiscardNotes() {
 
 /* --- search and tags ----------------------------------------------------- */
 
-async function loadTags() {
-  const { tags } = await api('/api/tags');
-  state.tags = tags;
+let allTags = [];
 
-  $('tags').replaceChildren(...tags.map((tag) => {
-    const chip = el('button', {
-      type: 'button', className: 'chip', textContent: tag,
-    });
+async function loadTags() {
+  ({ tags: allTags } = await api(source.tags()));
+  renderTags();
+}
+
+function renderTags() {
+  $('tags').replaceChildren(...allTags.map((tag) => {
+    const chip = el('button', { type: 'button', className: 'chip', textContent: tag });
     chip.setAttribute('aria-pressed', String(state.activeTag === tag));
     chip.addEventListener('click', () => {
       state.activeTag = state.activeTag === tag ? '' : tag;
-      loadTags();
+      renderTags();
+      closeDrawer();
       runSearch();
     });
     return chip;
   }));
+
+  if (!allTags.length) {
+    $('tags').replaceChildren(el('p', { className: 'empty', textContent: 'No topics yet.' }));
+  }
 }
 
 async function runSearch() {
-  syncClearButton();
+  syncActiveFilter();
 
   if (!state.query.trim() && !state.activeTag) {
     if (state.activeDate) await showDay(state.activeDate);
@@ -219,13 +265,18 @@ async function runSearch() {
   }
   if (!(await confirmDiscardNotes())) return;
 
-  const params = new URLSearchParams({ q: state.query, tag: state.activeTag });
-  const { hits } = await api(`/api/search?${params}`);
+  const hits = READ_ONLY
+    ? searchLocally(state.query, state.activeTag)
+    : (await api(`/api/search?${new URLSearchParams({
+        q: state.query, tag: state.activeTag,
+      })}`)).hits;
 
   const heading = el('div', { className: 'day-head' }, [
-    el('h2', { textContent: hits.length
-      ? `${hits.length} match${hits.length === 1 ? '' : 'es'}`
-      : 'No matches' }),
+    el('h2', {
+      textContent: hits.length
+        ? `${hits.length} match${hits.length === 1 ? '' : 'es'}`
+        : 'No matches',
+    }),
     el('span', { className: 'day-meta', textContent: describeFilters() }),
   ]);
 
@@ -251,6 +302,21 @@ async function runSearch() {
   window.scrollTo({ top: 0 });
 }
 
+/* Static mode has no server to search, so the exported index is filtered here.
+   Same rules as digest.search: an empty query with no tag matches nothing, days
+   come newest first, and a topic must match both the query and the tag. */
+function searchLocally(query, tag) {
+  const needle = (query || '').trim().toLowerCase();
+  const wanted = (tag || '').trim().toLowerCase();
+  if (!needle && !wanted) return [];
+
+  return (state.searchIndex || []).filter((entry) => {
+    if (wanted && !entry.tags.includes(wanted)) return false;
+    if (needle && !entry.text.includes(needle)) return false;
+    return true;
+  });
+}
+
 function describeFilters() {
   const parts = [];
   if (state.query.trim()) parts.push(`“${state.query.trim()}”`);
@@ -258,28 +324,38 @@ function describeFilters() {
   return parts.join(' · ');
 }
 
-function syncClearButton() {
-  $('clear').hidden = !state.query.trim() && !state.activeTag;
+function syncActiveFilter() {
+  const button = $('active-filter');
+  button.hidden = !state.activeTag;
+  button.textContent = state.activeTag;
+  button.title = `Clear the ${state.activeTag} filter`;
 }
 
-/* --- sources ------------------------------------------------------------- */
+/* --- sources (live only) ------------------------------------------------- */
+
+const QUIET_DAYS_BEFORE_SUSPECT = 4;
+
+function isProbablyDead(entry) {
+  if (!entry.enabled || entry.last_seen || !entry.added) return false;
+  const added = new Date(`${entry.added}T00:00:00`);
+  return (Date.now() - added.getTime()) / 86_400_000 >= QUIET_DAYS_BEFORE_SUSPECT;
+}
 
 async function loadSources() {
   const { sources } = await api('/api/sources');
   const active = sources.filter((s) => s.enabled).length;
   $('sources-count').textContent = `(${active}/${sources.length})`;
 
-  $('sources').replaceChildren(...sources.map((source) => {
-    const handle = el('span', { className: 'handle', textContent: `@${source.handle}` });
-    if (isProbablyDead(source)) {
-      // A handle that has been watched for a while and never yielded a post is
-      // usually a typo or a renamed account. Days of silence alone is not
-      // evidence — plenty of real accounts simply post rarely — so this waits
-      // before complaining.
+  $('sources').replaceChildren(...sources.map((entry) => {
+    const handle = el('span', { className: 'handle', textContent: `@${entry.handle}` });
+    if (isProbablyDead(entry)) {
+      // A handle watched for a while that has never yielded a post is usually a
+      // typo or a renamed account. A few quiet days is not evidence — plenty of
+      // real accounts post rarely — so this waits before complaining.
       handle.append(el('span', {
         className: 'stale',
         textContent: ' ?',
-        title: `Watched since ${source.added} with no post found. `
+        title: `Watched since ${entry.added} with no post found. `
           + 'Check the handle is still correct.',
       }));
     }
@@ -287,12 +363,12 @@ async function loadSources() {
     const toggle = el('button', {
       type: 'button',
       className: 'icon-button',
-      textContent: source.enabled ? '◉' : '○',
-      title: source.enabled ? 'Disable (stop pulling new posts)' : 'Enable',
+      textContent: entry.enabled ? '◉' : '○',
+      title: entry.enabled ? 'Disable (stop pulling new posts)' : 'Enable',
     });
     toggle.addEventListener('click', async () => {
-      await postJSON(`/api/sources/${encodeURIComponent(source.handle)}`,
-                     { enabled: !source.enabled }, 'PATCH');
+      await postJSON(`/api/sources/${encodeURIComponent(entry.handle)}`,
+                     { enabled: !entry.enabled }, 'PATCH');
       loadSources();
     });
 
@@ -302,23 +378,14 @@ async function loadSources() {
     });
     remove.addEventListener('click', async () => {
       // Deleting is the only destructive action in the UI, so it asks.
-      if (!window.confirm(`Delete @${source.handle}? Disabling keeps its past `
+      if (!window.confirm(`Delete @${entry.handle}? Disabling keeps its past `
         + 'contributions attributable.')) return;
-      await api(`/api/sources/${encodeURIComponent(source.handle)}`, { method: 'DELETE' });
+      await api(`/api/sources/${encodeURIComponent(entry.handle)}`, { method: 'DELETE' });
       loadSources();
     });
 
-    return el('li', { className: source.enabled ? '' : 'off' }, [handle, toggle, remove]);
+    return el('li', { className: entry.enabled ? '' : 'off' }, [handle, toggle, remove]);
   }));
-}
-
-const QUIET_DAYS_BEFORE_SUSPECT = 4;
-
-function isProbablyDead(source) {
-  if (!source.enabled || source.last_seen || !source.added) return false;
-  const added = new Date(`${source.added}T00:00:00`);
-  const days = (Date.now() - added.getTime()) / 86_400_000;
-  return days >= QUIET_DAYS_BEFORE_SUSPECT;
 }
 
 function wireAddSource() {
@@ -352,10 +419,10 @@ function wireAddSource() {
   });
 }
 
-/* --- runs ---------------------------------------------------------------- */
+/* --- runs (live only) ---------------------------------------------------- */
 
 async function loadRuns() {
-  const { runs, problems } = await api('/api/runs');
+  const { runs, problems } = await api(source.runs());
 
   const badge = $('runs-badge');
   badge.hidden = !problems;
@@ -388,16 +455,11 @@ function renderRun(run) {
     }),
   ]);
 
-  const row = el('li', {}, head);
   const detail = el('div', { className: 'run-detail', hidden: true });
 
-  if (run.error) {
-    detail.append(el('p', { className: 'error', textContent: run.error }));
-  }
+  if (run.error) detail.append(el('p', { className: 'error', textContent: run.error }));
   if (run.failures && run.failures.length) {
-    detail.append(el('ul', {}, run.failures.map(
-      (note) => el('li', { textContent: note }),
-    )));
+    detail.append(el('ul', {}, run.failures.map((note) => el('li', { textContent: note }))));
   }
   if (!run.error && !(run.failures || []).length) {
     detail.append(el('p', {
@@ -413,8 +475,7 @@ function renderRun(run) {
   showLog.addEventListener('click', async () => {
     showLog.disabled = true;
     try {
-      const { log } = await api(`/api/log/${run.date}`);
-      detail.querySelector('.log-view')?.remove();
+      const { log } = await api(source.log(run.date));
       detail.append(renderLog(log));
       showLog.remove();
     } catch (failure) {
@@ -425,8 +486,7 @@ function renderRun(run) {
   detail.append(showLog);
 
   head.addEventListener('click', () => { detail.hidden = !detail.hidden; });
-  row.append(detail);
-  return row;
+  return el('li', {}, [head, detail]);
 }
 
 function renderLog(text) {
@@ -444,6 +504,37 @@ function formatDuration(seconds) {
   const total = Math.round(seconds || 0);
   if (total < 60) return `${total}s`;
   return `${Math.floor(total / 60)}m ${String(total % 60).padStart(2, '0')}s`;
+}
+
+/* --- drawer -------------------------------------------------------------- */
+
+function openDrawer() {
+  $('drawer').hidden = false;
+  $('scrim').hidden = false;
+  document.body.classList.add('drawer-open');
+  $('menu-button').setAttribute('aria-expanded', 'true');
+  $('drawer-close').focus();
+}
+
+function closeDrawer() {
+  if ($('drawer').hidden) return;
+  $('drawer').hidden = true;
+  $('scrim').hidden = true;
+  document.body.classList.remove('drawer-open');
+  $('menu-button').setAttribute('aria-expanded', 'false');
+  $('menu-button').focus();
+}
+
+function wireDrawer() {
+  $('menu-button').addEventListener('click', () => {
+    if ($('drawer').hidden) openDrawer(); else closeDrawer();
+  });
+  $('drawer-close').addEventListener('click', closeDrawer);
+  $('scrim').addEventListener('click', closeDrawer);
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeDrawer();
+  });
 }
 
 /* --- dates --------------------------------------------------------------- */
@@ -468,11 +559,9 @@ function wireToolbar() {
     timer = setTimeout(runSearch, 180);
   });
 
-  $('clear').addEventListener('click', () => {
-    state.query = '';
+  $('active-filter').addEventListener('click', () => {
     state.activeTag = '';
-    $('search').value = '';
-    loadTags();
+    renderTags();
     runSearch();
   });
 
@@ -482,21 +571,44 @@ function wireToolbar() {
 }
 
 async function start() {
+  // Remove the live-only panels outright in the static build. Hiding them with
+  // CSS would leave a working add-a-handle form for anyone opening devtools.
+  if (READ_ONLY) {
+    for (const node of document.querySelectorAll('[data-live-only]')) node.remove();
+  }
+
   wireToolbar();
-  wireAddSource();
+  wireDrawer();
+  if (!READ_ONLY) wireAddSource();
 
   try {
-    const [days] = await Promise.all([loadDays(), loadTags(), loadSources(), loadRuns()]);
+    const work = [loadDays(), loadTags()];
+    if (READ_ONLY) {
+      work.push(api(source.searchIndex())
+        .then(({ topics }) => { state.searchIndex = topics; })
+        .catch(() => { state.searchIndex = []; }));
+    } else {
+      work.push(loadSources(), loadRuns());
+    }
+
+    const [days] = await Promise.all(work);
+
     if (days.length) {
       await showDay(days[0].date);
     } else {
       $('main').replaceChildren(el('p', {
         className: 'empty',
-        textContent: 'No digests yet. Run: .venv/bin/python run_daily.py',
+        textContent: READ_ONLY
+          ? 'No digests published yet.'
+          : 'No digests yet. Run: .venv/bin/python run_daily.py',
       }));
     }
-    // Open the Runs panel unprompted when something needs attention.
-    if (!$('runs-badge').hidden) $('runs-panel').open = true;
+
+    // Open the drawer unprompted when a run needs attention.
+    if (!READ_ONLY && !$('runs-badge').hidden) {
+      $('runs-panel').open = true;
+      openDrawer();
+    }
   } catch (failure) {
     $('main').replaceChildren(el('p', {
       className: 'error', textContent: `Could not load: ${failure.message}`,
