@@ -1,4 +1,5 @@
 instaloader>=4.14
+browser_cookie3>=0.19        # for `instaloader --load-cookies`; direct login is blocked
 faster-whisper>=1.1
 markdown>=3.7
 pyyaml>=6.0
