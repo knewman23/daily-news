@@ -35,13 +35,9 @@
   </div>
 </nav>
 
-<main id="main" class="main" aria-live="polite">
-  <p class="empty">Loading…</p>
-</main>
+<div class="layout">
 
-<div id="scrim" class="scrim" hidden></div>
-
-<aside id="drawer" class="drawer" hidden aria-label="Days and filters">
+<aside id="drawer" class="drawer" aria-label="Days and filters">
   <div class="drawer-head">
     <h2>Browse</h2>
     <button id="drawer-close" class="icon-button" type="button">
@@ -61,6 +57,14 @@
   </section>
 
 </aside>
+
+<main id="main" class="main" aria-live="polite">
+  <p class="empty">Loading…</p>
+</main>
+
+</div><!-- .layout -->
+
+<div id="scrim" class="scrim" hidden></div>
 
 <script src="app.js"></script>
 </body>

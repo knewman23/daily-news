@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.krys.daily-news</string>
+
+  <!-- Absolute paths throughout: launchd does not read a shell profile, so
+       nothing is on PATH by convention and `python` alone would not resolve. -->
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/krystofernewman/Projects/daily-news/.venv/bin/python</string>
+    <string>/Users/krystofernewman/Projects/daily-news/run_daily.py</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/krystofernewman/Projects/daily-news</string>
+
+  <!-- Both directories are load-bearing and neither is in launchd's default
+       PATH: ffmpeg and ffprobe live in Homebrew's bin, and the claude CLI lives
+       in ~/.local/bin. Omitting either makes the 11am run fail while the same
+       command succeeds in a terminal. -->
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/Users/krystofernewman/.local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+  </dict>
+
+  <!-- launchd fires this on wake if the machine was asleep at 11:00. cron
+       simply misses the window on a laptop that sleeps. -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key><integer>11</integer>
+    <key>Minute</key><integer>0</integer>
+  </dict>
+
+  <!-- Whisper and the summarizer are CPU-heavy; Background keeps them from
+       competing with whatever is in the foreground. -->
+  <key>ProcessType</key>
+  <string>Background</string>
+
+  <!-- Nothing should ever start two runs at once: the second would fight the
+       first over the same output files. -->
+  <key>AbandonProcessGroup</key>
+  <false/>
+
+  <key>StandardOutPath</key>
+  <string>/Users/krystofernewman/Projects/daily-news/logs/launchd.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/krystofernewman/Projects/daily-news/logs/launchd.err.log</string>
+</dict>
+</plist>

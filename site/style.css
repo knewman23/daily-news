@@ -156,63 +156,43 @@ a:hover { color: var(--red); }
 .menu-button:hover { background: color-mix(in srgb, var(--gold) 18%, transparent); }
 .menu-button[aria-expanded="true"] { background: var(--gold); color: var(--ink); }
 
-/* --- drawer ------------------------------------------------------------- */
+/* --- layout: sidebar on desktop, drawer on phones ------------------------ */
 
-.scrim {
-  position: fixed;
-  inset: 0;
-  z-index: 30;
-  background: color-mix(in srgb, var(--ink) 45%, transparent);
+/* Desktop is the base case: the panels are a persistent left rail, and the
+   menu button and scrim do not exist. Everything drawer-shaped is confined to
+   the narrow-window block near the bottom of this file, so the two behaviours
+   cannot bleed into each other. */
+.layout {
+  display: grid;
+  grid-template-columns: 15.5rem minmax(0, 1fr);
+  gap: 1.75rem;
+  max-width: 74rem;
+  margin: 0 auto;
+  padding: 1.75rem 1rem 4rem;
+  align-items: start;
 }
 
 .drawer {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 40;
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
-  width: min(var(--drawer-width), 88vw);
-  height: 100dvh;
-  padding: 0.9rem 1rem 2rem;
-  overflow-y: auto;
-  background: var(--parchment-aged);
-  border-left: 3px solid var(--gold);
-  box-shadow: -4px 0 18px color-mix(in srgb, var(--ink) 25%, transparent);
+  gap: 0.9rem;
+  min-width: 0;
 }
 
-/* [hidden] has to be restated: the explicit display values above would
-   otherwise keep the drawer and scrim on screen. */
-.drawer[hidden], .scrim[hidden] { display: none; }
-
-@media (prefers-reduced-motion: no-preference) {
-  .drawer { animation: slide-in 180ms ease-out; }
-  .scrim { animation: fade-in 180ms ease-out; }
-}
-
-@keyframes slide-in { from { transform: translateX(100%); } }
-@keyframes fade-in { from { opacity: 0; } }
-
-.drawer-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 0.4rem;
-  border-bottom: 1px solid var(--rule);
-}
-
-.drawer-head h2 {
-  margin: 0;
-  font: 700 0.72rem/1.4 var(--sans);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--slate);
-}
+.drawer-head { display: none; }        /* no "Browse" title or close button here */
+.menu-button { display: none; }
+.scrim { display: none; }
 
 /* --- panels ------------------------------------------------------------- */
 
-.panel { margin: 0; }
+.panel {
+  margin: 0;
+  background: var(--parchment-aged);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 0.7rem 0.85rem;
+  box-shadow: var(--shadow);
+}
 
 .panel-title {
   margin: 0 0 0.5rem;
@@ -410,12 +390,7 @@ details.panel[open] > .panel-title { margin-bottom: 0.6rem; }
 
 /* --- main pane ---------------------------------------------------------- */
 
-.main {
-  max-width: 44rem;
-  margin: 0 auto;
-  padding: 1.75rem 1rem 4rem;
-  min-width: 0;
-}
+.main { min-width: 0; }
 
 .day-head {
   display: flex;
@@ -533,21 +508,93 @@ details.panel[open] > .panel-title { margin-bottom: 0.6rem; }
 
 .empty { color: var(--slate); font-style: italic; }
 
-/* --- phones ------------------------------------------------------------- */
+/* --- phones: the rail becomes a slide-out drawer -------------------------- */
 
 @media (max-width: 46rem) {
+  /* Single column, and the aside leaves the flow entirely so the reading
+     column is not squeezed. */
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    padding: 1.25rem 0.85rem 3rem;
+  }
+
+  .menu-button { display: block; }
+
+  .drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 40;
+    gap: 0.8rem;
+    width: min(var(--drawer-width), 88vw);
+    height: 100dvh;
+    padding: 0.9rem 1rem 2rem;
+    overflow-y: auto;
+    background: var(--parchment-aged);
+    border-left: 3px solid var(--gold);
+    box-shadow: -4px 0 18px color-mix(in srgb, var(--ink) 25%, transparent);
+  }
+
+  /* Flat inside the drawer: the drawer is already a raised surface, so cards
+     within it read as boxes inside a box. */
+  .drawer .panel {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .drawer-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .drawer-head h2 {
+    margin: 0;
+    font: 700 0.72rem/1.4 var(--sans);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--slate);
+  }
+
+  .scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    background: color-mix(in srgb, var(--ink) 45%, transparent);
+  }
+
+  /* [hidden] has to be restated: the explicit display values above would
+     otherwise keep the drawer and scrim on screen. */
+  .drawer[hidden], .scrim[hidden] { display: none; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .drawer:not([hidden]) { animation: slide-in 180ms ease-out; }
+    .scrim:not([hidden]) { animation: fade-in 180ms ease-out; }
+  }
+
+  .days { max-height: 45vh; }
+
   .masthead { padding: 1rem 0.85rem 0.85rem; }
   .crest { max-width: min(160px, 45vw); }
   .masthead h1 { font-size: 1.35rem; letter-spacing: 0.1em; }
   .tagline { font-size: 0.72rem; }
 
   .toolbar-inner { padding: 0.5rem 0.7rem; gap: 0.5rem; }
-  .main { padding: 1.25rem 0.85rem 3rem; }
 
   .day-head h2 { font-size: 1.25rem; }
   .article h2 { font-size: 1.1rem; margin-top: 1.6rem; }
   .journal textarea { min-height: 6.5rem; }
 }
+
+@keyframes slide-in { from { transform: translateX(100%); } }
+@keyframes fade-in { from { opacity: 0; } }
 
 /* Touch pointers get real tap targets. The 44px floor is Apple's guidance and
    the icon buttons are nowhere near it by default. */

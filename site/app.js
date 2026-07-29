@@ -508,7 +508,15 @@ function formatDuration(seconds) {
 
 /* --- drawer -------------------------------------------------------------- */
 
+/* The panels are a persistent rail on desktop and a slide-out drawer on phones.
+   Which one applies is decided here rather than by CSS alone, because the drawer
+   is toggled with the `hidden` attribute: leaving it set on a desktop-width
+   window would hide the rail from assistive technology even if CSS drew it. The
+   breakpoint matches the one in style.css. */
+const PHONE = window.matchMedia('(max-width: 46rem)');
+
 function openDrawer() {
+  if (!PHONE.matches) return;
   $('drawer').hidden = false;
   $('scrim').hidden = false;
   document.body.classList.add('drawer-open');
@@ -517,7 +525,7 @@ function openDrawer() {
 }
 
 function closeDrawer() {
-  if ($('drawer').hidden) return;
+  if (!PHONE.matches || $('drawer').hidden) return;
   $('drawer').hidden = true;
   $('scrim').hidden = true;
   document.body.classList.remove('drawer-open');
@@ -525,7 +533,28 @@ function closeDrawer() {
   $('menu-button').focus();
 }
 
+function applyLayout() {
+  const drawer = $('drawer');
+  if (PHONE.matches) {
+    drawer.hidden = true;
+    $('scrim').hidden = true;
+    document.body.classList.remove('drawer-open');
+    $('menu-button').setAttribute('aria-expanded', 'false');
+  } else {
+    // Desktop: always present, never a dialog.
+    drawer.hidden = false;
+    $('scrim').hidden = true;
+    document.body.classList.remove('drawer-open');
+    $('menu-button').removeAttribute('aria-expanded');
+  }
+}
+
 function wireDrawer() {
+  applyLayout();
+  // Rotating a phone or dragging a window across the breakpoint must not leave
+  // the rail stuck hidden, or the drawer stuck open over a wide layout.
+  PHONE.addEventListener('change', applyLayout);
+
   $('menu-button').addEventListener('click', () => {
     if ($('drawer').hidden) openDrawer(); else closeDrawer();
   });
@@ -604,7 +633,8 @@ async function start() {
       }));
     }
 
-    // Open the drawer unprompted when a run needs attention.
+    // Surface a run that needs attention. On desktop the rail is already
+    // visible, so expanding the panel is enough.
     if (!READ_ONLY && !$('runs-badge').hidden) {
       $('runs-panel').open = true;
       openDrawer();
