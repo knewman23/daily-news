@@ -174,7 +174,29 @@ def test_an_untranscribed_post_keeps_its_own_media(tree):
     remaining = media(tree, "2026-07-20")
     assert "aaronparnas_DONE.mp4" not in remaining
     assert "aaronparnas_TODO.mp4" in remaining
-    assert any("not transcribed" in note for note in result.skipped)
+    assert any("not extracted yet" in note for note in result.skipped)
+
+
+def test_a_post_settled_with_no_usable_text_releases_its_media(tree):
+    """A silent video will never produce a transcript. Holding its media for a
+    transcript that cannot exist keeps that media forever."""
+    from src import posts
+
+    raw = day(tree, "2026-07-20")
+    stem = "aaronparnas_SILENT"
+    (raw / f"{stem}.mp4").write_bytes(b"x" * 2048)
+    (raw / f"{stem}.json").write_text(json.dumps({
+        "handle": "aaronparnas", "shortcode": "SILENT", "kind": "video",
+    }), encoding="utf-8")
+    (tree / "data" / "transcripts" / "2026-07-20" / f"{stem}{posts.SETTLED_SUFFIX}").write_text(
+        "no audio track\n", encoding="utf-8")
+
+    result = run(tree)
+
+    assert result.files == 1
+    assert f"{stem}.mp4" not in media(tree, "2026-07-20")
+    # The marker itself stays, so the post is not retried.
+    assert (tree / "data" / "transcripts" / "2026-07-20" / f"{stem}{posts.SETTLED_SUFFIX}").is_file()
 
 
 def test_a_partly_transcribed_carousel_is_kept(tree):

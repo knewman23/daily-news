@@ -122,9 +122,12 @@ def _prune_day(day_dir: Path, transcripts: Path) -> tuple[int, int, list[str]]:
     held: list[str] = []
 
     recorded = posts.load(day_dir)
+    # "Settled", not "transcribed": a silent video or an unreadable graphic will
+    # never produce text, and holding its media for a transcript that cannot
+    # exist means that media is kept forever.
     transcribed = {
         post.stem for post in recorded
-        if post.kind and (transcripts / f"{post.stem}.txt").is_file()
+        if post.kind and post.is_settled(transcripts)
     }
     known = {post.stem for post in recorded}
 
@@ -148,7 +151,7 @@ def _prune_day(day_dir: Path, transcripts: Path) -> tuple[int, int, list[str]]:
                 held.append(f"{day_dir.name}/{path.name}: sidecar has no kind")
                 continue
             if stem not in transcribed:
-                held.append(f"{day_dir.name}/{path.name}: not transcribed")
+                held.append(f"{day_dir.name}/{path.name}: not extracted yet")
                 continue
 
         try:

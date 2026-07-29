@@ -88,6 +88,9 @@ def ocr_day(
             stats.transcribed_count += 1
             continue
 
+        if post.settled_marker(out).is_file():
+            continue        # already established there is nothing readable here
+
         slides = post.images(raw)
         if not slides:
             # Pruned before it was read. The text is unrecoverable, so say so
@@ -115,6 +118,10 @@ def ocr_day(
         caption = post.caption
         if len(f"{combined} {caption}".split()) < cfg.min_words:
             log.info("%s yielded too little text, skipping", post.stem)
+            out.mkdir(parents=True, exist_ok=True)
+            post.settled_marker(out).write_text(
+                f"only {len(f'{combined} {caption}'.split())} words read\n",
+                encoding="utf-8")
             continue
 
         out.mkdir(parents=True, exist_ok=True)

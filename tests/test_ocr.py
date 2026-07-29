@@ -318,3 +318,32 @@ def test_posts_come_back_in_a_stable_order(dirs):
     transcripts, _ = ocr.ocr_day(raw, out, CFG, recognizer=FakeRecognizer())
 
     assert [t.shortcode for t in transcripts] == ["AAA", "BBB", "CCC"]
+
+
+# --- settled with nothing usable -------------------------------------------
+
+
+def test_an_unreadable_image_is_recorded_as_settled(dirs):
+    from src import posts
+
+    raw, out = dirs
+    make_image(raw)
+
+    ocr.ocr_day(raw, out, CFG, recognizer=FakeRecognizer(text="/ OAF NATION //"))
+
+    assert (out / f"oafnation_actual_AAA{posts.SETTLED_SUFFIX}").is_file()
+
+
+def test_a_settled_image_is_not_read_again(dirs):
+    from src import posts
+
+    raw, out = dirs
+    make_image(raw)
+    out.mkdir(parents=True)
+    (out / f"oafnation_actual_AAA{posts.SETTLED_SUFFIX}").write_text("0 words\n", encoding="utf-8")
+
+    recognizer = FakeRecognizer()
+    transcripts, stats = ocr.ocr_day(raw, out, CFG, recognizer=recognizer)
+
+    assert recognizer.calls == []
+    assert transcripts == []

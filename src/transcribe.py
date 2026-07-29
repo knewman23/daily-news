@@ -119,6 +119,11 @@ def transcribe_day(
             stats.transcribed_count += 1
             continue
 
+        if post.settled_marker(out).is_file():
+            # Already established that there is nothing usable here. Re-running
+            # whisper on a silent video every day produces the same nothing.
+            continue
+
         mp4 = post.video(raw)
         if not mp4.is_file():
             # Pruned before it was transcribed. Nothing can recover the audio,
@@ -130,6 +135,7 @@ def transcribe_day(
         try:
             if not has_audio(mp4, runner):
                 log.info("%s has no audio track, skipping", mp4.name)
+                _settle(post, out, "no audio track")
                 continue
 
             if model is None:
@@ -144,6 +150,7 @@ def transcribe_day(
         if len(text.split()) < cfg.min_words:
             log.info("%s produced %d words, below the floor, skipping",
                      mp4.name, len(text.split()))
+            _settle(post, out, f"only {len(text.split())} words transcribed")
             continue
 
         out.mkdir(parents=True, exist_ok=True)
@@ -166,6 +173,17 @@ def _run(mp4: Path, out: Path, model, runner) -> str:
         return transcribe_file(wav, model)
     finally:
         wav.unlink(missing_ok=True)
+
+
+def _settle(post, out: Path, reason: str) -> None:
+    """Record that extraction concluded with nothing usable.
+
+    Without this the post looks un-extracted forever: whisper retries it on every
+    run, and prune.py keeps its media because an un-extracted post's media is the
+    only copy of its content.
+    """
+    out.mkdir(parents=True, exist_ok=True)
+    post.settled_marker(out).write_text(reason + "\n", encoding="utf-8")
 
 
 def _transcript(meta: dict, text: str) -> Transcript:

@@ -368,3 +368,55 @@ def test_missing_ffmpeg_fails_fast_with_install_instructions():
 
 def test_require_tools_passes_when_both_binaries_exist():
     transcribe.require_tools(which=lambda name: f"/opt/homebrew/bin/{name}")
+
+
+# --- settled with nothing usable -------------------------------------------
+
+
+def test_a_video_with_no_audio_is_recorded_as_settled(dirs):
+    """Otherwise it looks un-extracted forever: whisper retries it every run and
+    prune keeps its media for a transcript that cannot exist."""
+    from src import posts
+
+    raw, out = dirs
+    make_post(raw)
+
+    transcribe.transcribe_day(raw, out, CFG, model_factory=CountingFactory(),
+                             runner=FakeRunner(has_audio=False))
+
+    marker = out / f"aaronparnas_AAA{posts.SETTLED_SUFFIX}"
+    assert marker.is_file()
+    assert "no audio" in marker.read_text(encoding="utf-8")
+
+
+def test_a_below_floor_transcript_is_recorded_as_settled(dirs):
+    from src import posts
+
+    raw, out = dirs
+    make_post(raw)
+
+    transcribe.transcribe_day(raw, out, CFG,
+                             model_factory=CountingFactory(FakeModel("uh, hey")),
+                             runner=FakeRunner())
+
+    assert (out / f"aaronparnas_AAA{posts.SETTLED_SUFFIX}").is_file()
+
+
+def test_a_settled_post_is_not_transcribed_again(dirs):
+    """Re-running whisper on a silent video produces the same nothing."""
+    from src import posts
+
+    raw, out = dirs
+    make_post(raw)
+    out.mkdir(parents=True)
+    (out / f"aaronparnas_AAA{posts.SETTLED_SUFFIX}").write_text("no audio\n", encoding="utf-8")
+
+    runner = FakeRunner()
+    factory = CountingFactory()
+    transcripts, stats = transcribe.transcribe_day(
+        raw, out, CFG, model_factory=factory, runner=runner)
+
+    assert runner.calls == []
+    assert factory.count == 0
+    assert transcripts == []
+    assert stats.incomplete is False

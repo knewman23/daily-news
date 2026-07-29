@@ -24,6 +24,12 @@ IMAGE = "image"
 
 SLIDE_SUFFIX = "_"
 
+# Written when extraction ran and produced nothing usable — a silent video, a
+# graphic with no readable text. Distinct from "not extracted yet", which is why
+# it exists: without it those posts are retried by whisper on every run forever
+# and their media can never be pruned.
+SETTLED_SUFFIX = ".none"
+
 
 @dataclass(frozen=True)
 class Post:
@@ -66,6 +72,13 @@ class Post:
 
     def transcript(self, out: Path) -> Path:
         return out / f"{self.stem}.txt"
+
+    def settled_marker(self, out: Path) -> Path:
+        return out / f"{self.stem}{SETTLED_SUFFIX}"
+
+    def is_settled(self, out: Path) -> bool:
+        """True once extraction has reached a conclusion, usable text or not."""
+        return self.transcript(out).is_file() or self.settled_marker(out).is_file()
 
 
 def load(raw_dir: str | Path) -> list[Post]:

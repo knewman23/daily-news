@@ -300,8 +300,16 @@ removed. What survives is what has lasting value and costs nothing:
 | Kept forever | Size |
 |---|---|
 | `data/transcripts/<date>/*.txt` — the extracted text | ~150 KB/day |
+| `data/transcripts/<date>/*.none` — "nothing usable here", with the reason | a few bytes |
 | `data/raw/<date>/*.json` — the caption sidecars | ~1 KB/post |
 | `news/<date>.md` — the digest | ~15 KB/day |
+
+The `.none` markers matter more than their size suggests. A silent video or an
+unreadable graphic will never produce a transcript, so without a record that
+extraction *concluded*, the post looks unfinished forever: whisper retries it on
+every run, and its media is never released because an un-extracted post's media is
+the only copy of its content. Found in practice — five such posts were pinning
+media and being re-transcribed daily.
 
 Those three are enough to re-summarize any past day **offline**, which is why the
 extract stages find their posts from the sidecars rather than by looking for media.
