@@ -13,7 +13,7 @@ directory is git-ignored and the notes never leave the machine.
 - Do not print, quote, or summarize the contents of `news/` unless asked about a
   specific day.
 - Never `git add` `news/`, `data/`, or `logs/`.
-- `src/notes.py` is the only code permitted to mutate a digest file.
+- Only `src/notes.py` and `src/topics.py` may mutate a digest file.
 - `tests/test_notes.py` is the load-bearing test in this project. It proves that
   saving a journal entry cannot damage the generated summary — the one failure
   here that would destroy something unrecoverable. If it fails, stop.

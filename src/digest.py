@@ -26,7 +26,7 @@ NOTES_HEADING = "## My Notes"
 
 _SECTION_SPLIT = re.compile(r"^## ", re.MULTILINE)
 _FRONTMATTER = re.compile(r"\A---\n(.*?)\n---\n?", re.DOTALL)
-_META_LINE = re.compile(r"^(tags|sources|posts):\s*(.*)$", re.IGNORECASE)
+_META_LINE = re.compile(r"^(tags|sources|posts|skipped):\s*(.*)$", re.IGNORECASE)
 _MD_LINK = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
 
 
@@ -48,6 +48,14 @@ class Topic:
     sources: list[str]
     body: str
     links: list[tuple[str, str]] = field(default_factory=list)
+    # Why the interest filter left this out, or "" if it is in the feed. The
+    # reason doubles as the flag: there is no skipped topic without one, because
+    # a drop nobody can explain is indistinguishable from a bug.
+    skipped: str = ""
+
+    @property
+    def kept(self) -> bool:
+        return not self.skipped
 
 
 @dataclass(frozen=True)
@@ -73,18 +81,34 @@ def list_days(news_dir: str | Path) -> list[DayMeta]:
 
 
 def topics_of(path: str | Path) -> list[Topic]:
+    """Every topic in the file, kept and skipped alike, in file order."""
     body = _news_body(Path(path).read_text(encoding="utf-8"))
     return [t for t in (_topic(chunk) for chunk in _SECTION_SPLIT.split(body)[1:]) if t]
 
 
+def kept_of(path: str | Path) -> list[Topic]:
+    return [t for t in topics_of(path) if t.kept]
+
+
+def skipped_of(path: str | Path) -> list[Topic]:
+    """What the filter left out, in file order. Newest-day-first is the caller's job."""
+    return [t for t in topics_of(path) if not t.kept]
+
+
 def render_html(path: str | Path) -> str:
-    """Render the day's news as HTML.
+    """Render the day's *feed* as HTML — skipped topics are dropped.
+
+    They are in the file so the filter's judgement can be reversed, but they are
+    not news until restored. Sections are filtered before markdown rather than
+    hidden after it: the published site would otherwise ship the full text of
+    every dropped topic to anyone who opened devtools.
 
     `nl2br` matters: each topic's `tags:` / `sources:` / `posts:` lines form one
     markdown paragraph, and without it they collapse onto a single run-together
     line ("tags: politics sources: @handle").
     """
-    body = _news_body(Path(path).read_text(encoding="utf-8"))
+    text = Path(path).read_text(encoding="utf-8")
+    body = _feed_body(_news_body(text))
     return markdown.markdown(body, extensions=["extra", "sane_lists", "nl2br"])
 
 
@@ -105,7 +129,10 @@ def search(
 
     hits = []
     for day in list_days(news_dir):
-        for topic in topics_of(day.path):
+        # Skipped topics are not searchable: a topic the filter dropped turning
+        # up in results would blur what the filter is for. Restoring one makes it
+        # searchable in the same move, with no reindexing.
+        for topic in kept_of(day.path):
             if wanted and wanted not in topic.tags:
                 continue
             if needle and needle not in f"{topic.headline}\n{topic.body}".lower():
@@ -116,9 +143,11 @@ def search(
 
 
 def all_tags(news_dir: str | Path) -> list[str]:
+    """Every tag in the feed. Skipped topics contribute none — a chip that
+    filtered to nothing would be worse than an absent one."""
     seen: dict[str, None] = {}
     for day in list_days(news_dir):
-        for topic in topics_of(day.path):
+        for topic in kept_of(day.path):
             for t in topic.tags:
                 seen[t] = None
     return list(seen)
@@ -157,6 +186,22 @@ def _news_body(text: str) -> str:
     return body.split(NOTES_HEADING, 1)[0].rstrip() + "\n"
 
 
+def _feed_body(body: str) -> str:
+    """Drop skipped sections, keeping the title and the kept ones verbatim.
+
+    A chunk that does not parse as a topic is kept: an unreadable section is a
+    malformed digest, and silently deleting it from the view would hide that.
+    """
+    parts = _SECTION_SPLIT.split(body)
+    out = [parts[0]]
+    for chunk in parts[1:]:
+        topic = _topic(chunk)
+        if topic and not topic.kept:
+            continue
+        out.append(f"## {chunk}")
+    return "".join(out).rstrip() + "\n"
+
+
 def _topic(chunk: str) -> Topic | None:
     headline, _, rest = chunk.partition("\n")
     headline = headline.strip()
@@ -166,6 +211,7 @@ def _topic(chunk: str) -> Topic | None:
     tags: list[str] = []
     sources: list[str] = []
     links: list[tuple[str, str]] = []
+    skipped = ""
     lines = rest.splitlines()
 
     consumed = 0
@@ -179,6 +225,11 @@ def _topic(chunk: str) -> Topic | None:
 
         if field_name == "tags":
             tags = [v.strip().lower() for v in raw.split(",") if v.strip()]
+        elif field_name == "skipped":
+            # An empty `skipped:` counts as kept, so clearing the reason and
+            # deleting the line mean the same thing. Two spellings of restored
+            # would otherwise be one more thing that can disagree.
+            skipped = raw.strip()
         else:
             # The sources line carries markdown links: `[@handle](url)`. Strip the
             # markup back off so filtering still compares bare handles, and keep
@@ -192,7 +243,8 @@ def _topic(chunk: str) -> Topic | None:
                 ]
         consumed += 1
 
-    return Topic(headline, tags, sources, "\n".join(lines[consumed:]).strip(), links)
+    return Topic(headline, tags, sources, "\n".join(lines[consumed:]).strip(),
+                 links, skipped)
 
 
 def snippet(body: str, limit: int = 200) -> str:

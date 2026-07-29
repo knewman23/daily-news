@@ -14,6 +14,7 @@ Each module owns one stage and is imported by `run_daily.py`, `serve.py`, or
 | `render.py` | topics → markdown |
 | `digest.py` | reading digests back: index, topics, search, HTML |
 | `notes.py` | the journal block |
+| `topics.py` | flipping one topic's `skipped:` line |
 | `publish.py` | export and push |
 | `mailer.py` | the summary email |
 | `runlog.py` | run history |
@@ -44,10 +45,32 @@ world, and that is the pattern this codebase is built to avoid.
 
 ## Two modules with sharp edges
 
-**`notes.py` is the only code that may mutate a digest file.** Everything else
+**Only `notes.py` and `topics.py` may mutate a digest file.** Everything else
 reads. The journal lives inside `news/<date>.md` between marker comments, next to
 generated content that cannot be regenerated cheaply. If you need to change a
 digest from anywhere else, you almost certainly need to re-render it instead.
+
+Both writers follow the same shape, and a third one should too: identify an exact
+span, refuse rather than guess when the target is ambiguous, copy everything
+outside the span verbatim, and reject any input that could forge a structural
+boundary. `topics.py` splits the journal off before it searches, so a note can
+never be mistaken for a topic.
+
+## Skipped topics: two records, two questions
+
+A topic the interest filter dropped is stored **in full** in the digest with a
+`skipped: <reason>` meta line, so the judgement can be reversed without
+recompiling the day. Consequences worth knowing:
+
+- `digest.render_html` renders only kept topics, and filters *before* markdown —
+  the published site must not ship the text of everything that was dropped.
+- `digest.search` and `digest.all_tags` read kept topics only.
+- The **digest is current state** and reflects hand edits. The **run log is
+  history** and says what that run decided. They legitimately disagree once a
+  topic is restored; do not "fix" that by writing to the run record.
+- Frontmatter `tags:`/`sources:` are written once by the run and are not updated
+  by a hand edit. Nothing reads them for topic membership, which is what makes
+  that safe.
 
 **`render.py` is pure** — topics in, markdown string out, no I/O. That is what
 lets `tests/test_render.py` pin the output format exactly. Adding a file read or

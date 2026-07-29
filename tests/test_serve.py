@@ -432,8 +432,6 @@ def test_the_days_index_reports_when_the_last_run_finished(server):
 
 
 def test_each_day_carries_what_the_filter_left_out(server):
-    from src import runlog
-
     _, payload = server.json("/api/days")
     by_date = {d["date"]: d for d in payload["days"]}
 
@@ -442,7 +440,21 @@ def test_each_day_carries_what_the_filter_left_out(server):
 
 
 def test_a_day_response_carries_its_skipped_topics(server, tmp_path):
-    from src import runlog
+    from src import topics
+
+    topics.set_skipped(tmp_path / "news" / "2026-07-28.md",
+                       "Nvidia earnings beat estimates", "not interested")
+
+    _, payload = server.json("/api/day/2026-07-28")
+    assert payload["skipped"] == [
+        {"headline": "Nvidia earnings beat estimates", "reason": "not interested"}
+    ]
+
+
+def test_skips_come_from_the_digest_not_the_run_record(server, tmp_path):
+    """The run record says what that run decided and keeps saying it. The digest
+    says what is true now. Once they disagree, the page follows the digest."""
+    from src import runlog, topics
 
     runlog.append(tmp_path / "logs", runlog.RunRecord(
         started_at="2026-07-28T12:00:00+00:00",
@@ -450,27 +462,127 @@ def test_a_day_response_carries_its_skipped_topics(server, tmp_path):
         date="2026-07-28", ok=True,
         skipped=["My trip to Moab: personal vlog"],
     ))
+    topics.set_skipped(tmp_path / "news" / "2026-07-28.md",
+                       "Nvidia earnings beat estimates", "not interested")
 
     _, payload = server.json("/api/day/2026-07-28")
-    assert payload["skipped"] == ["My trip to Moab: personal vlog"]
+    assert [s["headline"] for s in payload["skipped"]] == [
+        "Nvidia earnings beat estimates"
+    ]
+    # And the run record is untouched, still describing what the run did.
+    assert runlog.latest_for(tmp_path / "logs", "2026-07-28")["skipped"] == [
+        "My trip to Moab: personal vlog"
+    ]
 
 
-def test_the_newest_run_for_a_date_wins(server, tmp_path):
-    """An older run's skip list describes a digest that has been replaced."""
-    from src import runlog
-
-    logs = tmp_path / "logs"
-    for note in ("stale: old reason", "fresh: new reason"):
-        runlog.append(logs, runlog.RunRecord(
-            started_at="2026-07-28T12:00:00+00:00",
-            finished_at="2026-07-28T12:03:00+00:00",
-            date="2026-07-28", ok=True, skipped=[note],
-        ))
-
-    _, payload = server.json("/api/day/2026-07-28")
-    assert payload["skipped"] == ["fresh: new reason"]
-
-
-def test_a_date_with_no_run_record_has_no_skipped(server):
+def test_a_day_with_nothing_left_out_has_no_skipped(server):
     _, payload = server.json("/api/day/2026-07-27")
     assert payload["skipped"] == []
+
+
+# --- changing what is skipped ---------------------------------------------
+
+
+def test_marking_a_topic_as_skipped_takes_it_out_of_the_feed(server):
+    status, payload = server.json("/api/skip/2026-07-28", "POST", {
+        "headline": "Nvidia earnings beat estimates",
+        "skipped": True,
+        "reason": "not interested",
+    })
+
+    assert status == 200
+    assert payload["skipped"] == [
+        {"headline": "Nvidia earnings beat estimates", "reason": "not interested"}
+    ]
+
+    _, day = server.json("/api/day/2026-07-28")
+    assert "Nvidia" not in day["html"]
+    assert "Senate passes the spending bill" in day["html"]
+
+
+def test_marking_defaults_the_reason(server):
+    from src import topics
+
+    _, payload = server.json("/api/skip/2026-07-28", "POST", {
+        "headline": "Nvidia earnings beat estimates", "skipped": True,
+    })
+    assert payload["skipped"][0]["reason"] == topics.DEFAULT_REASON
+
+
+def test_restoring_a_topic_puts_it_back_in_the_feed(server):
+    server.json("/api/skip/2026-07-28", "POST", {
+        "headline": "Nvidia earnings beat estimates", "skipped": True,
+        "reason": "on second thought",
+    })
+    status, payload = server.json("/api/skip/2026-07-28", "POST", {
+        "headline": "Nvidia earnings beat estimates", "skipped": False,
+    })
+
+    assert status == 200
+    assert payload["skipped"] == []
+
+    _, day = server.json("/api/day/2026-07-28")
+    assert "Revenue came in ahead of guidance." in day["html"]
+
+
+def test_skipping_leaves_the_journal_alone(server):
+    server.json("/api/notes/2026-07-28", "POST", {"notes": "worth re-reading"})
+    server.json("/api/skip/2026-07-28", "POST", {
+        "headline": "Nvidia earnings beat estimates", "skipped": True,
+    })
+
+    _, day = server.json("/api/day/2026-07-28")
+    assert day["notes"] == "worth re-reading"
+
+
+def test_a_skipped_topic_stops_being_searchable(server):
+    _, before = server.json("/api/search?q=guidance")
+    assert [h["headline"] for h in before["hits"]] == ["Nvidia earnings beat estimates"]
+
+    server.json("/api/skip/2026-07-28", "POST", {
+        "headline": "Nvidia earnings beat estimates", "skipped": True,
+    })
+
+    _, after = server.json("/api/search?q=guidance")
+    assert after["hits"] == []
+
+
+def test_an_unknown_headline_is_409_rather_than_a_guess(server):
+    status, payload = server.json("/api/skip/2026-07-28", "POST", {
+        "headline": "A story that was never here", "skipped": True,
+    })
+    assert status == 409
+    assert "no topic headed" in payload["error"]
+
+
+@pytest.mark.parametrize("body", [
+    {"skipped": True},                                   # no headline
+    {"headline": "   ", "skipped": True},                # blank headline
+    {"headline": "Nvidia earnings beat estimates"},      # no skipped flag
+    {"headline": "Nvidia earnings beat estimates", "skipped": "yes"},
+    {"headline": "Nvidia earnings beat estimates", "skipped": True, "reason": 7},
+])
+def test_a_malformed_skip_body_is_400(server, body):
+    status, _ = server.request("/api/skip/2026-07-28", "POST", body)
+    assert status == 400
+
+
+def test_skipping_needs_post(server):
+    status, _ = server.request("/api/skip/2026-07-28", "PATCH", {
+        "headline": "Nvidia earnings beat estimates", "skipped": True,
+    })
+    assert status == 405
+
+
+def test_skipping_an_unknown_day_is_404(server):
+    status, _ = server.request("/api/skip/2020-01-01", "POST", {
+        "headline": "Anything", "skipped": True,
+    })
+    assert status == 404
+
+
+def test_a_skip_path_cannot_escape_the_news_directory(server):
+    status, _ = server.request("/api/skip/..%2F..%2Fetc%2Fpasswd", "POST", {
+        "headline": "Anything", "skipped": True,
+    })
+    assert status == 400

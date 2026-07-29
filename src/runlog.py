@@ -103,9 +103,13 @@ def read_log(logs_dir: str | Path, day: date | str, tail_bytes: int = LOG_TAIL_B
 def latest_for(logs_dir: str | Path, day: date | str) -> dict:
     """The most recent run record for a date, or an empty dict.
 
-    Records are newest-first, so the first match is the one whose results are on
-    disk — an earlier run's skip list would describe a digest that has since been
-    replaced.
+    Records are newest-first, so the first match is the most recent run.
+
+    Note what this is *not* for any more: the page used to read its `skipped`
+    list, and no longer does. Skipped topics live in the digest, which is current
+    state and reflects hand edits, while a run record says what that run decided
+    and keeps saying it. Do not wire this back into the UI — after a topic is
+    restored by hand the two disagree, and this one is the stale answer.
     """
     stamp = day.isoformat() if isinstance(day, date) else str(day)
     for run in load(logs_dir):

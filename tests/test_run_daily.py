@@ -78,13 +78,13 @@ class Spy:
         return self.result
 
 
-def cli_result(topics):
+def cli_result(topics, skipped=None):
     """A fake claude -p runner returning the given topics in the real wrapper shape."""
     import subprocess as sp
 
     payload = json.dumps({
         "is_error": False,
-        "result": json.dumps({"topics": topics}),
+        "result": json.dumps({"topics": topics, "skipped": skipped or []}),
         "type": "result",
     })
     return lambda cmd, **kwargs: sp.CompletedProcess(cmd, 0, stdout=payload, stderr="")
@@ -98,8 +98,9 @@ class SummarizerSpy:
     notes into.
     """
 
-    def __init__(self, topics, raises=None):
+    def __init__(self, topics, raises=None, skipped=None):
         self.topics = topics
+        self.skipped = skipped
         self.raises = raises
         self.calls = 0
         self.transcripts = None
@@ -114,7 +115,7 @@ class SummarizerSpy:
         from src import summarize
         return summarize.summarize_day(
             day, transcripts, stats, news_dir,
-            runner=cli_result(self.topics), **kwargs,
+            runner=cli_result(self.topics, self.skipped), **kwargs,
         )
 
 
@@ -122,7 +123,7 @@ def stages(
     posts=None, fetch_stats=None,
     audio=None, audio_stats=None,
     images=None, image_stats=None,
-    topics=None, fetch_raises=None, summarize_raises=None,
+    topics=None, fetch_raises=None, summarize_raises=None, skipped=None,
 ):
     """Build a full set of injected stages with sensible defaults."""
     return {
@@ -140,7 +141,7 @@ def stages(
              image_stats or Stats()),
         ),
         "summarizer": SummarizerSpy(topics if topics is not None else TOPICS,
-                                    raises=summarize_raises),
+                                    raises=summarize_raises, skipped=skipped),
     }
 
 
@@ -581,3 +582,47 @@ def test_orphan_media_is_flagged_against_the_day(project):
     assert digest.list_days(project / "news")[0].incomplete is True
     entry = json.loads((project / "logs" / "runs.json").read_text())["runs"][0]
     assert any("no caption sidecar" in note for note in entry["failures"])
+
+
+# --- what a dropped topic must not be counted as ---------------------------
+
+DROPPED = {
+    "headline": "Merch drop announcement",
+    "body": "A new hoodie went on sale.",
+    "tags": ["media"],
+    "sources": ["@aaronparnas"],
+    "reason": "promotional, reports no news",
+}
+
+
+def test_the_digest_stores_the_dropped_topic(project):
+    """Guards the premise of the two tests below: it really is in the file."""
+    run(project, stage_kwargs={"skipped": [DROPPED]})
+    path = project / "news" / f"{DAY.isoformat()}.md"
+
+    assert len(digest.topics_of(path)) == 2
+    assert len(digest.kept_of(path)) == 1
+    assert [t.headline for t in digest.skipped_of(path)] == ["Merch drop announcement"]
+
+
+def test_the_topic_count_excludes_what_the_filter_dropped(project):
+    """The digest now stores dropped topics too. Counting them here would inflate
+    the run history with news the reader never saw."""
+    spy = PublisherSpy()
+    run(project, publisher=spy, stage_kwargs={"skipped": [DROPPED]})
+
+    assert spy.calls == [{"day": DAY, "topic_count": 1}]
+
+
+def test_a_dropped_topic_is_not_emailed_as_a_headline(project):
+    """It is already reported in the email's skipped section; listing it as a
+    headline as well would have the email contradict itself."""
+    spy = EmailerSpy()
+    run(project, emailer=spy, stage_kwargs={"skipped": [DROPPED]})
+
+    body = spy.calls[0]["body"]
+    assert "Senate passes the spending bill" in body
+    assert "1 topic for July 28" in spy.calls[0]["subject"]
+    # Named once, under the skipped heading, not among the headlines.
+    assert body.count("Merch drop announcement") == 1
+    assert "promotional, reports no news" in body

@@ -239,3 +239,84 @@ def test_a_handle_that_covered_a_story_twice_is_listed_once():
     # The first post it was drawn from is the one linked.
     assert "[@aaronparnas](https://www.instagram.com/p/AAA/)" in out
     assert "CCC" not in out
+
+
+# --- skipped topics --------------------------------------------------------
+
+
+SKIPPED = [{
+    "headline": "My trip to Moab",
+    "body": "A weekend of climbing outside town.",
+    "tags": ["travel"],
+    # Deliberately a handle no kept topic uses, so the frontmatter test below is
+    # actually about the skipped topic rather than about a shared source.
+    "sources": ["moabclimber"],
+    "reason": "personal vlog",
+}]
+
+
+def test_skipped_topics_are_written_after_the_kept_ones():
+    out = render.render_day(DAY, TOPICS, STATS, generated=GENERATED, skipped=SKIPPED)
+    assert out.index("My trip to Moab") > out.index("Nvidia earnings beat estimates")
+
+
+def test_a_skipped_topic_carries_its_reason_and_its_body():
+    out = render.render_day(DAY, TOPICS, STATS, generated=GENERATED, skipped=SKIPPED)
+    section = out.split("## My trip to Moab\n")[1]
+    assert section.splitlines()[:4] == [
+        "tags: travel",
+        "sources: @moabclimber",
+        "skipped: personal vlog",
+        "",
+    ]
+    assert "A weekend of climbing outside town." in section
+
+
+def test_the_skipped_line_comes_after_the_attribution():
+    """Presentational only — digest parses the meta run unordered — but the file
+    is read by humans, so: what it is, who covered it, why it was dropped."""
+    out = render.render_day(DAY, TOPICS, STATS, generated=GENERATED, skipped=SKIPPED)
+    section = out.split("## My trip to Moab\n")[1]
+    assert section.index("sources:") < section.index("skipped:")
+
+
+def test_a_skipped_topic_stays_out_of_the_frontmatter():
+    out = render.render_day(DAY, TOPICS, STATS, generated=GENERATED, skipped=SKIPPED)
+    header = out.split("---")[1]
+    assert "travel" not in header
+    assert "moabclimber" not in header
+
+
+def test_a_reason_is_collapsed_to_one_line():
+    """A newline would end the meta line and turn its tail into body text."""
+    out = render.render_day(DAY, TOPICS, STATS, generated=GENERATED, skipped=[
+        {**SKIPPED[0], "reason": "personal\nvlog\nnot news"},
+    ])
+    assert "skipped: personal vlog not news" in out
+
+
+def test_a_skip_with_no_reason_still_says_something():
+    out = render.render_day(DAY, TOPICS, STATS, generated=GENERATED, skipped=[
+        {**SKIPPED[0], "reason": ""},
+    ])
+    assert "skipped: off topic" in out
+
+
+def test_a_skipped_topic_with_no_body_gets_a_placeholder():
+    out = render.render_day(DAY, TOPICS, STATS, generated=GENERATED, skipped=[
+        {"headline": "Thin one", "reason": "off topic"},
+    ])
+    assert render.NO_BODY in out
+
+
+def test_a_kept_topic_with_no_body_is_still_an_error():
+    """Tolerated for a skip explanation, never for the product."""
+    with pytest.raises(ValueError, match="no body"):
+        render.render_day(DAY, [{"headline": "Empty", "body": "  "}], STATS,
+                          generated=GENERATED)
+
+
+def test_a_day_of_nothing_but_skips_is_not_reported_as_empty():
+    out = render.render_day(DAY, [], STATS, generated=GENERATED, skipped=SKIPPED)
+    assert render.EMPTY_BODY not in out
+    assert "My trip to Moab" in out

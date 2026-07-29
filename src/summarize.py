@@ -55,7 +55,8 @@ Group them into distinct news topics and return ONLY a JSON object of this shape
 
 {"topics": [{"headline": str, "body": str, "tags": [str],
              "sources": [str], "posts": [str]}],
- "skipped": [{"headline": str, "reason": str}]}
+ "skipped": [{"headline": str, "body": str, "tags": [str],
+              "sources": [str], "posts": [str], "reason": str}]}
 
 Rules:
 - "posts" lists the id of every post the topic was drawn from, copied exactly
@@ -87,9 +88,12 @@ Keep a topic only if it is genuinely about one of these:
 {include}
 Leave out anything that is mainly:
 {exclude}
-Every topic you leave out on relevance grounds goes in "skipped", with a one-line
-reason. Do not silently discard anything: a reader who cannot see what was
-dropped cannot tell a well-tuned filter from one that is throwing away news.
+Every topic you leave out on relevance grounds goes in "skipped", written out in
+full — the same "headline", "body", "tags", "sources" and "posts" you would have
+given it had you kept it — plus a one-line "reason". Do not silently discard
+anything: a reader who cannot see what was dropped cannot tell a well-tuned
+filter from one that is throwing away news, and the full text is what lets them
+overrule you without the day being compiled again.
 """
 
 TRANSCRIPTS_HEADER = """\
@@ -188,10 +192,13 @@ def summarize_day(
     distinguishable from a genuinely quiet news day.
     """
     topics: list[dict[str, Any]] = []
+    skipped: list[dict[str, Any]] = []
     if transcripts:
         topics, skipped = call_claude(
             build_prompt(transcripts, interests), runner=runner, model=model,
         )
+        # The run record keeps the flat one-line form: it is a note about what
+        # this run decided, and it stays true even after the digest is edited.
         for entry in skipped:
             stats.skipped.append(
                 f"{entry['headline']}: {entry['reason'] or 'off topic'}"
@@ -205,6 +212,7 @@ def summarize_day(
         day, topics, stats.as_dict(),
         generated=generated or datetime.now(timezone.utc),
         permalinks=permalink_index(transcripts),
+        skipped=skipped,
     ))
     return path
 
@@ -272,10 +280,13 @@ def _payload(result: str) -> Any:
 
 
 def _skipped(payload: Any) -> list[dict[str, Any]]:
-    """What the model left out on relevance grounds. Never fatal.
+    """What the model left out on relevance grounds, in full. Never fatal.
 
-    A malformed skip list is not worth failing a good digest over — the topics
-    are the product, this is the explanation.
+    Kept in the same shape as a topic so it can be stored in the digest and later
+    restored to the feed without recompiling the day. Unlike `_topics`, a missing
+    body is tolerated rather than raised: a malformed skip list is not worth
+    failing a good digest over — the topics are the product, this is the
+    explanation — and render.py substitutes a placeholder so the day still writes.
     """
     if not isinstance(payload, dict):
         return []
@@ -283,12 +294,24 @@ def _skipped(payload: Any) -> list[dict[str, Any]]:
     if not isinstance(entries, list):
         return []
 
-    return [
-        {"headline": str(e.get("headline", "")).strip(),
-         "reason": str(e.get("reason", "")).strip()}
-        for e in entries
-        if isinstance(e, dict) and str(e.get("headline", "")).strip()
-    ]
+    out = []
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        headline = str(entry.get("headline", "")).strip()
+        if not headline:
+            continue
+
+        body = entry.get("body")
+        out.append({
+            "headline": headline,
+            "body": body.strip() if isinstance(body, str) else "",
+            "tags": entry.get("tags") or [],
+            "sources": entry.get("sources") or [],
+            "posts": entry.get("posts") or [],
+            "reason": str(entry.get("reason", "")).strip(),
+        })
+    return out
 
 
 def _topics(payload: Any) -> list[dict[str, Any]]:

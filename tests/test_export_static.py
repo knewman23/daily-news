@@ -364,25 +364,58 @@ def export_with_logs(project, logs):
     return project / "site"
 
 
+def drop(project, headline, reason, date="2026-07-28"):
+    from src import topics
+    topics.set_skipped(project / "news" / f"{date}.md", headline, reason)
+
+
 def test_skipped_topics_reach_the_published_day(project):
     """Published because a filter nobody can see is indistinguishable from one
     throwing away news — the reasons are about the news, not the reader."""
-    logs = with_runs(project, ["My trip to Moab: personal vlog"])
-    site = export_with_logs(project, logs)
+    drop(project, "Nvidia earnings beat estimates", "not interested")
+    site = export(project)
 
     assert read(site / "data" / "day" / "2026-07-28.json")["skipped"] == [
-        "My trip to Moab: personal vlog",
+        {"headline": "Nvidia earnings beat estimates", "reason": "not interested"},
+    ]
+
+
+def test_the_published_day_does_not_carry_a_skipped_topic_body(project):
+    """The site is public. Shipping the text of everything the filter dropped
+    would undo the filtering for anyone who opened devtools."""
+    drop(project, "Nvidia earnings beat estimates", "not interested")
+    site = export(project)
+
+    day = read(site / "data" / "day" / "2026-07-28.json")
+    assert "Revenue came in ahead of guidance." not in json.dumps(day)
+    assert "Revenue came in ahead of guidance." not in day["html"]
+    assert "Revenue came in ahead of guidance." not in (
+        (site / "data" / "search.json").read_text(encoding="utf-8")
+    )
+
+
+def test_a_skipped_topic_is_not_in_the_published_search_index(project):
+    drop(project, "Nvidia earnings beat estimates", "not interested")
+    site = export(project)
+
+    corpus = read(site / "data" / "search.json")["topics"]
+    assert [t["headline"] for t in corpus] == [
+        "Senate passes the spending bill", "Court hears the tariff case",
     ]
 
 
 def test_the_published_index_carries_skipped_and_last_updated(project):
+    drop(project, "Nvidia earnings beat estimates", "off topic")
     logs = with_runs(project, ["Something: off topic"])
     site = export_with_logs(project, logs)
 
     payload = read(site / "data" / "days.json")
     assert payload["last_updated"] == "2026-07-28T11:04:30+00:00"
     by_date = {d["date"]: d for d in payload["days"]}
-    assert by_date["2026-07-28"]["skipped"] == ["Something: off topic"]
+    # From the digest, not the run record — which still says "Something".
+    assert by_date["2026-07-28"]["skipped"] == [
+        {"headline": "Nvidia earnings beat estimates", "reason": "off topic"},
+    ]
     assert by_date["2026-07-27"]["skipped"] == []
 
 

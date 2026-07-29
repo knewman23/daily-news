@@ -4,7 +4,7 @@ from datetime import date, datetime, timezone
 
 import pytest
 
-from src import digest, notes, summarize
+from src import digest, notes, render, summarize
 from src.records import Stats, Transcript
 
 
@@ -397,7 +397,52 @@ def test_summarize_day_records_what_was_left_out(tmp_path):
     assert stats.notes == []
 
 
-def test_a_skipped_topic_is_not_written_into_the_digest(tmp_path):
+def test_a_skipped_topic_is_stored_in_full_but_kept_out_of_the_feed(tmp_path):
+    """Stored so the filter's judgement can be reversed without recompiling the
+    day, but absent from the rendered feed until it is."""
+    payload = {
+        **TOPICS_JSON,
+        "skipped": [{
+            "headline": "My trip to Moab",
+            "body": "A weekend of climbing outside Moab.",
+            "tags": ["travel"],
+            "reason": "personal vlog",
+        }],
+    }
+    path = summarize.summarize_day(
+        DAY, TRANSCRIPTS, Stats(), tmp_path,
+        runner=FakeRunner(wrapper(json.dumps(payload))), generated=GENERATED,
+        interests=INTERESTS,
+    )
+
+    stored = {t.headline: t for t in digest.topics_of(path)}
+    assert stored["My trip to Moab"].body == "A weekend of climbing outside Moab."
+    assert stored["My trip to Moab"].skipped == "personal vlog"
+
+    assert len(digest.kept_of(path)) == 2
+    assert "Moab" not in digest.render_html(path)
+
+
+def test_a_skipped_topic_is_not_in_the_frontmatter(tmp_path):
+    """The header drives the topic chips, so a tag only a dropped topic carries
+    would produce a chip that filters to nothing."""
+    payload = {
+        **TOPICS_JSON,
+        "skipped": [{"headline": "My trip to Moab", "body": "Climbing.",
+                     "tags": ["travel"], "reason": "personal vlog"}],
+    }
+    path = summarize.summarize_day(
+        DAY, TRANSCRIPTS, Stats(), tmp_path,
+        runner=FakeRunner(wrapper(json.dumps(payload))), generated=GENERATED,
+        interests=INTERESTS,
+    )
+
+    header = path.read_text(encoding="utf-8").split("---")[1]
+    assert "travel" not in header
+
+
+def test_a_skipped_topic_with_no_body_still_writes_the_day(tmp_path):
+    """A thin explanation must not cost a good digest."""
     payload = {
         **TOPICS_JSON,
         "skipped": [{"headline": "My trip to Moab", "reason": "personal vlog"}],
@@ -408,8 +453,10 @@ def test_a_skipped_topic_is_not_written_into_the_digest(tmp_path):
         interests=INTERESTS,
     )
 
-    assert "Moab" not in path.read_text(encoding="utf-8")
-    assert len(digest.topics_of(path)) == 2
+    stored = {t.headline: t for t in digest.topics_of(path)}
+    assert stored["My trip to Moab"].body == render.NO_BODY
+    assert stored["My trip to Moab"].skipped == "personal vlog"
+    assert len(digest.kept_of(path)) == 2
 
 
 def test_a_reason_free_skip_still_reports_something(tmp_path):

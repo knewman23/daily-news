@@ -114,9 +114,11 @@ function renderLastUpdated(stamp) {
 function skippedForVisibleDays() {
   /* Every skip across the archive, newest day first, so the chip answers "what
      has the filter been dropping" rather than only "what did today drop". */
-  return state.days.flatMap(
-    (day) => (day.skipped || []).map((note) => ({ date: day.date, note })),
-  );
+  return state.days.flatMap((day) => (day.skipped || []).map((entry) => ({
+    date: day.date,
+    headline: entry.headline,
+    reason: entry.reason,
+  })));
 }
 
 /* Days newest-first into month runs, preserving order. Sequential rather than a
@@ -233,6 +235,19 @@ async function showDay(date, scrollToHeadline) {
 
   const article = el('article', { className: 'article' });
   article.innerHTML = day.html;      // locally generated markdown; see file header
+  indexHeadings(article);
+  if (!READ_ONLY) addSkipControls(article, date);
+
+  // The feed renders only topics the filter kept, so a day can legitimately have
+  // posts and no feed. Saying so beats an unexplained blank page.
+  if (!article.querySelector('h2')) {
+    article.append(el('p', {
+      className: 'empty',
+      textContent: (day.skipped || []).length
+        ? 'Everything from this day was left out as off topic.'
+        : 'Nothing was found for this day.',
+    }));
+  }
 
   const parts = [head, article];
   const nav = dayNav(date);
@@ -243,13 +258,88 @@ async function showDay(date, scrollToHeadline) {
 
   if (scrollToHeadline) {
     const match = [...article.querySelectorAll('h2')]
-      .find((h) => h.textContent.trim() === scrollToHeadline.trim());
+      .find((h) => h.dataset.headline === scrollToHeadline.trim());
     if (match) {
       match.scrollIntoView({ behavior: 'smooth', block: 'start' });
       return;
     }
   }
   window.scrollTo({ top: 0 });
+}
+
+/* --- skipping (live only) ------------------------------------------------ */
+
+/* Record each heading's text before anything is added around it, so a topic can
+   still be identified once the markup has changed. */
+function indexHeadings(article) {
+  for (const heading of article.querySelectorAll('h2')) {
+    heading.dataset.headline = heading.textContent.trim();
+  }
+}
+
+/* The button is a *sibling* of the heading, inside a flex row, not a child of it.
+   Nesting it in the h2 reads fine but drops the heading out of the accessibility
+   tree entirely — and headings are how the page is navigated without sight.
+   Verified in the a11y tree, not assumed: with the button inside, Chrome reported
+   the h2 as bare text. CSS puts it back on the heading line. */
+function addSkipControls(article, date) {
+  for (const heading of [...article.querySelectorAll('h2')]) {
+    const headline = heading.dataset.headline;
+    const button = el('button', {
+      type: 'button',
+      className: 'skip-topic',
+      title: `Leave “${headline}” out of the feed`,
+    }, el('span', { className: 'visually-hidden', textContent: `Skip ${headline}` }));
+    button.append(el('span', { ariaHidden: 'true', textContent: 'skip' }));
+    button.addEventListener('click', () => skipTopic(date, headline, button));
+
+    const row = el('div', { className: 'topic-head' });
+    heading.before(row);
+    row.append(heading, button);
+  }
+}
+
+async function skipTopic(date, headline, button) {
+  // Asked rather than assumed: the skipped list exists so that nothing is
+  // dropped without a visible reason, and a hand-skip with no reason would be
+  // the one silent drop in the system.
+  const reason = window.prompt(`Why skip “${headline}”?`, 'marked by hand');
+  if (reason === null) return;
+
+  button.disabled = true;
+  try {
+    await postJSON(`/api/skip/${date}`, { headline, skipped: true, reason });
+  } catch (failure) {
+    button.disabled = false;
+    window.alert(`Could not skip that topic: ${failure.message}`);
+    return;
+  }
+  await afterSkipChange(date);
+}
+
+async function restoreTopic(date, headline, button) {
+  button.disabled = true;
+  try {
+    await postJSON(`/api/skip/${date}`, { headline, skipped: false });
+  } catch (failure) {
+    button.disabled = false;
+    window.alert(`Could not restore that topic: ${failure.message}`);
+    return;
+  }
+  await afterSkipChange(date);
+}
+
+/* The day list carries the skip counts and the chip is built from it, so the
+   index has to be reloaded before the view is redrawn — not just the day. */
+async function afterSkipChange(date) {
+  await loadDays();
+  await loadTags();
+  if (state.activeTag === SKIPPED) {
+    renderTags();
+    showSkipped();
+    return;
+  }
+  await showDay(date);
 }
 
 /* Read straight through the archive without going back to the rail.
@@ -472,7 +562,8 @@ function searchLocally(query, tag) {
 function showSkipped() {
   const dropped = skippedForVisibleDays().filter((entry) => {
     const needle = state.query.trim().toLowerCase();
-    return !needle || entry.note.toLowerCase().includes(needle);
+    return !needle
+      || `${entry.headline} ${entry.reason}`.toLowerCase().includes(needle);
   });
 
   const heading = el('div', { className: 'day-head' }, [
@@ -492,18 +583,26 @@ function showSkipped() {
     return;
   }
 
-  // Each entry is "headline: reason" — split so the reason can be de-emphasised.
-  const list = el('ul', { className: 'skipped-list' }, dropped.map(({ date, note }) => {
-    const cut = note.indexOf(': ');
-    const headline = cut > 0 ? note.slice(0, cut) : note;
-    const why = cut > 0 ? note.slice(cut + 2) : '';
+  const list = el('ul', { className: 'skipped-list' },
+    dropped.map(({ date, headline, reason }) => {
+      const row = el('li', {}, [
+        el('div', { className: 'skipped-headline', textContent: headline }),
+        el('div', { className: 'hit-date', textContent: prettyDate(date, true) }),
+        reason ? el('div', { className: 'why', textContent: reason }) : null,
+      ]);
 
-    return el('li', {}, [
-      el('div', { textContent: headline }),
-      el('div', { className: 'hit-date', textContent: prettyDate(date, true) }),
-      why ? el('div', { className: 'why', textContent: why }) : null,
-    ]);
-  }));
+      if (!READ_ONLY) {
+        const restore = el('button', {
+          type: 'button',
+          className: 'restore-topic',
+          textContent: 'restore to the feed',
+        });
+        restore.addEventListener('click', () => restoreTopic(date, headline, restore));
+        row.append(restore);
+      }
+
+      return row;
+    }));
 
   $('main').replaceChildren(heading, list);
   window.scrollTo({ top: 0 });

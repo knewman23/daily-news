@@ -265,3 +265,114 @@ def test_links_render_as_anchors_in_html(news):
 
 def test_a_topic_with_plain_handles_has_no_links(news):
     assert digest.topics_of(news / "2026-07-28.md")[0].links == []
+
+
+# --- skipped topics --------------------------------------------------------
+
+
+DAY_WITH_A_SKIP = """---
+date: 2026-07-30
+generated: 2026-07-30T11:00:00+00:00
+tags: [politics]
+sources: ["@aaronparnas"]
+post_count: 3
+transcribed_count: 3
+incomplete: false
+---
+
+# July 30, 2026
+
+## Budget vote scheduled
+tags: politics
+sources: @aaronparnas
+
+The vote was set for Thursday.
+
+## Merch drop announcement
+tags: media
+sources: @shopkeeper
+skipped: promotional, reports no news
+
+A new hoodie went on sale for forty dollars.
+
+## My Notes
+<!-- notes:start -->
+<!-- notes:end -->
+"""
+
+
+@pytest.fixture
+def with_skip(news):
+    path = news / "2026-07-30.md"
+    path.write_text(DAY_WITH_A_SKIP, encoding="utf-8")
+    return path
+
+
+def test_the_skipped_reason_is_parsed_off_the_meta_line(with_skip):
+    by_headline = {t.headline: t for t in digest.topics_of(with_skip)}
+    assert by_headline["Merch drop announcement"].skipped == "promotional, reports no news"
+    assert by_headline["Budget vote scheduled"].skipped == ""
+
+
+def test_kept_and_skipped_split_the_file(with_skip):
+    assert [t.headline for t in digest.kept_of(with_skip)] == ["Budget vote scheduled"]
+    assert [t.headline for t in digest.skipped_of(with_skip)] == ["Merch drop announcement"]
+
+
+def test_a_skipped_topic_keeps_its_body_and_tags(with_skip):
+    dropped = digest.skipped_of(with_skip)[0]
+    assert dropped.body == "A new hoodie went on sale for forty dollars."
+    assert dropped.tags == ["media"]
+    assert not dropped.kept
+
+
+def test_the_reason_is_not_treated_as_body_text(with_skip):
+    assert "promotional" not in digest.skipped_of(with_skip)[0].body
+
+
+def test_the_feed_html_leaves_skipped_topics_out(with_skip):
+    html = digest.render_html(with_skip)
+    assert "Budget vote scheduled" in html
+    assert "Merch drop announcement" not in html
+    assert "hoodie" not in html
+    assert "skipped:" not in html
+
+
+def test_the_feed_html_keeps_the_title(with_skip):
+    assert "July 30, 2026" in digest.render_html(with_skip)
+
+
+def test_a_skipped_topic_is_not_searchable(with_skip, news):
+    assert digest.search(news, "hoodie") == []
+    assert [h.headline for h in digest.search(news, "Thursday")] == [
+        "Budget vote scheduled"
+    ]
+
+
+def test_a_skipped_topic_contributes_no_tag_chip(with_skip, news):
+    assert "media" not in digest.all_tags(news)
+    assert "politics" in digest.all_tags(news)
+
+
+def test_an_empty_skipped_line_counts_as_kept(news):
+    """Clearing the reason and deleting the line must mean the same thing."""
+    path = news / "2026-07-31.md"
+    path.write_text(
+        "# July 31, 2026\n\n## A story\ntags: politics\nskipped:\n\nBody here.\n\n"
+        f"## My Notes\n{notes.START}\n{notes.END}\n",
+        encoding="utf-8",
+    )
+    assert digest.topics_of(path)[0].kept
+    assert "A story" in digest.render_html(path)
+
+
+def test_a_day_of_nothing_but_skips_renders_an_empty_feed(news):
+    path = news / "2026-08-01.md"
+    path.write_text(
+        "# August 1, 2026\n\n## Only this\ntags: media\nskipped: off topic\n\n"
+        f"Body.\n\n## My Notes\n{notes.START}\n{notes.END}\n",
+        encoding="utf-8",
+    )
+    html = digest.render_html(path)
+    assert "Only this" not in html
+    assert "August 1, 2026" in html

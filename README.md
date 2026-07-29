@@ -109,7 +109,7 @@ no source list, no runs.
 |---|---|
 | Search | Filters topic sections across every day |
 | Topic chips | Filter by tag; the active one shows in the toolbar |
-| `skipped (n)` chip | Lists what the interest filter left out, with reasons. Dashed, because it is a view rather than a topic |
+| `skipped (n)` chip | Lists what the interest filter left out, with reasons, and restores any of them to the feed. Dashed, because it is a view rather than a topic |
 | My notes | Saved into that day's markdown, inside marker comments |
 | Sources | Add, disable, or delete a handle. Adding verifies the account exists |
 | Runs | Every run with its counts, duration, failures, and full log |
@@ -283,9 +283,25 @@ post: it is a judgement about text the model is already reading.
 **Nothing is dropped silently.** Every topic left out on relevance grounds is
 reported with a one-line reason — behind the `skipped (n)` chip on the page (on
 the published site too), in the log, in the run record, and in the email. A filter you cannot see is indistinguishable from
-one that is throwing away news. Edit the lists and re-run if it is too aggressive;
-skipped topics never mark a day incomplete, because filtering is the feature
-working rather than a failure.
+one that is throwing away news. Skipped topics never mark a day incomplete,
+because filtering is the feature working rather than a failure.
+
+**And you can overrule it, one topic at a time.** A dropped topic is stored in the
+digest in full, not just as a reason, so nothing has to be recompiled to change
+your mind:
+
+| In the local app | Does |
+|---|---|
+| `skip` on a topic's headline | Takes it out of the feed. Asks for a reason, so a hand-skip is as visible as a filtered one |
+| `restore to the feed` in the `skipped (n)` view | Puts it back, with its body, tags, and source links |
+
+A restored topic is an ordinary topic: searchable, and its tags return to the
+chips. Both directions edit only that one `skipped:` line in `news/<date>.md` and
+never touch your journal. Editing `[interests]` and re-running is still the right
+move when the filter is wrong *in general* — this is for when it is wrong once.
+
+The run record keeps saying what the 11am run decided, which is why it and the
+page can disagree after an edit. That is the history being honest, not drift.
 
 ### Disk usage
 
@@ -432,7 +448,8 @@ src/ocr.py           Apple Vision, for text on images
 src/summarize.py     the one `claude -p` call per day
 src/render.py        topics → markdown (pure, so the format is pinned by tests)
 src/digest.py        reading digests back: index, topics, search, HTML
-src/notes.py         the journal block — the only code that mutates a digest
+src/notes.py         the journal block — one of two writers to a digest
+src/topics.py        skipping and restoring a topic — the other one
 src/publish.py       export and push
 src/mailer.py        the summary email
 src/runlog.py        run history

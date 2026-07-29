@@ -1,8 +1,9 @@
 """The journal block inside a generated digest.
 
-This is the only code permitted to modify a file in news/, and the only place
-where user input and generated news share a file. A bug here destroys news the
-user cannot recover, so the contract is deliberately narrow:
+One of only two modules permitted to modify a file in news/ — topics.py is the
+other, and it flips one `skipped:` line without ever entering this block. This is
+still the only place where user input and generated news share a file. A bug here
+destroys news the user cannot recover, so the contract is deliberately narrow:
 
   * Exactly one start marker and one end marker, in that order, or nothing is
     read or written at all.

@@ -164,7 +164,10 @@ def run_day(
     for note in stats.skipped:
         log.info("off topic, left out: %s", note)
 
-    topics = len(digest.topics_of(path)) if path.exists() else 0
+    # kept_of, not topics_of: the digest also stores what the filter dropped, and
+    # counting those here would inflate the run record's topic count with news the
+    # reader never saw.
+    topics = len(digest.kept_of(path)) if path.exists() else 0
     log.info("wrote %s with %d topic(s)%s", path, topics,
              " (incomplete)" if stats.incomplete else "")
 
@@ -190,7 +193,9 @@ def run_day(
     # It is sent after publishing so the link in it points at a live page.
     subject, body = mailer.build_message(
         day,
-        [t.headline for t in digest.topics_of(path)] if path.exists() else [],
+        # Kept only. A dropped topic is already reported in the email's skipped
+        # section; listing it as a headline too would contradict that.
+        [t.headline for t in digest.kept_of(path)] if path.exists() else [],
         stats,
         site_url=cfg.email.site_url,
         failures=stats.notes,

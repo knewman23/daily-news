@@ -26,7 +26,7 @@ from pathlib import Path
 from typing import Any, Callable
 from urllib.parse import parse_qs, unquote, urlparse
 
-from src import digest, notes, runlog, sources
+from src import digest, notes, runlog, sources, topics
 
 log = logging.getLogger(__name__)
 
@@ -154,6 +154,7 @@ class _Handler(BaseHTTPRequestHandler):
             for prefix, handler in (
                 ("/api/day/", self._day),
                 ("/api/notes/", self._save_notes),
+                ("/api/skip/", self._set_skip),
                 ("/api/sources/", self._source_action),
                 ("/api/log/", self._run_log),
             ):
@@ -181,8 +182,7 @@ class _Handler(BaseHTTPRequestHandler):
                     "post_count": day.post_count,
                     "transcribed_count": day.transcribed_count,
                     "incomplete": day.incomplete,
-                    "skipped": runlog.latest_for(
-                        self.logs_dir, day.date).get("skipped", []),
+                    "skipped": _skipped_payload(day.path),
                 }
                 for day in digest.list_days(self.news_dir)
             ],
@@ -203,7 +203,7 @@ class _Handler(BaseHTTPRequestHandler):
             "date": raw,
             "html": digest.render_html(path),
             "notes": journal,
-            "skipped": runlog.latest_for(self.logs_dir, raw).get("skipped", []),
+            "skipped": _skipped_payload(path),
             "tags": meta.tags if meta else [],
             "sources": meta.sources if meta else [],
             "post_count": meta.post_count if meta else 0,
@@ -275,6 +275,45 @@ class _Handler(BaseHTTPRequestHandler):
             raise ApiError(409, f"the notes block in this file is malformed: {exc}")
 
         self._json({"ok": True, "notes": notes.read_notes(path)})
+
+    # --- skipping ---------------------------------------------------------
+
+    def _set_skip(self, raw: str) -> None:
+        """Move one topic between the feed and the skipped list.
+
+        `{"headline": str, "skipped": bool, "reason": str}`. The reason is only
+        read when skipping; restoring deletes the line, so there is nothing for a
+        reason to mean.
+        """
+        if self.command != "POST":
+            raise ApiError(405, "use POST to change a topic's skipped state")
+
+        path = self._day_path(raw)
+        body = self._body()
+
+        headline = body.get("headline")
+        wanted = body.get("skipped")
+        if not isinstance(headline, str) or not headline.strip():
+            raise ApiError(400, "body needs a non-empty \"headline\"")
+        if not isinstance(wanted, bool):
+            raise ApiError(400, "body needs \"skipped\": true|false")
+
+        reason = body.get("reason")
+        if reason is not None and not isinstance(reason, str):
+            raise ApiError(400, "\"reason\" must be a string")
+
+        try:
+            if wanted:
+                topics.set_skipped(path, headline, reason or topics.DEFAULT_REASON)
+            else:
+                topics.clear_skipped(path, headline)
+        except topics.TopicError as exc:
+            # Same reasoning as the notes 409: the headline did not identify one
+            # section, and guessing which to edit would silently change the wrong
+            # topic in a file the user cannot restore.
+            raise ApiError(409, str(exc))
+
+        self._json({"ok": True, "skipped": _skipped_payload(path)})
 
     # --- sources ----------------------------------------------------------
 
@@ -408,6 +447,19 @@ class _Handler(BaseHTTPRequestHandler):
 
     def log_message(self, fmt: str, *args) -> None:
         log.debug("%s - %s", self.address_string(), fmt % args)
+
+
+def _skipped_payload(path: Path) -> list[dict]:
+    """What the filter left out, as the page wants it.
+
+    Read from the digest rather than the run record: the digest is current state
+    and reflects hand edits, while a run record says what that run decided and
+    must keep saying it. The two legitimately disagree once a topic is restored.
+    """
+    return [
+        {"headline": topic.headline, "reason": topic.skipped}
+        for topic in digest.skipped_of(path)
+    ]
 
 
 def _inside(path: Path, root: Path) -> bool:

@@ -68,11 +68,19 @@ def export(
 
     for day in days:
         stamp = day.date.isoformat()
-        topics = digest.topics_of(day.path)
-        # What the filter left out. Published because a filter nobody can see is
-        # indistinguishable from one throwing away news — the reasons are about
-        # the news, not about the reader.
-        skipped = runlog.latest_for(logs, day.date).get("skipped", [])
+        topics = digest.kept_of(day.path)
+        # What the filter left out: headline and reason only. Published because a
+        # filter nobody can see is indistinguishable from one throwing away news —
+        # the reasons are about the news, not about the reader.
+        #
+        # Read from the digest, not the run record, so a topic restored by hand
+        # stops being listed here. Deliberately *not* the stored body: the site is
+        # public, and shipping the full text of everything the filter dropped
+        # would undo the filtering for anyone who opened devtools.
+        skipped = [
+            {"headline": t.headline, "reason": t.skipped}
+            for t in digest.skipped_of(day.path)
+        ]
 
         # Deliberately no "notes" key. The live API returns one; this must not.
         atomic.write_json(data / "day" / f"{stamp}.json", {

@@ -72,6 +72,19 @@ live in `state`, not in the DOM.** `state.openMonths` exists for exactly this
 reason — a `<details open>` attribute set by the user would be discarded on the
 next `showDay()`.
 
+## The feed is one innerHTML blob
+
+`showDay` assigns the whole rendered day at once, so there are no per-topic
+elements to attach behaviour to. `indexHeadings` therefore stamps each `h2` with
+`data-headline` *before* anything is added around it, and everything downstream
+identifies a topic by that attribute rather than by `textContent`.
+
+**Do not put controls inside a generated heading.** A `<button>` inside an `<h2>`
+drops the heading out of the accessibility tree, and headings are how the page is
+navigated without sight. `addSkipControls` wraps the heading and its button in a
+`.topic-head` flex row instead — same visual result, semantics intact. This was
+observed in the a11y tree, not guessed.
+
 ## Dates
 
 `prettyDate()` builds a `Date` from the parts, never from the ISO string:

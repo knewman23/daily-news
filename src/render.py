@@ -20,6 +20,12 @@ _WHITESPACE = re.compile(r"\s+")
 
 EMPTY_BODY = "_No posts found for this day._"
 
+# Only ever used for a skipped topic the model described without a body. A kept
+# topic with no body is a real error and still raises — but refusing to write a
+# whole good digest because the *explanation* of a drop came back thin would be
+# the wrong trade.
+NO_BODY = "_No text was stored for this topic._"
+
 
 def render_day(
     day: date,
@@ -27,17 +33,23 @@ def render_day(
     stats: Mapping[str, Any],
     generated: datetime,
     permalinks: Mapping[str, str] | None = None,
+    skipped: Sequence[Mapping[str, Any]] | None = None,
 ) -> str:
     if generated.tzinfo is None:
         raise ValueError("generated timestamp must be timezone-aware")
 
     cleaned = [_clean_topic(t, permalinks or {}) for t in topics]
+    # Skipped topics are stored in full, after the kept ones, so the filter's
+    # judgement can be reversed later without re-summarizing the day. They are
+    # deliberately absent from the frontmatter — see _frontmatter.
+    dropped = [_clean_topic(t, permalinks or {}, skipped=True)
+               for t in (skipped or [])]
 
     frontmatter = _frontmatter(day, cleaned, stats, generated)
     title = f"# {day.strftime('%B')} {day.day}, {day.year}"
 
-    if cleaned:
-        sections = [_section(t) for t in cleaned]
+    if cleaned or dropped:
+        sections = [_section(t) for t in [*cleaned, *dropped]]
     else:
         sections = [EMPTY_BODY]
 
@@ -51,6 +63,7 @@ def render_day(
 def _clean_topic(
     topic: Mapping[str, Any],
     permalinks: Mapping[str, str],
+    skipped: bool = False,
 ) -> dict[str, Any]:
     headline = _collapse(topic.get("headline", ""))
     if not headline:
@@ -58,7 +71,9 @@ def _clean_topic(
 
     body = topic.get("body")
     if not isinstance(body, str) or not body.strip():
-        raise ValueError(f"topic {headline!r} has no body")
+        if not skipped:
+            raise ValueError(f"topic {headline!r} has no body")
+        body = NO_BODY
 
     # Only ids we already know are kept. The model echoes these back, and an
     # invented one would render as a link to a post that does not exist —
@@ -83,6 +98,9 @@ def _clean_topic(
     return {
         "headline": headline,
         "body": body.strip(),
+        # Collapsed to one line: the reason sits on a `skipped:` meta line, and a
+        # newline in it would end the line and leave the tail as body text.
+        "skipped": _collapse(topic.get("reason") or "off topic") if skipped else "",
         "tags": [t.strip().lower() for t in _as_list(topic.get("tags")) if t.strip()],
         # Order matters: linked handles first, then any the model named without
         # a usable post id, so nothing the model attributed is silently dropped.
@@ -109,6 +127,12 @@ def _section(topic: Mapping[str, Any]) -> str:
             for handle in topic["sources"]
         ))
 
+    # Last, so a section reads as: what it is, who covered it, why it was
+    # dropped. Position is presentational only — the parser consumes the meta
+    # lines as an unordered run and stops at the first line that is not one.
+    if topic.get("skipped"):
+        lines.append(f"skipped: {topic['skipped']}")
+
     return "\n".join(lines) + f"\n\n{topic['body']}"
 
 
@@ -118,6 +142,14 @@ def _frontmatter(
     stats: Mapping[str, Any],
     generated: datetime,
 ) -> str:
+    """The header, built from kept topics only.
+
+    A hand edit to a `skipped:` line does not rewrite this header, so it records
+    what the run decided rather than the current state. That is safe because
+    nothing user-facing reads it for topic membership: the chips come from
+    `digest.all_tags` and search from `digest.search`, both of which read the
+    sections themselves and see the edit.
+    """
     tags = _unique(t for topic in topics for t in topic["tags"])
     handles = _unique(s for topic in topics for s in topic["sources"])
 
