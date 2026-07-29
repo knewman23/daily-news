@@ -7,19 +7,16 @@
     "health",
     "surveillance",
     "tech",
-    "privacy",
     "markets",
     "immigration",
     "climate",
-    "sports",
-    "elections",
-    "policing",
     "media",
-    "diplomacy",
-    "environment",
+    "sports",
+    "policing",
+    "privacy",
+    "elections",
     "government",
     "education",
-    "economy",
-    "defense"
+    "economy"
   ]
 }
