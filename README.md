@@ -64,6 +64,11 @@ cd ~/Projects/daily-news
 .venv/bin/python run_daily.py                   # today
 .venv/bin/python run_daily.py --date 2026-07-20  # a specific day, or a re-run
 .venv/bin/python run_daily.py --full            # re-scan the whole day, ignoring watermarks
+.venv/bin/python run_daily.py --date 2026-07-22 --no-fetch --quiet   # summarize a backfilled day
+
+# Backfill past days: one profile walk per handle, paced
+.venv/bin/python backfill.py --days 7            # plan only
+.venv/bin/python backfill.py --days 7 --execute  # download
 
 # Rebuild the published site without running the pipeline
 .venv/bin/python export_static.py
@@ -304,6 +309,50 @@ extract stages find their posts from the sidecars rather than by looking for med
 Three rules make it safe to run unattended: a day is only pruned once its digest
 exists; a post is only pruned once its transcript exists; and today is never
 pruned whatever the setting says. Set `media_days` very high to keep everything.
+
+### Backfilling past days
+
+`run_daily --date X` walks every profile to build a single day, so backfilling a
+month that way would be 210 profile walks across seven handles for what 7 can
+collect. **The request pattern is what gets an account flagged**, not the volume
+of video pulled from the CDN, so use `backfill.py`, which walks each profile once
+and files every post into the day it belongs to.
+
+```bash
+.venv/bin/python backfill.py --days 7                 # plan only, downloads nothing
+.venv/bin/python backfill.py --days 7 --execute        # download, paced
+.venv/bin/python backfill.py --days 30 --handles aaronparnas --max-posts 400
+```
+
+A plan always runs first and prints posts per day, estimated media size, and
+estimated transcription time, so the cost is known before it is paid.
+
+Then summarize each collected day, which touches no network at all:
+
+```bash
+.venv/bin/python run_daily.py --date 2026-07-22 --no-fetch --quiet
+```
+
+`--no-fetch` works entirely from the media and sidecars on disk. `--quiet`
+suppresses publishing, email, and notifications, so thirty days of backfill do not
+send thirty emails — publish once at the end with `export_static.py` or a normal
+run.
+
+**On not getting your account limited.** Measured on one handle over 30 days: 250
+posts listed in a single walk taking 63 seconds, instaloader pacing itself. Seven
+handles over 30 days is roughly 175 API requests plus ~1,100 CDN downloads.
+
+The safeguards, in order of how much they matter:
+
+- A rate-limit response **aborts the entire run and is never retried**. Answering
+  a request for less with more is how a slowdown becomes a suspension.
+- Progress is on disk after every post, so an aborted run resumes instead of
+  starting over. Re-running is cheap and safe.
+- instaloader's own rate controller stays on, and `--delay-handles` (90s default)
+  and `--delay-posts` (2s) add more on top.
+- `--max-posts` caps each handle; a scan ceiling stops a runaway walk.
+
+Prefer several small runs to one large one, and start with a plan.
 
 ### Full pulls
 
