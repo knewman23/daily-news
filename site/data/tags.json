@@ -1,12 +1,13 @@
 {
   "tags": [
     "war",
-    "defence",
     "politics",
+    "defence",
     "legal",
     "health",
     "surveillance",
     "tech",
+    "privacy",
     "military",
     "diplomacy",
     "media",
@@ -14,6 +15,12 @@
     "immigration",
     "climate",
     "markets",
-    "conflict"
+    "conflict",
+    "elections",
+    "policing",
+    "government",
+    "education",
+    "economy",
+    "defense"
   ]
 }

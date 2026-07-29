@@ -1,28 +1,29 @@
 {
-  "last_updated": "2026-07-29T15:36:27.458184+00:00",
+  "last_updated": "2026-07-29T16:57:43.198809+00:00",
   "days": [
     {
       "date": "2026-07-29",
       "tags": [
         "war",
-        "defence",
         "politics",
+        "defence",
         "legal",
         "health",
         "surveillance",
-        "tech"
+        "tech",
+        "privacy"
       ],
       "sources": [
         "@hunteralexanderhowell",
         "@aaronparnas",
-        "@ericmoutsos",
-        "@oafnation_actual"
+        "@oafnation_actual",
+        "@ericmoutsos"
       ],
-      "post_count": 8,
-      "transcribed_count": 7,
+      "post_count": 11,
+      "transcribed_count": 10,
       "incomplete": false,
       "skipped": [
-        "Photo of Rubio, Netanyahu and Hegseth at Lindsey Graham's funeral: Commentary reacting to a circulating image without reporting any new information."
+        "Commentary on photo of Rubio, Netanyahu and Hegseth at Lindsey Graham's funeral: Reaction commentary speculating about routine behind-closed-doors contact; reports no new information."
       ]
     },
     {
@@ -53,6 +54,142 @@
       "transcribed_count": 36,
       "incomplete": false,
       "skipped": []
+    },
+    {
+      "date": "2026-07-25",
+      "tags": [
+        "legal",
+        "politics",
+        "defence",
+        "markets",
+        "war",
+        "elections",
+        "tech",
+        "media",
+        "surveillance",
+        "policing",
+        "climate",
+        "government"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@ericmoutsos"
+      ],
+      "post_count": 19,
+      "transcribed_count": 19,
+      "incomplete": false,
+      "skipped": [
+        "Wall Street Journal reporters accept award for Epstein birthday letter story: Reaction to an awards-ceremony moment and body language, with no new reporting on the investigation",
+        "Tribute to CNN's Kaitlan Collins after presidential attacks: Commentary praising a journalist and her social media response; reports nothing new",
+        "Montage of Trump's past statements about endless wars and World War III: Compilation of old quotes with no new information",
+        "Argument for voting blue in the November 2026 midterms: Personal political opinion and voting advice rather than a news development",
+        "Creator unsubscribes from political drama: Personal venting with no news content",
+        "Late-night analysis of the correspondents' dinner over a martini: Creator describing their own evening; no news reported"
+      ]
+    },
+    {
+      "date": "2026-07-24",
+      "tags": [
+        "war",
+        "politics",
+        "elections",
+        "markets",
+        "defence",
+        "health",
+        "legal",
+        "surveillance",
+        "climate",
+        "media"
+      ],
+      "sources": [
+        "@oafnation_actual",
+        "@hunteralexanderhowell",
+        "@aaronparnas",
+        "@total.hypocrisy",
+        "@ericmoutsos"
+      ],
+      "post_count": 33,
+      "transcribed_count": 31,
+      "incomplete": false,
+      "skipped": [
+        "Commentary on Zionism, Charlie Kirk and Epstein speculation: Reaction and commentary built on existing clips; reports no new information.",
+        "Explainer on who organises the White House Correspondents' Dinner: Background explainer with no new reporting.",
+        "Musings ahead of the Correspondents' Dinner redo: Personal speculation with no reported facts.",
+        "Reflection on empathy toward fallen service members: Opinion commentary with no news content.",
+        "Channel surpasses major media outlets in impressions: Creator discussing their own audience milestone and personal encounters.",
+        "Reflection on 17 months of the second Trump term: Personal venting with no reported news."
+      ]
+    },
+    {
+      "date": "2026-07-23",
+      "tags": [
+        "war",
+        "politics",
+        "markets",
+        "legal",
+        "tech",
+        "climate",
+        "immigration",
+        "surveillance",
+        "health",
+        "education",
+        "defence",
+        "economy"
+      ],
+      "sources": [
+        "@oafnation_actual",
+        "@aaronparnas",
+        "@ericmoutsos",
+        "@carolinegleich",
+        "@cancel.ian.carroll",
+        "@total.hypocrisy"
+      ],
+      "post_count": 34,
+      "transcribed_count": 34,
+      "incomplete": false,
+      "skipped": [
+        "More than 1.5 million dozen eggs recalled over salmonella risk: Food safety recall with no policy or political dimension",
+        "Speculation that US casualties could be an inside job to justify war funding and martial law: Explicitly labelled personal speculation with no reporting behind it",
+        "Argument that a war with Iran would be a worse quagmire than Iraq: Commentary on the Iran conflict that reports no new information",
+        "Count of Israeli flags displayed in congressional office hallways: Creator stunt with a subscription pitch, no new reporting",
+        "Explainer on rule votes versus final passage on the NDAA: Procedural commentary on a previously reported vote rather than new news",
+        "DeleteMe data broker removal sponsorship: Paid advertisement",
+        "Creator shout-out promoting another account: Promotional content with no news",
+        "WMD merchandise promotion: Merch promotion",
+        "Creator recovering from a weekend outing: Personal life content with no news"
+      ]
+    },
+    {
+      "date": "2026-07-22",
+      "tags": [
+        "politics",
+        "defense",
+        "elections",
+        "legal",
+        "climate",
+        "tech",
+        "surveillance",
+        "media",
+        "health"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@ericmoutsos",
+        "@hunteralexanderhowell",
+        "@oafnation_actual",
+        "@total.hypocrisy",
+        "@carolinegleich"
+      ],
+      "post_count": 32,
+      "transcribed_count": 32,
+      "incomplete": false,
+      "skipped": [
+        "Taco Bell launches $1 lettuce-free menu item amid cyclospora outbreak: Mainly a fast-food product promotion rather than public health policy",
+        "Commentary on RFK Jr., Middle East demographics and bioweapons claims: Reaction commentary over an older clip that reports nothing new",
+        "Man mocks Trump on camera behind him at Georgia rally: Viral moment with no policy or political substance",
+        "Creator recruits volunteers for the Purple Revolution movement: Personal appeal to build the creator's own movement and audience"
+      ]
     }
   ]
 }
