@@ -22,6 +22,12 @@ const READ_ONLY = document.body.dataset.mode === 'static';
 
 const SKIPPED = '__skipped__';   // a pseudo-tag: not a topic, a view
 
+/* The clock the pipeline runs on. Pinned rather than using the viewer's local
+   time so the stamp always describes the same clock that decides which day a
+   post belongs to — otherwise reading the site from another timezone would show
+   an update time that disagrees with the day headings. */
+const DISPLAY_TZ = 'America/Denver';
+
 const state = {
   days: [],
   activeDate: null,
@@ -96,6 +102,8 @@ function renderLastUpdated(stamp) {
   line.textContent = `Last updated ${when.toLocaleString(undefined, {
     weekday: 'short', month: 'short', day: 'numeric',
     hour: 'numeric', minute: '2-digit',
+    timeZone: DISPLAY_TZ,
+    timeZoneName: 'short',      // renders MDT in summer, MST in winter
   })}`;
 }
 
