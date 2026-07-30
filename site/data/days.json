@@ -2,6 +2,53 @@
   "last_updated": "2026-07-29T19:14:10.221198+00:00",
   "days": [
     {
+      "date": "2026-07-30",
+      "tags": [
+        "war",
+        "politics",
+        "defence",
+        "legal",
+        "elections",
+        "surveillance",
+        "tech",
+        "privacy",
+        "environment",
+        "government",
+        "markets",
+        "health",
+        "climate",
+        "media"
+      ],
+      "sources": [
+        "@oafnation_actual",
+        "@total.hypocrisy",
+        "@aaronparnas",
+        "@carolinegleich",
+        "@ericmoutsos"
+      ],
+      "post_count": 33,
+      "transcribed_count": 32,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "UEFA agrees to boycott World Cup over Kushner-backed privatisation plan",
+          "reason": "Primarily a sports-governance and business story despite the Kushner and Trump administration ties."
+        },
+        {
+          "headline": "Demonstration argues extremism is used to poison three Abrahamic religions",
+          "reason": "Commentary and analogy that reports no new information."
+        },
+        {
+          "headline": "Creator compares overeating garlic bread to voting for Trump three times",
+          "reason": "Personal anecdote with no news content."
+        },
+        {
+          "headline": "Creator says they will post nightly until an unspecified event occurs",
+          "reason": "No identifiable news content."
+        }
+      ]
+    },
+    {
       "date": "2026-07-29",
       "tags": [
         "war",
