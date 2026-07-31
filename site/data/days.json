@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-30T22:25:10.352854+00:00",
+  "last_updated": "2026-07-31T17:10:46.974503+00:00",
   "days": [
     {
       "date": "2026-07-31",
@@ -86,10 +86,6 @@
       "transcribed_count": 44,
       "incomplete": false,
       "skipped": [
-        {
-          "headline": "California robotics firm unveils centaur-style robot for hazardous environments",
-          "reason": "A commercial product announcement with no policy, government or civil-liberties angle."
-        },
         {
           "headline": "Commentary argues political extremism has poisoned public perception of Abrahamic religions",
           "reason": "Opinion commentary that reports no new event or development."
