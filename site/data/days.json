@@ -5,52 +5,55 @@
       "date": "2026-07-31",
       "tags": [
         "politics",
+        "legal",
         "war",
         "tech",
-        "defence",
-        "legal",
-        "immigration",
         "surveillance",
         "privacy",
-        "health",
-        "media"
+        "immigration",
+        "markets",
+        "defence",
+        "media",
+        "health"
       ],
       "sources": [
-        "@oafnation_actual",
         "@aaronparnas",
+        "@oafnation_actual",
+        "@total.hypocrisy",
+        "@hunteralexanderhowell",
         "@ericmoutsos"
       ],
-      "post_count": 20,
-      "transcribed_count": 20,
+      "post_count": 29,
+      "transcribed_count": 29,
       "incomplete": false,
       "skipped": [
         {
-          "headline": "FIFA adviser resigns over World Cup private equity plan",
-          "reason": "Sports governance and business dispute, not one of the reader's policy interests."
+          "headline": "FIFA adviser resigns over plan to sell World Cup stakes to Kushner family",
+          "reason": "Primarily sports governance and a private equity dispute rather than politics, policy, or markets."
         },
         {
-          "headline": "Stephen A. Smith apologizes to athletes who refused COVID vaccine",
-          "reason": "Commentary reacting to another commentator's remarks; reports no new policy development."
+          "headline": "Stephen A. Smith apologises to athletes who refused COVID vaccination",
+          "reason": "Reaction commentary on an existing clip with no new reporting."
         },
         {
-          "headline": "Claims that Princess Diana's death was orchestrated",
-          "reason": "Decades-old conspiracy discussion with no policy or investigative development."
+          "headline": "Administration criticised for using musicians' songs in deportation videos",
+          "reason": "Commentary drawing inferences from clips rather than reporting new developments."
         },
         {
-          "headline": "Creator responds to comments about her body",
-          "reason": "Personal statement about the creator's own life; no news content."
+          "headline": "Creator urges viewers to speak out while they still can",
+          "reason": "Motivational message about the creator's own path, not news."
         },
         {
-          "headline": "Creator urges followers to speak up and get involved",
-          "reason": "Motivational appeal about the creator's own path; reports nothing new."
+          "headline": "Creator documents anxiety over the state of the world",
+          "reason": "Personal account of the creator's mental health with no news content."
         },
         {
-          "headline": "Creator describes anxiety about the present moment",
-          "reason": "Personal mental-health account rather than reporting."
+          "headline": "Creator recounts a date ending over political vocabulary",
+          "reason": "Personal anecdote about the creator's dating life."
         },
         {
-          "headline": "Short comedic clip",
-          "reason": "Entertainment clip with no news content."
+          "headline": "Interview clips revive claims about Princess Diana's death",
+          "reason": "Historical conspiracy commentary with no current news or policy angle."
         }
       ]
     },
