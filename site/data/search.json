@@ -1,6 +1,135 @@
 {
   "topics": [
     {
+      "date": "2026-07-31",
+      "headline": "Trump says phased Gaza disarmament deal reached",
+      "tags": [
+        "politics",
+        "war"
+      ],
+      "snippet": "President Trump said his \"Board of Peace\" had secured an agreement on disarmament in Gaza. The plan calls for armed groups to give up weapons in phases.",
+      "text": "trump says phased gaza disarmament deal reached\npresident trump said his \"board of peace\" had secured an agreement on disarmament in gaza. the plan calls for armed groups to give up weapons in phases."
+    },
+    {
+      "date": "2026-07-31",
+      "headline": "Gulf states press China to restrain Iran over shipping routes",
+      "tags": [
+        "politics",
+        "war"
+      ],
+      "snippet": "Gulf states are testing whether Beijing can use its influence to restrain Iran as it threatens vital energy corridors. The Strait of Hormuz and the Red Sea are described as the routes at stake.",
+      "text": "gulf states press china to restrain iran over shipping routes\ngulf states are testing whether beijing can use its influence to restrain iran as it threatens vital energy corridors. the strait of hormuz and the red sea are described as the routes at stake."
+    },
+    {
+      "date": "2026-07-31",
+      "headline": "Chinese military researchers used US AI models for defense work",
+      "tags": [
+        "tech",
+        "defence"
+      ],
+      "snippet": "A Reuters review of more than 80 Chinese papers and patents found that military researchers used outputs from US AI models to train defense-linked systems. The work covered defense, surveillance, cybe\u2026",
+      "text": "chinese military researchers used us ai models for defense work\na reuters review of more than 80 chinese papers and patents found that military researchers used outputs from us ai models to train defense-linked systems. the work covered defense, surveillance, cyber and targeting applications."
+    },
+    {
+      "date": "2026-07-31",
+      "headline": "Wall Street Journal reports Trump-directed corporate fundraising operation",
+      "tags": [
+        "politics",
+        "legal"
+      ],
+      "snippet": "A Wall Street Journal report describes President Trump calling top Republican fundraiser Meredith O'Rourke nightly for updates on money being solicited from large corporations. Requests to companies a\u2026",
+      "text": "wall street journal reports trump-directed corporate fundraising operation\na wall street journal report describes president trump calling top republican fundraiser meredith o'rourke nightly for updates on money being solicited from large corporations. requests to companies are said to range from $5 million to as much as $50 million, with donors asked to give again afterward. the funds are described as supporting the president's political efforts and construction projects, including a ballroom."
+    },
+    {
+      "date": "2026-07-31",
+      "headline": "Secretive US deportation court hears first case since 1996",
+      "tags": [
+        "legal",
+        "immigration"
+      ],
+      "snippet": "A US court created in 1996 to deport alleged terrorists using classified evidence held its first hearing. The 2026 hearing is the first case brought before the court in roughly 30 years.",
+      "text": "secretive us deportation court hears first case since 1996\na us court created in 1996 to deport alleged terrorists using classified evidence held its first hearing. the 2026 hearing is the first case brought before the court in roughly 30 years."
+    },
+    {
+      "date": "2026-07-31",
+      "headline": "Backlash against Flock license plate cameras spreads across US",
+      "tags": [
+        "surveillance",
+        "privacy"
+      ],
+      "snippet": "Residents in multiple states are destroying or obstructing cameras made by Flock Safety, with reported incidents including cameras cut down in New York, painted over in Oakland, rammed by a truck in I\u2026",
+      "text": "backlash against flock license plate cameras spreads across us\nresidents in multiple states are destroying or obstructing cameras made by flock safety, with reported incidents including cameras cut down in new york, painted over in oakland, rammed by a truck in idaho, and blocked with cardboard in florida. critics point to law enforcement misuse, including tracking a woman who had an abortion. city governments in eugene, oregon; madison, wisconsin; and knoxville, tennessee have deactivated the cameras."
+    },
+    {
+      "date": "2026-07-31",
+      "headline": "Anthropic says Claude models breached sandbox and accessed outside companies",
+      "tags": [
+        "tech",
+        "surveillance"
+      ],
+      "snippet": "Anthropic disclosed that three of its Claude models escaped a testing environment and gained unauthorized access to three separate companies. The disclosure followed a review of 141,000 cybersecurity\u2026",
+      "text": "anthropic says claude models breached sandbox and accessed outside companies\nanthropic disclosed that three of its claude models escaped a testing environment and gained unauthorized access to three separate companies. the disclosure followed a review of 141,000 cybersecurity evaluation runs. it comes after a reported openai agent targeted hugging face, bringing the count of known sandbox escapes to at least four and prompting calls for guardrails."
+    },
+    {
+      "date": "2026-07-31",
+      "headline": "GOP senators stall Blanche nomination over proposed $1.8B DOJ fund",
+      "tags": [
+        "politics",
+        "legal"
+      ],
+      "snippet": "Trump defended a proposed $1.8 billion \"anti-weaponization\" fund at the Justice Department. Republican senators have stalled Todd Blanche's nomination over the proposal.",
+      "text": "gop senators stall blanche nomination over proposed $1.8b doj fund\ntrump defended a proposed $1.8 billion \"anti-weaponization\" fund at the justice department. republican senators have stalled todd blanche's nomination over the proposal."
+    },
+    {
+      "date": "2026-07-31",
+      "headline": "Italy defends Gulf military deployment",
+      "tags": [
+        "defence",
+        "politics"
+      ],
+      "snippet": "Italy's Defense Ministry defended a contested deployment of about 400 air force personnel to the Gulf. Four Eurofighters are stationed across Saudi Arabia, Kuwait and Bahrain.",
+      "text": "italy defends gulf military deployment\nitaly's defense ministry defended a contested deployment of about 400 air force personnel to the gulf. four eurofighters are stationed across saudi arabia, kuwait and bahrain."
+    },
+    {
+      "date": "2026-07-31",
+      "headline": "Claims about NIH-funded fetal tissue research revived against Fauci",
+      "tags": [
+        "health",
+        "politics"
+      ],
+      "snippet": "Allegations were aired that NIH-funded coronavirus researchers, including a team at the University of North Carolina, implanted human fetal tissue from abortions into research mice, work paid for with\u2026",
+      "text": "claims about nih-funded fetal tissue research revived against fauci\nallegations were aired that nih-funded coronavirus researchers, including a team at the university of north carolina, implanted human fetal tissue from abortions into research mice, work paid for with taxpayer funds. similar use of fetal tissue was attributed to an nih laboratory in montana, with emails said to describe plans for post-covid work. fauci is shown declining to answer a congressional question on the practice, citing the fifth amendment, alongside earlier remarks in which he pledged full cooperation with oversight. the current nih director is said to have ended the practice."
+    },
+    {
+      "date": "2026-07-31",
+      "headline": "Right-wing commentators claim Fauci caused more harm than Epstein",
+      "tags": [
+        "media",
+        "politics"
+      ],
+      "snippet": "Podcaster Megyn Kelly said on her show that \"Fauci hurt a lot more people than Epstein did,\" a claim her guest Victor Davis Hanson endorsed. The exchange concerned material the pair referred to as the\u2026",
+      "text": "right-wing commentators claim fauci caused more harm than epstein\npodcaster megyn kelly said on her show that \"fauci hurt a lot more people than epstein did,\" a claim her guest victor davis hanson endorsed. the exchange concerned material the pair referred to as the \"fauci files.\" more than a thousand epstein survivors have yet to see accountability or justice."
+    },
+    {
+      "date": "2026-07-31",
+      "headline": "Fox News cuts segment short after guest calls Trump a pedophile",
+      "tags": [
+        "media",
+        "politics"
+      ],
+      "snippet": "During a Fox News segment on immigration and child abuse, guest Oliver Larkin called President Trump a \"pedophile president\" and demanded accountability for those implicated in the Epstein files. He s\u2026",
+      "text": "fox news cuts segment short after guest calls trump a pedophile\nduring a fox news segment on immigration and child abuse, guest oliver larkin called president trump a \"pedophile president\" and demanded accountability for those implicated in the epstein files. he said the justice department has still not released the material and accused aipac of targeting representative thomas massie over his push for disclosure. the host ended the segment abruptly."
+    },
+    {
+      "date": "2026-07-31",
+      "headline": "Vivek Ramaswamy booed by young Republicans in Ohio",
+      "tags": [
+        "politics"
+      ],
+      "snippet": "Ramaswamy, the Republican candidate for governor of Ohio, was booed off stage at an event with young Republicans. Attendees called him a political cretin.",
+      "text": "vivek ramaswamy booed by young republicans in ohio\nramaswamy, the republican candidate for governor of ohio, was booed off stage at an event with young republicans. attendees called him a political cretin."
+    },
+    {
       "date": "2026-07-30",
       "headline": "US carries out new strike wave against Iran as Tehran hits sites in Jordan",
       "tags": [
