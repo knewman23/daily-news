@@ -1,6 +1,61 @@
 {
-  "last_updated": "2026-08-02T22:21:21.423904+00:00",
+  "last_updated": "2026-08-02T22:23:20.740521+00:00",
   "days": [
+    {
+      "date": "2026-08-03",
+      "tags": [
+        "war",
+        "politics",
+        "markets",
+        "legal",
+        "epstein",
+        "surveillance",
+        "privacy",
+        "health",
+        "immigration",
+        "defence",
+        "tech"
+      ],
+      "sources": [
+        "@hunteralexanderhowell",
+        "@aaronparnas",
+        "@oafnation_actual",
+        "@total.hypocrisy"
+      ],
+      "post_count": 27,
+      "transcribed_count": 25,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Trump wins 43rd club golf championship",
+          "reason": "Commentary on the president's golfing rather than a policy or governmental development."
+        },
+        {
+          "headline": "Trump says he prefers the BBC while suing it for $10 billion",
+          "reason": "A gaffe observation that reports no new development in the underlying lawsuits."
+        },
+        {
+          "headline": "Amsterdam Pride displays Trump and Putin inflatables",
+          "reason": "Cultural display and human interest rather than a policy or political development."
+        },
+        {
+          "headline": "Resurfaced message praises the unvaccinated",
+          "reason": "Resurfaced commentary with no new public health policy news."
+        },
+        {
+          "headline": "Creator says they were doxxed on TikTok",
+          "reason": "A creator's personal dispute rather than a broader privacy or policy story."
+        },
+        {
+          "headline": "Creator describes OpenAI brand trip",
+          "reason": "Sponsored trip and personal content, not news."
+        },
+        {
+          "headline": "Speculation that AI firms destroy books to erase training evidence",
+          "reason": "Explicitly framed as speculation and reports no new facts."
+        }
+      ]
+    },
     {
       "date": "2026-08-02",
       "tags": [
