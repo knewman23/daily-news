@@ -1,5 +1,6 @@
 import json
 from datetime import date, datetime, timezone
+from pathlib import Path
 
 import pytest
 
@@ -163,7 +164,6 @@ def test_a_successful_run_writes_the_digest_and_exits_zero(project):
     code, kit, notified = run(project)
 
     assert code == 0
-    assert notified == []
     assert all(spy.calls == 1 for spy in kit.values())
 
     path = project / "news" / "2026-07-28.md"
@@ -239,9 +239,177 @@ def test_all_handles_disabled_writes_nothing_and_exits_zero(project):
     code, kit, notified = run(project)
 
     assert code == 0
-    assert notified == []
     assert kit["fetcher"].calls == 0
     assert not (project / "news").exists() or not list((project / "news").glob("*.md"))
+    # "0 topics" would read as a broken summarize; the reason is the news here.
+    assert notified[-1] == "2026-07-28 — every source is disabled"
+
+
+# --- desktop notifications -------------------------------------------------
+#
+# The 11am run is unattended, so the desktop banners are the only thing that
+# says it happened. Two rules hold across every case below: a run announces
+# itself when it starts, and it sends exactly one banner about how it ended.
+
+
+def test_a_run_says_when_it_starts(project):
+    _, _, notified = run(project)
+
+    assert notified[0] == "Starting the run for 2026-07-28"
+
+
+def test_a_successful_run_reports_its_counts_and_how_long_it_took(project):
+    # post_count on the extract stage, not fetch: that is where the day's total
+    # comes from, since fetch reports only what it newly downloaded.
+    _, _, notified = run(project, stage_kwargs={
+        "audio_stats": Stats(post_count=1, transcribed_count=1),
+    })
+
+    assert len(notified) == 2
+    assert notified[1].startswith("2026-07-28 — 1 topic from 1 post in ")
+
+
+def test_posts_the_filter_kept_nothing_from_are_not_reported_as_no_posts(project):
+    _, _, notified = run(project, stage_kwargs={
+        "topics": [], "audio_stats": Stats(post_count=2, transcribed_count=1),
+    })
+
+    assert "nothing kept from 2 posts" in notified[-1]
+
+
+def test_a_day_with_no_posts_says_so_rather_than_reporting_zero_topics(project):
+    """A quiet news day and a broken pipeline must not read the same."""
+    _, _, notified = run(project, stage_kwargs={
+        "posts": [], "fetch_stats": Stats(), "audio": [], "topics": [],
+    })
+
+    assert "no posts found" in notified[-1]
+    assert "0 topics" not in notified[-1]
+
+
+def test_an_incomplete_day_gets_one_banner_carrying_the_problem_count(project):
+    failed = Stats()
+    failed.fail("rate limited: aaronparnas")
+
+    _, _, notified = run(project, stage_kwargs={
+        "fetch_stats": failed,
+        "audio_stats": Stats(post_count=1, transcribed_count=1),
+    })
+
+    assert len(notified) == 2
+    assert "1 problem" in notified[1]
+    assert "see Runs" in notified[1]
+
+
+def test_a_hard_failure_does_not_also_claim_the_run_finished(project):
+    code, _, notified = run(project, stage_kwargs={
+        "fetch_raises": fetch.SessionExpired("session rejected"),
+    })
+
+    assert code != 0
+    assert len(notified) == 2
+    assert "session expired" in notified[1].lower()
+    assert "topic" not in notified[1]
+
+
+def test_a_quiet_run_says_nothing(project):
+    """--quiet is used to re-summarize a day by hand; it must not banner."""
+    notified = []
+    run_daily.run_day(
+        DAY, config.load(project / "config.toml"),
+        notifier=notified.append, generated=GENERATED, quiet=True, **stages(),
+    )
+
+    assert notified == []
+
+
+def fake_shortcuts(listed=(run_daily.NOTIFY_SHORTCUT,)):
+    """A `shortcuts` CLI stand-in that records calls and the input file's contents."""
+    import subprocess as sp
+
+    calls, delivered = [], {}
+
+    def runner(cmd, **kwargs):
+        calls.append(cmd)
+        if cmd[:2] == ["shortcuts", "list"]:
+            return sp.CompletedProcess(cmd, 0, stdout="\n".join(listed) + "\n")
+        if "-i" in cmd:
+            # Read it here: _notify deletes the file as soon as the call returns.
+            delivered["text"] = Path(cmd[cmd.index("-i") + 1]).read_text(encoding="utf-8")
+            delivered["path"] = cmd[cmd.index("-i") + 1]
+        return sp.CompletedProcess(cmd, 0, stdout="")
+
+    return runner, calls, delivered
+
+
+def test_notifications_go_through_the_shortcut_when_it_exists():
+    runner, calls, _ = fake_shortcuts()
+
+    run_daily._notify("2026-07-28 — 1 topic from 1 post in 8s", runner=runner)
+
+    assert calls[-1][:3] == ["shortcuts", "run", "Daily News Notify"]
+
+
+def test_the_message_reaches_the_shortcut_as_text():
+    """`shortcuts run` passes input by path, so an empty banner is the failure mode."""
+    runner, _, delivered = fake_shortcuts()
+
+    run_daily._notify("2026-07-28 — 17 topics from 27 posts in 13m59s", runner=runner)
+
+    assert delivered["text"] == "2026-07-28 — 17 topics from 27 posts in 13m59s"
+
+
+def test_the_temporary_input_file_is_cleaned_up():
+    runner, _, delivered = fake_shortcuts()
+
+    run_daily._notify("boom", runner=runner)
+
+    assert not Path(delivered["path"]).exists()
+
+
+def test_notifications_fall_back_to_osascript_without_the_shortcut():
+    """A machine that never built the Shortcut should be noisy, not silent."""
+    runner, calls, _ = fake_shortcuts(listed=("Some Other Shortcut",))
+
+    run_daily._notify("boom", runner=runner)
+
+    assert calls[-1][0] == "osascript"
+    assert "boom" in calls[-1][-1]
+
+
+def test_the_shortcut_is_looked_up_rather_than_assumed():
+    """`shortcuts run` exits 0 for a shortcut it could not find."""
+    runner, calls, _ = fake_shortcuts()
+
+    run_daily._notify("boom", runner=runner)
+
+    assert calls[0] == ["shortcuts", "list"]
+
+
+def test_a_notifier_that_cannot_run_does_not_fail_the_run(project):
+    """A missing notifier is worth being quiet about, not worth losing a digest over."""
+    code = run_daily.run_day(
+        DAY, config.load(project / "config.toml"),
+        generated=GENERATED,
+        notifier=lambda _m: run_daily._notify(_m, runner=lambda *a, **k: None),
+        **stages(),
+    )
+
+    assert code == 0
+    assert (project / "news" / "2026-07-28.md").exists()
+
+
+@pytest.mark.parametrize("seconds,expected", [
+    (0, "0s"),
+    (8.4, "8s"),
+    (59, "59s"),
+    (60, "1m00s"),
+    (372, "6m12s"),
+    (3600, "1h00m"),
+    (4980, "1h23m"),
+])
+def test_elapsed_reads_as_a_duration(seconds, expected):
+    assert run_daily._elapsed(seconds) == expected
 
 
 # --- partial failures ------------------------------------------------------

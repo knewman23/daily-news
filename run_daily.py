@@ -23,6 +23,7 @@ import argparse
 import logging
 import subprocess
 import sys
+import tempfile
 from datetime import date, datetime, timezone
 from pathlib import Path
 
@@ -53,10 +54,13 @@ def run_day(
     _setup_logging(cfg, day)
     started = runlog.now()
 
+    # Assigned before record() below, which closes over it.
+    notify = (lambda _m: None) if quiet else (notifier or _notify)
+
     def record(ok: bool, error: str | None = None, stats: Stats | None = None,
                spoken: int = 0, on_image: int = 0, topics: int = 0) -> int:
-        """Write the run history entry and return the exit code."""
-        runlog.append(cfg.paths.logs, runlog.RunRecord(
+        """Write the run history entry, say how it went, and return the exit code."""
+        entry = runlog.RunRecord(
             started_at=started,
             finished_at=runlog.now(),
             date=day.isoformat(),
@@ -70,10 +74,18 @@ def run_day(
             error=error,
             failures=list(stats.notes) if stats else [],
             skipped=list(stats.skipped) if stats else [],
-        ))
+        )
+        runlog.append(cfg.paths.logs, entry)
+        # Every return path funnels through here, so this is the one place that
+        # cannot be forgotten when another early exit is added later.
+        #
+        # Good outcomes only. A run that failed has already sent a banner saying
+        # what broke, and following it with one saying the run finished would be
+        # both a duplicate and a lie about the exit code.
+        if ok:
+            notify(f"{day.isoformat()} — {_outcome(entry)}")
         return 0 if ok else 1
 
-    notify = (lambda _m: None) if quiet else (notifier or _notify)
     do_fetch = fetcher or fetch.fetch_day
     do_transcribe = transcriber or transcribe.transcribe_day
     do_ocr = ocr_runner or ocr.ocr_day
@@ -83,6 +95,9 @@ def run_day(
     do_prune = pruner or prune.prune
 
     log.info("starting run for %s", day.isoformat())
+    # Before the disabled-sources check below: the run has begun either way, and
+    # a start banner with no matching finish is itself worth seeing.
+    notify(f"Starting the run for {day.isoformat()}")
 
     enabled = sources.enabled_sources(cfg.paths.sources)
     if not enabled:
@@ -171,9 +186,8 @@ def run_day(
     log.info("wrote %s with %d topic(s)%s", path, topics,
              " (incomplete)" if stats.incomplete else "")
 
-    if stats.incomplete:
-        notify(f"Daily news for {day.isoformat()} is incomplete "
-               f"({len(stats.notes)} problem(s)) — see the Runs panel")
+    # An incomplete day is not notified here: record() carries the problem count
+    # in the completion banner, so the day is reported once rather than twice.
 
     # Publishing comes last and cannot fail the run: the digest is written and
     # readable locally, so being unable to reach GitHub is worth reporting
@@ -290,17 +304,110 @@ def _existing_notes(path: Path) -> str:
         return ""
 
 
-def _notify(message: str) -> None:
-    """Surface a failure on the desktop.
+def _outcome(entry: runlog.RunRecord) -> str:
+    """How a finished run reads on the desktop: what it produced, and how long it took."""
+    # A run that is ok and carries an error had nothing to do rather than nothing
+    # to show. Reporting "0 topics" for it would read as a broken summarize.
+    if entry.error:
+        return entry.error
+
+    elapsed = _elapsed(entry.duration_seconds)
+    if not entry.post_count:
+        body = f"no posts found in {elapsed}"
+    elif not entry.topic_count:
+        # A day of posts the interest filter kept nothing from is a different
+        # thing from a day with no posts, and only one of the two is worth
+        # checking the filter over.
+        body = f"nothing kept from {_count(entry.post_count, 'post')} in {elapsed}"
+    else:
+        body = (f"{_count(entry.topic_count, 'topic')} from "
+                f"{_count(entry.post_count, 'post')} in {elapsed}")
+    if entry.incomplete:
+        body += f" ({_count(len(entry.failures), 'problem')} — see Runs)"
+    return body
+
+
+def _elapsed(seconds: float) -> str:
+    """A duration as the Runs panel writes it: 8s, 6m12s, 1h23m."""
+    total = int(round(seconds))
+    if total < 60:
+        return f"{total}s"
+    minutes, secs = divmod(total, 60)
+    if minutes < 60:
+        return f"{minutes}m{secs:02d}s"
+    hours, minutes = divmod(minutes, 60)
+    return f"{hours}h{minutes:02d}m"
+
+
+def _count(n: int, noun: str) -> str:
+    return f"{n} {noun}" if n == 1 else f"{n} {noun}s"
+
+
+NOTIFY_TITLE = "Daily News"
+
+# A Shortcut, because on macOS 26 nothing else on this machine could display a
+# notification at all. See _notify.
+NOTIFY_SHORTCUT = "Daily News Notify"
+
+
+def _notify(message: str, runner=subprocess.run) -> None:
+    """Surface a run on the desktop.
 
     An unattended run that fails silently is worse than one that fails loudly:
     the first sign of trouble would otherwise be a digest that never appeared.
+    The 11am run is unattended by definition, so it also says when it starts and
+    what it produced — a banner that never arrived is a failure that never
+    reported itself.
+
+    The transport is a Shortcut, which reads like an odd choice and is not. On
+    macOS 26, an app must be registered in Notification Center to post one, and
+    a command-line tool cannot register: `osascript` posts as Script Editor,
+    which is absent from `com.apple.ncprefs`, and terminal-notifier is ad-hoc
+    signed, which macOS 26 refuses to register no matter where it is installed
+    or how it is re-signed. Both exit 0 while displaying nothing, because
+    submitting a notification and displaying one are different things — which is
+    how the pre-existing failure banners in this file went years without anyone
+    noticing they were never shown.
+
+    Shortcuts is registered and allowed, so a Shortcut wrapping "Show
+    Notification" does display. `shortcuts run` passes its input as a file, so
+    the message goes through a temporary file and the Shortcut needs a "Get text
+    from Shortcut Input" step ahead of the notification — README documents
+    building it.
+
+    osascript stays as the fallback for machines where it does work. Neither can
+    fail a run: a notification that cannot be delivered is worth being quiet
+    about, and never worth losing a digest over.
     """
-    subprocess.run(
-        ["osascript", "-e",
-         f'display notification {message!r} with title "Daily News"'],
-        check=False, capture_output=True,
-    )
+    if _has_shortcut(runner):
+        # A file, not an argument: `shortcuts run` takes its input by path.
+        handle = tempfile.NamedTemporaryFile(
+            "w", suffix=".txt", prefix="daily-news-notify-",
+            encoding="utf-8", delete=False,
+        )
+        with handle as sink:
+            sink.write(message)
+        try:
+            runner(["shortcuts", "run", NOTIFY_SHORTCUT, "-i", handle.name],
+                   check=False, capture_output=True)
+        finally:
+            Path(handle.name).unlink(missing_ok=True)
+        return
+
+    runner(["osascript", "-e",
+            f'display notification {message!r} with title "{NOTIFY_TITLE}"'],
+           check=False, capture_output=True)
+
+
+def _has_shortcut(runner) -> bool:
+    """Whether the notification Shortcut exists.
+
+    Asked rather than assumed because `shortcuts run` exits 0 for a shortcut it
+    could not find, so failure is not detectable from the exit code afterwards.
+    """
+    done = runner(["shortcuts", "list"], check=False, capture_output=True, text=True)
+    listed = getattr(done, "stdout", "") or ""
+    return NOTIFY_SHORTCUT in listed.splitlines()
 
 
 def _setup_logging(cfg: config.Config, day: date) -> None:

@@ -117,6 +117,50 @@ no source list, no runs.
 On a phone those panels move behind the **⋮** button; on a desktop they are a
 permanent rail.
 
+### Desktop notifications
+
+The 11am run is unattended, so it reports itself on the desktop: one banner when
+it starts, and exactly one about how it ended.
+
+```
+Starting the run for 2026-08-04
+2026-08-04 — 17 topics from 27 posts in 13m59s
+2026-08-04 — 17 topics from 27 posts in 13m59s (2 problems — see Runs)
+2026-08-04 — nothing kept from 24 posts in 4m02s
+2026-08-04 — no posts found in 12s
+2026-08-04 — every source is disabled
+```
+
+A run that fails sends what broke instead — an expired session, a failed fetch,
+a failed summarize — and no completion banner, so a banner claiming a finish
+always means one. A publish that did not reach GitHub is its own banner, because
+a digest that is fine locally but stale on the site is a separate problem.
+
+`--quiet` suppresses all of them, which is why a backfill of thirty days does not
+produce sixty notifications.
+
+**They go through a Shortcut, and the reason is worth knowing.** On macOS 26 an
+app must be registered in Notification Center to post a notification, and a
+command-line tool cannot register itself: `osascript` posts as Script Editor,
+which is absent from `com.apple.ncprefs`, and `terminal-notifier` is ad-hoc
+signed, which macOS 26 refuses to register wherever it is installed and however
+it is re-signed. Both exit 0 and display nothing — submitting a notification and
+displaying one are different things, which is how the failure banners in this
+project ran for months without anyone noticing they were never shown.
+
+The Shortcuts app *is* registered, so a Shortcut works. Build it once:
+
+1. **Shortcuts → File → New Shortcut**
+2. Add **Get text from** and set its input to **Shortcut Input**
+3. Add **Show Notification** below it, and put that `Text` result in the
+   notification's **text** field — not the Title, and not the Attachment. An
+   empty banner means the variable is not in the body.
+4. Name it exactly **`Daily News Notify`** (`NOTIFY_SHORTCUT` in `run_daily.py`)
+
+`run_daily.py` checks `shortcuts list` before using it, because `shortcuts run`
+exits 0 for a shortcut it could not find, and falls back to `osascript` when it
+is missing — noisy beats silent on a machine where osascript still works.
+
 ### In Docker, if you would rather start and stop it as a service
 
 ```bash
@@ -209,6 +253,8 @@ python3 -m venv .venv
 
 The first transcription downloads the Whisper `small` model (~500 MB, once).
 OCR uses the Vision framework built into macOS — no model, no API key.
+
+Desktop notifications need a Shortcut built by hand, once — see below.
 
 ### 2. Instagram session
 
