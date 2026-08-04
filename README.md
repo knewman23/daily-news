@@ -117,6 +117,31 @@ no source list, no runs.
 On a phone those panels move behind the **⋮** button; on a desktop they are a
 permanent rail.
 
+### In Docker, if you would rather start and stop it as a service
+
+```bash
+docker compose up -d --build     # first time, or after editing the Dockerfile
+docker compose stop              # stop it
+docker compose start             # start it again
+docker compose logs -f           # the request log
+```
+
+Only the web app runs in the container. The pipeline stays on the host: it needs
+a logged-in Instagram session and the OCR uses macOS Vision, so the image
+installs `requirements-web.txt` (markdown and pyyaml) rather than
+`requirements.txt`.
+
+The project is bind-mounted at `/app` rather than copied in, so `news/` is never
+baked into an image layer, and a change to `web/` needs only a restart. Inside
+the container the app binds `0.0.0.0` — the published port is bound to
+`127.0.0.1`, so it is reachable from no further than it is otherwise. Both port
+numbers in `docker-compose.yml` are `[serve] port` from `config.toml`; changing
+one means changing the others.
+
+Publishing from the container will fail unless git credentials are reachable
+inside it. That failure is reported and never fails the edit, but if you only
+want the viewer there, set `[publish] enabled = false`.
+
 ### Running it by hand
 
 ```bash

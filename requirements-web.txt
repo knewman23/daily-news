@@ -1,0 +1,9 @@
+# What the local web app needs, and nothing else.
+#
+# src/serve.py's import chain reaches only digest, notes, runlog, sources,
+# topics and autopublish — between them that is markdown and pyyaml. The
+# pipeline's deps are deliberately absent: pyobjc-framework-Vision/Quartz will
+# not install on Linux at all, and instaloader and faster-whisper are only
+# needed by a fetch, which does not run in the container.
+markdown>=3.7
+pyyaml>=6.0

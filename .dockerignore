@@ -1,0 +1,5 @@
+# The build only needs requirements-web.txt; everything else arrives via the
+# bind mount at run time. Excluding the private and heavy directories here means
+# a stray COPY cannot bake the journal or the downloaded media into an image.
+*
+!requirements-web.txt
