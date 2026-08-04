@@ -1,6 +1,65 @@
 {
-  "last_updated": "2026-08-02T22:23:20.740521+00:00",
+  "last_updated": "2026-08-03T17:14:04.390486+00:00",
   "days": [
+    {
+      "date": "2026-08-04",
+      "tags": [
+        "war",
+        "defence",
+        "legal",
+        "politics",
+        "markets",
+        "immigration",
+        "health",
+        "climate",
+        "tech",
+        "media"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@oafnation_actual",
+        "@total.hypocrisy",
+        "@carolinegleich"
+      ],
+      "post_count": 33,
+      "transcribed_count": 32,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Anthropic CEO said to worry new hires are motivated by pay, not mission",
+          "reason": "Corporate hiring culture at an AI firm, not AI policy, infrastructure, or energy demand."
+        },
+        {
+          "headline": "Rapid-fire list of presidential \"firsts\" over 48 hours",
+          "reason": "Commentary listicle recapping items covered elsewhere rather than reporting anything new."
+        },
+        {
+          "headline": "Creator says doxxing followed video on cluster munitions",
+          "reason": "Mainly a personal dispute over doxxing and harassment, built on a previously posted video."
+        },
+        {
+          "headline": "Commentary on Fauci reference aired during ESPN interview",
+          "reason": "Reaction commentary on a broadcast clip; reports nothing new."
+        },
+        {
+          "headline": "Creator discusses algorithmic suppression and personal reflections",
+          "reason": "Personal reflection and promotion; no news content."
+        },
+        {
+          "headline": "Motivational monologue",
+          "reason": "No news content."
+        },
+        {
+          "headline": "Creator jokes about speeding tickets on personal record",
+          "reason": "Personal aside; no news content."
+        },
+        {
+          "headline": "Creator posts statement about personal safety and intentions",
+          "reason": "Personal statement about the creator's own circumstances; no news content."
+        }
+      ]
+    },
     {
       "date": "2026-08-03",
       "tags": [
