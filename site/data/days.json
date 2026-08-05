@@ -1,6 +1,46 @@
 {
-  "last_updated": "2026-08-03T17:14:04.390486+00:00",
+  "last_updated": "2026-08-04T17:19:32.185848+00:00",
   "days": [
+    {
+      "date": "2026-08-05",
+      "tags": [
+        "politics",
+        "health",
+        "legal",
+        "war",
+        "defence",
+        "elections",
+        "government",
+        "economy",
+        "markets",
+        "tech",
+        "media",
+        "epstein"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@total.hypocrisy",
+        "@oafnation_actual",
+        "@hunteralexanderhowell"
+      ],
+      "post_count": 26,
+      "transcribed_count": 24,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Trump accused of stolen valor over AI-generated image in military uniform",
+          "reason": "A social-media image flap with no policy or governmental consequence."
+        },
+        {
+          "headline": "Vance mocks pro-Trump commentator amid argument over grocery prices",
+          "reason": "Mainly an intra-coalition social media spat rather than substantive news."
+        },
+        {
+          "headline": "UFC parent company lost $30 million on White House Freedom 250 event",
+          "reason": "A private company's event finances, with no policy angle."
+        }
+      ]
+    },
     {
       "date": "2026-08-04",
       "tags": [
