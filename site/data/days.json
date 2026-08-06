@@ -1,6 +1,55 @@
 {
-  "last_updated": "2026-08-04T17:19:32.185848+00:00",
+  "last_updated": "2026-08-05T17:11:53.506842+00:00",
   "days": [
+    {
+      "date": "2026-08-06",
+      "tags": [
+        "politics",
+        "war",
+        "defence",
+        "energy",
+        "legal",
+        "media",
+        "health",
+        "surveillance",
+        "immigration",
+        "economy",
+        "government",
+        "elections",
+        "tech"
+      ],
+      "sources": [
+        "@oafnation_actual",
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@ericmoutsos"
+      ],
+      "post_count": 32,
+      "transcribed_count": 32,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Commentator says low turnout, not fraud, is the biggest midterm risk",
+          "reason": "Commentary and voting exhortation that reports no new events."
+        },
+        {
+          "headline": "Carney jokes about broken teleprompter in dig at Trump",
+          "reason": "A viral quip with no policy or governing substance."
+        },
+        {
+          "headline": "SpaceX rocket stage crashes into the moon",
+          "reason": "Space debris incident outside the reader's stated interests."
+        },
+        {
+          "headline": "Man arrested after dressing as the grim reaper on hospital roof",
+          "reason": "Human interest crime story with no policy angle."
+        },
+        {
+          "headline": "Commentator revisits comedy sketch mocking COVID guidance",
+          "reason": "Reaction to an old comedy sketch that reports nothing new."
+        }
+      ]
+    },
     {
       "date": "2026-08-05",
       "tags": [
