@@ -1,6 +1,220 @@
 {
   "topics": [
     {
+      "date": "2026-08-07",
+      "headline": "US economy lost 23,000 jobs in July as forecasts missed by 100,000",
+      "tags": [
+        "economy",
+        "markets",
+        "politics"
+      ],
+      "snippet": "The July employment report showed a net loss of 23,000 jobs, against economist expectations of a gain of 85,000. June's figure was revised down by a further 37,000, while the unemployment rate fell to\u2026",
+      "text": "us economy lost 23,000 jobs in july as forecasts missed by 100,000\nthe july employment report showed a net loss of 23,000 jobs, against economist expectations of a gain of 85,000. june's figure was revised down by a further 37,000, while the unemployment rate fell to 4.1%. economists described the report as one of the worst monthly readings since 2020, with commentary attributing part of the weakness to automation of roles through ai."
+    },
+    {
+      "date": "2026-08-07",
+      "headline": "Blanche confirmation vote narrows to a single Republican senator",
+      "tags": [
+        "politics",
+        "legal"
+      ],
+      "snippet": "Senator Lisa Murkowski of Alaska said she will not vote to confirm Todd Blanche as Attorney General, following Susan Collins's announcement of the same position, leaving the nomination at the maximum\u2026",
+      "text": "blanche confirmation vote narrows to a single republican senator\nsenator lisa murkowski of alaska said she will not vote to confirm todd blanche as attorney general, following susan collins's announcement of the same position, leaving the nomination at the maximum number of republican defections it can absorb. attention turned to senator bill cassidy of louisiana, whom trump had endorsed against. cassidy was later reported to be prepared to vote yes, which would allow trump's former personal attorney to be confirmed."
+    },
+    {
+      "date": "2026-08-07",
+      "headline": "Judge orders Blanche and DOJ into court over Epstein file redactions",
+      "tags": [
+        "legal",
+        "politics"
+      ],
+      "snippet": "Federal judge Emmet Sullivan ordered Todd Blanche and the Justice Department to appear and explain why they are not complying with a court order in the Katie Phang lawsuit, including their failure to\u2026",
+      "text": "judge orders blanche and doj into court over epstein file redactions\nfederal judge emmet sullivan ordered todd blanche and the justice department to appear and explain why they are not complying with a court order in the katie phang lawsuit, including their failure to provide documentation supporting redactions and a privilege log. separately, the new mexico department of justice sued blanche and the federal department, alleging it is withholding epstein files from the only ongoing criminal investigation in the country."
+    },
+    {
+      "date": "2026-08-07",
+      "headline": "Saudi Arabia says coordinated attacks from Iraq and Yemen may be imminent",
+      "tags": [
+        "war",
+        "politics"
+      ],
+      "snippet": "A senior Saudi official told Reuters the kingdom expects imminent attacks on two fronts, from Iraqi militias to the north and Yemen's Houthis to the south, alongside Iran's IRGC. The official said Sau\u2026",
+      "text": "saudi arabia says coordinated attacks from iraq and yemen may be imminent\na senior saudi official told reuters the kingdom expects imminent attacks on two fronts, from iraqi militias to the north and yemen's houthis to the south, alongside iran's irgc. the official said saudi arabia anticipates strikes on civilian infrastructure and civilian casualties. the assessment is based on intelligence reports."
+    },
+    {
+      "date": "2026-08-07",
+      "headline": "Iran threatens Gulf infrastructure and weighs Strait of Hormuz shipping ban",
+      "tags": [
+        "war",
+        "markets"
+      ],
+      "snippet": "Sources said Iran warned Gulf states it would strike their infrastructure if new US strikes hit Iranian territory, and urged those states to restrain the Trump administration. Separately, Iran's legis\u2026",
+      "text": "iran threatens gulf infrastructure and weighs strait of hormuz shipping ban\nsources said iran warned gulf states it would strike their infrastructure if new us strikes hit iranian territory, and urged those states to restrain the trump administration. separately, iran's legislature is reviewing a bill to bar us and israeli vessels from the strait of hormuz. oil prices rose by more than $3 on the shipping proposal."
+    },
+    {
+      "date": "2026-08-07",
+      "headline": "Analysis says Trump has no clear exit from the Iran war",
+      "tags": [
+        "war",
+        "politics"
+      ],
+      "snippet": "An analysis of the conflict concluded that Trump faces few viable paths out of the war with Iran as diplomatic efforts and mutual threats intensify. The Strait of Hormuz features as a central pressure\u2026",
+      "text": "analysis says trump has no clear exit from the iran war\nan analysis of the conflict concluded that trump faces few viable paths out of the war with iran as diplomatic efforts and mutual threats intensify. the strait of hormuz features as a central pressure point in the standoff."
+    },
+    {
+      "date": "2026-08-07",
+      "headline": "US munitions stockpiles depleted as Patriot supplies run short worldwide",
+      "tags": [
+        "defence",
+        "politics"
+      ],
+      "snippet": "The Washington Post reported that US defense stockpiles have been drawn down to a degree that will take years and billions of dollars to replenish. Patriot interceptor stocks in particular are falling\u2026",
+      "text": "us munitions stockpiles depleted as patriot supplies run short worldwide\nthe washington post reported that us defense stockpiles have been drawn down to a degree that will take years and billions of dollars to replenish. patriot interceptor stocks in particular are falling as global demand rises across ukraine and the middle east. reporting also indicated defense secretary pete hegseth had told trump the weapons situation was less dire than it was."
+    },
+    {
+      "date": "2026-08-07",
+      "headline": "Appeals court blocks White House ballroom construction",
+      "tags": [
+        "legal",
+        "politics"
+      ],
+      "snippet": "The DC Circuit Court of Appeals ruled that construction of a new White House ballroom cannot proceed without explicit approval from Congress, affirming a lower court injunction. The court said Congres\u2026",
+      "text": "appeals court blocks white house ballroom construction\nthe dc circuit court of appeals ruled that construction of a new white house ballroom cannot proceed without explicit approval from congress, affirming a lower court injunction. the court said congress has not given the executive branch authority to dramatically redesign, reshape and reconstruct the white house. the ruling is stayed for 14 days to allow an appeal to the supreme court; a separate underground military facility was not blocked."
+    },
+    {
+      "date": "2026-08-07",
+      "headline": "Exposed Flock camera interfaces revealed unencrypted public surveillance feeds",
+      "tags": [
+        "surveillance",
+        "privacy",
+        "tech"
+      ],
+      "snippet": "A researcher said dozens, later nearly 70, Flock Safety camera administration interfaces were reachable through a commercial search engine with no username, password or encryption, exposing live and 3\u2026",
+      "text": "exposed flock camera interfaces revealed unencrypted public surveillance feeds\na researcher said dozens, later nearly 70, flock safety camera administration interfaces were reachable through a commercial search engine with no username, password or encryption, exposing live and 31 days of archived footage, and shared the findings with 404 media. the exposed devices included flock's new condor pan-tilt-zoom cameras, which use ai to detect and follow people, and one camera pointed at a playground. the footage could be cross-referenced with commercial facial recognition and public records to identify individuals, and the interfaces allowed deletion of stored evidence. flock's chief executive has separately defended pervasive monitoring by comparing deterrence to parental oversight of children."
+    },
+    {
+      "date": "2026-08-07",
+      "headline": "All eight Flock cameras stolen from Minnesota town",
+      "tags": [
+        "surveillance",
+        "policing"
+      ],
+      "snippet": "In Winona, Minnesota, an unidentified thief cut down the poles holding all eight of the town's Flock surveillance cameras. Each costs about $3,000 to repair, and local law enforcement has lost the tra\u2026",
+      "text": "all eight flock cameras stolen from minnesota town\nin winona, minnesota, an unidentified thief cut down the poles holding all eight of the town's flock surveillance cameras. each costs about $3,000 to repair, and local law enforcement has lost the tracking capability while the town faces the replacement bill. there are more than 100,000 flock cameras nationwide, and their use by police, including to track a woman who had an abortion, has drawn criticism."
+    },
+    {
+      "date": "2026-08-07",
+      "headline": "Trump voter turns against president after ICE detains his fianc\u00e9e",
+      "tags": [
+        "immigration",
+        "politics"
+      ],
+      "snippet": "John Gannon, a 75-year-old businessman and lifelong Republican who voted for Trump in 2024, said he would not do so again after his 45-year-old fianc\u00e9e, Venezuelan immigrant Yasmin Suarez Regis, was d\u2026",
+      "text": "trump voter turns against president after ice detains his fianc\u00e9e\njohn gannon, a 75-year-old businessman and lifelong republican who voted for trump in 2024, said he would not do so again after his 45-year-old fianc\u00e9e, venezuelan immigrant yasmin suarez regis, was detained by ice at george bush intercontinental airport in houston in late july. gannon said eight ice agents surrounded her and took her away without explanation. he said enforcement is picking up law-abiding people and destroying families and jobs."
+    },
+    {
+      "date": "2026-08-07",
+      "headline": "White House official account uses Spider-Man imagery to promote deportations",
+      "tags": [
+        "immigration",
+        "media",
+        "politics"
+      ],
+      "snippet": "The official White House social media account posted a Spider-Man image that resolves into the message that criminal aliens will be caught and deported, timed to the release of a new Spider-Man film.\u2026",
+      "text": "white house official account uses spider-man imagery to promote deportations\nthe official white house social media account posted a spider-man image that resolves into the message that criminal aliens will be caught and deported, timed to the release of a new spider-man film. the account is the channel foreign governments and world leaders use for information about the united states. it follows a series of similar enforcement messages from the account since trump took office."
+    },
+    {
+      "date": "2026-08-07",
+      "headline": "Trump described as withdrawing as Republicans brace for midterm losses",
+      "tags": [
+        "politics",
+        "economy"
+      ],
+      "snippet": "Advisers told Axios and other outlets that Trump is detached and retreating following weak economic data, and no longer believes he would be to blame if Republicans lose the House or Senate, saying vo\u2026",
+      "text": "trump described as withdrawing as republicans brace for midterm losses\nadvisers told axios and other outlets that trump is detached and retreating following weak economic data, and no longer believes he would be to blame if republicans lose the house or senate, saying voters like him but not the party. republicans on capitol hill are urging him to focus on affordability. he is instead said to be focused on construction projects at the white house, including a triumphal arch, ballroom and helipad."
+    },
+    {
+      "date": "2026-08-07",
+      "headline": "Judge stays financial discovery in Trump's $10 billion BBC suit",
+      "tags": [
+        "legal",
+        "media"
+      ],
+      "snippet": "A federal judge stayed the BBC's financial discovery requests in the $10 billion defamation suit Trump brought against the broadcaster. The BBC had sought Trump's and the Trump Organization's financia\u2026",
+      "text": "judge stays financial discovery in trump's $10 billion bbc suit\na federal judge stayed the bbc's financial discovery requests in the $10 billion defamation suit trump brought against the broadcaster. the bbc had sought trump's and the trump organization's financial records as part of its defense. trump argued he would amend his complaint to drop damages tied to his financial interests, making the discovery moot, and the judge agreed to pause it."
+    },
+    {
+      "date": "2026-08-07",
+      "headline": "Uganda clears path to send troops to Gaza under Trump plan",
+      "tags": [
+        "war",
+        "politics"
+      ],
+      "snippet": "Uganda's parliament cleared the way for a troop deployment to Gaza as part of a multinational security force envisaged under Trump's plan for the territory.",
+      "text": "uganda clears path to send troops to gaza under trump plan\nuganda's parliament cleared the way for a troop deployment to gaza as part of a multinational security force envisaged under trump's plan for the territory."
+    },
+    {
+      "date": "2026-08-07",
+      "headline": "Regional states condemn Gaza strikes as Israel blames Hamas",
+      "tags": [
+        "war",
+        "politics"
+      ],
+      "snippet": "States in the region condemned a new round of strikes in Gaza. Israel attributed the strikes to Hamas violations of the ceasefire.",
+      "text": "regional states condemn gaza strikes as israel blames hamas\nstates in the region condemned a new round of strikes in gaza. israel attributed the strikes to hamas violations of the ceasefire."
+    },
+    {
+      "date": "2026-08-07",
+      "headline": "Jailed US Marine veteran reported near death in Russian hospital",
+      "tags": [
+        "legal",
+        "politics"
+      ],
+      "snippet": "Robert Gilman, a US Marine veteran detained in Russia, is in deteriorating health in a Russian hospital and may be near death. Advocacy groups allege he has been tortured in custody.",
+      "text": "jailed us marine veteran reported near death in russian hospital\nrobert gilman, a us marine veteran detained in russia, is in deteriorating health in a russian hospital and may be near death. advocacy groups allege he has been tortured in custody."
+    },
+    {
+      "date": "2026-08-07",
+      "headline": "Largest US public land block faces expanded oil leasing",
+      "tags": [
+        "climate",
+        "environment",
+        "politics"
+      ],
+      "snippet": "The National Petroleum Reserve-Alaska, 23 million acres on Alaska's North Slope, is the largest single block of public land in the United States and has no permanent roads or trails. Set aside in 1923\u2026",
+      "text": "largest us public land block faces expanded oil leasing\nthe national petroleum reserve-alaska, 23 million acres on alaska's north slope, is the largest single block of public land in the united states and has no permanent roads or trails. set aside in 1923 as a navy oil supply, it was transferred to the interior department in 1976 with instructions to allow exploration while protecting fish, wildlife and subsistence users, leaving which areas are protected to the discretion of each administration. about 82% of the reserve was open to oil leasing last year, and in march the government held the largest lease sale in the reserve's history."
+    },
+    {
+      "date": "2026-08-07",
+      "headline": "Campaign presses for protection of Bears Ears National Monument",
+      "tags": [
+        "environment",
+        "politics"
+      ],
+      "snippet": "Utah Din\u00e9 Bik\u00e9yah is renewing a public campaign to protect Bears Ears National Monument, gathering supporter stories and donations. A tribal leader described an obligation passed down from ancestors n\u2026",
+      "text": "campaign presses for protection of bears ears national monument\nutah din\u00e9 bik\u00e9yah is renewing a public campaign to protect bears ears national monument, gathering supporter stories and donations. a tribal leader described an obligation passed down from ancestors never to forget the landscape their community lived on, stretching to the la sal mountains. the area's plants are used as medicine and its wildlife has long supported the community."
+    },
+    {
+      "date": "2026-08-07",
+      "headline": "Military recruiting surge tied to a weak job market",
+      "tags": [
+        "defence",
+        "economy"
+      ],
+      "snippet": "The Army has already met this fiscal year's recruiting target after struggling in recent years, with more than 61,500 people signing on for active duty. Historically, recruiting improves during recess\u2026",
+      "text": "military recruiting surge tied to a weak job market\nthe army has already met this fiscal year's recruiting target after struggling in recent years, with more than 61,500 people signing on for active duty. historically, recruiting improves during recessions, wage stagnation and high youth unemployment, a pattern documented since the start of the all-volunteer force and reinforced by deindustrialization. the modern war institute noted in 2024 that economic growth tends to hamper recruitment, raising the question of how far the defense system depends on limited civilian opportunity."
+    },
+    {
+      "date": "2026-08-07",
+      "headline": "McConnell discharged from rehabilitation to recover at home",
+      "tags": [
+        "politics",
+        "health"
+      ],
+      "snippet": "Mitch McConnell said he was discharged from a rehabilitation center to continue recovery at home, thanking doctors, nurses and therapists as well as colleagues and Kentuckians for their support. He sa\u2026",
+      "text": "mcconnell discharged from rehabilitation to recover at home\nmitch mcconnell said he was discharged from a rehabilitation center to continue recovery at home, thanking doctors, nurses and therapists as well as colleagues and kentuckians for their support. he said he will maintain an intensive physical therapy regimen from home during the state work period and continue engaging with staff and colleagues on senate business. no photograph or video was released. with the senate's august session ending, he is not expected back before mid-september at the earliest, and his term ends in january."
+    },
+    {
       "date": "2026-08-06",
       "headline": "Trump says U.S. held all-day talks with Iran as Tehran denies negotiations",
       "tags": [
