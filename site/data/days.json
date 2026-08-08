@@ -1,6 +1,53 @@
 {
-  "last_updated": "2026-08-06T17:14:13.329635+00:00",
+  "last_updated": "2026-08-07T17:18:41.235803+00:00",
   "days": [
+    {
+      "date": "2026-08-08",
+      "tags": [
+        "politics",
+        "legal",
+        "government",
+        "markets",
+        "immigration",
+        "surveillance",
+        "policing",
+        "war",
+        "defence",
+        "economy",
+        "climate",
+        "media",
+        "health"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@oafnation_actual",
+        "@total.hypocrisy",
+        "@ericmoutsos",
+        "@carolinegleich"
+      ],
+      "post_count": 23,
+      "transcribed_count": 23,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Analysis asks whether the US military is stretched too thin",
+          "reason": "Framed as an open analytical question and reports no new facts of its own."
+        },
+        {
+          "headline": "Taylor Swift blocks Trump campaign account from using her song",
+          "reason": "Celebrity and music-licensing story with no policy or governmental substance."
+        },
+        {
+          "headline": "Six brief therapy sessions helped veterans manage chronic pain",
+          "reason": "Clinical treatment finding with no public-health policy angle."
+        },
+        {
+          "headline": "Commentary links White House manufacturing claims to normalised images of malnourishment",
+          "reason": "Speculative commentary about celebrity imagery; the newsworthy Hormuz element from this post is kept as its own topic."
+        }
+      ]
+    },
     {
       "date": "2026-08-07",
       "tags": [
