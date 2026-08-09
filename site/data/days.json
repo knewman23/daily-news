@@ -1,6 +1,54 @@
 {
-  "last_updated": "2026-08-07T17:18:41.235803+00:00",
+  "last_updated": "2026-08-08T17:22:48.931970+00:00",
   "days": [
+    {
+      "date": "2026-08-09",
+      "tags": [
+        "politics",
+        "energy",
+        "climate",
+        "war",
+        "defence",
+        "markets",
+        "legal",
+        "surveillance",
+        "policing",
+        "tech",
+        "media"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@oafnation_actual",
+        "@ericmoutsos",
+        "@total.hypocrisy"
+      ],
+      "post_count": 19,
+      "transcribed_count": 19,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Kristi Noem unveils bronze statue of herself in South Dakota",
+          "reason": "Human interest about a political figure with no policy or governance angle"
+        },
+        {
+          "headline": "Four celestial events converge on August 12",
+          "reason": "Astronomy event with no connection to the reader's policy and conflict interests"
+        },
+        {
+          "headline": "Cornell bans processing wild game in dorm kitchens after bear butchering",
+          "reason": "Campus oddity story with no policy or political angle"
+        },
+        {
+          "headline": "Department of Education acronym becomes online joke",
+          "reason": "Commentary on a meme that reports no new information"
+        },
+        {
+          "headline": "Advocacy post on protecting Fish Creek and the Arctic",
+          "reason": "Advocacy and follow prompt containing no reportable news"
+        }
+      ]
+    },
     {
       "date": "2026-08-08",
       "tags": [
