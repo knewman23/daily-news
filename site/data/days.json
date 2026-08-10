@@ -1,6 +1,50 @@
 {
-  "last_updated": "2026-08-08T17:22:48.931970+00:00",
+  "last_updated": "2026-08-09T17:48:06.118613+00:00",
   "days": [
+    {
+      "date": "2026-08-10",
+      "tags": [
+        "war",
+        "politics",
+        "foreign-policy",
+        "legal",
+        "markets",
+        "elections",
+        "defence",
+        "government",
+        "health",
+        "climate",
+        "sports",
+        "media"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@oafnation_actual",
+        "@hunteralexanderhowell",
+        "@total.hypocrisy"
+      ],
+      "post_count": 21,
+      "transcribed_count": 21,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Magnitude 7.4 earthquake strikes Colombia's Pacific region",
+          "reason": "Natural disaster with no policy, political or climate angle reported."
+        },
+        {
+          "headline": "Claims that industrial seed oils are driving chronic disease in America",
+          "reason": "Personal dietary opinion with no public health policy content or new reporting."
+        },
+        {
+          "headline": "Claim that the internet was built as a government surveillance honeypot",
+          "reason": "Speculative conspiracy commentary generated in a chatbot exchange; reports no new facts."
+        },
+        {
+          "headline": "More than 10 million books lost as Ukraine's war economy strains publishing",
+          "reason": "Cultural-impact story with no policy, military or economic decision at its centre."
+        }
+      ]
+    },
     {
       "date": "2026-08-09",
       "tags": [
