@@ -1,6 +1,58 @@
 {
-  "last_updated": "2026-08-09T17:48:06.118613+00:00",
+  "last_updated": "2026-08-10T17:16:10.835714+00:00",
   "days": [
+    {
+      "date": "2026-08-11",
+      "tags": [
+        "politics",
+        "defence",
+        "elections",
+        "markets",
+        "war",
+        "legal",
+        "health",
+        "environment",
+        "immigration",
+        "media",
+        "climate"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@total.hypocrisy",
+        "@oafnation_actual",
+        "@ericmoutsos"
+      ],
+      "post_count": 34,
+      "transcribed_count": 34,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Earthquake in western Colombia kills at least 111",
+          "reason": "Natural disaster report with no policy or political angle."
+        },
+        {
+          "headline": "Commentary claims digital ID and biometric payment systems are the biblical Mark of the Beast",
+          "reason": "Religious commentary on existing technology; reports no new surveillance or privacy development."
+        },
+        {
+          "headline": "Retrospective on the recency of U.S. women's legal rights",
+          "reason": "Historical commentary reacting to another post; reports no new development."
+        },
+        {
+          "headline": "Researchers study urine test for stress-fracture risk in military recruits",
+          "reason": "Medical research item with no public health policy dimension."
+        },
+        {
+          "headline": "Creator says AI-generated anniversary caption fell short",
+          "reason": "Personal post about the creator's own relationship."
+        },
+        {
+          "headline": "Independent journalist writes about burnout and considering quitting",
+          "reason": "Personal reflection by the creator about their own life and work."
+        }
+      ]
+    },
     {
       "date": "2026-08-10",
       "tags": [
