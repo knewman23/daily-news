@@ -1,6 +1,55 @@
 {
-  "last_updated": "2026-08-10T17:16:10.835714+00:00",
+  "last_updated": "2026-08-11T17:18:05.984996+00:00",
   "days": [
+    {
+      "date": "2026-08-12",
+      "tags": [
+        "war",
+        "politics",
+        "media",
+        "shipping",
+        "markets",
+        "energy",
+        "legal",
+        "immigration",
+        "policing",
+        "defence",
+        "health",
+        "elections",
+        "climate",
+        "tech",
+        "surveillance",
+        "diplomacy"
+      ],
+      "sources": [
+        "@oafnation_actual",
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@carolinegleich",
+        "@ericmoutsos"
+      ],
+      "post_count": 26,
+      "transcribed_count": 26,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Trump's inaugural Patriot Games marred by empty seats and eligibility questions",
+          "reason": "Mainly a sports event and its attendance problems rather than policy or governance."
+        },
+        {
+          "headline": "Josh Kushner and Bob Iger buying the Los Angeles Lakers for $12 billion",
+          "reason": "A sports franchise sale; the political family connection is incidental to the transaction."
+        },
+        {
+          "headline": "Bloodwork linked to Air Force Special Warfare graduation odds",
+          "reason": "Physiological training research with no policy, operational or political angle."
+        },
+        {
+          "headline": "Commentary faults military influencers for silence on Hegseth's tenure",
+          "reason": "Commentary about other commentators that reports no new information."
+        }
+      ]
+    },
     {
       "date": "2026-08-11",
       "tags": [
