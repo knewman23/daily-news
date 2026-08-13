@@ -1,6 +1,64 @@
 {
-  "last_updated": "2026-08-11T17:18:05.984996+00:00",
+  "last_updated": "2026-08-12T17:09:50.453393+00:00",
   "days": [
+    {
+      "date": "2026-08-13",
+      "tags": [
+        "defence",
+        "politics",
+        "health",
+        "war",
+        "legal",
+        "markets",
+        "media",
+        "policing",
+        "elections",
+        "climate",
+        "environment",
+        "government",
+        "tech"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@ericmoutsos",
+        "@hunteralexanderhowell",
+        "@oafnation_actual",
+        "@carolinegleich"
+      ],
+      "post_count": 38,
+      "transcribed_count": 35,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Taylor Swift's team repeatedly forces removal of her songs from White House videos",
+          "reason": "Celebrity copyright dispute over White House social media posts, with no policy or governmental substance."
+        },
+        {
+          "headline": "Commentary contrasts Trump's Butler response with his secret flight from Turkey",
+          "reason": "Opinion commentary on already-reported events; contains no new reporting."
+        },
+        {
+          "headline": "Commentary criticizes military community's silence over USS Lincoln conditions",
+          "reason": "Opinion commentary about coverage of the USS Lincoln story rather than new reporting."
+        },
+        {
+          "headline": "Analyst predicts currency reset and urges food stockpiling",
+          "reason": "Speculative commentary tied to a sponsored precious-metals segment, reporting no verifiable news."
+        },
+        {
+          "headline": "Former teacher pushes back on homeschooling parents' qualification claims",
+          "reason": "Personal commentary on an online education debate with no policy development or news event."
+        },
+        {
+          "headline": "Skateboarder lands trick during total solar eclipse in Spain",
+          "reason": "Human interest sports moment with no policy or political angle."
+        },
+        {
+          "headline": "Camping tips on using a pee bottle in cold weather",
+          "reason": "Personal hobby and gear advice, not news."
+        }
+      ]
+    },
     {
       "date": "2026-08-12",
       "tags": [
