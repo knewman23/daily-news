@@ -1,6 +1,45 @@
 {
-  "last_updated": "2026-08-12T17:09:50.453393+00:00",
+  "last_updated": "2026-08-13T17:20:01.012991+00:00",
   "days": [
+    {
+      "date": "2026-08-14",
+      "tags": [
+        "defense",
+        "politics",
+        "legal",
+        "environment",
+        "immigration",
+        "economy",
+        "surveillance",
+        "war",
+        "health"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@total.hypocrisy",
+        "@oafnation_actual",
+        "@carolinegleich",
+        "@hunteralexanderhowell",
+        "@ericmoutsos"
+      ],
+      "post_count": 36,
+      "transcribed_count": 36,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Study finds nearly 6 in 10 veterans report loneliness",
+          "reason": "Survey finding about personal wellbeing with no policy or political angle attached."
+        },
+        {
+          "headline": "Open letter urges outdoor industry to speak out on immigration and public lands",
+          "reason": "Advocacy and commentary addressed to an industry; reports no new events or facts of its own."
+        },
+        {
+          "headline": "Post lists Jewish figures associated with Trump's campaign and businesses",
+          "reason": "Conspiracy content built on ethnic listing rather than reporting; contains no verifiable news event."
+        }
+      ]
+    },
     {
       "date": "2026-08-13",
       "tags": [
