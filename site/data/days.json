@@ -1,6 +1,46 @@
 {
-  "last_updated": "2026-08-14T17:12:06.526288+00:00",
+  "last_updated": "2026-08-15T17:42:11.501123+00:00",
   "days": [
+    {
+      "date": "2026-08-16",
+      "tags": [
+        "war",
+        "politics",
+        "media",
+        "markets",
+        "government",
+        "health",
+        "economy",
+        "defence",
+        "climate",
+        "environment",
+        "tech",
+        "education"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@oafnation_actual",
+        "@carolinegleich"
+      ],
+      "post_count": 19,
+      "transcribed_count": 18,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Trump credits George Washington for ballroom ideas in overnight post",
+          "reason": "Commentary on a social media post that reports no new development beyond the reaction itself."
+        },
+        {
+          "headline": "Creator says worsening conditions have them applying for jobs abroad",
+          "reason": "Primarily a creator discussing their own circumstances and outlook rather than reporting news."
+        },
+        {
+          "headline": "Post questions patriotic symbolism amid silence on corruption",
+          "reason": "Opinion commentary that reports nothing new."
+        }
+      ]
+    },
     {
       "date": "2026-08-15",
       "tags": [
