@@ -1,6 +1,55 @@
 {
-  "last_updated": "2026-08-16T17:28:49.333093+00:00",
+  "last_updated": "2026-08-17T17:11:29.921430+00:00",
   "days": [
+    {
+      "date": "2026-08-18",
+      "tags": [
+        "politics",
+        "media",
+        "war",
+        "iran",
+        "legal",
+        "environment",
+        "immigration",
+        "surveillance",
+        "policing",
+        "defence",
+        "elections",
+        "health"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@total.hypocrisy",
+        "@oafnation_actual",
+        "@carolinegleich",
+        "@ericmoutsos"
+      ],
+      "post_count": 27,
+      "transcribed_count": 26,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Nationwide recall of Outshine frozen fruit bars over glass contamination",
+          "reason": "Consumer product safety notice with no public health policy angle."
+        },
+        {
+          "headline": "Thirteen Penn State fraternity members charged in cocaine trafficking ring",
+          "reason": "Local crime story without a policy, civil liberties, or political dimension."
+        },
+        {
+          "headline": "Army soldier builds wearable drone detector for under $120",
+          "reason": "Individual gadget story rather than defence policy or procurement news."
+        },
+        {
+          "headline": "Hayden Panettiere dies at 36",
+          "reason": "Celebrity death with speculation but no investigation, charges, or policy angle."
+        },
+        {
+          "headline": "Creator says he is taking a major personal risk in September",
+          "reason": "Creator discussing their own life with no news content."
+        }
+      ]
+    },
     {
       "date": "2026-08-17",
       "tags": [
