@@ -32,7 +32,6 @@ DEFAULT_MODEL = "claude-opus-5"
 
 MAX_ATTEMPTS = 2
 
-_JSON_OBJECT = re.compile(r"\{.*\}", re.DOTALL)
 _FENCE = re.compile(r"^\s*```(?:json)?\s*|\s*```\s*$", re.MULTILINE)
 
 
@@ -263,20 +262,40 @@ def _parse(completed: subprocess.CompletedProcess) -> tuple[list[dict[str, Any]]
 
 
 def _payload(result: str) -> Any:
-    """Extract the model's JSON object, tolerating a fence or surrounding prose."""
-    cleaned = _FENCE.sub("", result).strip()
-    try:
-        return json.loads(cleaned)
-    except json.JSONDecodeError:
-        pass
+    """Extract the model's JSON object, tolerating a fence or surrounding prose.
 
-    match = _JSON_OBJECT.search(cleaned)
-    if not match:
+    Only the *first* complete JSON object counts. The model sometimes keeps
+    talking after it has answered — observed 2026-08-19 restating the entire
+    digest as a second JSON object under an "In plain English" heading — and a
+    greedy match from the first brace to the last spans both objects and parses
+    as nothing at all. `raw_decode` stops at the end of the first value, so
+    trailing commentary is ignored rather than fatal.
+    """
+    cleaned = _FENCE.sub("", result).strip()
+    decoder = json.JSONDecoder()
+
+    # Leading prose can itself contain a brace, so the first '{' is not
+    # necessarily where the JSON starts. Try each in turn.
+    last: json.JSONDecodeError | None = None
+    for start in _starts(cleaned):
+        try:
+            return decoder.raw_decode(cleaned, start)[0]
+        except json.JSONDecodeError as exc:
+            last = exc
+
+    if last is None:
         raise SummarizeError(f"no JSON object in model output: {cleaned[:300]!r}")
-    try:
-        return json.loads(match.group(0))
-    except json.JSONDecodeError as exc:
-        raise SummarizeError(f"model output was not valid JSON: {exc}") from exc
+    raise SummarizeError(f"model output was not valid JSON: {last}") from last
+
+
+def _starts(cleaned: str) -> list[int]:
+    """Offsets of every '{' in the output, in order."""
+    out = []
+    at = cleaned.find("{")
+    while at != -1:
+        out.append(at)
+        at = cleaned.find("{", at + 1)
+    return out
 
 
 def _skipped(payload: Any) -> list[dict[str, Any]]:

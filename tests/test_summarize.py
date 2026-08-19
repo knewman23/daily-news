@@ -169,6 +169,30 @@ def test_tolerates_prose_around_the_json_object():
     assert len(topics) == 2
 
 
+def test_tolerates_a_second_json_object_appended_after_the_first():
+    """Observed 2026-08-19: the model answered, then restated the whole digest as
+    a second JSON object under a "In plain English" heading. The first object is
+    the answer; trailing objects are commentary and must not break the run."""
+    restatement = {
+        "topics": [
+            {
+                "headline": "Senate passes the spending bill",
+                "body": "Simpler words for the same story.",
+                "tags": ["politics"],
+                "sources": ["@aaronparnas"],
+            }
+        ]
+    }
+    doubled = (
+        json.dumps(TOPICS_JSON)
+        + "\n\n\u2500\u2500\u2500\u2500\n\U0001f4ac In plain English:\n\n"
+        + json.dumps(restatement)
+    )
+    topics, _ = summarize.call_claude("prompt", runner=FakeRunner(wrapper(doubled)))
+    assert len(topics) == 2
+    assert topics[1]["headline"] == "Nvidia earnings beat estimates"
+
+
 def test_retries_exactly_once_then_raises_on_unparseable_output():
     runner = FakeRunner(wrapper("no json at all"), wrapper("still nothing"))
     with pytest.raises(summarize.SummarizeError):
