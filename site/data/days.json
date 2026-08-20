@@ -1,6 +1,67 @@
 {
-  "last_updated": "2026-08-19T17:30:54.566727+00:00",
+  "last_updated": "2026-08-19T17:35:45.422189+00:00",
   "days": [
+    {
+      "date": "2026-08-20",
+      "tags": [
+        "politics",
+        "legal",
+        "defence",
+        "markets",
+        "surveillance",
+        "media",
+        "economy",
+        "policing",
+        "climate",
+        "health",
+        "energy"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@oafnation_actual",
+        "@hunteralexanderhowell",
+        "@carolinegleich",
+        "@total.hypocrisy",
+        "@ericmoutsos"
+      ],
+      "post_count": 30,
+      "transcribed_count": 28,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Army unit offers four-day GTA VI pass as reenlistment incentive",
+          "reason": "Novelty recruiting perk with no policy or defence-posture angle."
+        },
+        {
+          "headline": "Military recruiting is surging",
+          "reason": "Headline teaser with no reported substance beyond the claim itself."
+        },
+        {
+          "headline": "VA tests semaglutide as treatment for alcohol use disorder in veterans",
+          "reason": "Clinical trial of a drug rather than public health policy."
+        },
+        {
+          "headline": "FDA raises frozen blueberry recall to highest risk level over E. coli",
+          "reason": "Consumer product recall notice, not public health policy."
+        },
+        {
+          "headline": "Gary, Indiana without power for over a week after storm",
+          "reason": "Local storm recovery story framed as commentary, with no policy or government action reported."
+        },
+        {
+          "headline": "Trump arrives late to cryptocurrency and technology speech",
+          "reason": "Commentary on an event's optics that reports no new information."
+        },
+        {
+          "headline": "Athlete promotes certified backpacking tent from Arctic expedition",
+          "reason": "Sponsored product promotion."
+        },
+        {
+          "headline": "Post expresses exhaustion with news cycle",
+          "reason": "No news content."
+        }
+      ]
+    },
     {
       "date": "2026-08-19",
       "tags": [
@@ -90,10 +151,6 @@
           "reason": "Local crime story without a policy, civil liberties, or political dimension."
         },
         {
-          "headline": "Army soldier builds wearable drone detector for under $120",
-          "reason": "Individual gadget story rather than defence policy or procurement news."
-        },
-        {
           "headline": "Hayden Panettiere dies at 36",
           "reason": "Celebrity death with speculation but no investigation, charges, or policy angle."
         },
@@ -135,10 +192,6 @@
         {
           "headline": "Speculation over Panettiere death links it to abuse allegations",
           "reason": "Unsubstantiated speculation with no reported facts."
-        },
-        {
-          "headline": "Utah flooding attributed to weather modification",
-          "reason": "Conspiracy commentary rather than reported news on climate or environment."
         },
         {
           "headline": "Commentary compares US consumers to Renaissance minstrels",
