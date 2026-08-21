@@ -1,6 +1,54 @@
 {
-  "last_updated": "2026-08-19T17:35:45.422189+00:00",
+  "last_updated": "2026-08-20T17:13:46.085214+00:00",
   "days": [
+    {
+      "date": "2026-08-21",
+      "tags": [
+        "legal",
+        "politics",
+        "war",
+        "defence",
+        "climate",
+        "health",
+        "markets",
+        "immigration",
+        "economy",
+        "environment",
+        "tech",
+        "privacy"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@oafnation_actual",
+        "@hunteralexanderhowell",
+        "@carolinegleich"
+      ],
+      "post_count": 29,
+      "transcribed_count": 28,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Republicans call to repeal the 19th Amendment as Clancy murder trial nears close",
+          "reason": "Predominantly procedural commentary on a single murder trial with no policy angle; the suffrage remark is social-media reaction rather than reported news."
+        },
+        {
+          "headline": "Rabbi Shmuley Boteach says Jewish people should be feared rather than loved",
+          "reason": "Reaction and commentary video built around clipped remarks; reports no new development."
+        },
+        {
+          "headline": "First humanoid robot Olympics open in China",
+          "reason": "Robotics novelty event with no bearing on AI policy, energy demand, or data centers."
+        },
+        {
+          "headline": "Marine Corps offers up to $40,000 in Selected Reserve bonuses",
+          "reason": "Recruiting incentive announcement rather than a defence policy development."
+        },
+        {
+          "headline": "Creator posts appreciation message to followers",
+          "reason": "Personal appreciation post with no news content."
+        }
+      ]
+    },
     {
       "date": "2026-08-20",
       "tags": [
@@ -28,30 +76,6 @@
       "transcribed_count": 28,
       "incomplete": false,
       "skipped": [
-        {
-          "headline": "Army unit offers four-day GTA VI pass as reenlistment incentive",
-          "reason": "Novelty recruiting perk with no policy or defence-posture angle."
-        },
-        {
-          "headline": "Military recruiting is surging",
-          "reason": "Headline teaser with no reported substance beyond the claim itself."
-        },
-        {
-          "headline": "VA tests semaglutide as treatment for alcohol use disorder in veterans",
-          "reason": "Clinical trial of a drug rather than public health policy."
-        },
-        {
-          "headline": "FDA raises frozen blueberry recall to highest risk level over E. coli",
-          "reason": "Consumer product recall notice, not public health policy."
-        },
-        {
-          "headline": "Gary, Indiana without power for over a week after storm",
-          "reason": "Local storm recovery story framed as commentary, with no policy or government action reported."
-        },
-        {
-          "headline": "Trump arrives late to cryptocurrency and technology speech",
-          "reason": "Commentary on an event's optics that reports no new information."
-        },
         {
           "headline": "Athlete promotes certified backpacking tent from Arctic expedition",
           "reason": "Sponsored product promotion."
@@ -89,14 +113,6 @@
       "transcribed_count": 35,
       "incomplete": false,
       "skipped": [
-        {
-          "headline": "Moderna and Merck report melanoma treatment slows cancer return",
-          "reason": "Clinical trial result with no public health policy angle."
-        },
-        {
-          "headline": "Dog food recalled in 11 states over salmonella",
-          "reason": "Consumer product recall with no policy dimension of its own."
-        },
         {
           "headline": "Compilation of AI surveillance warnings from Altman, 6G, and Palantir",
           "reason": "Commentary over previously published clips; reports nothing new."
@@ -143,16 +159,8 @@
       "incomplete": false,
       "skipped": [
         {
-          "headline": "Nationwide recall of Outshine frozen fruit bars over glass contamination",
-          "reason": "Consumer product safety notice with no public health policy angle."
-        },
-        {
           "headline": "Thirteen Penn State fraternity members charged in cocaine trafficking ring",
           "reason": "Local crime story without a policy, civil liberties, or political dimension."
-        },
-        {
-          "headline": "Hayden Panettiere dies at 36",
-          "reason": "Celebrity death with speculation but no investigation, charges, or policy angle."
         },
         {
           "headline": "Creator says he is taking a major personal risk in September",
