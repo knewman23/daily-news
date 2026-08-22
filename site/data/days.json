@@ -1,6 +1,54 @@
 {
-  "last_updated": "2026-08-20T17:13:46.085214+00:00",
+  "last_updated": "2026-08-21T17:12:20.507164+00:00",
   "days": [
+    {
+      "date": "2026-08-22",
+      "tags": [
+        "politics",
+        "markets",
+        "media",
+        "defence",
+        "war",
+        "surveillance",
+        "legal",
+        "immigration",
+        "climate",
+        "health"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@oafnation_actual",
+        "@ericmoutsos",
+        "@carolinegleich",
+        "@total.hypocrisy"
+      ],
+      "post_count": 23,
+      "transcribed_count": 23,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Leaked letters show Trump aide Natalie Harp calling him her guardian",
+          "reason": "Personality coverage of a staffer's private letters with no policy or governance consequence reported."
+        },
+        {
+          "headline": "Eight killed in charter plane crash near Alaska military radar site",
+          "reason": "An aviation accident with no policy, political or defence-decision angle reported."
+        },
+        {
+          "headline": "Defense rests in Lindsay Clancy trial",
+          "reason": "A single criminal trial with no civil liberties or policy dimension reported."
+        },
+        {
+          "headline": "Indy Carr to visit Washington DC",
+          "reason": "A social visit with no reported policy substance."
+        },
+        {
+          "headline": "Creator says people need dogs rather than partners",
+          "reason": "Personal lifestyle commentary carrying no news content."
+        }
+      ]
+    },
     {
       "date": "2026-08-21",
       "tags": [
