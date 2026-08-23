@@ -1,6 +1,49 @@
 {
-  "last_updated": "2026-08-21T17:12:20.507164+00:00",
+  "last_updated": "2026-08-22T18:06:54.309683+00:00",
   "days": [
+    {
+      "date": "2026-08-23",
+      "tags": [
+        "politics",
+        "markets",
+        "legal",
+        "immigration",
+        "media",
+        "war",
+        "climate"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@ericmoutsos",
+        "@hunteralexanderhowell",
+        "@carolinegleich"
+      ],
+      "post_count": 16,
+      "transcribed_count": 16,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Tate brothers concede in court filing that displayed wealth is not theirs",
+          "reason": "Celebrity fraud and extradition case with no policy or political angle."
+        },
+        {
+          "headline": "Rosie O'Donnell closes Kimmel guest-host stint with song aimed at Trump",
+          "reason": "Late-night entertainment segment that reports no new political development."
+        },
+        {
+          "headline": "Doctors said to be concerned about Trump's weight gain",
+          "reason": "Personal health speculation about an individual rather than public health policy."
+        },
+        {
+          "headline": "RFK Jr. interrupted by duck ringtone during autism speech",
+          "reason": "Viral gaffe clip with no substantive policy content."
+        },
+        {
+          "headline": "Holocaust memoir author admitted concentration camp apple story was invented",
+          "reason": "Historical media-hoax retrospective, not current news on any tracked subject."
+        }
+      ]
+    },
     {
       "date": "2026-08-22",
       "tags": [
