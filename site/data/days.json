@@ -1,6 +1,57 @@
 {
-  "last_updated": "2026-08-23T17:40:05.546563+00:00",
+  "last_updated": "2026-08-24T17:09:27.004855+00:00",
   "days": [
+    {
+      "date": "2026-08-25",
+      "tags": [
+        "politics",
+        "legal",
+        "immigration",
+        "war",
+        "markets",
+        "epstein",
+        "media",
+        "defence",
+        "economy",
+        "surveillance",
+        "tech"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@oafnation_actual",
+        "@ericmoutsos"
+      ],
+      "post_count": 28,
+      "transcribed_count": 28,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Target apologizes for Halloween costume evoking Jim Crow caricature",
+          "reason": "Consumer retail controversy with no policy or governmental angle."
+        },
+        {
+          "headline": "Medal of Honor Marine Kyle Carpenter added to Call of Duty",
+          "reason": "Video game and entertainment news, not defence or policy."
+        },
+        {
+          "headline": "Viral clip shows Trump supporter crediting him with freeing US from British rule",
+          "reason": "Viral clip reaction with no underlying news event."
+        },
+        {
+          "headline": "Commentary criticizes surveillance camera rollout and privacy legislation",
+          "reason": "Reaction commentary that reports no new information."
+        },
+        {
+          "headline": "Creator shares personal update and encouraging notes",
+          "reason": "Creator discussing their own life and plans."
+        },
+        {
+          "headline": "Educator rebuts claim that schooling past seventh grade is unnecessary",
+          "reason": "Commentary debate about education with no policy development reported."
+        }
+      ]
+    },
     {
       "date": "2026-08-24",
       "tags": [
@@ -67,16 +118,8 @@
           "reason": "Late-night entertainment segment that reports no new political development."
         },
         {
-          "headline": "Doctors said to be concerned about Trump's weight gain",
-          "reason": "Personal health speculation about an individual rather than public health policy."
-        },
-        {
           "headline": "RFK Jr. interrupted by duck ringtone during autism speech",
           "reason": "Viral gaffe clip with no substantive policy content."
-        },
-        {
-          "headline": "Holocaust memoir author admitted concentration camp apple story was invented",
-          "reason": "Historical media-hoax retrospective, not current news on any tracked subject."
         }
       ]
     },
@@ -106,14 +149,6 @@
       "transcribed_count": 23,
       "incomplete": false,
       "skipped": [
-        {
-          "headline": "Leaked letters show Trump aide Natalie Harp calling him her guardian",
-          "reason": "Personality coverage of a staffer's private letters with no policy or governance consequence reported."
-        },
-        {
-          "headline": "Eight killed in charter plane crash near Alaska military radar site",
-          "reason": "An aviation accident with no policy, political or defence-decision angle reported."
-        },
         {
           "headline": "Defense rests in Lindsay Clancy trial",
           "reason": "A single criminal trial with no civil liberties or policy dimension reported."
