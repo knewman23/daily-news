@@ -1,6 +1,65 @@
 {
-  "last_updated": "2026-08-24T17:09:27.004855+00:00",
+  "last_updated": "2026-08-25T17:20:09.896009+00:00",
   "days": [
+    {
+      "date": "2026-08-26",
+      "tags": [
+        "iran",
+        "shipping",
+        "diplomacy",
+        "politics",
+        "immigration",
+        "elections",
+        "defence",
+        "legal",
+        "climate",
+        "health",
+        "markets",
+        "gaza",
+        "conflict",
+        "tech",
+        "media"
+      ],
+      "sources": [
+        "@oafnation_actual",
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@ericmoutsos"
+      ],
+      "post_count": 32,
+      "transcribed_count": 31,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Dolly Parton dies at 80",
+          "reason": "Celebrity death with no policy or political angle."
+        },
+        {
+          "headline": "Dolly Parton's Imagination Library to continue after her death",
+          "reason": "Mainly a tribute and charity update; the state funding angle is incidental."
+        },
+        {
+          "headline": "Viral clip shows vaccine opponents conceding polio vaccine worked",
+          "reason": "Viral street-interview clip that reports nothing new."
+        },
+        {
+          "headline": "Campaign graphic urges voters against Republican candidates in midterms",
+          "reason": "Partisan commentary and a shareable graphic; no new reporting."
+        },
+        {
+          "headline": "Satirical ad campaigns for restoration of national monument boundaries",
+          "reason": "Sponsored paid partnership and satirical advocacy rather than reporting."
+        },
+        {
+          "headline": "Helmet camera footage documents 2023 Ukrainian assault on Andriivka",
+          "reason": "Archival combat footage from 2023; no current news."
+        },
+        {
+          "headline": "Ukrainian troops describe routine drone attacks near Pokrovsk",
+          "reason": "Front-line footage with no substantive reporting beyond the caption."
+        }
+      ]
+    },
     {
       "date": "2026-08-25",
       "tags": [
