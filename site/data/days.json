@@ -1,6 +1,64 @@
 {
-  "last_updated": "2026-08-25T17:20:09.896009+00:00",
+  "last_updated": "2026-08-26T17:14:44.605677+00:00",
   "days": [
+    {
+      "date": "2026-08-27",
+      "tags": [
+        "politics",
+        "war",
+        "surveillance",
+        "privacy",
+        "legal",
+        "health",
+        "climate",
+        "military",
+        "media",
+        "tech"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@carolinegleich",
+        "@oafnation_actual"
+      ],
+      "post_count": 27,
+      "transcribed_count": 26,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Flooding on the Nepal-Tibet border kills more than 100",
+          "reason": "Natural disaster reporting with no policy, government or political angle attached."
+        },
+        {
+          "headline": "Claims that recent extreme weather is deliberate weather warfare",
+          "reason": "Commentary and unsupported conspiracy claim that reports nothing new."
+        },
+        {
+          "headline": "Jelly Roll faces Republican backlash over Jimmy Kimmel monologue",
+          "reason": "Celebrity feud over a comedy monologue rather than a substantive political development."
+        },
+        {
+          "headline": "Ivanka Trump discusses conversion to Orthodox Judaism at Adelson event",
+          "reason": "Commentary on a personal religious interview with no policy content."
+        },
+        {
+          "headline": "Deaths of Tim Curry, Dolly Parton and Hayden Panettiere",
+          "reason": "Celebrity obituaries with no policy or political angle."
+        },
+        {
+          "headline": "Navy corpsmen respond to house explosion near Twentynine Palms",
+          "reason": "Human interest story with no policy angle."
+        },
+        {
+          "headline": "Air National Guard medics train on cadavers with simulated blood flow",
+          "reason": "Training-procedure item with no policy, defence or political significance."
+        },
+        {
+          "headline": "New PCS rule allows up to 60 days of temporary lodging",
+          "reason": "Military logistics benefit administration, not defence or policy news."
+        }
+      ]
+    },
     {
       "date": "2026-08-26",
       "tags": [
