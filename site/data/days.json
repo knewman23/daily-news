@@ -1,6 +1,64 @@
 {
-  "last_updated": "2026-08-26T17:14:44.605677+00:00",
+  "last_updated": "2026-08-27T17:54:44.378654+00:00",
   "days": [
+    {
+      "date": "2026-08-28",
+      "tags": [
+        "politics",
+        "government",
+        "war",
+        "defence",
+        "legal",
+        "tech",
+        "immigration",
+        "climate",
+        "environment",
+        "surveillance",
+        "markets",
+        "media",
+        "health"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@total.hypocrisy",
+        "@oafnation_actual",
+        "@carolinegleich",
+        "@ericmoutsos"
+      ],
+      "post_count": 30,
+      "transcribed_count": 30,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Op-ed argues Jared Kushner will be the 2028 Republican nominee",
+          "reason": "Speculative opinion piece that reports no new facts and is largely a subscription promotion."
+        },
+        {
+          "headline": "Trump posts fabricated image of himself with Dolly Parton",
+          "reason": "A social media post with no policy or governmental consequence."
+        },
+        {
+          "headline": "Trump ranks himself the greatest president in US history",
+          "reason": "A self-promotional social media post with no policy content."
+        },
+        {
+          "headline": "China denies accusations of hacking NASA, DSA and DOJ",
+          "reason": "Mainly the creator's announcement about their own upcoming travel plans."
+        },
+        {
+          "headline": "Navy SEAL turned astronaut Jonny Kim leaves NASA for active duty",
+          "reason": "An individual personnel move with no policy angle."
+        },
+        {
+          "headline": "Target Halloween costume criticized for echoing blackface minstrelsy",
+          "reason": "Historical commentary responding to another creator, with no policy or political development."
+        },
+        {
+          "headline": "Creator promotes data removal service",
+          "reason": "A paid sponsorship read."
+        }
+      ]
+    },
     {
       "date": "2026-08-27",
       "tags": [
