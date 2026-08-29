@@ -1,6 +1,48 @@
 {
-  "last_updated": "2026-08-27T17:54:44.378654+00:00",
+  "last_updated": "2026-08-28T17:47:48.310260+00:00",
   "days": [
+    {
+      "date": "2026-08-29",
+      "tags": [
+        "legal",
+        "politics",
+        "elections",
+        "tech",
+        "climate",
+        "immigration",
+        "surveillance",
+        "policing",
+        "war",
+        "markets",
+        "economy",
+        "defence",
+        "health"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@carolinegleich",
+        "@ericmoutsos",
+        "@hunteralexanderhowell",
+        "@oafnation_actual"
+      ],
+      "post_count": 21,
+      "transcribed_count": 21,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Power outages across multiple states prompt claims of deliberate grid conditioning",
+          "reason": "Speculative conspiracy framing rather than reported news; the underlying outage and data center energy angle is asserted without substantiation."
+        },
+        {
+          "headline": "Bohemian Grove documentary rewatch revisits elite ritual claims",
+          "reason": "A reaction watch-along of a 25-year-old documentary that reports nothing new."
+        },
+        {
+          "headline": "Puppy posted in place of news update",
+          "reason": "No news content; promotional ask to subscribe."
+        }
+      ]
+    },
     {
       "date": "2026-08-28",
       "tags": [
@@ -83,10 +125,6 @@
       "transcribed_count": 26,
       "incomplete": false,
       "skipped": [
-        {
-          "headline": "Flooding on the Nepal-Tibet border kills more than 100",
-          "reason": "Natural disaster reporting with no policy, government or political angle attached."
-        },
         {
           "headline": "Claims that recent extreme weather is deliberate weather warfare",
           "reason": "Commentary and unsupported conspiracy claim that reports nothing new."
