@@ -1,6 +1,44 @@
 {
-  "last_updated": "2026-08-28T17:47:48.310260+00:00",
+  "last_updated": "2026-08-29T17:15:23.707408+00:00",
   "days": [
+    {
+      "date": "2026-08-30",
+      "tags": [
+        "media",
+        "politics",
+        "war",
+        "defence",
+        "legal",
+        "tech",
+        "immigration",
+        "surveillance",
+        "health",
+        "economy"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@oafnation_actual",
+        "@total.hypocrisy"
+      ],
+      "post_count": 20,
+      "transcribed_count": 20,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Amazon selling ground beef at $1.99 a pound draws suspicion",
+          "reason": "Mainly the creator's own speculation, explicitly labelled as opinion, with no new reporting behind it"
+        },
+        {
+          "headline": "Young men skipping showers in 'pheromone maxxing' trend",
+          "reason": "Lifestyle trend story with no policy, political, or public health angle"
+        },
+        {
+          "headline": "Pirates of the Caribbean dialogue clip",
+          "reason": "Film clip carrying no news content"
+        }
+      ]
+    },
     {
       "date": "2026-08-29",
       "tags": [
