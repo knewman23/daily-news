@@ -1,6 +1,54 @@
 {
-  "last_updated": "2026-08-29T17:15:23.707408+00:00",
+  "last_updated": "2026-08-30T17:25:20.365843+00:00",
   "days": [
+    {
+      "date": "2026-08-31",
+      "tags": [
+        "war",
+        "politics",
+        "defence",
+        "media",
+        "legal",
+        "tech",
+        "climate",
+        "health",
+        "policing",
+        "markets",
+        "economy"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@oafnation_actual",
+        "@total.hypocrisy",
+        "@carolinegleich"
+      ],
+      "post_count": 30,
+      "transcribed_count": 28,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Creators defend paid political sponsorships after press investigation",
+          "reason": "Commentary about creators' own monetisation and reputations rather than a reported development."
+        },
+        {
+          "headline": "Commentator predicts bank cyber attack used to force digital currency adoption",
+          "reason": "Speculative commentary about hypothetical future events, reporting no new development."
+        },
+        {
+          "headline": "Commentator claims flooding and disasters are engineered weather warfare",
+          "reason": "Reaction commentary asserting unsubstantiated claims without reporting anything new."
+        },
+        {
+          "headline": "Island appears then vanishes on British Columbia reservoir",
+          "reason": "Curiosity story with no policy or political angle."
+        },
+        {
+          "headline": "Canadian troops train with drones in Latvia",
+          "reason": "Routine imagery with no reported development."
+        }
+      ]
+    },
     {
       "date": "2026-08-30",
       "tags": [
