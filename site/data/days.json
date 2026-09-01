@@ -1,6 +1,64 @@
 {
-  "last_updated": "2026-08-30T17:25:20.365843+00:00",
+  "last_updated": "2026-08-31T17:26:40.132481+00:00",
   "days": [
+    {
+      "date": "2026-09-01",
+      "tags": [
+        "defence",
+        "politics",
+        "legal",
+        "markets",
+        "war",
+        "immigration",
+        "health",
+        "climate",
+        "tech"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@oafnation_actual",
+        "@ericmoutsos",
+        "@carolinegleich",
+        "@total.hypocrisy"
+      ],
+      "post_count": 32,
+      "transcribed_count": 31,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Commentator says nuclear first-use talk should disqualify any president",
+          "reason": "Opinion commentary that reports no new development."
+        },
+        {
+          "headline": "Hegseth clips resurface after he mocked overweight Canadian cadet instructor",
+          "reason": "Viral-clip commentary with no policy substance beyond the Pentagon story already covered."
+        },
+        {
+          "headline": "Sixty-three days until U.S. midterm elections",
+          "reason": "Get-out-the-vote exhortation rather than a news development."
+        },
+        {
+          "headline": "Horizon recalls 53,760 cases of chocolate milk over sealing defect",
+          "reason": "Consumer product recall with no public health policy angle."
+        },
+        {
+          "headline": "Anheuser-Busch offers reward after 40,000 cans of PBR stolen",
+          "reason": "Property crime story with no policy or political angle."
+        },
+        {
+          "headline": "Father freed after hospital standoff as son recovers from stroke",
+          "reason": "Human interest legal story with no policy angle."
+        },
+        {
+          "headline": "Educator argues certified teachers catch developmental problems parents miss",
+          "reason": "Child development advice, not news."
+        },
+        {
+          "headline": "Mixed-gender crews prepare for Ocean Race Atlantic from New York to France",
+          "reason": "Personal experience and sport story rather than policy news."
+        }
+      ]
+    },
     {
       "date": "2026-08-31",
       "tags": [
