@@ -13,8 +13,10 @@ signal that they ever existed — which is why the advance is on the success pat
 and not in a `finally`.
 
 **One failure never sinks the run.** A dead handle is skipped and the day is
-flagged incomplete. Only an expired session aborts everything, because without
-credentials no handle can succeed and continuing just burns requests.
+flagged incomplete. Two failures do abort everything, because in both cases no
+handle can succeed and continuing just burns requests: an expired session, and
+an action block (`feedback_required`), where each further request also makes
+the block worse rather than merely wasted.
 
 The boundary is strictly greater-than the cutoff. With `>=`, the newest post of
 the previous run — whose timestamp *equals* the stored watermark — would
@@ -80,6 +82,23 @@ class SessionExpired(Exception):
     """The stored Instagram session is missing or no longer accepted."""
 
 
+class ActionBlocked(Exception):
+    """Instagram is refusing the access pattern, not the credentials."""
+
+
+# Instagram answers a soft block with a 200-shaped 400: `"status": "fail"` and
+# `"message": "feedback_required"`. instaloader wraps it in whichever exception
+# the calling path happens to use -- AbortDownloadException live on 2026-09-02,
+# QueryReturnedBadRequestException elsewhere -- and AbortDownloadException does
+# not even descend from InstaloaderException, so matching on class misses cases.
+# The message string is the only stable signal.
+BLOCK_SIGNAL = "feedback_required"
+
+
+def is_action_block(exc: BaseException) -> bool:
+    return BLOCK_SIGNAL in str(exc)
+
+
 class InstaloaderClient:
     """The real backend. Kept behind three methods so tests can substitute it."""
 
@@ -135,8 +154,25 @@ class InstaloaderClient:
         ]
 
 
-def make_loader(cfg: FetchConfig) -> InstaloaderClient:
-    return InstaloaderClient(cfg)
+def make_loader(cfg: FetchConfig) -> Any:
+    """Build the configured backend.
+
+    `chrome` reads the same posts out of a real logged-in browser, which is the
+    fallback when Instagram refuses this client's request pattern outright. See
+    `src/fetch_chrome.py` for why that works when a fresh session does not.
+    """
+    if cfg.backend == "instaloader":
+        return InstaloaderClient(cfg)
+
+    if cfg.backend == "chrome":
+        # Imported here, not at module scope: fetch_chrome imports this module.
+        from src import fetch_chrome
+        return fetch_chrome.ChromeClient(cfg)
+
+    raise ValueError(
+        f"unknown [fetch] backend {cfg.backend!r}; expected "
+        f"'instaloader' or 'chrome'"
+    )
 
 
 def lookup_profile(loader: Any, handle: str) -> None:
@@ -277,7 +313,7 @@ def fetch_day(
         cutoff = cutoff_for(source, moment, cfg, override=since)
         try:
             found = _with_retries(client, source, cutoff, destination, cfg, pause)
-        except SessionExpired:
+        except (SessionExpired, ActionBlocked):
             raise
         except Exception as exc:
             log.warning("giving up on %s: %s", source.handle, exc)
@@ -318,9 +354,22 @@ def _with_retries(
                 f"  .venv/bin/instaloader --load-cookies chrome "
                 f"--sessionfile ~/.config/instaloader/session-{cfg.session_user}"
             ) from exc
+        except SessionExpired:
+            raise                       # nothing can work; do not spend retries
         except PERMANENT as exc:
             raise                       # not worth a second request
         except Exception as exc:
+            # Retrying a soft block is read as confirmation that a bot is
+            # driving the session, so this deepens the block it is trying to
+            # ride out. Abort the whole run: the block is on the account, so
+            # no other handle can succeed either.
+            if is_action_block(exc):
+                raise ActionBlocked(
+                    f"Instagram refused the request pattern on {source.handle} "
+                    f"({exc}). The session is valid; the automated access is "
+                    f"what is blocked, so re-authenticating will not clear it. "
+                    f"Leave it alone and let the next scheduled run retry."
+                ) from exc
             last = exc
             if attempt < cfg.max_retries:
                 delay = cfg.backoff_seconds * (2 ** (attempt - 1))

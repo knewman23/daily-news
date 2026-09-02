@@ -352,6 +352,54 @@ def test_the_run_uses_a_snapshot_of_the_handle_list(sources_path, dest):
     assert watermarks(sources_path)["latecomer"] is None
 
 
+def test_an_unusable_session_is_not_retried_three_times_first(sources_path, dest):
+    """A backend that says "I cannot work at all" must abort on the spot.
+
+    The chrome backend raises SessionExpired subclasses for an unusable
+    browser. Those were falling through to the generic retry branch, so a dead
+    browser cost three attempts and two backoffs per handle before the run gave
+    up -- three minutes to learn what the first attempt already knew.
+    """
+    loader = FakeLoader(error=fetch.SessionExpired("browser is not usable"),
+                        error_times=99)
+    slept = []
+
+    with pytest.raises(fetch.SessionExpired):
+        fetch.fetch_day(sources_path, dest, CFG, loader=loader,
+                        now=NOW, sleep=slept.append)
+
+    assert loader.attempts == ["aaronparnas"]
+    assert slept == []
+
+
+# --- backend selection -----------------------------------------------------
+
+
+def test_the_default_backend_is_instaloader():
+    assert CFG.backend == "instaloader"
+
+
+def test_the_chrome_backend_is_selected_by_config(monkeypatch):
+    """Routed lazily: fetch_chrome imports fetch, so importing it at module
+    scope here would be circular."""
+    from src import fetch_chrome
+
+    built = []
+    monkeypatch.setattr(fetch_chrome, "ChromeClient",
+                        lambda cfg: built.append(cfg) or "the-chrome-client")
+
+    cfg = FetchConfig(session_user="krys.newman", backend="chrome")
+    assert fetch.make_loader(cfg) == "the-chrome-client"
+    assert built == [cfg]
+
+
+def test_an_unknown_backend_is_refused_rather_than_silently_ignored():
+    cfg = FetchConfig(session_user="krys.newman", backend="typo")
+
+    with pytest.raises(ValueError, match="typo"):
+        fetch.make_loader(cfg)
+
+
 # --- failure paths ---------------------------------------------------------
 
 
@@ -363,6 +411,93 @@ def test_expired_session_raises_a_distinct_error(sources_path, dest):
 
     with pytest.raises(fetch.SessionExpired):
         run(sources_path, dest, loader)
+
+
+# Observed live on 2026-09-02: every handle came back
+#   400 Bad Request - "fail" status, message "feedback_required"
+# from the very first request. It is an anti-automation block on the access
+# pattern, not a credential problem, so re-authenticating does not clear it and
+# retrying is read as confirmation that a bot is driving the session. That run
+# spent 21 requests (7 handles x 3 attempts) proving the point.
+FEEDBACK_REQUIRED = (
+    '400 Bad Request - "fail" status, message "feedback_required" when '
+    "accessing https://www.instagram.com/api/v1/users/web_profile_info/"
+    "?username=carolinegleich"
+)
+
+
+def test_an_action_block_aborts_the_run_without_retrying(sources_path, dest):
+    """The one failure mode where trying again actively makes things worse."""
+    import instaloader
+
+    loader = FakeLoader(
+        error=instaloader.exceptions.AbortDownloadException(FEEDBACK_REQUIRED),
+        error_times=99,
+    )
+    slept = []
+
+    with pytest.raises(fetch.ActionBlocked):
+        fetch.fetch_day(
+            sources_path, dest, CFG, loader=loader, now=NOW, sleep=slept.append,
+        )
+
+    assert loader.attempts == ["aaronparnas"]   # stopped dead, second handle untouched
+    assert slept == []                          # and never backed off
+
+
+def test_an_action_block_is_not_reported_as_an_expired_session(sources_path, dest):
+    """Distinct types because the operator instructions differ.
+
+    SessionExpired means re-authenticate. An action block means wait — telling
+    someone to re-authenticate here sends them to do the one thing that is
+    already known not to help.
+    """
+    import instaloader
+
+    loader = FakeLoader(
+        error=instaloader.exceptions.AbortDownloadException(FEEDBACK_REQUIRED),
+        error_times=99,
+    )
+
+    assert not issubclass(fetch.ActionBlocked, fetch.SessionExpired)
+    with pytest.raises(fetch.ActionBlocked):
+        run(sources_path, dest, loader)
+
+
+def test_an_action_block_is_caught_whatever_instaloader_wraps_it_in(sources_path, dest):
+    """instaloader surfaces this as more than one type, so match on the message.
+
+    Live it arrived as AbortDownloadException; the same 400 reaches us as
+    QueryReturnedBadRequestException on other code paths. Keying on the
+    exception class alone would miss half of them.
+    """
+    import instaloader
+
+    for exc in (
+        instaloader.exceptions.QueryReturnedBadRequestException(FEEDBACK_REQUIRED),
+        instaloader.exceptions.ConnectionException(FEEDBACK_REQUIRED),
+        Exception(FEEDBACK_REQUIRED),
+    ):
+        loader = FakeLoader(error=exc, error_times=99)
+        with pytest.raises(fetch.ActionBlocked):
+            run(sources_path, dest, loader)
+
+
+def test_an_action_block_leaves_every_watermark_untouched(sources_path, dest):
+    """Nothing was read, so nothing may advance -- including handles never tried."""
+    import instaloader
+
+    sources.advance_watermark(sources_path, "aaronparnas", NOW - timedelta(days=2))
+    before = watermarks(sources_path)
+
+    loader = FakeLoader(
+        error=instaloader.exceptions.AbortDownloadException(FEEDBACK_REQUIRED),
+        error_times=99,
+    )
+    with pytest.raises(fetch.ActionBlocked):
+        run(sources_path, dest, loader)
+
+    assert watermarks(sources_path) == before
 
 
 def test_rate_limit_is_retried_with_backoff_then_the_handle_is_abandoned(sources_path, dest):

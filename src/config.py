@@ -35,6 +35,15 @@ class FetchConfig:
     max_lookback_days: int = 14
     max_retries: int = 3
     backoff_seconds: int = 30
+    # "instaloader" talks to the API directly and is what gets flagged;
+    # "chrome" reads the same data out of a real logged-in browser.
+    backend: str = "instaloader"
+    # `localhost`, not `127.0.0.1`: Chrome may bind only [::1], and another
+    # browser holding the IPv4 address answers on the same port number.
+    cdp_url: str = "http://localhost:9222"
+    # 30s was not enough for a cold profile load competing with the feed and
+    # story queries -- it aborted a real run. This is a ceiling, not a delay.
+    page_timeout_seconds: int = 60
 
 
 @dataclass(frozen=True)

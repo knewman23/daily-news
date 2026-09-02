@@ -7,6 +7,7 @@ sources = "config/sources.json"
 
 [fetch]
 session_user = "krys.newman"    # session created via: instaloader --load-cookies chrome
+backend = "chrome"              # the API path is action-blocked; read posts from a real browser
 first_run_lookback_hours = 24   # window used only when a handle has no watermark yet
 max_lookback_days = 14          # ceiling on the walk-back, so a stale watermark
                                 # can't trigger a crawl of a whole profile history

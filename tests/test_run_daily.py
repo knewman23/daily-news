@@ -458,6 +458,51 @@ def test_expired_session_logs_the_relogin_command(project):
     assert "--load-cookies" in log
 
 
+def test_a_chrome_backend_failure_does_not_print_instaloader_advice(project):
+    """ChromeUnavailable is a SessionExpired, so it travels the same abort path
+    -- but `instaloader --load-cookies` is the wrong instruction for it, and it
+    carries its own."""
+    from src import fetch_chrome
+
+    cfg_file = project / "config.toml"
+    cfg_file.write_text(
+        cfg_file.read_text(encoding="utf-8").replace(
+            '[fetch]\nsession_user = "krys.newman"',
+            '[fetch]\nsession_user = "krys.newman"\nbackend = "chrome"',
+        ),
+        encoding="utf-8",
+    )
+
+    run(project, stage_kwargs={
+        "fetch_raises": fetch_chrome.ChromeUnavailable("no browser at :9222"),
+    })
+
+    log = (project / "logs" / "2026-07-28.log").read_text(encoding="utf-8")
+    assert "no browser at :9222" in log
+    assert "--load-cookies" not in log
+
+
+def test_an_action_block_exits_non_zero_and_writes_no_digest(project):
+    code, _, notified = run(project, stage_kwargs={
+        "fetch_raises": fetch.ActionBlocked("feedback_required on aaronparnas"),
+    })
+
+    assert code != 0
+    assert notified
+    assert not list((project / "news").glob("*.md"))
+
+
+def test_an_action_block_does_not_advise_re_authenticating(project):
+    """Re-exporting cookies is known not to clear this; do not send anyone there."""
+    run(project, stage_kwargs={
+        "fetch_raises": fetch.ActionBlocked("feedback_required on aaronparnas"),
+    })
+
+    log = (project / "logs" / "2026-07-28.log").read_text(encoding="utf-8")
+    assert "--load-cookies" not in log
+    assert "do not re-run by hand" in log.lower()
+
+
 def test_a_summarizer_failure_exits_non_zero_and_notifies(project):
     from src.summarize import SummarizeError
 

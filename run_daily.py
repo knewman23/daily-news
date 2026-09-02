@@ -119,14 +119,29 @@ def run_day(
         if full:
             log.info("full pull: ignoring watermarks, scanning from %s", since.isoformat())
         fetched, fetch_stats = do_fetch(cfg.paths.sources, raw, cfg.fetch, since=since)
+      except fetch.ActionBlocked as exc:
+        # Deliberately not the re-authenticate advice below: the session is
+        # fine and a fresh one does not help. Verified on 2026-09-02, where
+        # re-exporting cookies left the block exactly where it was.
+        log.error("Instagram blocked the request pattern: %s", exc)
+        log.error(
+            "Nothing to fix here. Today is lost; no watermark moved, so the "
+            "next run picks up the same window. Do not re-run by hand."
+        )
+        notify("Instagram temporarily blocked automated access — waiting it out")
+        return record(False, error=f"action blocked: {exc}")
       except fetch.SessionExpired as exc:
         log.error("Instagram session is not usable: %s", exc)
-        log.error(
-            "Re-authenticate with:\n"
-            "  .venv/bin/instaloader --load-cookies chrome "
-            "--sessionfile ~/.config/instaloader/session-%s",
-            cfg.fetch.session_user,
-        )
+        # Only the instaloader backend is fixed by re-exporting cookies. The
+        # chrome backend raises a ChromeUnavailable -- itself a SessionExpired,
+        # so it aborts the same way -- and its message says what to do instead.
+        if cfg.fetch.backend == "instaloader":
+            log.error(
+                "Re-authenticate with:\n"
+                "  .venv/bin/instaloader --load-cookies chrome "
+                "--sessionfile ~/.config/instaloader/session-%s",
+                cfg.fetch.session_user,
+            )
         notify("Instagram session expired — re-authenticate")
         return record(False, error=f"session expired: {exc}")
       except Exception as exc:

@@ -7,7 +7,8 @@ Each module owns one stage and is imported by `run_daily.py`, `serve.py`, or
 
 | Module | Owns |
 |---|---|
-| `fetch.py` | instaloader, per-handle watermarks |
+| `fetch.py` | the walk, per-handle watermarks, backend selection |
+| `fetch_chrome.py` | the `chrome` backend: posts read from a real browser |
 | `transcribe.py` | ffmpeg + faster-whisper (video → spoken text) |
 | `ocr.py` | Apple Vision (image → on-screen text) |
 | `summarize.py` | the one `claude -p` call per day: cluster, de-duplicate, tag, filter |
@@ -90,7 +91,19 @@ absent output and a concluded-empty output are different states.
 
 ## Fetching
 
-`fetch.py` is the only module that talks to Instagram. A rate-limit response
-aborts the whole run and is never retried — answering a request for less with
-more is how a slowdown becomes a suspension. Do not add a retry, a backoff loop,
-or a second attempt.
+`fetch.py` and `fetch_chrome.py` are the only modules that talk to Instagram.
+`fetch.py` owns the walk and the watermarks; the backend behind it is chosen by
+`[fetch] backend` and is either `instaloader` (the API, default) or `chrome`
+(a real logged-in browser). Both expose the same four methods, and posts from
+either wear instaloader's attribute names, so nothing downstream knows which
+ran.
+
+**An action block is never retried.** A 400 carrying `feedback_required` means
+Instagram has decided the *access pattern* is automated — the credentials are
+still good, which is why re-authenticating does not clear it. Answering a
+request for less with more is how a slowdown becomes a suspension, so
+`ActionBlocked` aborts the whole run on first sight, from either backend. Do
+not add a retry, a backoff loop, or a second attempt to that path.
+
+A plain 429 is different and *is* retried with backoff before that one handle is
+abandoned — see `_with_retries`. Keep the two distinct.

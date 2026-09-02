@@ -62,8 +62,18 @@ implying tests covered it:
 ## Running the pipeline
 
 Do not run `run_daily.py` without being asked. It hits Instagram, and **the
-request pattern is what gets an account flagged.** A rate-limit response aborts
-the run and is deliberately never retried; do not add a retry.
+request pattern is what gets an account flagged.**
+
+Two throttle responses, handled differently on purpose:
+
+- A **429** (`TooManyRequestsException`) is retried with backoff, then that one
+  handle is abandoned and the day is flagged incomplete.
+- An **action block** (a 400 carrying `feedback_required`) aborts the entire run
+  on the first occurrence, without retrying. Retrying reads as confirmation
+  that a bot is driving the session, so it deepens the block. Do not add a
+  retry here, and do not re-run by hand to check whether it has cleared —
+  each attempt resets the clock. Re-authenticating does not help either: the
+  credentials are accepted, the automated access pattern is what is refused.
 
 To re-summarize a day already on disk, which touches no network at all:
 
