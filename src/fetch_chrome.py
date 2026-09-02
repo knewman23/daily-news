@@ -29,11 +29,17 @@ the profile walk it replaces, not more expensive.
 
 from __future__ import annotations
 
+import json
 import logging
+import subprocess
+import time
+import urllib.error
+import urllib.request
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterator, Sequence
+from urllib.parse import urlparse
 
 from src import fetch
 from src.config import FetchConfig
@@ -173,6 +179,97 @@ class ChromeClient:
         ]
 
 
+def probe_endpoint(url: str) -> dict | None:
+    """What is answering at a CDP endpoint, or None if nothing is.
+
+    `/json/version` identifies the browser, which matters because the port
+    number alone does not: another browser can hold the same port on the other
+    address family.
+    """
+    try:
+        with urllib.request.urlopen(f"{url.rstrip('/')}/json/version",
+                                    timeout=3) as response:
+            payload = json.load(response)
+    except Exception:
+        return None
+    return payload if isinstance(payload, dict) else None
+
+
+def ensure_endpoint(cfg: FetchConfig, probe=None, launcher=None,
+                    sleep=None) -> None:
+    """Make sure a Chrome CDP endpoint is answering at `cfg.cdp_url`.
+
+    Starts one if nothing is. The scheduled run is unattended, so requiring a
+    browser someone launched by hand makes a reboot into a silently missed
+    digest -- which was the most likely cause of future failure once the
+    chrome backend became the default.
+
+    Headful on purpose. A headless browser would need stealth patches to pass
+    for real, which is the arms race this backend exists to avoid.
+    """
+    probe = probe or probe_endpoint
+    launcher = launcher or subprocess.Popen
+    pause = sleep or time.sleep
+
+    answering = probe(cfg.cdp_url)
+    if answering is not None:
+        _refuse_a_foreign_browser(answering, cfg)
+        return
+
+    port = urlparse(cfg.cdp_url).port or 9222
+    profile = Path(cfg.chrome_profile_dir).expanduser()
+    argv = [
+        cfg.chrome_binary,
+        f"--remote-debugging-port={port}",
+        f"--user-data-dir={profile}",
+        # Playwright cannot attach to a browser with no targets at all, and a
+        # freshly launched Chrome with no URL may have none.
+        "about:blank",
+    ]
+
+    log.info("no browser at %s, starting one", cfg.cdp_url)
+    try:
+        launcher(argv, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    except FileNotFoundError as exc:
+        raise ChromeUnavailable(
+            f"cannot start a browser: {cfg.chrome_binary} is not there. Set "
+            f"[fetch] chrome_binary to where Google Chrome actually is."
+        ) from exc
+
+    deadline = max(cfg.chrome_launch_timeout_seconds, 1)
+    for _ in range(deadline):
+        pause(1)
+        answering = probe(cfg.cdp_url)
+        if answering is not None:
+            _refuse_a_foreign_browser(answering, cfg)
+            log.info("browser is up at %s", cfg.cdp_url)
+            return
+
+    raise ChromeUnavailable(
+        f"started {cfg.chrome_binary} but the endpoint at {cfg.cdp_url} did "
+        f"not come up within {deadline}s"
+    )
+
+
+def _refuse_a_foreign_browser(answering: dict, cfg: FetchConfig) -> None:
+    """Refuse a port held by something that is not Chrome.
+
+    Verified live on 2026-09-02: Brave held 127.0.0.1:9222 while Chrome was on
+    [::1]:9222, and the same port number reached a different browser depending
+    on the address family. Launching another Chrome cannot bind an occupied
+    port, so naming the squatter is the only useful move.
+    """
+    name = str(answering.get("Browser") or "unknown")
+    if "chrome" in name.lower() or "chromium" in name.lower():
+        return
+
+    raise ChromeUnavailable(
+        f"{cfg.cdp_url} is held by {name}, not Chrome. Another browser is "
+        f"using that debugging port -- quit it, or point [fetch] cdp_url at a "
+        f"different port."
+    )
+
+
 class CdpBrowser:
     """The real backend: an already-running Chrome, driven over CDP.
 
@@ -195,6 +292,7 @@ class CdpBrowser:
 
         self._cfg = cfg
         self._timeout_ms = max(cfg.page_timeout_seconds, 1) * 1000
+        ensure_endpoint(cfg)
         self._play = sync_playwright().start()
         try:
             self._browser = self._play.chromium.connect_over_cdp(cfg.cdp_url)
@@ -296,10 +394,27 @@ class CdpBrowser:
         return response.body()
 
     def close(self) -> None:
-        for shut in (self._page.close, self._browser.close, self._play.stop):
+        """Disconnect, leaving the browser itself running.
+
+        Two deliberate choices. `browser.close()` on a CDP *attachment*
+        disconnects rather than quitting the browser, so a browser we started
+        stays up and the next run reuses it instead of paying the launch again.
+
+        And our own tab is closed only if another remains: leaving the browser
+        with no targets at all is what makes the next `connect_over_cdp` fail
+        with "Browser context management is not supported", which reads as a
+        broken setup rather than an empty window.
+        """
+        try:
+            if len(self._context.pages) > 1:
+                self._page.close()
+        except Exception:                # teardown must not mask a real failure
+            pass
+
+        for shut in (self._browser.close, self._play.stop):
             try:
                 shut()
-            except Exception:            # teardown must not mask a real failure
+            except Exception:
                 pass
 
 

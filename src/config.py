@@ -48,6 +48,12 @@ class FetchConfig:
     # contacting Instagram. Firing at exactly 11:00:00 every day is a signal in
     # its own right, whichever backend makes the requests. 0 disables it.
     start_jitter_seconds: int = 0
+    # Used only to start a browser when nothing answers at cdp_url. A dedicated
+    # profile directory, never the one you browse with: the run must not
+    # disturb, or be disturbed by, your own session and tabs.
+    chrome_binary: str = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+    chrome_profile_dir: str = "~/.config/daily-news-chrome"
+    chrome_launch_timeout_seconds: int = 30
 
 
 @dataclass(frozen=True)

@@ -317,3 +317,111 @@ def test_an_unrelated_profile_query_is_not_mistaken_for_the_posts_query():
                  ""):
         assert not fetch_chrome.is_posts_query(name), name
 
+
+# --- starting the browser when nothing is listening ------------------------
+
+
+class FakeLauncher:
+    """Stands in for subprocess.Popen."""
+
+    def __init__(self):
+        self.launched = []
+
+    def __call__(self, argv, **kwargs):
+        self.launched.append((argv, kwargs))
+        return object()
+
+
+def probe_returning(*answers):
+    """A probe that yields each answer in turn, repeating the last forever."""
+    seq = list(answers)
+    calls = []
+
+    def probe(url):
+        calls.append(url)
+        return seq[min(len(calls) - 1, len(seq) - 1)]
+
+    probe.calls = calls
+    return probe
+
+
+CHROME = {"Browser": "Chrome/152.0.7977.76"}
+LAUNCH_CFG = FetchConfig(
+    session_user="k", backend="chrome", cdp_url="http://localhost:9222",
+    chrome_binary="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    chrome_profile_dir="~/.config/daily-news-chrome",
+)
+
+
+def test_a_browser_that_is_already_answering_is_left_alone():
+    """The common case, and the one where launching a second would collide."""
+    launcher = FakeLauncher()
+
+    fetch_chrome.ensure_endpoint(LAUNCH_CFG, probe=probe_returning(CHROME),
+                                 launcher=launcher, sleep=lambda _s: None)
+
+    assert launcher.launched == []
+
+
+def test_chrome_is_started_when_nothing_answers():
+    launcher = FakeLauncher()
+
+    fetch_chrome.ensure_endpoint(LAUNCH_CFG,
+                                 probe=probe_returning(None, CHROME),
+                                 launcher=launcher, sleep=lambda _s: None)
+
+    argv, _kwargs = launcher.launched[0]
+    assert argv[0] == LAUNCH_CFG.chrome_binary
+    assert "--remote-debugging-port=9222" in argv     # the port from cdp_url
+    assert any(a.startswith("--user-data-dir=") for a in argv)
+    # A dedicated profile, never the user's own: the run must not disturb, or
+    # be disturbed by, the browser they are actually using.
+    assert "daily-news-chrome" in " ".join(argv)
+    # Playwright cannot attach to a browser with no targets, so open one.
+    assert "about:blank" in argv
+
+
+def test_the_launch_waits_for_the_endpoint_to_come_up():
+    """Chrome takes a moment to bind the port; connecting too early fails."""
+    launcher = FakeLauncher()
+    slept = []
+    probe = probe_returning(None, None, None, CHROME)
+
+    fetch_chrome.ensure_endpoint(LAUNCH_CFG, probe=probe,
+                                 launcher=launcher, sleep=slept.append)
+
+    assert len(launcher.launched) == 1        # launched once, not once per poll
+    assert len(slept) >= 2
+    assert len(probe.calls) >= 4
+
+
+def test_a_browser_that_never_comes_up_is_reported_not_waited_on_forever():
+    launcher = FakeLauncher()
+
+    with pytest.raises(fetch_chrome.ChromeUnavailable, match="did not come up"):
+        fetch_chrome.ensure_endpoint(LAUNCH_CFG, probe=probe_returning(None),
+                                     launcher=launcher, sleep=lambda _s: None)
+
+
+def test_a_binary_that_is_not_there_says_so_plainly():
+    def launcher(argv, **kwargs):
+        raise FileNotFoundError(argv[0])
+
+    with pytest.raises(fetch_chrome.ChromeUnavailable, match="Google Chrome"):
+        fetch_chrome.ensure_endpoint(LAUNCH_CFG, probe=probe_returning(None),
+                                     launcher=launcher, sleep=lambda _s: None)
+
+
+def test_another_browser_holding_the_port_is_named_not_fought_over():
+    """Hit live on 2026-09-02: Brave held 127.0.0.1:9222 while Chrome was on
+    [::1]:9222. Launching another Chrome cannot bind the port, so the useful
+    thing is to say what is squatting it rather than fail obscurely."""
+    launcher = FakeLauncher()
+    brave = {"Browser": "Brave/1.70.126"}
+
+    with pytest.raises(fetch_chrome.ChromeUnavailable, match="Brave"):
+        fetch_chrome.ensure_endpoint(LAUNCH_CFG, probe=probe_returning(brave),
+                                     launcher=launcher, sleep=lambda _s: None)
+
+    assert launcher.launched == []
+
