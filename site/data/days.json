@@ -1,14 +1,58 @@
 {
-  "last_updated": "2026-09-01T17:15:46.865328+00:00",
+  "last_updated": "2026-09-02T17:52:16.285876+00:00",
   "days": [
     {
       "date": "2026-09-02",
-      "tags": [],
-      "sources": [],
-      "post_count": 0,
-      "transcribed_count": 0,
+      "tags": [
+        "war",
+        "politics",
+        "defence",
+        "surveillance",
+        "immigration",
+        "elections",
+        "legal",
+        "environment",
+        "climate",
+        "economy",
+        "health",
+        "media"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@oafnation_actual",
+        "@total.hypocrisy",
+        "@carolinegleich",
+        "@ericmoutsos"
+      ],
+      "post_count": 29,
+      "transcribed_count": 26,
       "incomplete": true,
-      "skipped": []
+      "skipped": [
+        {
+          "headline": "Russian state media helicopter makes hard landing on Sakhalin road after fuel exhaustion",
+          "reason": "An aviation accident with no policy, political or defence angle."
+        },
+        {
+          "headline": "Indiana Rangers receive military's highest unit award 56 years after Vietnam",
+          "reason": "Human interest military history with no current policy angle."
+        },
+        {
+          "headline": "Possible remains of missing WWII Americans sent to Hawaii for identification",
+          "reason": "Human interest repatriation story with no policy angle."
+        },
+        {
+          "headline": "Humanoid robot fights back after being pushed in Russian store",
+          "reason": "Viral tech curiosity with no policy or AI-infrastructure angle."
+        },
+        {
+          "headline": "Dolly Parton's Hollywood Walk of Fame star vandalized",
+          "reason": "Celebrity vandalism and a product recall, neither with a policy angle."
+        },
+        {
+          "headline": "Commentator predicts election suspension and calls for general strike",
+          "reason": "Speculation and commentary that reports no new information of its own."
+        }
+      ]
     },
     {
       "date": "2026-09-01",
