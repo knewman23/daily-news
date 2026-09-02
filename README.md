@@ -64,6 +64,7 @@ cd ~/Projects/daily-news
 .venv/bin/python run_daily.py                   # today
 .venv/bin/python run_daily.py --date 2026-07-20  # a specific day, or a re-run
 .venv/bin/python run_daily.py --full            # re-scan the whole day, ignoring watermarks
+.venv/bin/python run_daily.py --jitter          # scheduled run: wait a random 0-90min first
 .venv/bin/python run_daily.py --date 2026-07-22 --no-fetch --quiet   # summarize a backfilled day
 
 # Backfill past days: one profile walk per handle, paced

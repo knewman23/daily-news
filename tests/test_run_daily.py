@@ -436,6 +436,94 @@ def test_stage_failure_notes_reach_the_frontmatter_count_not_the_body(project):
     assert "rate limited" not in text     # operational detail belongs in the log
 
 
+# --- start jitter ----------------------------------------------------------
+
+
+def jittered(project, span, **kw):
+    """Run with jitter on, returning the delays it slept for."""
+    slept = []
+    cfg_file = project / "config.toml"
+    cfg_file.write_text(
+        cfg_file.read_text(encoding="utf-8").replace(
+            '[fetch]\nsession_user = "krys.newman"',
+            f'[fetch]\nsession_user = "krys.newman"\nstart_jitter_seconds = {span}',
+        ),
+        encoding="utf-8",
+    )
+    run(project, jitter=True, sleep=slept.append,
+        pick=lambda lo, hi: (lo + hi) / 2, **kw)
+    return slept
+
+
+def test_jitter_delays_the_run_before_it_contacts_instagram(project):
+    """11:00:00 every day is itself a signal, whatever the backend."""
+    assert jittered(project, 5400) == [2700]
+
+
+def test_jitter_stays_inside_the_configured_span(project):
+    """The real pick is random; what matters is the bound it is given."""
+    seen = {}
+    cfg_file = project / "config.toml"
+    cfg_file.write_text(
+        cfg_file.read_text(encoding="utf-8").replace(
+            '[fetch]\nsession_user = "krys.newman"',
+            '[fetch]\nsession_user = "krys.newman"\nstart_jitter_seconds = 900',
+        ),
+        encoding="utf-8",
+    )
+
+    def pick(lo, hi):
+        seen.update(lo=lo, hi=hi)
+        return hi
+
+    run(project, jitter=True, sleep=lambda _s: None, pick=pick)
+
+    assert seen == {"lo": 0, "hi": 900}
+
+
+def test_without_the_flag_nothing_sleeps(project):
+    """A manual re-run must never stall; only the scheduled run passes --jitter."""
+    slept = []
+    run(project, jitter=False, sleep=slept.append)
+
+    assert slept == []
+
+
+def test_jitter_is_skipped_when_there_is_nothing_to_fetch(project):
+    """--no-fetch touches no network, so there is no request pattern to hide.
+    Backfilling thirty days must not sleep thirty times."""
+    assert jittered(project, 5400, skip_fetch=True) == []
+
+
+def test_a_zero_span_disables_jitter_even_with_the_flag(project):
+    assert jittered(project, 0) == []
+
+
+def test_the_jitter_delay_is_not_billed_to_the_run_duration(project):
+    """The Runs panel reports how long the work took. A 45-minute wait reported
+    as a 45-minute run would look like a pathologically slow pipeline."""
+    slept = []
+    cfg_file = project / "config.toml"
+    cfg_file.write_text(
+        cfg_file.read_text(encoding="utf-8").replace(
+            '[fetch]\nsession_user = "krys.newman"',
+            '[fetch]\nsession_user = "krys.newman"\nstart_jitter_seconds = 3600',
+        ),
+        encoding="utf-8",
+    )
+
+    run(project, jitter=True, sleep=slept.append, pick=lambda lo, hi: hi)
+
+    assert slept == [3600]
+    entry = json.loads((project / "logs" / "runs.json").read_text())["runs"][0]
+    assert entry["duration_seconds"] < 60      # the wait is not part of the work
+
+
+def test_the_jitter_flag_reaches_run_day_from_the_command_line():
+    assert run_daily.parse_args(["--jitter"]).jitter is True
+    assert run_daily.parse_args([]).jitter is False
+
+
 # --- hard failures ---------------------------------------------------------
 
 

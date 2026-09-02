@@ -21,9 +21,11 @@ from __future__ import annotations
 
 import argparse
 import logging
+import random
 import subprocess
 import sys
 import tempfile
+import time
 from datetime import date, datetime, timezone
 from pathlib import Path
 
@@ -49,9 +51,19 @@ def run_day(
     full: bool = False,
     skip_fetch: bool = False,
     quiet: bool = False,
+    jitter: bool = False,
+    sleep=None,
+    pick=None,
 ) -> int:
     """Run one day end to end. Returns a process exit code."""
     _setup_logging(cfg, day)
+
+    # Before `started`, deliberately: the wait is not work, and billing it to
+    # the run would report a 45-minute pause as a 45-minute pipeline.
+    if jitter and not skip_fetch:
+        _wait_out_jitter(cfg.fetch.start_jitter_seconds,
+                         sleep or time.sleep, pick or random.uniform)
+
     started = runlog.now()
 
     # Assigned before record() below, which closes over it.
@@ -267,6 +279,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="Do not publish, email, or notify. Use when backfilling many days.",
     )
     parser.add_argument(
+        "--jitter", action="store_true",
+        help="Wait a random part of [fetch] start_jitter_seconds before "
+             "contacting Instagram. For the scheduled run: firing at the same "
+             "second every day is a pattern. Not for interactive use.",
+    )
+    parser.add_argument(
         "--full", action="store_true",
         help="Ignore the per-handle watermarks and re-scan the whole day. Use "
              "after a partial run, or to pick up posts an earlier run missed.",
@@ -277,10 +295,28 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     return run_day(args.date, config.load(args.config), full=args.full,
-                   skip_fetch=args.no_fetch, quiet=args.quiet)
+                   skip_fetch=args.no_fetch, quiet=args.quiet,
+                   jitter=args.jitter)
 
 
 # --- internals -------------------------------------------------------------
+
+
+def _wait_out_jitter(span_seconds: int, sleep, pick) -> None:
+    """Wait a random part of `span_seconds` before the run touches Instagram.
+
+    Only the scheduled run passes `--jitter`. A launchd job fires at 11:00:00
+    to the second, and seven handles pulled in the same order at the same
+    instant every day is a pattern no choice of backend hides. A manual run
+    stalling for three quarters of an hour would be its own bug, which is why
+    this is opt-in rather than automatic.
+    """
+    if span_seconds <= 0:
+        return
+
+    delay = pick(0, span_seconds)
+    log.info("jitter: waiting %s before contacting Instagram", _elapsed(delay))
+    sleep(delay)
 
 
 def _merge(fetched: Stats, spoken: Stats, on_image: Stats) -> Stats:

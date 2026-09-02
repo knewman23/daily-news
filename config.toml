@@ -13,6 +13,8 @@ max_lookback_days = 14          # ceiling on the walk-back, so a stale watermark
                                 # can't trigger a crawl of a whole profile history
 max_retries = 3
 backoff_seconds = 30
+start_jitter_seconds = 5400     # scheduled run waits 0-90min past 11:00, so the
+                                # daily request pattern has no fixed timestamp
 
 [transcribe]
 model = "small"            # tiny | base | small | medium | large-v3

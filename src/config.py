@@ -44,6 +44,10 @@ class FetchConfig:
     # 30s was not enough for a cold profile load competing with the feed and
     # story queries -- it aborted a real run. This is a ceiling, not a delay.
     page_timeout_seconds: int = 60
+    # Upper bound on the random delay `run_daily.py --jitter` waits out before
+    # contacting Instagram. Firing at exactly 11:00:00 every day is a signal in
+    # its own right, whichever backend makes the requests. 0 disables it.
+    start_jitter_seconds: int = 0
 
 
 @dataclass(frozen=True)
