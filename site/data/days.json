@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-02T17:52:16.285876+00:00",
+  "last_updated": "2026-09-02T18:14:09.348393+00:00",
   "days": [
     {
       "date": "2026-09-02",
@@ -7,50 +7,54 @@
         "war",
         "politics",
         "defence",
+        "legal",
+        "elections",
         "surveillance",
         "immigration",
-        "elections",
-        "legal",
-        "environment",
+        "tech",
+        "markets",
         "climate",
-        "economy",
-        "health",
-        "media"
+        "media",
+        "health"
       ],
       "sources": [
-        "@aaronparnas",
         "@oafnation_actual",
         "@total.hypocrisy",
+        "@aaronparnas",
         "@carolinegleich",
         "@ericmoutsos"
       ],
-      "post_count": 29,
-      "transcribed_count": 26,
-      "incomplete": true,
+      "post_count": 46,
+      "transcribed_count": 39,
+      "incomplete": false,
       "skipped": [
         {
-          "headline": "Russian state media helicopter makes hard landing on Sakhalin road after fuel exhaustion",
-          "reason": "An aviation accident with no policy, political or defence angle."
+          "headline": "Dolly Parton's Hollywood Walk of Fame star vandalized",
+          "reason": "Human interest with no policy or political angle"
+        },
+        {
+          "headline": "Encyclopedia Britannica marks the start of the late 2020s",
+          "reason": "Trivia with no news or policy content"
+        },
+        {
+          "headline": "Humanoid robot fights back after being shoved in Russian store",
+          "reason": "Viral curiosity, not about AI policy, infrastructure, or governance"
+        },
+        {
+          "headline": "Russian state media helicopter makes hard landing on Sakhalin road",
+          "reason": "Isolated aviation accident with no policy, defence, or political angle"
         },
         {
           "headline": "Indiana Rangers receive military's highest unit award 56 years after Vietnam",
-          "reason": "Human interest military history with no current policy angle."
+          "reason": "Historical commemoration with no current policy angle"
         },
         {
           "headline": "Possible remains of missing WWII Americans sent to Hawaii for identification",
-          "reason": "Human interest repatriation story with no policy angle."
+          "reason": "Historical recovery story with no current policy angle"
         },
         {
-          "headline": "Humanoid robot fights back after being pushed in Russian store",
-          "reason": "Viral tech curiosity with no policy or AI-infrastructure angle."
-        },
-        {
-          "headline": "Dolly Parton's Hollywood Walk of Fame star vandalized",
-          "reason": "Celebrity vandalism and a product recall, neither with a policy angle."
-        },
-        {
-          "headline": "Commentator predicts election suspension and calls for general strike",
-          "reason": "Speculation and commentary that reports no new information of its own."
+          "headline": "Chocolate eyeballs recalled in 13 states over undeclared allergens",
+          "reason": "Routine product recall, not public health policy"
         }
       ]
     },
