@@ -1,6 +1,212 @@
 {
   "topics": [
     {
+      "date": "2026-09-03",
+      "headline": "ICE contract would build national voter database from all 50 states",
+      "tags": [
+        "surveillance",
+        "politics",
+        "immigration"
+      ],
+      "snippet": "Immigration and Customs Enforcement is preparing to award a $5 million government contract to build a nationwide database of voter information drawn from all 50 states, according to Wired. The data so\u2026",
+      "text": "ice contract would build national voter database from all 50 states\nimmigration and customs enforcement is preparing to award a $5 million government contract to build a nationwide database of voter information drawn from all 50 states, according to wired. the data sought includes voter registration records, party affiliation and voting history for federal general, primary, runoff and special elections. experts cited in the reporting said the effort would violate the privacy rights of us voters."
+    },
+    {
+      "date": "2026-09-03",
+      "headline": "Investigation finds ICE gave uncleared officers access to Palantir targeting system",
+      "tags": [
+        "surveillance",
+        "immigration",
+        "tech"
+      ],
+      "snippet": "An investigation published in The Intercept reports that Palantir's ELITE app, an AI-driven targeting system built for the Department of Homeland Security, contained a loophole allowing thousands of n\u2026",
+      "text": "investigation finds ice gave uncleared officers access to palantir targeting system\nan investigation published in the intercept reports that palantir's elite app, an ai-driven targeting system built for the department of homeland security, contained a loophole allowing thousands of newly hired ice deportation officers to access sensitive and restricted information before their background checks cleared. the reporting, based on ice whistleblowers, former dhs leadership, legal experts and official dhs documents, also found that ice skipped a required safeguarding step meant to guard against misuse of the underlying ai technology. the hiring surge that produced those officers came under the current administration."
+    },
+    {
+      "date": "2026-09-03",
+      "headline": "House cancels remaining September votes and sends members home",
+      "tags": [
+        "politics"
+      ],
+      "snippet": "Speaker Mike Johnson has cancelled all remaining votes for the last two weeks of September and is sending House members home, following an August recess that took up most of that month. The decision k\u2026",
+      "text": "house cancels remaining september votes and sends members home\nspeaker mike johnson has cancelled all remaining votes for the last two weeks of september and is sending house members home, following an august recess that took up most of that month. the decision keeps pending matters, including votes related to the epstein files, off the floor. republicans control the chamber and set the schedule; members of the house are paid $174,000 a year."
+    },
+    {
+      "date": "2026-09-03",
+      "headline": "Whistleblower says USPS ballot system could void entire batches over one barcode error",
+      "tags": [
+        "politics",
+        "legal"
+      ],
+      "snippet": "A whistleblower complaint from a USPS official describes a mail-in ballot system under construction that would require states to submit voter lists and ballot envelopes carrying barcodes. According to\u2026",
+      "text": "whistleblower says usps ballot system could void entire batches over one barcode error\na whistleblower complaint from a usps official describes a mail-in ballot system under construction that would require states to submit voter lists and ballot envelopes carrying barcodes. according to the complaint, the portal would automatically reject an entire batch of ballots if a single envelope barcode in that batch contains an error. the effect described would be that thousands of voters in a state could fail to receive ballots because of one flawed record."
+    },
+    {
+      "date": "2026-09-03",
+      "headline": "Israeli forces demolish homes and strike some 20 towns in south Lebanon",
+      "tags": [
+        "war",
+        "politics"
+      ],
+      "snippet": "Reporting from occupied south Lebanon describes Israeli forces entering the town of Hula with Merkava tanks and personnel carriers, rigging homes with C-4 and detonating them. Overnight, around 20 tow\u2026",
+      "text": "israeli forces demolish homes and strike some 20 towns in south lebanon\nreporting from occupied south lebanon describes israeli forces entering the town of hula with merkava tanks and personnel carriers, rigging homes with c-4 and detonating them. overnight, around 20 towns were attacked with airstrikes, tank shelling and other weapons, alongside low-flying armed surveillance drones and a quadcopter that dropped explosives on the roof of a civilian home. the account frames continued us funding and weapons transfers to israel as making the united states an accomplice to the campaign."
+    },
+    {
+      "date": "2026-09-03",
+      "headline": "Dutch central bank moves 86 tonnes of gold out of North America to London",
+      "tags": [
+        "markets",
+        "politics"
+      ],
+      "snippet": "The Netherlands' central bank has transferred nearly 86 metric tons of gold out of the United States and Canada to the United Kingdom, citing increasing geopolitical unrest and an effort to strengthen\u2026",
+      "text": "dutch central bank moves 86 tonnes of gold out of north america to london\nthe netherlands' central bank has transferred nearly 86 metric tons of gold out of the united states and canada to the united kingdom, citing increasing geopolitical unrest and an effort to strengthen crisis preparedness, according to cnbc. the gold is now held by the bank of england, where storage meets international trade standards and the metal is treated as the world's most readily tradable. the transfer comes as the us war in iran continues despite assurances it would end soon."
+    },
+    {
+      "date": "2026-09-03",
+      "headline": "Trump family and officials seek personal lawyers ahead of possible investigations",
+      "tags": [
+        "politics",
+        "legal"
+      ],
+      "snippet": "Politico reports that Donald Trump, his family and associates are quietly retaining personal legal counsel in anticipation of congressional investigations, subpoenas and possible impeachment proceedin\u2026",
+      "text": "trump family and officials seek personal lawyers ahead of possible investigations\npolitico reports that donald trump, his family and associates are quietly retaining personal legal counsel in anticipation of congressional investigations, subpoenas and possible impeachment proceedings should democrats take control of the house. current and former administration officials have been exchanging recommendations for attorneys who could represent them in their personal capacities. retaining counsel early can conflict those lawyers out of representing other potential subjects."
+    },
+    {
+      "date": "2026-09-03",
+      "headline": "Sanders introduces bill to ban artificial superintelligence",
+      "tags": [
+        "tech",
+        "politics"
+      ],
+      "snippet": "Senator Bernie Sanders has introduced the Ban Artificial Superintelligence Act, which would prohibit any person or entity from developing or deploying AI systems that match or exceed human intelligenc\u2026",
+      "text": "sanders introduces bill to ban artificial superintelligence\nsenator bernie sanders has introduced the ban artificial superintelligence act, which would prohibit any person or entity from developing or deploying ai systems that match or exceed human intelligence, including systems capable of overthrowing human governments or subverting shutdown commands. the bill would pause advanced ai development until a federal regulatory body is established to set ground rules. violations could carry corporate dissolution for entities and up to 20 years in federal prison for individuals, a penalty the bill likens to those for developing a nuclear weapon."
+    },
+    {
+      "date": "2026-09-03",
+      "headline": "UN says Earth will overshoot the Paris temperature threshold",
+      "tags": [
+        "climate"
+      ],
+      "snippet": "The United Nations has conceded that the world has lost its chance to prevent some of the worst impacts of global warming, describing the shift as a strategic retreat. The organisation now says the pl\u2026",
+      "text": "un says earth will overshoot the paris temperature threshold\nthe united nations has conceded that the world has lost its chance to prevent some of the worst impacts of global warming, describing the shift as a strategic retreat. the organisation now says the planet will soon exceed the safe temperature threshold agreed in the 2015 paris climate accords, and that the focus must turn to bringing temperatures back down after the overshoot. consequences cited include more frequent weather disasters, rising sea levels, extinctions and melting ice and glaciers. the un secretary-general said humanity is speeding past the limit to avoid climate catastrophe."
+    },
+    {
+      "date": "2026-09-03",
+      "headline": "Forecasters put near-certain odds on a record-strength El Nino through February",
+      "tags": [
+        "climate"
+      ],
+      "snippet": "The World Meteorological Organization says there is an exceptionally high likelihood, near 100 percent, that a super-sized El Nino will persist through February 2027, in what would rank among the stro\u2026",
+      "text": "forecasters put near-certain odds on a record-strength el nino through february\nthe world meteorological organization says there is an exceptionally high likelihood, near 100 percent, that a super-sized el nino will persist through february 2027, in what would rank among the strongest events on record. the pattern involves warming of the eastern and central pacific and drives changes in temperature, rainfall and atmospheric circulation, making it the single most potent factor in annual climate variability. three hurricanes are currently active, with one potentially affecting hawaii in the central pacific. un secretary-general antonio guterres said the science leaves no room for doubt and that there is no time to lose."
+    },
+    {
+      "date": "2026-09-03",
+      "headline": "Pentagon orders testosterone screening for all service members over 30",
+      "tags": [
+        "defence",
+        "health"
+      ],
+      "snippet": "The Department of Defense under Secretary Pete Hegseth has released clinical guidelines mandating testosterone screening and blood tests for active duty troops and reservists aged 30 and over, with op\u2026",
+      "text": "pentagon orders testosterone screening for all service members over 30\nthe department of defense under secretary pete hegseth has released clinical guidelines mandating testosterone screening and blood tests for active duty troops and reservists aged 30 and over, with optional screening for those under 30. service members diagnosed with low testosterone will receive follow-up screening and treatment, including testosterone replacement therapy where indicated. the guidelines also direct that female service members be asked about symptoms of hormonal dysregulation and referred for further assessment if needed, according to cbs news. the department said the goal is to invest in the health of its warfighters and maximize force readiness; the policy arrives as republican senator tom tillis has called for hegseth's removal."
+    },
+    {
+      "date": "2026-09-03",
+      "headline": "Brian Mast floated as nominee for Army Secretary after Driscoll resignation",
+      "tags": [
+        "politics",
+        "defence"
+      ],
+      "snippet": "Army Secretary Dan Driscoll resigned unexpectedly, leaving the president to nominate a successor, and Representative Brian Mast of Florida is rumoured to be the leading contender. The Secretary of the\u2026",
+      "text": "brian mast floated as nominee for army secretary after driscoll resignation\narmy secretary dan driscoll resigned unexpectedly, leaving the president to nominate a successor, and representative brian mast of florida is rumoured to be the leading contender. the secretary of the army is a senior civilian official responsible for manpower, personnel, reserve affairs, installations, environmental issues, weapons acquisition, communications and financial management. mast served in the us army and, by his own account on his website, later volunteered alongside the israel defense forces; in october 2023 he appeared on capitol hill wearing an idf uniform. the prospective nomination coincides with multiple pieces of legislation in congress addressing closer integration of us and israeli military forces and intelligence sharing."
+    },
+    {
+      "date": "2026-09-03",
+      "headline": "Trump floats renaming Strait of Hormuz after himself",
+      "tags": [
+        "politics",
+        "war"
+      ],
+      "snippet": "In a post on Truth Social, Donald Trump asked whether the Hormuz Strait should be renamed the Trump Strait, writing that it is now under US control. He added that, like America itself, it would be hot\u2026",
+      "text": "trump floats renaming strait of hormuz after himself\nin a post on truth social, donald trump asked whether the hormuz strait should be renamed the trump strait, writing that it is now under us control. he added that, like america itself, it would be hotter than ever before."
+    },
+    {
+      "date": "2026-09-03",
+      "headline": "Treasury Secretary's remarks on a new Bretton Woods draw scrutiny",
+      "tags": [
+        "markets",
+        "politics"
+      ],
+      "snippet": "Remarks from Treasury Secretary Scott Bessent, made in an interview two years ago, said that within roughly four years there would likely be a grand global economic reordering, something equivalent to\u2026",
+      "text": "treasury secretary's remarks on a new bretton woods draw scrutiny\nremarks from treasury secretary scott bessent, made in an interview two years ago, said that within roughly four years there would likely be a grand global economic reordering, something equivalent to a new bretton woods or a treaty of versailles-style agreement. bretton woods established the postwar monetary order that underpins the dollar's role and us economic primacy. the remarks are read as pointing to a transition to programmable digital money marketed on grounds of safety, security and convenience."
+    },
+    {
+      "date": "2026-09-03",
+      "headline": "Appeals court rules Second Amendment does not protect machine guns",
+      "tags": [
+        "legal"
+      ],
+      "snippet": "A federal appeals court has ruled that the Second Amendment does not extend protection to machine guns.",
+      "text": "appeals court rules second amendment does not protect machine guns\na federal appeals court has ruled that the second amendment does not extend protection to machine guns."
+    },
+    {
+      "date": "2026-09-03",
+      "headline": "Bergdahl court-martial conviction reinstated on appeal",
+      "tags": [
+        "legal",
+        "defence"
+      ],
+      "snippet": "A federal appeals court ruling has restored Bowe Bergdahl's military court-martial conviction, putting it back in force.",
+      "text": "bergdahl court-martial conviction reinstated on appeal\na federal appeals court ruling has restored bowe bergdahl's military court-martial conviction, putting it back in force."
+    },
+    {
+      "date": "2026-09-03",
+      "headline": "Army commits $465 million to counter-drone laser weapons",
+      "tags": [
+        "defence"
+      ],
+      "snippet": "The Army is spending $465 million to move counter-drone laser weapons into production. The system had previously shot down cartel-linked drones.",
+      "text": "army commits $465 million to counter-drone laser weapons\nthe army is spending $465 million to move counter-drone laser weapons into production. the system had previously shot down cartel-linked drones."
+    },
+    {
+      "date": "2026-09-03",
+      "headline": "Navy pushes to field laser weapons across the fleet",
+      "tags": [
+        "defence"
+      ],
+      "snippet": "The Navy says the future of laser weapons has arrived and wants the systems deployed across the fleet.",
+      "text": "navy pushes to field laser weapons across the fleet\nthe navy says the future of laser weapons has arrived and wants the systems deployed across the fleet."
+    },
+    {
+      "date": "2026-09-03",
+      "headline": "US and China prepare for possible conflict in orbit with hunter satellites",
+      "tags": [
+        "defence",
+        "tech"
+      ],
+      "snippet": "The United States and China are preparing for a new era of warfare in space, developing so-called hunter satellites designed for use against other spacecraft.",
+      "text": "us and china prepare for possible conflict in orbit with hunter satellites\nthe united states and china are preparing for a new era of warfare in space, developing so-called hunter satellites designed for use against other spacecraft."
+    },
+    {
+      "date": "2026-09-03",
+      "headline": "Gold Star widow says Iran fight's undeclared status cost her family benefits",
+      "tags": [
+        "defence",
+        "politics"
+      ],
+      "snippet": "A Gold Star widow says her family was denied combat-related benefits because the fighting with Iran has not been formally declared a war. The case turns on how benefits eligibility is tied to a declar\u2026",
+      "text": "gold star widow says iran fight's undeclared status cost her family benefits\na gold star widow says her family was denied combat-related benefits because the fighting with iran has not been formally declared a war. the case turns on how benefits eligibility is tied to a declared conflict."
+    },
+    {
+      "date": "2026-09-03",
+      "headline": "Lawmakers demand answers after Army ends 173rd Airborne drone specialisation",
+      "tags": [
+        "defence",
+        "politics"
+      ],
+      "snippet": "The Army has told the 173rd Airborne to stop specialising in drone warfare, ending the mission less than a year after it began. Lawmakers are seeking an explanation for the decision.",
+      "text": "lawmakers demand answers after army ends 173rd airborne drone specialisation\nthe army has told the 173rd airborne to stop specialising in drone warfare, ending the mission less than a year after it began. lawmakers are seeking an explanation for the decision."
+    },
+    {
       "date": "2026-09-02",
       "headline": "US launches new wave of strikes on Iran as Tehran hits bases across the region",
       "tags": [

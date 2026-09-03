@@ -1,6 +1,60 @@
 {
-  "last_updated": "2026-09-02T18:14:09.348393+00:00",
+  "last_updated": "2026-09-02T18:41:44.869213+00:00",
   "days": [
+    {
+      "date": "2026-09-03",
+      "tags": [
+        "surveillance",
+        "politics",
+        "immigration",
+        "tech",
+        "legal",
+        "war",
+        "markets",
+        "climate",
+        "defence",
+        "health"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@oafnation_actual",
+        "@ericmoutsos",
+        "@total.hypocrisy"
+      ],
+      "post_count": 29,
+      "transcribed_count": 28,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Explainer lays out the three stages of presidential impeachment",
+          "reason": "Educational explainer of existing constitutional procedure; reports no new events."
+        },
+        {
+          "headline": "Commentary argues martial law around the midterms is a real possibility",
+          "reason": "Speculative commentary that reports no new development."
+        },
+        {
+          "headline": "Commentary contrasts GWOT-era hardship claims with veteran suicide and cancer figures",
+          "reason": "Opinion commentary on veteran culture rather than a policy development."
+        },
+        {
+          "headline": "Halloween chocolate eyeballs recalled in more than a dozen states",
+          "reason": "Consumer product recall with no public health policy angle."
+        },
+        {
+          "headline": "Documentary subject described as the most miserable man an associate has met",
+          "reason": "Personality profile tied to an upcoming film, not a policy or political development."
+        },
+        {
+          "headline": "Two newly commissioned Marine officers make NFL 53-man rosters",
+          "reason": "Human interest sports story with no policy angle."
+        },
+        {
+          "headline": "Athlete receives iron infusion after a decade of low ferritin",
+          "reason": "Personal health and athletic training account, not public health policy."
+        }
+      ]
+    },
     {
       "date": "2026-09-02",
       "tags": [
