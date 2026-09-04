@@ -2,6 +2,63 @@
   "last_updated": "2026-09-03T17:55:15.839210+00:00",
   "days": [
     {
+      "date": "2026-09-04",
+      "tags": [
+        "politics",
+        "legal",
+        "markets",
+        "war",
+        "immigration",
+        "tech",
+        "privacy",
+        "defence",
+        "economy",
+        "climate",
+        "health",
+        "media"
+      ],
+      "sources": [
+        "@oafnation_actual",
+        "@aaronparnas",
+        "@total.hypocrisy",
+        "@ericmoutsos",
+        "@carolinegleich"
+      ],
+      "post_count": 37,
+      "transcribed_count": 35,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Work on Trump's triumphal arch set to begin",
+          "reason": "A construction milestone with no policy or governance substance reported."
+        },
+        {
+          "headline": "Gloria Steinem dies at 92",
+          "reason": "Obituary with no policy or political development attached."
+        },
+        {
+          "headline": "Mark Sanchez to plead guilty in stabbing incident",
+          "reason": "Celebrity criminal case with no wider legal or civil liberties angle."
+        },
+        {
+          "headline": "Veteran group raising funds to welcome home USS Abraham Lincoln crew",
+          "reason": "Primarily a fundraising appeal asking viewers to donate and share."
+        },
+        {
+          "headline": "Creator criticizes poll worker recruitment campaign as strategically risky",
+          "reason": "Commentary on messaging strategy that reports no new development."
+        },
+        {
+          "headline": "Creator claims weather events are engineered",
+          "reason": "No reportable content \u2014 an unsupported assertion over largely unintelligible audio."
+        },
+        {
+          "headline": "Athlete promotes sauna and cold plunge retailer's new Salt Lake City showroom",
+          "reason": "Sponsored promotion for a retailer."
+        }
+      ]
+    },
+    {
       "date": "2026-09-03",
       "tags": [
         "surveillance",
