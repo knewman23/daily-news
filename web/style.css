@@ -40,6 +40,7 @@
   --line:    #e2e2df;
   --line-2:  #cfcfcb;
   --accent:  #1f4ed8;
+  --on-accent: #ffffff;
   --ok:      #0f7a4a;
   --warn:    #85670f;
   --dot-warn:#d9a020;
@@ -71,6 +72,7 @@
   --line:    #22252c;
   --line-2:  #2e323b;
   --accent:  #8b9bff;
+  --on-accent: #0b0c0e;
   --ok:      #55d4a0;
   --warn:    #e2b357;
   --dot-warn:#e2b357;
@@ -284,7 +286,7 @@ a { color: var(--accent); }
   border: 1px solid var(--accent);
   border-radius: 2px;
   background: var(--accent);
-  color: #fff;
+  color: var(--on-accent);
   font-family: var(--mono);
   font-size: 10px;
   letter-spacing: .12em;
@@ -337,7 +339,7 @@ a { color: var(--accent); }
   gap: 3rem;
   max-width: var(--max);
   margin: 0 auto;
-  padding: 2rem var(--gut) 4rem;
+  padding: 2rem var(--gut) 2rem;
   align-items: start;
 }
 
@@ -489,7 +491,7 @@ details.panel > .panel-title { cursor: pointer; }
 .chip[aria-pressed="true"] {
   background: var(--accent);
   border-color: var(--accent);
-  color: #fff;
+  color: var(--on-accent);
 }
 
 /* The skipped chip is not a topic, so it does not look like one until used. */
@@ -557,7 +559,7 @@ details.panel > .panel-title { cursor: pointer; }
   border: 1px solid var(--accent);
   border-radius: 3px;
   background: var(--accent);
-  color: #fff;
+  color: var(--on-accent);
   font-family: var(--mono);
   font-size: 10px;
   letter-spacing: .12em;
@@ -687,7 +689,7 @@ details.panel > .panel-title { cursor: pointer; }
 .article p, .article ul, .article ol, .article blockquote { max-width: 40rem; }
 
 .article h2 {
-  margin: 2.5rem 0 0.2rem;
+  margin: 3.25rem 0 0.2rem;
   font: 600 1.3125rem/1.3 var(--sans);
   letter-spacing: -.012em;
   color: var(--ink);
@@ -696,8 +698,11 @@ details.panel > .panel-title { cursor: pointer; }
 /* The wrapper variants are for live mode, where .topic-head sits between the
    article and each heading. Both spellings are listed rather than one rewritten,
    because the static build has no wrapper. */
+/* `>` matters: in live mode every h2 is the first child of its own .topic-head
+   wrapper, so an unscoped `h2:first-child` zeroes the gap above every story,
+   not just the first one. The wrapped first case is the fourth selector. */
 .article > h1 + h2,
-.article h2:first-child,
+.article > h2:first-child,
 .article > h1 + .topic-head > h2,
 .article > .topic-head:first-child > h2 { margin-top: 0; }
 
@@ -952,6 +957,36 @@ button.day-nav-side:hover { text-decoration: underline; }
 
 .empty { color: var(--faint); font-style: italic; }
 
+/* --- footer -------------------------------------------------------------
+
+   ai-frontier's footer.page component, carrying the index's identity links.
+   All three sites close on the same mono row. */
+
+footer.page {
+  margin-top: 3rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+footer.page .footer-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 1.75rem var(--gut) 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem 1.75rem;
+}
+
+footer.page .links { display: flex; flex-wrap: wrap; gap: 0.7rem 1.5rem; }
+footer.page a { color: var(--soft); text-decoration: none; }
+footer.page a:hover { color: var(--accent); }
+
 /* --- phones: the rail becomes a slide-out drawer -------------------------- */
 
 @media (max-width: 46rem) {
@@ -962,10 +997,14 @@ button.day-nav-side:hover { text-decoration: underline; }
   .layout {
     grid-template-columns: minmax(0, 1fr);
     gap: 0;
-    padding: 1.5rem var(--gut) 3rem;
+    padding: 1.5rem var(--gut) 2rem;
   }
 
   .menu-button { display: block; }
+
+  /* Stacked rather than pushed apart: the links wrap onto their own rows at
+     this width anyway, and space-between then strands the copyright alone. */
+  footer.page .footer-inner { justify-content: flex-start; }
 
   /* Centred on phones: with the rail gone there is no left edge for the title
      to align to, so the artwork and the title read as a masthead instead. */
@@ -1039,7 +1078,7 @@ button.day-nav-side:hover { text-decoration: underline; }
   .days { max-height: 45vh; }
 
   .toolbar-inner { padding: 0.5rem var(--gut); gap: 0.5rem; }
-  .article h2 { font-size: 1.1875rem; margin-top: 2rem; }
+  .article h2 { font-size: 1.1875rem; margin-top: 2.6rem; }
   .journal textarea { min-height: 6.5rem; }
 }
 

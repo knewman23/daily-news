@@ -113,6 +113,14 @@ elements to attach behaviour to. `indexHeadings` therefore stamps each `h2` with
 `data-headline` *before* anything is added around it, and everything downstream
 identifies a topic by that attribute rather than by `textContent`.
 
+**Descendant selectors on `h2` behave differently in the two modes.** The
+wrapper makes each heading the *first child of its own `.topic-head`*, so
+`.article h2:first-child` matches every story in live mode and only the real
+first one in the static build. That once silently zeroed the gap above every
+headline on the live page while the published site looked correct. Anchor these
+rules with `>` — `.article > h2:first-child` — and add the wrapped spelling
+alongside, as the byline and margin-reset rules in `style.css` both do.
+
 **Do not put controls inside a generated heading.** A `<button>` inside an `<h2>`
 drops the heading out of the accessibility tree, and headings are how the page is
 navigated without sight. `addSkipControls` wraps the heading and its button in a
