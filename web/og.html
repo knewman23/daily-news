@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <title>Daily News, link preview card</title>
 <!--
-  The source for og.png, not a page the site serves.
+  The source for og.png, not a page this site serves.
 
-  It exists because the obvious alternative, screenshotting the real
-  masthead, freezes one morning's date and headline into an image that
-  then never changes. This is drawn from the same tokens, the same two
-  fonts and the same eagle as the site, so it stays on-brand without
+  It exists because the obvious alternative, screenshotting the real page,
+  bakes whatever happened to be on screen that day into an image that then
+  never changes. This is drawn from the same tokens, the same two fonts and
+  the same crest as the rest of the family, so it stays on brand without
   going stale.
 
   To regenerate:  open at exactly 1200x630 and capture the viewport.
@@ -23,12 +23,13 @@
   @font-face { font-family:"IBM Plex Mono"; src:url("fonts/plex-mono-400.woff2") format("woff2"); font-weight:400; }
   @font-face { font-family:"IBM Plex Mono"; src:url("fonts/plex-mono-500.woff2") format("woff2"); font-weight:500; }
 
+  /* The dark palette, lifted from the shared token set. The card is always
+     dark: a link preview has no viewer theme to follow. */
   :root {
     --bg:      #0b0c0e;
     --ink:     #edeef1;
     --soft:    #9a9da6;
     --faint:   #7b7e88;
-    --line:    #22252c;
     --accent:  #8b9bff;
     --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
     --sans: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -46,22 +47,20 @@
   .card {
     position: relative;
     width: 1200px; height: 630px;
-    padding: 88px 80px;
+    /* The foot is absolutely positioned, so the bottom padding is what
+       keeps the centred block from sliding underneath it. */
+    padding: 88px 80px 130px;
     display: flex; flex-direction: column; justify-content: center;
   }
 
-  /* The eagle bleeds off the right edge so it reads as a watermark behind
-     the type rather than a second focal point. It is a thin line drawing,
-     so it needs far more opacity than a solid mark would to survive on a
+  /* The crest bleeds off the right edge so it reads as a watermark behind
+     the type rather than a second focal point. eagle.png is a black line
+     drawing on transparent, so it has to be inverted to survive on a
      near-black ground. */
   .crest {
     position: absolute; right: -40px; top: 46%;
     transform: translateY(-50%);
     width: 640px; height: auto;
-    /* eagle.png is a black line drawing on transparent. The site inverts it
-       under [data-theme="dark"] for exactly this reason; this card is always
-       dark, so the invert is unconditional. Without it the bird is black
-       lines on a near-black ground and simply is not there. */
     filter: invert(1);
     opacity: .5;
     pointer-events: none;
@@ -78,6 +77,7 @@
     position: relative;
     font-size: 116px; line-height: .92; font-weight: 600;
     letter-spacing: -.03em; margin: 0 0 30px;
+    max-width: 640px;
   }
 
   .tagline {
