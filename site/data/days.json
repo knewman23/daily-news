@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-02T18:41:44.869213+00:00",
+  "last_updated": "2026-09-03T17:55:15.839210+00:00",
   "days": [
     {
       "date": "2026-09-03",
@@ -26,20 +26,8 @@
       "incomplete": false,
       "skipped": [
         {
-          "headline": "Explainer lays out the three stages of presidential impeachment",
-          "reason": "Educational explainer of existing constitutional procedure; reports no new events."
-        },
-        {
-          "headline": "Commentary argues martial law around the midterms is a real possibility",
-          "reason": "Speculative commentary that reports no new development."
-        },
-        {
           "headline": "Commentary contrasts GWOT-era hardship claims with veteran suicide and cancer figures",
           "reason": "Opinion commentary on veteran culture rather than a policy development."
-        },
-        {
-          "headline": "Halloween chocolate eyeballs recalled in more than a dozen states",
-          "reason": "Consumer product recall with no public health policy angle."
         },
         {
           "headline": "Documentary subject described as the most miserable man an associate has met",
@@ -91,20 +79,12 @@
           "reason": "Trivia with no news or policy content"
         },
         {
-          "headline": "Humanoid robot fights back after being shoved in Russian store",
-          "reason": "Viral curiosity, not about AI policy, infrastructure, or governance"
-        },
-        {
           "headline": "Russian state media helicopter makes hard landing on Sakhalin road",
           "reason": "Isolated aviation accident with no policy, defence, or political angle"
         },
         {
           "headline": "Indiana Rangers receive military's highest unit award 56 years after Vietnam",
           "reason": "Historical commemoration with no current policy angle"
-        },
-        {
-          "headline": "Possible remains of missing WWII Americans sent to Hawaii for identification",
-          "reason": "Historical recovery story with no current policy angle"
         },
         {
           "headline": "Chocolate eyeballs recalled in 13 states over undeclared allergens",
@@ -141,16 +121,8 @@
           "reason": "Opinion commentary that reports no new development."
         },
         {
-          "headline": "Hegseth clips resurface after he mocked overweight Canadian cadet instructor",
-          "reason": "Viral-clip commentary with no policy substance beyond the Pentagon story already covered."
-        },
-        {
           "headline": "Sixty-three days until U.S. midterm elections",
           "reason": "Get-out-the-vote exhortation rather than a news development."
-        },
-        {
-          "headline": "Horizon recalls 53,760 cases of chocolate milk over sealing defect",
-          "reason": "Consumer product recall with no public health policy angle."
         },
         {
           "headline": "Anheuser-Busch offers reward after 40,000 cans of PBR stolen",
@@ -242,10 +214,6 @@
       "transcribed_count": 20,
       "incomplete": false,
       "skipped": [
-        {
-          "headline": "Amazon selling ground beef at $1.99 a pound draws suspicion",
-          "reason": "Mainly the creator's own speculation, explicitly labelled as opinion, with no new reporting behind it"
-        },
         {
           "headline": "Young men skipping showers in 'pheromone maxxing' trend",
           "reason": "Lifestyle trend story with no policy, political, or public health angle"

@@ -82,7 +82,7 @@ def server(tmp_path):
     web = tmp_path / "web"
     web.mkdir()
     (web / "index.html").write_text("<h1>Daily News</h1>", encoding="utf-8")
-    (web / "header.PNG").write_bytes(b"\x89PNG fake")
+    (web / "eagle.png").write_bytes(b"\x89PNG fake")
 
     logs = tmp_path / "logs"
     logs.mkdir()
@@ -361,7 +361,7 @@ def test_the_index_page_is_served_at_the_root(server):
 
 
 def test_the_header_image_is_served(server):
-    status, raw = server.request("/header.PNG")
+    status, raw = server.request("/eagle.png")
     assert status == 200
     assert raw.startswith(b"\x89PNG")
 

@@ -1,15 +1,22 @@
 # web/ — the front end
 
-Three files, no build step, no CDN, no framework: `index.html`, `app.js`,
-`style.css`. Vanilla ES modules-free script, loaded with a plain `<script>` tag.
-Keep it that way — the whole point is that the published site is static files a
-browser can open with nothing installed.
+No build step, no CDN, no framework: `index.html`, `app.js`, `style.css`,
+`theme.js`, `eagle.png`, and `fonts/`. Vanilla ES modules-free scripts, loaded
+with plain `<script>` tags. Keep it that way — the whole point is that the
+published site is static files a browser can open with nothing installed. The
+four woff2 faces are self-hosted for the same reason: a Google Fonts link is a
+third-party dependency and a render-blocking round trip.
 
 ## `web/` is the source; `site/` is the output
 
 `export_static.py` copies these files verbatim into `site/` and rewrites
-`index.html`. It deletes and rebuilds `site/` wholesale, so **editing `site/` by
-hand loses the change silently.** After any edit here:
+`index.html`. Flat files are listed in its `ASSETS`; `fonts/` is copied whole
+via `ASSET_DIRS`, because the faces are referenced from `@font-face` in the
+stylesheet rather than from the markup, so there is no URL there to fingerprint.
+**A new file in `web/` is not published until it is named in one of those two.**
+
+It deletes and rebuilds `site/` wholesale, so **editing `site/` by hand loses
+the change silently.** After any edit here:
 
 ```bash
 .venv/bin/python export_static.py
@@ -44,15 +51,42 @@ headlines, log lines, error messages, skip reasons. The `el()` helper takes
 `textContent` in its props for this reason; reach for `innerHTML` and you have
 almost certainly made a mistake.
 
-## The palette is measured, not chosen
+## The palette is shared, not local
 
-The `:root` custom properties were sampled from `header.PNG` with k-means, with
-the percentage of the image each colour covers noted in the comments.
-Substituting eyeballed values will not sit right against the artwork. Use the
-existing variables; do not add hex literals.
+The `:root` tokens are lifted verbatim from `knewman23.github.io/styles.css`,
+which `ai-frontier/site/style.css` also copies. All three sites are deliberately
+one system, so a visitor moving between them sees one page: same tokens, same
+dark band, same breadcrumbs, same theme toggle, same two typefaces.
 
-Deliberately a single light treatment — no dark mode. The artwork is painted on
-cream stock and a dark inversion fights it.
+**So the tokens are not ours to retune.** Changing a value here silently forks
+the system. If a colour genuinely needs to change, change it in the portfolio
+and copy it down to the other two. Use the variables; do not add hex literals.
+
+The one local addition is the `--alert` family, for the things this app has and
+a portfolio index does not: a failed run, a stale handle, an error in a log.
+
+Dark is a token swap, never a fork — `--card` is still "the surface above
+`--bg`" in both themes, so no component carries a dark branch. There are exactly
+two exceptions, both deliberate:
+
+- **The band stays dark in both themes**, as it does on the other two sites. It
+  is the constant that makes the three feel like one place.
+- **`.crest` is inverted rather than swapped.** `eagle.png` is transparent-backed
+  black line art, so it takes the page's own background in light mode, and
+  `filter: invert(1)` turns the strokes white for dark. One asset, and a browser
+  that drops the filter still shows the drawing.
+
+**This site defaults to light, and the other two follow the OS.** That is the
+one place the three diverge. `style.css` therefore carries *no*
+`prefers-color-scheme` block at all, and `theme.js` never consults the media
+query — dark is reachable only through the button, and is then remembered in
+`localStorage`. The stylesheet and the script have to agree about this; if you
+reintroduce the media query in one, reintroduce it in both or the button will
+disagree with the page.
+
+The pre-paint boot script in `<head>` is what stops a flash of the wrong palette
+when navigating in from the portfolio. It must stay inline and stay before the
+stylesheet.
 
 ## Layout
 

@@ -32,7 +32,12 @@ from src import atomic, digest, runlog
 MARKER = ".daily-news-export"
 NOJEKYLL = ".nojekyll"
 
-ASSETS = ("index.html", "style.css", "app.js", "header.PNG")
+ASSETS = ("index.html", "style.css", "app.js", "theme.js", "eagle.png")
+
+# Copied whole rather than named file by file: the faces are referenced from
+# @font-face in style.css, not from the markup, so there is no URL here to
+# rewrite and nothing to fingerprint. They are immutable anyway.
+ASSET_DIRS = ("fonts",)
 
 # `<details ... data-live-only ...>...</details>`, including nested markup.
 _LIVE_ONLY = re.compile(
@@ -176,6 +181,11 @@ def _copy_assets(web: Path, out: Path) -> None:
             continue                        # written last, once the hashes exist
         shutil.copy2(source, out / name)
         fingerprints[name] = _fingerprint(source)
+
+    for name in ASSET_DIRS:
+        source = web / name
+        if source.is_dir():
+            shutil.copytree(source, out / name)
 
     index = web / "index.html"
     if index.is_file():

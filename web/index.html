@@ -3,8 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Daily News</title>
-  <link rel="icon" href="header.PNG">
+  <title>Daily News — Krys Newman</title>
+  <!-- The portfolio's mark, inline and byte-identical to the one on
+       knewman23.github.io, so the tab looks the same across all three sites. -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='3' fill='%230e0f11'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='19' font-weight='700' fill='%23fff' text-anchor='middle'%3Ek%3C/text%3E%3C/svg%3E">
+
+  <!-- Set the theme before first paint. A class swap after load would flash the
+       wrong palette on every navigation between here and the portfolio. -->
+  <script>
+    try {
+      var t = localStorage.getItem("theme");
+      if (t === "dark" || t === "light") document.documentElement.dataset.theme = t;
+    } catch (e) { /* private mode: fall through to the light default */ }
+  </script>
+
+  <link rel="preload" href="fonts/space-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
 </head>
 <!-- data-mode is rewritten to "static" by export_static.py. The read-only build
@@ -12,11 +26,31 @@
      CSS, which would leave a working form for anyone who opens devtools. -->
 <body data-mode="live">
 
+<!-- The band is the shared chrome: same markup on knewman23.github.io and on
+     ai-frontier, so moving between the three reads as one site. -->
+<div class="band">
+  <div class="band-inner">
+    <span class="crumbs">
+      <a href="https://knewman23.github.io/"><b>Krys Newman</b></a>
+      <span class="sep">/</span>
+      <span class="here">Daily News</span>
+    </span>
+    <span class="band-tools">
+      <button class="theme" id="theme" type="button" aria-live="polite">
+        <svg class="i-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="i-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
+        <span id="theme-text">Dark</span>
+      </button>
+    </span>
+  </div>
+</div>
+
 <header class="masthead">
-  <img class="crest" src="header.PNG" alt="Eagle and flag over a Born Free banner">
-  <h1>Daily News</h1>
-  <p class="tagline">Transcribed and summarized from the accounts you follow</p>
-  <p class="updated" id="last-updated"></p>
+  <div class="masthead-text">
+    <h1>Daily News</h1>
+    <p class="updated" id="last-updated"></p>
+  </div>
+  <img class="crest" src="eagle.png" alt="" width="768" height="512">
 </header>
 
 <nav class="toolbar" aria-label="Search and browse">
@@ -93,6 +127,7 @@
 
 <div id="scrim" class="scrim" hidden></div>
 
+<script src="theme.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

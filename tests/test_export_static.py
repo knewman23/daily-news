@@ -69,11 +69,11 @@ def project(tmp_path):
     web.mkdir()
     (web / "index.html").write_text(
         '<head>\n'
-        '<link rel="icon" href="header.PNG">\n'
+        '<link rel="icon" href="data:image/svg+xml,%3Csvg%3E">\n'
         '<link rel="stylesheet" href="style.css">\n'
         "</head>\n"
         '<body data-mode="live">\n'
-        '<img class="crest" src="header.PNG" alt="crest">\n'
+        '<img class="crest" src="eagle.png" alt="">\n'
         '<details class="panel" id="sources-panel" data-live-only open>x</details>\n'
         '<details class="panel" id="runs-panel" data-live-only open>y</details>\n'
         '<script src="app.js"></script>\n'
@@ -82,7 +82,10 @@ def project(tmp_path):
     )
     (web / "style.css").write_text("body { color: red }", encoding="utf-8")
     (web / "app.js").write_text("console.log('hi')", encoding="utf-8")
-    (web / "header.PNG").write_bytes(b"\x89PNG fake")
+    (web / "theme.js").write_text("/* toggle */", encoding="utf-8")
+    (web / "fonts").mkdir()
+    (web / "fonts" / "plex-mono-400.woff2").write_bytes(b"wOF2 fake")
+    (web / "eagle.png").write_bytes(b"\x89PNG fake")
 
     return tmp_path
 
@@ -202,10 +205,18 @@ def test_notes_are_not_searchable_in_the_export(project):
 # --- assets and markup -----------------------------------------------------
 
 
-@pytest.mark.parametrize("name", ["index.html", "style.css", "app.js", "header.PNG"])
+@pytest.mark.parametrize("name", ["index.html", "style.css", "app.js", "theme.js", "eagle.png"])
 def test_assets_are_copied(project, name):
     site = export(project)
     assert (site / name).is_file()
+
+
+def test_the_font_directory_is_copied(project):
+    """The faces are referenced from @font-face, so nothing in the markup would
+    catch it if the directory stopped being shipped — the page would just
+    silently fall back to system-ui."""
+    site = export(project)
+    assert (site / "fonts" / "plex-mono-400.woff2").is_file()
 
 
 def test_the_exported_page_is_marked_static(project):
@@ -310,7 +321,7 @@ def test_asset_urls_carry_a_content_hash(project):
 
     assert re.search(r'"style\.css\?v=[0-9a-f]{10}"', html)
     assert re.search(r'"app\.js\?v=[0-9a-f]{10}"', html)
-    assert re.search(r'"header\.PNG\?v=[0-9a-f]{10}"', html)
+    assert re.search(r'"eagle\.png\?v=[0-9a-f]{10}"', html)
 
 
 def test_the_hash_changes_when_the_asset_changes(project):
