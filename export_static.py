@@ -32,7 +32,7 @@ from src import atomic, digest, runlog
 MARKER = ".daily-news-export"
 NOJEKYLL = ".nojekyll"
 
-ASSETS = ("index.html", "style.css", "app.js", "theme.js", "eagle.png")
+ASSETS = ("index.html", "style.css", "app.js", "theme.js", "eagle.png", "og.png")
 
 # Copied whole rather than named file by file: the faces are referenced from
 # @font-face in style.css, not from the markup, so there is no URL here to
