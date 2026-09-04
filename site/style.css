@@ -242,6 +242,26 @@ a { color: var(--accent); }
 
 :root[data-theme="dark"] .crest { filter: invert(1); }
 
+/* The shared sign-off crest, the same mark the other three sites carry.
+   Deliberately a separate class from the masthead .crest above: that one is
+   sized by the header grid, this one is a fixed 132px. Below about 110px the
+   engraving's lines merge into a smudge. Light carries more opacity than
+   dark, because black at 42% on off-white is a ghost where white at 42% on
+   near-black is not. */
+.crest-wrap { padding-top: 3rem; text-align: center; }
+.crest-wrap a { display: inline-block; line-height: 0; }
+.footer-crest {
+  display: block; width: 132px; height: auto;
+  opacity: .55; transition: opacity .16s ease;
+}
+.crest-wrap a:hover .footer-crest { opacity: .8; }
+/* Only [data-theme="dark"], with no prefers-color-scheme companion. Unlike
+   the other three sites this one has no OS-dark palette: it stays light
+   until the visitor toggles. Inverting on prefers-color-scheme alone would
+   put a white crest on a light page for anyone with a dark OS who has not
+   touched the toggle. */
+:root[data-theme="dark"] .footer-crest { filter: invert(1); opacity: .42; }
+
 /* --- toolbar ------------------------------------------------------------ */
 
 .toolbar {
