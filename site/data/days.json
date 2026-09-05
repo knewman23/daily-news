@@ -1,6 +1,55 @@
 {
-  "last_updated": "2026-09-03T17:55:15.839210+00:00",
+  "last_updated": "2026-09-04T18:32:49.468526+00:00",
   "days": [
+    {
+      "date": "2026-09-05",
+      "tags": [
+        "politics",
+        "war",
+        "defence",
+        "surveillance",
+        "immigration",
+        "legal",
+        "health",
+        "elections",
+        "media",
+        "climate",
+        "environment",
+        "economy",
+        "tech"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@oafnation_actual",
+        "@ericmoutsos",
+        "@carolinegleich"
+      ],
+      "post_count": 24,
+      "transcribed_count": 23,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Creator dispute over voter-registration campaign imagery",
+          "reason": "Mainly a creator-versus-creator dispute and commentary that reports no new developments."
+        },
+        {
+          "headline": "Passenger duct-taped to seat on American Airlines flight after slurs",
+          "reason": "An in-flight incident with no policy, court or political angle."
+        },
+        {
+          "headline": "Dolly Parton's Hollywood Walk of Fame star repaired after vandalism",
+          "reason": "Human interest with no policy or political angle."
+        },
+        {
+          "headline": "Tributes to Gloria Steinem",
+          "reason": "A personal tribute post rather than a news report."
+        },
+        {
+          "headline": "Athlete discusses moral courage and responsibility of platforms",
+          "reason": "A creator promoting a podcast episode about their own career and life."
+        }
+      ]
+    },
     {
       "date": "2026-09-04",
       "tags": [
