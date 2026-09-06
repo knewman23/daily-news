@@ -1,6 +1,49 @@
 {
-  "last_updated": "2026-09-04T18:32:49.468526+00:00",
+  "last_updated": "2026-09-05T18:12:46.902892+00:00",
   "days": [
+    {
+      "date": "2026-09-06",
+      "tags": [
+        "legal",
+        "politics",
+        "health",
+        "immigration",
+        "environment",
+        "economy",
+        "markets",
+        "surveillance",
+        "privacy",
+        "tech",
+        "defence",
+        "climate"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@ericmoutsos",
+        "@oafnation_actual"
+      ],
+      "post_count": 14,
+      "transcribed_count": 12,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Clorox recalls 6.3 million bottles of cleaner over bacterial contamination",
+          "reason": "A consumer product recall rather than public health policy."
+        },
+        {
+          "headline": "Lincoln Memorial reflecting pool damaged after storms despite $16 million in repairs",
+          "reason": "Commentary on a visual scene with no substantive policy development."
+        },
+        {
+          "headline": "Images spark speculation over Trump's hair colour",
+          "reason": "Viral appearance speculation with no political or policy substance."
+        },
+        {
+          "headline": "Puppy videos posted as a break from the news",
+          "reason": "No news content."
+        }
+      ]
+    },
     {
       "date": "2026-09-05",
       "tags": [
