@@ -1,6 +1,26 @@
 {
-  "last_updated": "2026-09-05T18:12:46.902892+00:00",
+  "last_updated": "2026-09-06T17:30:13.219312+00:00",
   "days": [
+    {
+      "date": "2026-09-07",
+      "tags": [
+        "politics",
+        "government",
+        "media"
+      ],
+      "sources": [
+        "@aaronparnas"
+      ],
+      "post_count": 3,
+      "transcribed_count": 3,
+      "incomplete": true,
+      "skipped": [
+        {
+          "headline": "Nathan Fielder and Lance Oppenheim release teaser for Elizabeth Holmes documentary",
+          "reason": "Entertainment promotion for an upcoming documentary rather than news from the courts or an active investigation"
+        }
+      ]
+    },
     {
       "date": "2026-09-06",
       "tags": [
@@ -26,14 +46,6 @@
       "transcribed_count": 12,
       "incomplete": false,
       "skipped": [
-        {
-          "headline": "Clorox recalls 6.3 million bottles of cleaner over bacterial contamination",
-          "reason": "A consumer product recall rather than public health policy."
-        },
-        {
-          "headline": "Lincoln Memorial reflecting pool damaged after storms despite $16 million in repairs",
-          "reason": "Commentary on a visual scene with no substantive policy development."
-        },
         {
           "headline": "Images spark speculation over Trump's hair colour",
           "reason": "Viral appearance speculation with no political or policy substance."
@@ -121,20 +133,12 @@
       "incomplete": false,
       "skipped": [
         {
-          "headline": "Work on Trump's triumphal arch set to begin",
-          "reason": "A construction milestone with no policy or governance substance reported."
-        },
-        {
           "headline": "Gloria Steinem dies at 92",
           "reason": "Obituary with no policy or political development attached."
         },
         {
           "headline": "Mark Sanchez to plead guilty in stabbing incident",
           "reason": "Celebrity criminal case with no wider legal or civil liberties angle."
-        },
-        {
-          "headline": "Veteran group raising funds to welcome home USS Abraham Lincoln crew",
-          "reason": "Primarily a fundraising appeal asking viewers to donate and share."
         },
         {
           "headline": "Creator criticizes poll worker recruitment campaign as strategically risky",
