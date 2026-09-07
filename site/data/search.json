@@ -2,23 +2,187 @@
   "topics": [
     {
       "date": "2026-09-07",
-      "headline": "Forbes reports taxpayer funds cover Trump's golf club hot dog purchases",
+      "headline": "Ohio Democratic gubernatorial nominee attacked by armed individual at campaign event",
       "tags": [
         "politics",
-        "government"
+        "legal"
       ],
-      "snippet": "A Forbes report says President Trump frequently buys hot dogs at the Trump National Golf Club in Virginia, including for Secret Service agents and golfing companions. The club bills the Secret Service\u2026",
-      "text": "forbes reports taxpayer funds cover trump's golf club hot dog purchases\na forbes report says president trump frequently buys hot dogs at the trump national golf club in virginia, including for secret service agents and golfing companions. the club bills the secret service for those purchases, routing taxpayer money to a trump family business. the arrangement means the government is paying a trump-owned property for food consumed by the president and his detail."
+      "snippet": "Dr. Amy Acton, the Democratic nominee for governor of Ohio, said she was attacked by an armed individual who lunged at her during a campaign event at the Canfield Fair near Youngstown. Multiple people\u2026",
+      "text": "ohio democratic gubernatorial nominee attacked by armed individual at campaign event\ndr. amy acton, the democratic nominee for governor of ohio, said she was attacked by an armed individual who lunged at her during a campaign event at the canfield fair near youngstown. multiple people were injured and law enforcement responded at the scene, according to her campaign. it was not immediately clear whether acton herself was injured or how severe the other injuries were. acton had recently been leading in polls against republican candidate vivek ramaswamy."
     },
     {
       "date": "2026-09-07",
-      "headline": "Viral street interview shows Trump supporter claiming he secretly held power during Biden's term",
+      "headline": "Trump posts map claiming Canada, Mexico, Greenland and Caribbean as United States",
+      "tags": [
+        "politics",
+        "foreign"
+      ],
+      "snippet": "Trump shared an image on Truth Social covering Canada, Mexico, Greenland and Iceland with the U.S. flag and labelling the entire area the United States of America, suggesting American control over all\u2026",
+      "text": "trump posts map claiming canada, mexico, greenland and caribbean as united states\ntrump shared an image on truth social covering canada, mexico, greenland and iceland with the u.s. flag and labelling the entire area the united states of america, suggesting american control over all of north america and parts of the caribbean. the post drew rebukes from leaders in mexico, canada and the caribbean, who publicly affirmed their sovereignty and independence. it was published amid ongoing trade disputes and international tensions, and was compared to earlier statements about acquiring greenland that later became formal policy attempts."
+    },
+    {
+      "date": "2026-09-07",
+      "headline": "Pentagon investigating whether Navy weapon missed target and struck Iranian wedding",
+      "tags": [
+        "war",
+        "defence"
+      ],
+      "snippet": "The Pentagon is investigating whether a Navy Joint Standoff Weapon missed its intended target and hit a nearby wedding in Iran. No conclusions from the investigation have been released.",
+      "text": "pentagon investigating whether navy weapon missed target and struck iranian wedding\nthe pentagon is investigating whether a navy joint standoff weapon missed its intended target and hit a nearby wedding in iran. no conclusions from the investigation have been released."
+    },
+    {
+      "date": "2026-09-07",
+      "headline": "Trump posts dozens of times on Truth Social, drawing concern from Republicans",
       "tags": [
         "politics",
         "media"
       ],
-      "snippet": "A widely shared interview clip records a Trump supporter asserting that Trump is serving a third term, having retained control of the U.S. military throughout Joe Biden's presidency. The person also c\u2026",
-      "text": "viral street interview shows trump supporter claiming he secretly held power during biden's term\na widely shared interview clip records a trump supporter asserting that trump is serving a third term, having retained control of the u.s. military throughout joe biden's presidency. the person also claimed barack obama ran the government from a basement using an autopen during that period, and that the 2020 election was stolen but allowed to proceed. the exchange was presented as evidence of a media literacy problem in the united states."
+      "snippet": "Trump published dozens of posts on Truth Social over Labor Day weekend, including suggestions of renaming New Mexico to \"New America,\" a declaration that the moon is American territory, an image of hi\u2026",
+      "text": "trump posts dozens of times on truth social, drawing concern from republicans\ntrump published dozens of posts on truth social over labor day weekend, including suggestions of renaming new mexico to \"new america,\" a declaration that the moon is american territory, an image of himself with george washington in the oval office, a claim that he has made hundreds of billions of dollars trading stocks for the country, an image of himself day trading, an attack on congresswoman debbie dingell, and a purported new space force uniform design. the white house account later posted a labor day message depicting trump as the green lantern building a border wall and claiming restored american manufacturing. comments on his truth social page included supporters urging him to focus on gas prices and food costs instead. the posts came during an ongoing war."
+    },
+    {
+      "date": "2026-09-07",
+      "headline": "Education Department accused school district of 61 male athletes on girls teams; figure was zero",
+      "tags": [
+        "politics",
+        "legal"
+      ],
+      "snippet": "A New York Times investigation found the Trump administration accused a school district of having 61 biological males on female sports teams, but the records cited counted mascots and team managers ra\u2026",
+      "text": "education department accused school district of 61 male athletes on girls teams; figure was zero\na new york times investigation found the trump administration accused a school district of having 61 biological males on female sports teams, but the records cited counted mascots and team managers rather than athletes, and may have also misread a cross-country roster where one coach oversaw separate boys' and girls' programs. the actual number of male athletes on girls' teams was zero. an education department spokesperson maintained that federal investigators determined male participants held at least 61 roster spots on girls' sports teams."
+    },
+    {
+      "date": "2026-09-07",
+      "headline": "Mitch McConnell unseen in public for nearly three months",
+      "tags": [
+        "politics"
+      ],
+      "snippet": "Senator Mitch McConnell has not been seen publicly in nearly three months while rehabilitating at home, where shades are drawn and Capitol Police remain stationed. Fox News host Joe Concha said McConn\u2026",
+      "text": "mitch mcconnell unseen in public for nearly three months\nsenator mitch mcconnell has not been seen publicly in nearly three months while rehabilitating at home, where shades are drawn and capitol police remain stationed. fox news host joe concha said mcconnell should return to the senate by mid-september or resign, and called for no further proof-of-life images. representative james comer said he hopes mcconnell will return on september 14, though he has not spoken to mcconnell directly and has received no guarantees. mcconnell's staff has not answered questions."
+    },
+    {
+      "date": "2026-09-07",
+      "headline": "Pentagon polygraphed dozens of senior military officials over munitions leak",
+      "tags": [
+        "defence",
+        "surveillance"
+      ],
+      "snippet": "Roughly 50 Joint Staff members were given polygraph examinations as the Pentagon searched for the source of leaks about classified weapons stockpiles. No leaker has been publicly identified.",
+      "text": "pentagon polygraphed dozens of senior military officials over munitions leak\nroughly 50 joint staff members were given polygraph examinations as the pentagon searched for the source of leaks about classified weapons stockpiles. no leaker has been publicly identified."
+    },
+    {
+      "date": "2026-09-07",
+      "headline": "Hawaii under state of emergency as second hurricane in weeks approaches",
+      "tags": [
+        "climate"
+      ],
+      "snippet": "Hawaii is under a state of emergency and the National Hurricane Center has issued a hurricane warning for parts of Kauai and the island of Niihau as Major Hurricane Lullo nears the state. The hurrican\u2026",
+      "text": "hawaii under state of emergency as second hurricane in weeks approaches\nhawaii is under a state of emergency and the national hurricane center has issued a hurricane warning for parts of kauai and the island of niihau as major hurricane lullo nears the state. the hurricane is projected to pass off the coast of the islands. the warning is the second for parts of hawaii in a matter of weeks, coming as the world is forecast to experience what would be the strongest el nino on record, expected to persist through at least 2027."
+    },
+    {
+      "date": "2026-09-07",
+      "headline": "Hegseth reportedly fixated on Afghanistan exit photo as General Donahue was pushed out",
+      "tags": [
+        "defence",
+        "politics"
+      ],
+      "snippet": "The widely circulated photograph of the last U.S. soldier leaving Afghanistan reportedly became a factor in the removal of General Chris Donahue. Defense Secretary Pete Hegseth was reportedly focused\u2026",
+      "text": "hegseth reportedly fixated on afghanistan exit photo as general donahue was pushed out\nthe widely circulated photograph of the last u.s. soldier leaving afghanistan reportedly became a factor in the removal of general chris donahue. defense secretary pete hegseth was reportedly focused on the image during the dispute over donahue's career."
+    },
+    {
+      "date": "2026-09-07",
+      "headline": "Trump pardons Navy veteran serving 20 years in federal machine-gun case",
+      "tags": [
+        "legal",
+        "politics"
+      ],
+      "snippet": "Trump issued a pardon to a Navy veteran who was serving a 20-year federal sentence in a machine-gun case. The pardon ends the veteran's incarceration in the firearms prosecution.",
+      "text": "trump pardons navy veteran serving 20 years in federal machine-gun case\ntrump issued a pardon to a navy veteran who was serving a 20-year federal sentence in a machine-gun case. the pardon ends the veteran's incarceration in the firearms prosecution."
+    },
+    {
+      "date": "2026-09-07",
+      "headline": "Taxpayer funds cover Trump hot dog purchases at his own golf club, report says",
+      "tags": [
+        "politics",
+        "economy"
+      ],
+      "snippet": "A Forbes report found that Trump buys hot dogs at Trump National Golf Club in Virginia for himself, Secret Service personnel and golfing companions, with the club billing the Secret Service for the pu\u2026",
+      "text": "taxpayer funds cover trump hot dog purchases at his own golf club, report says\na forbes report found that trump buys hot dogs at trump national golf club in virginia for himself, secret service personnel and golfing companions, with the club billing the secret service for the purchases. because the club is owned by the trump family, taxpayer money spent on the purchases returns to the family business."
+    },
+    {
+      "date": "2026-09-07",
+      "headline": "Texas governor visits Israel and meets Netanyahu",
+      "tags": [
+        "politics",
+        "foreign"
+      ],
+      "snippet": "Texas Governor Greg Abbott travelled to Israel and met Israeli Prime Minister Benjamin Netanyahu, where the two discussed the relationship between Texas and Israel. Abbott and First Lady Cecilia Abbot\u2026",
+      "text": "texas governor visits israel and meets netanyahu\ntexas governor greg abbott travelled to israel and met israeli prime minister benjamin netanyahu, where the two discussed the relationship between texas and israel. abbott and first lady cecilia abbott also visited religious sites during the trip. the trip was cited alongside claims about state-level aid to israel, florida permitting israeli flags on vanity license plates, and israeli flags displayed at u.s. military installations."
+    },
+    {
+      "date": "2026-09-07",
+      "headline": "Epinephrine injection lots recalled nationwide over sterility and particulate concerns",
+      "tags": [
+        "health"
+      ],
+      "snippet": "American Regent is voluntarily recalling three lots of epinephrine injection, USP 30 mg/30 mL, NDC 0517-3030-01, over sterility concerns and the possible presence of particulate matter. The nationwide\u2026",
+      "text": "epinephrine injection lots recalled nationwide over sterility and particulate concerns\namerican regent is voluntarily recalling three lots of epinephrine injection, usp 30 mg/30 ml, ndc 0517-3030-01, over sterility concerns and the possible presence of particulate matter. the nationwide recall followed customer complaints of leaking and cracked vials. the company's investigation identified particulate matter consisting of nylon, cellulosic material, acrylic, polyethylene and glass."
+    },
+    {
+      "date": "2026-09-07",
+      "headline": "China developing humanoid robots for battlefield roles",
+      "tags": [
+        "defence",
+        "tech"
+      ],
+      "snippet": "China is studying the use of humanoid robots for future combat operations alongside human troops. The systems have not been deployed.",
+      "text": "china developing humanoid robots for battlefield roles\nchina is studying the use of humanoid robots for future combat operations alongside human troops. the systems have not been deployed."
+    },
+    {
+      "date": "2026-09-07",
+      "headline": "Fort Bragg allows week-long delays on barracks plumbing the Pentagon calls an emergency",
+      "tags": [
+        "defence"
+      ],
+      "snippet": "Pentagon maintenance standards classify inoperable barracks plumbing as an emergency requiring immediate response. Fort Bragg instead lists such repairs as urgent, permitting response times of up to s\u2026",
+      "text": "fort bragg allows week-long delays on barracks plumbing the pentagon calls an emergency\npentagon maintenance standards classify inoperable barracks plumbing as an emergency requiring immediate response. fort bragg instead lists such repairs as urgent, permitting response times of up to seven days."
+    },
+    {
+      "date": "2026-09-07",
+      "headline": "Air Force basic training adds sleep deprivation to recruit regimen",
+      "tags": [
+        "defence"
+      ],
+      "snippet": "Air Force Basic Military Training is reducing the amount of sleep recruits receive as part of a change to its training regimen. Additional stress-inoculation measures are being considered.",
+      "text": "air force basic training adds sleep deprivation to recruit regimen\nair force basic military training is reducing the amount of sleep recruits receive as part of a change to its training regimen. additional stress-inoculation measures are being considered."
+    },
+    {
+      "date": "2026-09-07",
+      "headline": "German far-right party takes pro-Israel and pro-Russia positions",
+      "tags": [
+        "politics",
+        "foreign"
+      ],
+      "snippet": "A German far-right party has adopted positions supporting both Israel and Russia. The pairing was characterised as reflecting shared territorial expansionist ideologies.",
+      "text": "german far-right party takes pro-israel and pro-russia positions\na german far-right party has adopted positions supporting both israel and russia. the pairing was characterised as reflecting shared territorial expansionist ideologies."
+    },
+    {
+      "date": "2026-09-07",
+      "headline": "Google Gemini gives differing answers on hating religious figures",
+      "tags": [
+        "tech",
+        "media"
+      ],
+      "snippet": "Responses from Google's Gemini were compared across prompts asking whether it is acceptable to hate various religious figures and groups. The responses described hatred of Jews as antisemitism and dec\u2026",
+      "text": "google gemini gives differing answers on hating religious figures\nresponses from google's gemini were compared across prompts asking whether it is acceptable to hate various religious figures and groups. the responses described hatred of jews as antisemitism and declined to endorse it, framed hatred of muhammad as depending on religious, social and legal perspective, and described hatred toward jesus, christianity and christians as understandable in the context of personal harm or religious trauma."
+    },
+    {
+      "date": "2026-09-07",
+      "headline": "Poll worker recruitment campaign promoted ahead of 2026 midterms",
+      "tags": [
+        "politics"
+      ],
+      "snippet": "A recruitment push is under way for paid poll workers in local counties ahead of the 2026 midterm elections, citing a shortage of staff to keep polling places safe, fair and efficient. The campaign fr\u2026",
+      "text": "poll worker recruitment campaign promoted ahead of 2026 midterms\na recruitment push is under way for paid poll workers in local counties ahead of the 2026 midterm elections, citing a shortage of staff to keep polling places safe, fair and efficient. the campaign frames the recruitment as a response to threats against the integrity of the midterms. training is described as short and the commitment as a single election day."
     },
     {
       "date": "2026-09-06",

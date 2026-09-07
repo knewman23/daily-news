@@ -1,23 +1,58 @@
 {
-  "last_updated": "2026-09-06T17:30:13.219312+00:00",
+  "last_updated": "2026-09-07T17:17:29.379421+00:00",
   "days": [
     {
       "date": "2026-09-07",
       "tags": [
         "politics",
-        "government",
-        "media"
+        "legal",
+        "foreign",
+        "war",
+        "defence",
+        "media",
+        "surveillance",
+        "climate",
+        "economy",
+        "health",
+        "tech"
       ],
       "sources": [
-        "@aaronparnas"
+        "@aaronparnas",
+        "@oafnation_actual",
+        "@ericmoutsos",
+        "@carolinegleich"
       ],
-      "post_count": 3,
-      "transcribed_count": 3,
-      "incomplete": true,
+      "post_count": 33,
+      "transcribed_count": 32,
+      "incomplete": false,
       "skipped": [
         {
-          "headline": "Nathan Fielder and Lance Oppenheim release teaser for Elizabeth Holmes documentary",
-          "reason": "Entertainment promotion for an upcoming documentary rather than news from the courts or an active investigation"
+          "headline": "Five dead after Amazon Prime Air Boeing 767 crashes at Miami airport",
+          "reason": "Aviation accident with no policy, political or regulatory angle reported."
+        },
+        {
+          "headline": "Children in Gaza watch film screening amid destroyed buildings",
+          "reason": "Human interest framing around a single photograph; reports no new development in the conflict."
+        },
+        {
+          "headline": "South Park wins Emmy for outstanding animated program",
+          "reason": "Entertainment awards story; the political angle is a joke rather than a policy development."
+        },
+        {
+          "headline": "Trump supporter claims Trump controlled military during Biden presidency",
+          "reason": "Commentary on a viral street interview; reports no new information itself."
+        },
+        {
+          "headline": "Elizabeth Holmes documentary teaser released",
+          "reason": "Entertainment promotion for a documentary trailer, not a development in the case."
+        },
+        {
+          "headline": "Creator describes online backlash over criticism of poll worker campaign",
+          "reason": "Creator responding to personal online criticism; reports no news beyond the dispute itself."
+        },
+        {
+          "headline": "Claims that a small group secretly controls American institutions",
+          "reason": "Conspiracy assertion without a reported development; the factual element of this post is kept in the Abbott topic above."
         }
       ]
     },
