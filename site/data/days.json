@@ -1,6 +1,49 @@
 {
-  "last_updated": "2026-09-07T17:17:29.379421+00:00",
+  "last_updated": "2026-09-08T17:22:01.797425+00:00",
   "days": [
+    {
+      "date": "2026-09-08",
+      "tags": [
+        "politics",
+        "legal",
+        "markets",
+        "climate",
+        "defence",
+        "health",
+        "immigration",
+        "media",
+        "environment"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@carolinegleich",
+        "@hunteralexanderhowell",
+        "@oafnation_actual",
+        "@total.hypocrisy",
+        "@ericmoutsos"
+      ],
+      "post_count": 24,
+      "transcribed_count": 23,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Trump's 2001 phone call resurfaces before 25th anniversary of 9/11",
+          "reason": "Commentary on a 25-year-old recording that reports nothing new."
+        },
+        {
+          "headline": "Satirical stunt targets Dallas vote on funding Flock surveillance cameras",
+          "reason": "A comedy stunt rather than reporting; the underlying Dallas camera-funding vote is not actually covered."
+        },
+        {
+          "headline": "Quantico shuts Main Side after water system outage",
+          "reason": "Local infrastructure incident with no policy or political angle."
+        },
+        {
+          "headline": "Comparison of Army basic training in 2007 and 2026",
+          "reason": "Retrospective feature comparing training eras, not news."
+        }
+      ]
+    },
     {
       "date": "2026-09-07",
       "tags": [
@@ -26,14 +69,6 @@
       "transcribed_count": 32,
       "incomplete": false,
       "skipped": [
-        {
-          "headline": "Five dead after Amazon Prime Air Boeing 767 crashes at Miami airport",
-          "reason": "Aviation accident with no policy, political or regulatory angle reported."
-        },
-        {
-          "headline": "Children in Gaza watch film screening amid destroyed buildings",
-          "reason": "Human interest framing around a single photograph; reports no new development in the conflict."
-        },
         {
           "headline": "South Park wins Emmy for outstanding animated program",
           "reason": "Entertainment awards story; the political angle is a joke rather than a policy development."
