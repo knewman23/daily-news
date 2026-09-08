@@ -15,6 +15,9 @@ max_retries = 3
 backoff_seconds = 30
 start_jitter_seconds = 5400     # scheduled run waits 0-90min past 11:00, so the
                                 # daily request pattern has no fixed timestamp
+cdp_url = "http://127.0.0.1:9223"  # not 9222: Brave holds that port on IPv4 while
+                                   # Chrome binds it on IPv6, and the same port
+                                   # number then reaches a different browser
 
 [transcribe]
 model = "small"            # tiny | base | small | medium | large-v3
