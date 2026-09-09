@@ -1,6 +1,56 @@
 {
-  "last_updated": "2026-09-08T17:22:01.797425+00:00",
+  "last_updated": "2026-09-08T17:32:24.342834+00:00",
   "days": [
+    {
+      "date": "2026-09-09",
+      "tags": [
+        "war",
+        "defence",
+        "politics",
+        "legal",
+        "tech",
+        "surveillance",
+        "climate",
+        "environment",
+        "health"
+      ],
+      "sources": [
+        "@oafnation_actual",
+        "@aaronparnas",
+        "@ericmoutsos",
+        "@hunteralexanderhowell",
+        "@carolinegleich"
+      ],
+      "post_count": 31,
+      "transcribed_count": 30,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "More than 1,000 pounds of imported pork recalled over listeria risk",
+          "reason": "Consumer product recall with no policy or political angle."
+        },
+        {
+          "headline": "South Park announces it is rebranding as South America",
+          "reason": "Entertainment branding and satire rather than news about policy or government."
+        },
+        {
+          "headline": "White House account posts Legend of Zelda parody featuring Trump",
+          "reason": "Government social media meme with no policy substance."
+        },
+        {
+          "headline": "Voter registration push ahead of November midterms",
+          "reason": "Call to action promoting an organization; reports no new information."
+        },
+        {
+          "headline": "Soldiers still wearing the PT belt in 2026",
+          "reason": "Military culture item with no policy development."
+        },
+        {
+          "headline": "Claim that simultaneous global storms indicate weather manipulation",
+          "reason": "Unsupported speculation that reports nothing new."
+        }
+      ]
+    },
     {
       "date": "2026-09-08",
       "tags": [

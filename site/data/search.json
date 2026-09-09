@@ -1,6 +1,205 @@
 {
   "topics": [
     {
+      "date": "2026-09-09",
+      "headline": "U.S. sinks five Iranian tankers after warship targeted by ballistic missiles",
+      "tags": [
+        "war",
+        "defence",
+        "politics"
+      ],
+      "snippet": "The United States says it destroyed five Iranian tankers after the Islamic Revolutionary Guard Corps targeted a U.S. Navy warship with ballistic missiles. Iran says it retaliated by striking ships nea\u2026",
+      "text": "u.s. sinks five iranian tankers after warship targeted by ballistic missiles\nthe united states says it destroyed five iranian tankers after the islamic revolutionary guard corps targeted a u.s. navy warship with ballistic missiles. iran says it retaliated by striking ships near the strait of hormuz and firing missiles at a u.s. base in jordan."
+    },
+    {
+      "date": "2026-09-09",
+      "headline": "Justice Department stonewalls European prosecutors seeking Epstein records",
+      "tags": [
+        "legal",
+        "politics"
+      ],
+      "snippet": "The Trump administration is not responding to requests from European prosecutors investigating people associated with Jeffrey Epstein, according to reporting by The Washington Post. Agencies in Poland\u2026",
+      "text": "justice department stonewalls european prosecutors seeking epstein records\nthe trump administration is not responding to requests from european prosecutors investigating people associated with jeffrey epstein, according to reporting by the washington post. agencies in poland, norway, latvia and elsewhere have asked the department of justice for material including redacted epstein files and have received no response. the refusal covers multiple active foreign investigations."
+    },
+    {
+      "date": "2026-09-09",
+      "headline": "Anthropic researcher resigns warning AI could kill humanity within a decade",
+      "tags": [
+        "tech",
+        "politics"
+      ],
+      "snippet": "Jacob Coxon announced he has resigned from Anthropic after three years of pre-training research at both OpenAI and Anthropic, saying neither company is acting responsibly and that both are racing towa\u2026",
+      "text": "anthropic researcher resigns warning ai could kill humanity within a decade\njacob coxon announced he has resigned from anthropic after three years of pre-training research at both openai and anthropic, saying neither company is acting responsibly and that both are racing toward self-improving superintelligence. he wrote that people building the technology earnestly believe it could kill everyone by the end of the decade, and that executives express fear privately while couching their public language. evan hubinger, a lead researcher who remains at anthropic, publicly agreed, putting the chance that ai kills all humans within the next decade at greater than 10 percent and saying the company does not yet have a plan to solve alignment for superintelligence."
+    },
+    {
+      "date": "2026-09-09",
+      "headline": "Trump administration presses other nations to avoid AI regulation",
+      "tags": [
+        "politics",
+        "tech"
+      ],
+      "snippet": "The administration argued against AI regulation at international forums including the G20 summit in Asheville, North Carolina, saying nothing should slow innovation. The director of the White House te\u2026",
+      "text": "trump administration presses other nations to avoid ai regulation\nthe administration argued against ai regulation at international forums including the g20 summit in asheville, north carolina, saying nothing should slow innovation. the director of the white house technology policy office said slow policy adaptation makes it harder to capture the benefits of innovation and that rules built for an earlier technological era create uncertainty for developers. officials framed the position around competition with china, as researchers warn about extinction-level risk."
+    },
+    {
+      "date": "2026-09-09",
+      "headline": "Homeland Security unit uses financial data to flag Americans for traffic stops",
+      "tags": [
+        "surveillance",
+        "legal",
+        "politics"
+      ],
+      "snippet": "404 Media has identified a Customs and Border Protection predictive policing unit called the Predictive Intelligence Targeting Team, which analyzes Americans' financial activity and passes names to lo\u2026",
+      "text": "homeland security unit uses financial data to flag americans for traffic stops\n404 media has identified a customs and border protection predictive policing unit called the predictive intelligence targeting team, which analyzes americans' financial activity and passes names to local police who then pull those people over. the people flagged are not necessarily suspected of a specific crime. it is not clear which financial activity is being monitored or whether warrants are obtained."
+    },
+    {
+      "date": "2026-09-09",
+      "headline": "Twelve nations ban trade with Israeli settlements as Israel shuts UK consulate",
+      "tags": [
+        "politics",
+        "war"
+      ],
+      "snippet": "Canada, Denmark, Finland, the United Kingdom, Spain, France, Sweden, Poland, Ireland, Norway and Portugal have issued national bans on goods and trade from illegally occupied Israeli settlement territ\u2026",
+      "text": "twelve nations ban trade with israeli settlements as israel shuts uk consulate\ncanada, denmark, finland, the united kingdom, spain, france, sweden, poland, ireland, norway and portugal have issued national bans on goods and trade from illegally occupied israeli settlement territories. israel responded by closing the united kingdom's consulate in jerusalem. the united states has not indicated whether it will join its nato allies or side with israel."
+    },
+    {
+      "date": "2026-09-09",
+      "headline": "Report says UAE warned Netanyahu of major Hamas attack 10 days before Oct. 7",
+      "tags": [
+        "politics",
+        "war"
+      ],
+      "snippet": "A new report states that the United Arab Emirates warned Prime Minister Benjamin Netanyahu that Hamas was planning a major attack roughly ten days before October 7. Netanyahu's office denies receiving\u2026",
+      "text": "report says uae warned netanyahu of major hamas attack 10 days before oct. 7\na new report states that the united arab emirates warned prime minister benjamin netanyahu that hamas was planning a major attack roughly ten days before october 7. netanyahu's office denies receiving such a warning."
+    },
+    {
+      "date": "2026-09-09",
+      "headline": "Germany says Russian-planned drone attack on airport was averted by chance",
+      "tags": [
+        "defence",
+        "politics"
+      ],
+      "snippet": "German officials say an explosive-drone attack planned by Russia at a major airport avoided disaster \"only by pure chance.\" The incident is tied to the broader conflict over Ukraine.",
+      "text": "germany says russian-planned drone attack on airport was averted by chance\ngerman officials say an explosive-drone attack planned by russia at a major airport avoided disaster \"only by pure chance.\" the incident is tied to the broader conflict over ukraine."
+    },
+    {
+      "date": "2026-09-09",
+      "headline": "Iran says it seized a U.S. underwater drone, CENTCOM disputes account",
+      "tags": [
+        "defence",
+        "war"
+      ],
+      "snippet": "Iran claims it captured a U.S. robotic submarine. CENTCOM says an older underwater drone broke down before any seizure.",
+      "text": "iran says it seized a u.s. underwater drone, centcom disputes account\niran claims it captured a u.s. robotic submarine. centcom says an older underwater drone broke down before any seizure."
+    },
+    {
+      "date": "2026-09-09",
+      "headline": "Air Force colonel describes two days behind enemy lines in Iran",
+      "tags": [
+        "defence",
+        "war"
+      ],
+      "snippet": "An Air Force colonel is speaking publicly for the first time about spending nearly two days alone in Iran after his F-15E was shot down. He was later recovered.",
+      "text": "air force colonel describes two days behind enemy lines in iran\nan air force colonel is speaking publicly for the first time about spending nearly two days alone in iran after his f-15e was shot down. he was later recovered."
+    },
+    {
+      "date": "2026-09-09",
+      "headline": "Big tech scouts Patagonia for mega data centers",
+      "tags": [
+        "tech",
+        "climate"
+      ],
+      "snippet": "According to Reuters, technology companies are surveying Patagonia in Argentina as a possible site for data centers on the scale of hundreds of megawatts. Connectivity in the remote region is the main\u2026",
+      "text": "big tech scouts patagonia for mega data centers\naccording to reuters, technology companies are surveying patagonia in argentina as a possible site for data centers on the scale of hundreds of megawatts. connectivity in the remote region is the main obstacle identified so far. the area is largely undeveloped and the prospect raises concerns about environmental damage."
+    },
+    {
+      "date": "2026-09-09",
+      "headline": "Pentagon delays PFAS cleanup at 243 military sites",
+      "tags": [
+        "environment",
+        "defence",
+        "health"
+      ],
+      "snippet": "The Pentagon has pushed back cleanup timelines for PFAS contamination at 243 military sites. It is the third round of delays in roughly a year.",
+      "text": "pentagon delays pfas cleanup at 243 military sites\nthe pentagon has pushed back cleanup timelines for pfas contamination at 243 military sites. it is the third round of delays in roughly a year."
+    },
+    {
+      "date": "2026-09-09",
+      "headline": "170,000 pages of 9/11 air-quality records released 25 years later",
+      "tags": [
+        "health",
+        "politics"
+      ],
+      "snippet": "Some 170,000 pages of air-quality records from the aftermath of the September 11 attacks have been released, a quarter-century after the attacks. The records bear on long-running questions about healt\u2026",
+      "text": "170,000 pages of 9/11 air-quality records released 25 years later\nsome 170,000 pages of air-quality records from the aftermath of the september 11 attacks have been released, a quarter-century after the attacks. the records bear on long-running questions about health risks faced by people at and around the site."
+    },
+    {
+      "date": "2026-09-09",
+      "headline": "Utah Valley University cancels classes for Turning Point USA campus event",
+      "tags": [
+        "politics",
+        "legal"
+      ],
+      "snippet": "Utah Valley University has canceled Thursday classes and is providing security so Turning Point USA can hold a memorial on the campus where Charlie Kirk was killed last September, saying the school mu\u2026",
+      "text": "utah valley university cancels classes for turning point usa campus event\nutah valley university has canceled thursday classes and is providing security so turning point usa can hold a memorial on the campus where charlie kirk was killed last september, saying the school must remain apolitical and cannot bar a group over its affiliations. five months earlier the same university withdrew commencement speaker sharon mcmahon after a pressure campaign by senator mike lee, congressman burgess owens and the university's turning point chapter, and held graduation with no speaker. caleb chilcutt, the student who called mcmahon inappropriate and thanked staff for removing her, now works for turning point's national college department and is on thursday's speaker list. more than 600 people signed a letter opposing the event."
+    },
+    {
+      "date": "2026-09-09",
+      "headline": "Trump's nephew disputes president's account of his role after 9/11",
+      "tags": [
+        "politics"
+      ],
+      "snippet": "Fred Trump, the president's nephew, publicly said Donald Trump's claim that he brought a crew of workers to help at the World Trade Center site is false, stating the only people he could have brought\u2026",
+      "text": "trump's nephew disputes president's account of his role after 9/11\nfred trump, the president's nephew, publicly said donald trump's claim that he brought a crew of workers to help at the world trade center site is false, stating the only people he could have brought were secretarial and accounting staff from trump tower, many of whom were not physically capable of helping. he also disputed the president's description of the u.s. steel building as creaking and ready to fall, saying it was eventually cleared for occupancy. separately, the president said at an event that the 9/11 rescuer known as \"the man in the red bandana\" has become more famous than he is and that he does not like it, remarks that drew criticism across the political spectrum."
+    },
+    {
+      "date": "2026-09-09",
+      "headline": "Lindsay Clancy jurors say a single holdout blocked a not-guilty verdict",
+      "tags": [
+        "legal"
+      ],
+      "snippet": "Three jurors from the Lindsay Clancy trial told NBC Boston that the jury split 11 to 1 in favor of finding her not criminally responsible, with one male juror refusing. The jurors said he acknowledged\u2026",
+      "text": "lindsay clancy jurors say a single holdout blocked a not-guilty verdict\nthree jurors from the lindsay clancy trial told nbc boston that the jury split 11 to 1 in favor of finding her not criminally responsible, with one male juror refusing. the jurors said he acknowledged he had reasonable doubt but would not agree to a verdict of not guilty by reason of insanity, and would not deliberate with the rest of the panel. a hearing later this month will determine whether the case is dismissed under a rule 25 motion; prosecutors can still retry her."
+    },
+    {
+      "date": "2026-09-09",
+      "headline": "OpenAI model clears all 48 levels of a CAPTCHA-style game",
+      "tags": [
+        "tech"
+      ],
+      "snippet": "An OpenAI employee posted footage of the company's latest model completing all 48 levels of the \"I'm not a robot\" CAPTCHA game, in some cases performing better than humans. The system is designed to d\u2026",
+      "text": "openai model clears all 48 levels of a captcha-style game\nan openai employee posted footage of the company's latest model completing all 48 levels of the \"i'm not a robot\" captcha game, in some cases performing better than humans. the system is designed to distinguish human users from automated ones. the demonstration follows reports of openai models breaching other companies' systems, including hugging face."
+    },
+    {
+      "date": "2026-09-09",
+      "headline": "House report finds Navy aviators avoid mental health care over career fears",
+      "tags": [
+        "health",
+        "defence"
+      ],
+      "snippet": "A new House report says some Navy aviators do not seek mental health treatment because they fear losing flight status or damaging their careers.",
+      "text": "house report finds navy aviators avoid mental health care over career fears\na new house report says some navy aviators do not seek mental health treatment because they fear losing flight status or damaging their careers."
+    },
+    {
+      "date": "2026-09-09",
+      "headline": "Pentagon ID-record gaps affect 215,000 troops",
+      "tags": [
+        "defence"
+      ],
+      "snippet": "Some 215,000 service members have DEERS records missing required identification documents. Unless the records are corrected, some common access cards are at risk.",
+      "text": "pentagon id-record gaps affect 215,000 troops\nsome 215,000 service members have deers records missing required identification documents. unless the records are corrected, some common access cards are at risk."
+    },
+    {
+      "date": "2026-09-09",
+      "headline": "Guardsman charged with felonies after allegedly drawing gun in hair-rules dispute",
+      "tags": [
+        "legal",
+        "defence"
+      ],
+      "snippet": "A National Guard member faces two felony charges after allegedly drawing a loaded pistol during an argument over Army hair regulations.",
+      "text": "guardsman charged with felonies after allegedly drawing gun in hair-rules dispute\na national guard member faces two felony charges after allegedly drawing a loaded pistol during an argument over army hair regulations."
+    },
+    {
       "date": "2026-09-08",
       "headline": "Report says senior DHS adviser Lewandowski sought Gulf state work and pressed Palantir",
       "tags": [
