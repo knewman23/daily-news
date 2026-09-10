@@ -1,6 +1,65 @@
 {
-  "last_updated": "2026-09-08T17:32:24.342834+00:00",
+  "last_updated": "2026-09-09T17:48:17.224154+00:00",
   "days": [
+    {
+      "date": "2026-09-10",
+      "tags": [
+        "war",
+        "defence",
+        "politics",
+        "legal",
+        "media",
+        "privacy",
+        "tech",
+        "surveillance",
+        "climate",
+        "health",
+        "markets",
+        "economy",
+        "courts",
+        "immigration",
+        "government"
+      ],
+      "sources": [
+        "@oafnation_actual",
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@carolinegleich"
+      ],
+      "post_count": 38,
+      "transcribed_count": 36,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Kansas inmates donate $4,267 to pay down school lunch debt",
+          "reason": "Human interest story about a local donation, with no policy or legislative angle."
+        },
+        {
+          "headline": "Commentator links microchip implants, data centers and Epstein to a broader control agenda",
+          "reason": "Personal commentary recounting the speaker's own long-held views; reports no new information."
+        },
+        {
+          "headline": "Account reviews footage of World Trade Center Building 7 collapse",
+          "reason": "Commentary on decades-old footage; reports nothing new."
+        },
+        {
+          "headline": "Gold Star mother raises funeral privacy concern over proposed Arlington arch",
+          "reason": "A memorial design objection with no policy or political dimension."
+        },
+        {
+          "headline": "Photo of Hasan Piker in underwear appears on Republican convention jumbotron",
+          "reason": "Convention-floor gossip with no substantive news content."
+        },
+        {
+          "headline": "Grindr reports outages in Dallas during Republican convention",
+          "reason": "Novelty item about an app outage, not news on any tracked subject."
+        },
+        {
+          "headline": "Band of Brothers turns 25 with new documentary",
+          "reason": "Entertainment anniversary coverage with no policy angle."
+        }
+      ]
+    },
     {
       "date": "2026-09-09",
       "tags": [
@@ -26,16 +85,8 @@
       "incomplete": false,
       "skipped": [
         {
-          "headline": "More than 1,000 pounds of imported pork recalled over listeria risk",
-          "reason": "Consumer product recall with no policy or political angle."
-        },
-        {
           "headline": "South Park announces it is rebranding as South America",
           "reason": "Entertainment branding and satire rather than news about policy or government."
-        },
-        {
-          "headline": "White House account posts Legend of Zelda parody featuring Trump",
-          "reason": "Government social media meme with no policy substance."
         },
         {
           "headline": "Voter registration push ahead of November midterms",
@@ -76,10 +127,6 @@
       "transcribed_count": 23,
       "incomplete": false,
       "skipped": [
-        {
-          "headline": "Trump's 2001 phone call resurfaces before 25th anniversary of 9/11",
-          "reason": "Commentary on a 25-year-old recording that reports nothing new."
-        },
         {
           "headline": "Satirical stunt targets Dallas vote on funding Flock surveillance cameras",
           "reason": "A comedy stunt rather than reporting; the underlying Dallas camera-funding vote is not actually covered."
