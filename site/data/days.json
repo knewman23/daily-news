@@ -1,6 +1,74 @@
 {
-  "last_updated": "2026-09-09T17:48:17.224154+00:00",
+  "last_updated": "2026-09-10T17:18:25.697694+00:00",
   "days": [
+    {
+      "date": "2026-09-11",
+      "tags": [
+        "war",
+        "markets",
+        "politics",
+        "economy",
+        "media",
+        "legal",
+        "tech",
+        "health",
+        "defence",
+        "privacy",
+        "immigration"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@carolinegleich",
+        "@oafnation_actual",
+        "@total.hypocrisy"
+      ],
+      "post_count": 37,
+      "transcribed_count": 37,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Creator to read Heritage Foundation's Project Esther aloud in video series",
+          "reason": "Announcement of the creator's own upcoming content series rather than new reporting."
+        },
+        {
+          "headline": "Marines at southern border rescue migrant suffering severe heat illness",
+          "reason": "Human interest rescue and commendation story with no policy angle."
+        },
+        {
+          "headline": "Pentagon daycare survivor runs 2,977 miles for 9/11 victims",
+          "reason": "Human interest commemoration with no policy angle."
+        },
+        {
+          "headline": "Three 9/11 first responders remembered on the 25th anniversary",
+          "reason": "Anniversary remembrance with no current policy or political content."
+        },
+        {
+          "headline": "Search and rescue dogs at Ground Zero remembered 25 years on",
+          "reason": "Anniversary remembrance with no policy angle."
+        },
+        {
+          "headline": "Army history disputes origin story of the notch on old dog tags",
+          "reason": "Historical trivia with no news or policy content."
+        },
+        {
+          "headline": "Claims of foreknowledge circulate around World Trade Center collapse",
+          "reason": "Conspiracy compilation of old clips reporting nothing new."
+        },
+        {
+          "headline": "Fundraiser launched after woman and newborn killed in roadside collision",
+          "reason": "Personal fundraising appeal."
+        },
+        {
+          "headline": "Endurance athlete describes decade-long iron deficiency and infusions",
+          "reason": "Personal health and training account, not public health policy."
+        },
+        {
+          "headline": "French cocker spaniel puppy diagnosed with narcolepsy",
+          "reason": "Animal human interest item with no news value to this reader."
+        }
+      ]
+    },
     {
       "date": "2026-09-10",
       "tags": [
