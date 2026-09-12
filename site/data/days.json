@@ -1,26 +1,35 @@
 {
-  "last_updated": "2026-09-12T17:19:09.397570+00:00",
+  "last_updated": "2026-09-12T20:23:21.942937+00:00",
   "days": [
     {
       "date": "2026-09-12",
       "tags": [
         "tech",
         "politics",
+        "surveillance",
+        "elections",
         "legal",
+        "courts",
+        "protest",
         "media",
+        "health",
         "sports",
-        "climate"
+        "climate",
+        "environment",
+        "defence"
       ],
       "sources": [
-        "@aaronparnas"
+        "@aaronparnas",
+        "@ericmoutsos",
+        "@oafnation_actual"
       ],
-      "post_count": 10,
-      "transcribed_count": 10,
+      "post_count": 13,
+      "transcribed_count": 13,
       "incomplete": false,
       "skipped": [
         {
-          "headline": "Trumps attend Pentagon ceremony marking 25th anniversary of 9/11",
-          "reason": "Ceremonial photo caption with no policy, political or newsworthy development beyond attendance."
+          "headline": "Utah Senate candidate says athletics and activism were never separate",
+          "reason": "Primarily a creator reflecting on her own athletic career, body image and personal experience rather than reporting news."
         }
       ]
     },
