@@ -1,27 +1,26 @@
 {
-  "last_updated": "2026-09-11T18:33:16.464498+00:00",
+  "last_updated": "2026-09-12T17:19:09.397570+00:00",
   "days": [
     {
       "date": "2026-09-12",
       "tags": [
-        "legal",
-        "courts",
-        "media",
+        "tech",
         "politics",
-        "protest",
-        "climate",
-        "environment"
+        "legal",
+        "media",
+        "sports",
+        "climate"
       ],
       "sources": [
         "@aaronparnas"
       ],
-      "post_count": 5,
-      "transcribed_count": 5,
-      "incomplete": true,
+      "post_count": 10,
+      "transcribed_count": 10,
+      "incomplete": false,
       "skipped": [
         {
-          "headline": "Ted Cruz booed during ESPN College GameDay appearance",
-          "reason": "Mainly a viral crowd-reaction moment at a sporting event rather than substantive political or policy news."
+          "headline": "Trumps attend Pentagon ceremony marking 25th anniversary of 9/11",
+          "reason": "Ceremonial photo caption with no policy, political or newsworthy development beyond attendance."
         }
       ]
     },

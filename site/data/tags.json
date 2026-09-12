@@ -1,22 +1,22 @@
 {
   "tags": [
-    "legal",
-    "courts",
-    "media",
+    "tech",
     "politics",
-    "protest",
+    "legal",
+    "media",
+    "sports",
     "climate",
-    "environment",
     "war",
     "markets",
     "economy",
-    "tech",
     "health",
     "defence",
     "privacy",
     "immigration",
     "surveillance",
+    "courts",
     "government",
+    "environment",
     "foreign",
     "transport",
     "elections",
@@ -32,7 +32,6 @@
     "energy",
     "education",
     "defense",
-    "foreign-policy",
-    "sports"
+    "foreign-policy"
   ]
 }
