@@ -1,6 +1,30 @@
 {
-  "last_updated": "2026-09-10T17:18:25.697694+00:00",
+  "last_updated": "2026-09-11T18:33:16.464498+00:00",
   "days": [
+    {
+      "date": "2026-09-12",
+      "tags": [
+        "legal",
+        "courts",
+        "media",
+        "politics",
+        "protest",
+        "climate",
+        "environment"
+      ],
+      "sources": [
+        "@aaronparnas"
+      ],
+      "post_count": 5,
+      "transcribed_count": 5,
+      "incomplete": true,
+      "skipped": [
+        {
+          "headline": "Ted Cruz booed during ESPN College GameDay appearance",
+          "reason": "Mainly a viral crowd-reaction moment at a sporting event rather than substantive political or policy news."
+        }
+      ]
+    },
     {
       "date": "2026-09-11",
       "tags": [
