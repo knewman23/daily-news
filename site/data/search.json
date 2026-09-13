@@ -1,6 +1,86 @@
 {
   "topics": [
     {
+      "date": "2026-09-13",
+      "headline": "Houthi forces said to control Bab el-Mandeb as fuel prices climb",
+      "tags": [
+        "war",
+        "markets",
+        "politics"
+      ],
+      "snippet": "Yemen's Houthi militia now controls almost all of the Bab el-Mandeb strait, according to an account of the situation, cutting off a route the United States had been using with Saudi Arabia for logisti\u2026",
+      "text": "houthi forces said to control bab el-mandeb as fuel prices climb\nyemen's houthi militia now controls almost all of the bab el-mandeb strait, according to an account of the situation, cutting off a route the united states had been using with saudi arabia for logistics, transport and oil shipments after the strait of hormuz was closed by iran. saudi arabia asked the united states to bomb houthi positions and president trump declined. with both waterways under hostile control, further increases in diesel and gasoline prices are expected."
+    },
+    {
+      "date": "2026-09-13",
+      "headline": "Trump blames Ukraine for record US diesel prices",
+      "tags": [
+        "politics",
+        "markets",
+        "war"
+      ],
+      "snippet": "President Trump is blaming Ukraine for record-high diesel prices in the United States and has demanded that Kyiv stop striking Russian diesel and oil depots. Diesel averages about $7 a gallon in Washi\u2026",
+      "text": "trump blames ukraine for record us diesel prices\npresident trump is blaming ukraine for record-high diesel prices in the united states and has demanded that kyiv stop striking russian diesel and oil depots. diesel averages about $7 a gallon in washington and $8 in california, with some stations posting $9.99. the war in iran that the administration began has been a direct contributor to the cost increases, and the demand on president zelensky shifts pressure away from that."
+    },
+    {
+      "date": "2026-09-13",
+      "headline": "Wales, Scotland and Northern Ireland to meet in Cardiff over independence",
+      "tags": [
+        "politics"
+      ],
+      "snippet": "Representatives of Wales, Scotland and Northern Ireland are meeting in Cardiff to formally begin a process toward independence from the United Kingdom. The move would mark a historic constitutional br\u2026",
+      "text": "wales, scotland and northern ireland to meet in cardiff over independence\nrepresentatives of wales, scotland and northern ireland are meeting in cardiff to formally begin a process toward independence from the united kingdom. the move would mark a historic constitutional break. further details of the process have not yet been released."
+    },
+    {
+      "date": "2026-09-13",
+      "headline": "Tech chief executives call for slowing AI development",
+      "tags": [
+        "tech",
+        "politics"
+      ],
+      "snippet": "Several leading technology chief executives have simultaneously called for a slowdown in the rapid development of artificial intelligence. Anthropic's chief executive said development should be paused\u2026",
+      "text": "tech chief executives call for slowing ai development\nseveral leading technology chief executives have simultaneously called for a slowdown in the rapid development of artificial intelligence. anthropic's chief executive said development should be paused, elon musk agreed, and openai said publicly it would be willing to give up the company and what it has built if that served the betterment of humanity. it is not clear whether the statements reflect a specific development behind the scenes or are positioning, and the announcements come amid continued public opposition to ai data centers."
+    },
+    {
+      "date": "2026-09-13",
+      "headline": "US said to have flown diplomat out of UK after child abuse material seizure",
+      "tags": [
+        "legal",
+        "politics"
+      ],
+      "snippet": "The United States reportedly removed a diplomat from the United Kingdom after child sexual abuse material was found in his possession, according to reports by Sky News and The Sun. US authorities are\u2026",
+      "text": "us said to have flown diplomat out of uk after child abuse material seizure\nthe united states reportedly removed a diplomat from the united kingdom after child sexual abuse material was found in his possession, according to reports by sky news and the sun. us authorities are said to have raided his london flat, taken him to a us air base and flown him out of the country, and no extradition request has been made. a us embassy spokesperson said it was aware of allegations concerning an individual assigned to the embassy, that the government expects all personnel to adhere to the highest standards of conduct, and that the allegations are being taken seriously. a second american is reportedly under investigation in connection with the case."
+    },
+    {
+      "date": "2026-09-13",
+      "headline": "Thousands protest against Trump in Dublin",
+      "tags": [
+        "politics"
+      ],
+      "snippet": "New footage shows thousands of people demonstrating against President Trump in Dublin, part of large-scale protests across Ireland. The videos have circulated widely internationally. The president has\u2026",
+      "text": "thousands protest against trump in dublin\nnew footage shows thousands of people demonstrating against president trump in dublin, part of large-scale protests across ireland. the videos have circulated widely internationally. the president has continued to say he is not seeing the protests."
+    },
+    {
+      "date": "2026-09-13",
+      "headline": "Alaska Senate debate exchange draws attention in flip-watch race",
+      "tags": [
+        "politics",
+        "elections"
+      ],
+      "snippet": "A moment from an Alaska Senate debate between Democratic candidate Mary Peltola, a former member of Congress, and incumbent Republican Senator Dan Sullivan is circulating widely in the state. Peltola\u2026",
+      "text": "alaska senate debate exchange draws attention in flip-watch race\na moment from an alaska senate debate between democratic candidate mary peltola, a former member of congress, and incumbent republican senator dan sullivan is circulating widely in the state. peltola answered a question directly while sullivan appeared not to understand it and turned to her for guidance. observers say the exchange could matter in a race democrats see as a possible flip."
+    },
+    {
+      "date": "2026-09-13",
+      "headline": "White House claims credit for quiet Atlantic hurricane season",
+      "tags": [
+        "climate",
+        "politics"
+      ],
+      "snippet": "The White House rapid response account thanked President Trump for the absence of hurricanes forming in the Atlantic so far this season. The main driver is an unusually strong El Ni\u00f1o in the Pacific,\u2026",
+      "text": "white house claims credit for quiet atlantic hurricane season\nthe white house rapid response account thanked president trump for the absence of hurricanes forming in the atlantic so far this season. the main driver is an unusually strong el ni\u00f1o in the pacific, a historic event that suppresses atlantic hurricane formation, and which is in part linked to the administration's anti-climate policies. that same el ni\u00f1o is expected to produce extreme weather elsewhere, and hawaii has already experienced hurricanes this year. the atlantic season runs through november."
+    },
+    {
       "date": "2026-09-12",
       "headline": "Heads of Anthropic, OpenAI and xAI call for slowing AI development",
       "tags": [
