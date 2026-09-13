@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-12T23:54:39.189774+00:00",
+  "last_updated": "2026-09-13T17:17:55.106620+00:00",
   "days": [
     {
       "date": "2026-09-13",
@@ -7,22 +7,25 @@
         "war",
         "markets",
         "politics",
+        "defence",
         "tech",
         "legal",
+        "government",
         "elections",
         "climate"
       ],
       "sources": [
         "@hunteralexanderhowell",
+        "@oafnation_actual",
         "@aaronparnas"
       ],
-      "post_count": 9,
-      "transcribed_count": 9,
-      "incomplete": true,
+      "post_count": 14,
+      "transcribed_count": 12,
+      "incomplete": false,
       "skipped": [
         {
           "headline": "Australians push back after Republican criticism of NFL land acknowledgement",
-          "reason": "A social-media culture-war exchange with no new political or policy development reported."
+          "reason": "Online culture-war reaction with no new reporting or policy substance."
         }
       ]
     },
