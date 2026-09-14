@@ -1,6 +1,47 @@
 {
-  "last_updated": "2026-09-13T17:17:55.106620+00:00",
+  "last_updated": "2026-09-13T19:36:32.851058+00:00",
   "days": [
+    {
+      "date": "2026-09-14",
+      "tags": [
+        "climate",
+        "politics",
+        "health",
+        "tech",
+        "legal",
+        "immigration",
+        "defence",
+        "surveillance",
+        "media"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@carolinegleich",
+        "@total.hypocrisy",
+        "@oafnation_actual"
+      ],
+      "post_count": 21,
+      "transcribed_count": 20,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Macklemore dropped from Ed Sheeran tour after pro-Palestinian remarks",
+          "reason": "Entertainment industry booking dispute; no policy, government or legal action involved."
+        },
+        {
+          "headline": "Illinois fence company removes work after homeowner refuses payment",
+          "reason": "Human interest payment dispute with no policy or political angle."
+        },
+        {
+          "headline": "Criticism of Sydney Sweeney sports betting advertisement",
+          "reason": "Commentary on an advertisement; reports no new news and has no policy angle."
+        },
+        {
+          "headline": "Creator launches new account after layoff attributed to AI and outsourcing",
+          "reason": "Primarily a creator discussing their own life and promoting another account."
+        }
+      ]
+    },
     {
       "date": "2026-09-13",
       "tags": [
