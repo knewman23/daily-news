@@ -126,6 +126,17 @@
     </form>
   </details>
 
+  <!-- Book drafts are private: book/ is gitignored and lives in its own
+       private repository. data-live-only is what keeps this out of the
+       published build, the same mechanism that strips the journal. -->
+  <details class="panel" id="book-panel" data-live-only open>
+    <summary class="panel-title">
+      Book <span id="book-count" class="count"></span>
+    </summary>
+    <div id="book-parts" class="book-parts"></div>
+    <button id="book-open" class="book-open" type="button">Open the outline</button>
+  </details>
+
   <details class="panel" id="runs-panel" data-live-only open>
     <summary class="panel-title">
       Runs <span id="runs-badge" class="badge" hidden></span>

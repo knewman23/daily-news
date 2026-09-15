@@ -12,3 +12,6 @@ venv/
 # Journal notes live inside news/*.md, so the raw digests stay local.
 # Only the generated site/ (which renders the news body without notes) is published.
 news/
+
+# Book drafts: its own private repository, and never part of the published site.
+/book/

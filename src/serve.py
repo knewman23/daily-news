@@ -63,6 +63,7 @@ def build_server(
     lookup: Callable[[str], Any] | None = None,
     logs_dir: str | Path | None = None,
     publisher=None,
+    book_dir: str | Path | None = None,
 ) -> ThreadingHTTPServer:
     """Assemble the server. Port 0 binds an ephemeral port, which the tests use.
 
@@ -75,6 +76,7 @@ def build_server(
     logs = Path(logs_dir) if logs_dir else Path("logs")
     verify = lookup if lookup is not None else _default_lookup
     publish_to = publisher
+    book = Path(book_dir) if book_dir else None
 
     class Handler(_Handler):
         news_dir = news
@@ -83,6 +85,7 @@ def build_server(
         logs_dir = logs
         lookup = staticmethod(verify)
         publisher = publish_to
+        book_dir = book
 
     httpd = ThreadingHTTPServer((host, port), Handler)
     httpd.publisher = publish_to
@@ -117,6 +120,7 @@ def run(cfg, web_dir: str | Path = "web") -> None:
         port=cfg.serve.port,
         logs_dir=cfg.paths.logs,
         publisher=publisher,
+        book_dir="book",
     )
     url = f"http://{cfg.serve.host}:{cfg.serve.port}"
     print(f"Daily News reading from {cfg.paths.news}")
@@ -145,6 +149,7 @@ class _Handler(BaseHTTPRequestHandler):
     logs_dir: Path
     lookup: Callable[[str], Any]
     publisher: Any = None
+    book_dir: Path | None = None
 
     server_version = "daily-news"
 
@@ -158,6 +163,7 @@ class _Handler(BaseHTTPRequestHandler):
             "/api/sources": self._list_sources,
             "/api/runs": self._runs,
             "/api/publish": self._publish_status,
+            "/api/book": self._book,
         }, self._static)
 
     def do_POST(self) -> None:
@@ -349,6 +355,28 @@ class _Handler(BaseHTTPRequestHandler):
             "skipped": _skipped_payload(path),
             "publish": self._publish_state(),
         })
+
+    # --- the book ---------------------------------------------------------
+
+    def _book(self) -> None:
+        """The outline with its items hung on it.
+
+        Live-only by construction: `export_static.py` never calls this, and the
+        page that reads it is marked `data-live-only` so it is stripped from the
+        published build. `book/` is gitignored and is its own private
+        repository; none of it may reach the public site.
+        """
+        from src import chapters
+
+        if self.book_dir is None:
+            raise ApiError(404, "this server was started without a book directory")
+
+        try:
+            self._json(chapters.rollup(self.book_dir, self.news_dir))
+        except chapters.OutlineError as exc:
+            # Not an error state so much as an unstarted one: the page says to
+            # run bootstrap rather than showing a broken panel.
+            self._json({"outline": None, "message": str(exc)})
 
     def _publish_status(self) -> None:
         self._json(self._publish_state())

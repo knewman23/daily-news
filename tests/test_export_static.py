@@ -76,6 +76,8 @@ def project(tmp_path):
         '<img class="crest" src="eagle.png" alt="">\n'
         '<details class="panel" id="sources-panel" data-live-only open>x</details>\n'
         '<details class="panel" id="runs-panel" data-live-only open>y</details>\n'
+        '<details class="panel" id="book-panel" data-live-only open>'
+        '<div id="book-parts">The War Nobody Authorized</div></details>\n'
         '<script src="app.js"></script>\n'
         "</body>\n",
         encoding="utf-8",
@@ -232,6 +234,20 @@ def test_live_only_panels_are_stripped_from_the_markup(project):
     assert "sources-panel" not in html
     assert "runs-panel" not in html
     assert "data-live-only" not in html
+
+
+def test_the_book_panel_never_reaches_the_published_build(project):
+    """The one failure here would publish private book drafts.
+
+    book/ is gitignored and lives in its own private repository; site/ is
+    committed to a public one and served by GitHub Pages. The panel carries
+    data-live-only for exactly this reason, and this test is what holds it.
+    """
+    html = (export(project) / "index.html").read_text(encoding="utf-8")
+
+    assert "book-panel" not in html
+    assert "book-parts" not in html
+    assert "The War Nobody Authorized" not in html
 
 
 def test_nojekyll_is_written(project):

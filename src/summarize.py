@@ -235,7 +235,14 @@ def permalink_index(
 # --- internals -------------------------------------------------------------
 
 
-def _parse(completed: subprocess.CompletedProcess) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+def payload_of(completed: subprocess.CompletedProcess) -> Any:
+    """Unwrap a `claude -p --output-format json` run into the model's JSON.
+
+    Public because `chapters.py` speaks the same CLI contract and must not
+    reimplement it: every rule here was observed rather than assumed (see
+    docs/notes/claude-cli-contract.md), and a second, drifting copy of them is
+    how one caller quietly stops noticing a model-level failure.
+    """
     if completed.returncode != 0:
         raise SummarizeError(
             f"claude exited {completed.returncode}: {(completed.stderr or '').strip()[:500]}"
@@ -257,7 +264,11 @@ def _parse(completed: subprocess.CompletedProcess) -> tuple[list[dict[str, Any]]
     if not isinstance(result, str):
         raise SummarizeError("CLI wrapper had no string 'result' field")
 
-    payload = _payload(result)
+    return _payload(result)
+
+
+def _parse(completed: subprocess.CompletedProcess) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    payload = payload_of(completed)
     return _topics(payload), _skipped(payload)
 
 

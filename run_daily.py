@@ -216,6 +216,8 @@ def run_day(
     # An incomplete day is not notified here: record() carries the problem count
     # in the completion banner, so the day is reported once rather than twice.
 
+    _file_for_the_book(cfg, day, path, stats)
+
     # Publishing comes last and cannot fail the run: the digest is written and
     # readable locally, so being unable to reach GitHub is worth reporting
     # rather than worth discarding a successful run over.
@@ -337,6 +339,32 @@ def _merge(fetched: Stats, spoken: Stats, on_image: Stats) -> Stats:
         merged.incomplete = merged.incomplete or part.incomplete
         merged.notes.extend(part.notes)
     return merged
+
+
+def _file_for_the_book(cfg, day: date, path: Path, stats) -> None:
+    """File the day's topics into the book's threads, if an outline exists.
+
+    Never fatal, for the same reason publishing is not: by this point the digest
+    is written and the day is a success. An outline that has not been bootstrapped
+    yet is not even a failure — it is the normal state of a machine that is not
+    using this feature, so it is logged at debug and passed over.
+    """
+    from src import chapters
+
+    book = Path(getattr(cfg.paths, "book", "book"))
+    if not chapters.outline_path(book).exists():
+        log.debug("no book outline at %s, not filing this day", book)
+        return
+
+    try:
+        record = chapters.classify_day(book, day, digest.topics_of(path))
+    except chapters.ChaptersError as exc:
+        log.warning("could not file %s for the book: %s", day, exc)
+        stats.fail(f"book: {exc}")
+        return
+
+    log.info("book: %d filed, %d unfiled",
+             len(record["assignments"]), len(record["unfiled"]))
 
 
 def _existing_notes(path: Path) -> str:

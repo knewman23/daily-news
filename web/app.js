@@ -21,6 +21,7 @@
 const READ_ONLY = document.body.dataset.mode === 'static';
 
 const SKIPPED = '__skipped__';   // a pseudo-tag: not a topic, a view
+const BOOK = '__book__';         // likewise: the book outline, live only
 
 /* The clock the pipeline runs on. Pinned rather than using the viewer's local
    time so the stamp always describes the same clock that decides which day a
@@ -35,6 +36,7 @@ const state = {
   query: '',
   notesDirty: false,
   searchIndex: null,     // static mode only
+  book: null,            // the /api/book rollup, live only
   /* Which month sections are expanded, as "YYYY-MM". Held here rather than read
      off the <details> elements because renderDays() rebuilds them on every
      showDay(), which would throw a DOM-only answer away. */
@@ -77,6 +79,7 @@ const source = {
   days: () => READ_ONLY ? 'data/days.json' : '/api/days',
   tags: () => READ_ONLY ? 'data/tags.json' : '/api/tags',
   runs: () => '/api/runs',
+  book: () => '/api/book',
   day: (date) => READ_ONLY ? `data/day/${date}.json` : `/api/day/${date}`,
   log: (date) => `/api/log/${date}`,
   searchIndex: () => 'data/search.json',
@@ -668,6 +671,7 @@ function describeFilters() {
   const parts = [];
   if (state.query.trim()) parts.push(`“${state.query.trim()}”`);
   if (state.activeTag === SKIPPED) parts.push('left out as off topic');
+  else if (state.activeTag === BOOK) parts.push('book outline');
   else if (state.activeTag) parts.push(`tagged ${state.activeTag}`);
   return parts.join(' · ');
 }
@@ -675,7 +679,8 @@ function describeFilters() {
 function syncActiveFilter() {
   const button = $('active-filter');
   button.hidden = !state.activeTag;
-  const label = state.activeTag === SKIPPED ? 'skipped' : state.activeTag;
+  const label = state.activeTag === SKIPPED ? 'skipped'
+    : state.activeTag === BOOK ? 'book outline' : state.activeTag;
   button.textContent = label;
   button.title = `Clear the ${label} filter`;
 }
@@ -920,6 +925,17 @@ function wireDrawer() {
   $('drawer-close').addEventListener('click', closeDrawer);
   $('scrim').addEventListener('click', closeDrawer);
 
+  const openBook = $('book-open');       // absent in the published build
+  if (openBook) {
+    openBook.addEventListener('click', () => {
+      state.activeTag = BOOK;
+      state.activeDate = null;
+      syncActiveFilter();
+      closeDrawer();
+      showBook();
+    });
+  }
+
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') closeDrawer();
   });
@@ -989,7 +1005,7 @@ async function start() {
         .then(({ topics }) => { state.searchIndex = topics; })
         .catch(() => { state.searchIndex = []; }));
     } else {
-      work.push(loadSources(), loadRuns());
+      work.push(loadSources(), loadRuns(), loadBook());
     }
 
     const [days] = await Promise.all(work);
@@ -1020,3 +1036,170 @@ async function start() {
 }
 
 start();
+
+/* --- the book outline (live only) ---------------------------------------- */
+
+/* Drafts are private. `book/` is gitignored and lives in its own private
+   repository, and the panel that reaches this is marked data-live-only, so
+   export_static.py strips it from the published build the same way it strips
+   the journal. Nothing here is ever fetched by the static site. */
+
+async function loadBook() {
+  if (READ_ONLY) return;
+  try {
+    state.book = await api(source.book());
+  } catch {
+    // An absent outline is the normal state before bootstrap, not a failure
+    // worth shouting about in the rail.
+    state.book = null;
+  }
+  renderBookPanel();
+}
+
+function renderBookPanel() {
+  const parts = $('book-parts');
+  const count = $('book-count');
+  if (!parts || !count) return;                 // absent in the published build
+
+  const book = state.book;
+  if (!book || book.outline === null) {
+    count.textContent = '';
+    parts.replaceChildren(el('p', {
+      className: 'empty',
+      textContent: 'No outline yet. Run: .venv/bin/python book.py bootstrap',
+    }));
+    return;
+  }
+
+  const threads = book.parts.flatMap((part) => part.threads)
+    .concat(book.orphan_threads || []);
+  const filed = threads.reduce((n, thread) => n + thread.count, 0);
+  count.textContent = `(${threads.length} threads, ${filed} filed)`;
+
+  parts.replaceChildren(...book.parts.map((part) => el('div', {
+    className: 'book-part',
+  }, [
+    el('div', { className: 'book-part-title', textContent: part.title }),
+    el('ul', { className: 'book-threads' }, part.threads.map((thread) =>
+      el('li', {}, [
+        el('span', { className: 'book-thread-count', textContent: String(thread.count) }),
+        el('span', { className: 'book-thread-title', textContent: thread.title }),
+      ]))),
+  ])));
+}
+
+/* One handle behind a thread is not a theme, it is that account's hobbyhorse.
+   The corpus is seven Instagram accounts, so this is the number that keeps a
+   frequency count from being mistaken for significance. */
+function provenance(thread) {
+  const handles = thread.handles || [];
+  if (!handles.length) return null;
+
+  const total = handles.reduce((n, h) => n + h.count, 0);
+  const lead = handles[0];
+  const share = Math.round((lead.count / total) * 100);
+
+  const row = el('div', { className: 'book-provenance' },
+    handles.map((h) => el('span', {
+      className: 'book-handle',
+      textContent: `${h.handle} ${h.count}`,
+    })));
+
+  if (handles.length === 1 && thread.count > 2) {
+    row.append(el('span', {
+      className: 'book-warning',
+      textContent: 'single source — one account, not a theme',
+    }));
+  } else if (share >= 80 && thread.count > 4) {
+    row.append(el('span', {
+      className: 'book-warning',
+      textContent: `${share}% from ${lead.handle}`,
+    }));
+  }
+  return row;
+}
+
+function showBook() {
+  const book = state.book;
+
+  if (!book || book.outline === null) {
+    $('main').replaceChildren(
+      el('div', { className: 'day-head' },
+        el('h2', { textContent: 'No outline yet' })),
+      el('p', { className: 'empty', textContent:
+        (book && book.message) || 'Run: .venv/bin/python book.py bootstrap' }),
+    );
+    return;
+  }
+
+  const threads = book.parts.flatMap((part) => part.threads);
+  const filed = threads.reduce((n, t) => n + t.count, 0);
+
+  const heading = el('div', { className: 'day-head' }, [
+    el('h2', { textContent: 'Book outline' }),
+    el('span', {
+      className: 'day-meta',
+      textContent: `version ${book.version} · ${book.parts.length} parts · `
+        + `${threads.length} threads · ${filed} items filed · `
+        + `${book.unfiled.length} unfiled`,
+    }),
+  ]);
+
+  const sections = book.parts.map((part) => el('section', {
+    className: 'book-part-full',
+  }, [
+    el('h3', { className: 'book-part-heading', textContent: part.title }),
+    el('ul', { className: 'book-thread-list' }, part.threads.map((thread) => {
+      const head = el('div', { className: 'book-thread-head' }, [
+        el('span', { className: 'book-thread-title', textContent: thread.title }),
+        el('span', { className: 'book-thread-meta', textContent:
+          thread.count
+            ? `${thread.count} items · ${thread.first_date} → ${thread.last_date}`
+            : 'nothing filed yet' }),
+      ]);
+
+      const items = el('ul', { className: 'book-items' }, thread.items.map((item) =>
+        el('li', {}, [
+          el('span', { className: 'hit-date', textContent: item.date }),
+          el('span', { textContent: item.headline }),
+        ])));
+
+      const body = el('details', { className: 'book-thread' }, [
+        el('summary', {}, head),
+        thread.description
+          ? el('p', { className: 'book-thread-why', textContent: thread.description })
+          : null,
+        provenance(thread),
+        items,
+      ]);
+      return el('li', {}, body);
+    })),
+  ]));
+
+  if ((book.orphan_threads || []).length) {
+    sections.push(el('section', { className: 'book-part-full' }, [
+      el('h3', { className: 'book-part-heading', textContent: 'Not yet in a part' }),
+      el('ul', { className: 'book-thread-list' }, book.orphan_threads.map((thread) =>
+        el('li', {}, el('span', { className: 'book-thread-title',
+                                  textContent: `${thread.title} (${thread.count})` })))),
+    ]));
+  }
+
+  /* Unfiled is not a failure list. It is the queue that argues for the next
+     thread, so it is shown rather than hidden. */
+  if (book.unfiled.length) {
+    sections.push(el('section', { className: 'book-part-full' }, [
+      el('h3', { className: 'book-part-heading',
+                 textContent: `Unfiled (${book.unfiled.length})` }),
+      el('ul', { className: 'book-items' }, book.unfiled.slice(0, 80).map((item) =>
+        el('li', {}, [
+          el('span', { className: 'hit-date', textContent: item.date }),
+          el('span', { textContent: item.headline }),
+          item.why ? el('span', { className: 'why', textContent: item.why }) : null,
+        ]))),
+    ]));
+  }
+
+  $('main').replaceChildren(heading, ...sections);
+  window.scrollTo({ top: 0 });
+}
