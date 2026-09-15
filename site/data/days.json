@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-15T18:15:19.930313+00:00",
+  "last_updated": "2026-09-15T22:10:01.656034+00:00",
   "days": [
     {
       "date": "2026-09-15",
@@ -29,20 +29,8 @@
       "incomplete": false,
       "skipped": [
         {
-          "headline": "Ed Sheeran loses all four opening acts after removing Macklemore over Gaza remarks",
-          "reason": "Mainly a music industry and commentary story rather than reporting new developments in the Middle East."
-        },
-        {
           "headline": "Rescued airman worried about being ordered onto television",
           "reason": "Human interest angle on one service member's media appearance rather than a policy or operational development."
-        },
-        {
-          "headline": "Sailors told to remove air conditioners they bought for barracks without A/C",
-          "reason": "Base living-conditions story with no broader policy or political angle."
-        },
-        {
-          "headline": "Roughly 90 USS Kearsarge sailors return from sea to find cars towed",
-          "reason": "Human interest story about base logistics with no policy angle."
         },
         {
           "headline": "Claim that Amazon and other tech giants grew out of government surveillance programmes",
@@ -51,10 +39,6 @@
         {
           "headline": "Commentary on Miriam Adelson and claims of a pro-Israel lobby",
           "reason": "Commentary built on archive footage that reports nothing new."
-        },
-        {
-          "headline": "Compilation argues 9/11 was a controlled demolition and false flag",
-          "reason": "Archival compilation and conspiracy commentary that reports no new development."
         },
         {
           "headline": "Commentary argues AI risk warnings are a coordinated psychological operation",
