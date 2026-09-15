@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-14T18:17:29.236908+00:00",
+  "last_updated": "2026-09-15T18:15:19.930313+00:00",
   "days": [
     {
       "date": "2026-09-15",
@@ -28,10 +28,6 @@
         {
           "headline": "Macklemore removed from Ed Sheeran tour after pro-Palestine statement",
           "reason": "Entertainment industry dispute rather than reporting on the conflict or policy."
-        },
-        {
-          "headline": "Commentary questions whether AI risk warnings are a coordinated operation",
-          "reason": "Commentary and speculation that reports nothing new."
         },
         {
           "headline": "Compilation questions origins of big tech firms and their government surveillance contracts",
@@ -94,10 +90,6 @@
       "transcribed_count": 20,
       "incomplete": false,
       "skipped": [
-        {
-          "headline": "Macklemore dropped from Ed Sheeran tour after pro-Palestinian remarks",
-          "reason": "Entertainment industry booking dispute; no policy, government or legal action involved."
-        },
         {
           "headline": "Illinois fence company removes work after homeowner refuses payment",
           "reason": "Human interest payment dispute with no policy or political angle."
