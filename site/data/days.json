@@ -6,47 +6,74 @@
       "tags": [
         "politics",
         "legal",
+        "defence",
         "immigration",
-        "economy",
-        "markets",
+        "climate",
         "tech",
         "privacy",
-        "defence",
-        "war"
+        "markets",
+        "economy",
+        "health",
+        "government"
       ],
       "sources": [
         "@aaronparnas",
+        "@groundnews",
         "@oafnation_actual",
         "@carolinegleich",
         "@total.hypocrisy",
         "@hunteralexanderhowell"
       ],
-      "post_count": 40,
-      "transcribed_count": 40,
+      "post_count": 57,
+      "transcribed_count": 57,
       "incomplete": false,
       "skipped": [
         {
-          "headline": "Commentary juxtaposes Adelson remarks with archival Shah interview on lobbying",
-          "reason": "Reaction to archival clips with no new reporting."
+          "headline": "Ed Sheeran loses all four opening acts after removing Macklemore over Gaza remarks",
+          "reason": "Mainly a music industry and commentary story rather than reporting new developments in the Middle East."
         },
         {
-          "headline": "Compilation of 9/11 witness accounts argues for controlled demolition",
-          "reason": "Archival compilation advancing a long-running theory; reports nothing new."
+          "headline": "Rescued airman worried about being ordered onto television",
+          "reason": "Human interest angle on one service member's media appearance rather than a policy or operational development."
         },
         {
-          "headline": "Bystander effect offered as explanation for absence of mass protest",
-          "reason": "Opinion commentary with no new reporting."
+          "headline": "Sailors told to remove air conditioners they bought for barracks without A/C",
+          "reason": "Base living-conditions story with no broader policy or political angle."
         },
         {
-          "headline": "Airman rescued from Iran worried about being ordered onto television",
-          "reason": "Teaser fragment with no substantive reporting attached."
+          "headline": "Roughly 90 USS Kearsarge sailors return from sea to find cars towed",
+          "reason": "Human interest story about base logistics with no policy angle."
         },
         {
-          "headline": "Commentary on living with anxiety under current conditions",
-          "reason": "Personal reflection on mental health, not news."
+          "headline": "Claim that Amazon and other tech giants grew out of government surveillance programmes",
+          "reason": "A montage of previously reported clips framed as speculation; reports nothing new itself."
         },
         {
-          "headline": "Song lyrics posted with no accompanying commentary",
+          "headline": "Commentary on Miriam Adelson and claims of a pro-Israel lobby",
+          "reason": "Commentary built on archive footage that reports nothing new."
+        },
+        {
+          "headline": "Compilation argues 9/11 was a controlled demolition and false flag",
+          "reason": "Archival compilation and conspiracy commentary that reports no new development."
+        },
+        {
+          "headline": "Commentary argues AI risk warnings are a coordinated psychological operation",
+          "reason": "Reaction commentary on existing clips that reports nothing new."
+        },
+        {
+          "headline": "Bystander effect explains why Americans will not take to the streets",
+          "reason": "Opinion commentary reporting no new development."
+        },
+        {
+          "headline": "Parable of the flood used to urge action ahead of the midterms",
+          "reason": "Personal reflection and opinion rather than news."
+        },
+        {
+          "headline": "Reflection on anxiety and collective trauma in the current climate",
+          "reason": "Personal mental health reflection with no policy content."
+        },
+        {
+          "headline": "Macklemore song lyrics",
           "reason": "Music only, no news content."
         }
       ]
