@@ -1,6 +1,76 @@
 {
-  "last_updated": "2026-09-13T19:36:32.851058+00:00",
+  "last_updated": "2026-09-14T18:17:29.236908+00:00",
   "days": [
+    {
+      "date": "2026-09-15",
+      "tags": [
+        "politics",
+        "legal",
+        "immigration",
+        "economy",
+        "markets",
+        "tech",
+        "privacy",
+        "defence",
+        "war"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@oafnation_actual",
+        "@carolinegleich",
+        "@total.hypocrisy",
+        "@hunteralexanderhowell"
+      ],
+      "post_count": 40,
+      "transcribed_count": 40,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Macklemore removed from Ed Sheeran tour after pro-Palestine statement",
+          "reason": "Entertainment industry dispute rather than reporting on the conflict or policy."
+        },
+        {
+          "headline": "Commentary questions whether AI risk warnings are a coordinated operation",
+          "reason": "Commentary and speculation that reports nothing new."
+        },
+        {
+          "headline": "Compilation questions origins of big tech firms and their government surveillance contracts",
+          "reason": "Archival clip compilation built around unverified allegations rather than new reporting."
+        },
+        {
+          "headline": "Commentary juxtaposes Adelson remarks with archival Shah interview on lobbying",
+          "reason": "Reaction to archival clips with no new reporting."
+        },
+        {
+          "headline": "Compilation of 9/11 witness accounts argues for controlled demolition",
+          "reason": "Archival compilation advancing a long-running theory; reports nothing new."
+        },
+        {
+          "headline": "Bystander effect offered as explanation for absence of mass protest",
+          "reason": "Opinion commentary with no new reporting."
+        },
+        {
+          "headline": "Parable used to argue against waiting passively before the midterms",
+          "reason": "Opinion commentary with no new reporting."
+        },
+        {
+          "headline": "Roughly 90 USS Kearsarge sailors return from sea to find cars towed",
+          "reason": "Military human interest story with no policy angle."
+        },
+        {
+          "headline": "Airman rescued from Iran worried about being ordered onto television",
+          "reason": "Teaser fragment with no substantive reporting attached."
+        },
+        {
+          "headline": "Commentary on living with anxiety under current conditions",
+          "reason": "Personal reflection on mental health, not news."
+        },
+        {
+          "headline": "Song lyrics posted with no accompanying commentary",
+          "reason": "Music only, no news content."
+        }
+      ]
+    },
     {
       "date": "2026-09-14",
       "tags": [
