@@ -34,7 +34,7 @@
 
   <link rel="preload" href="fonts/space-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=3c2c3ac17b">
+  <link rel="stylesheet" href="style.css?v=717f690c34">
 </head>
 <!-- data-mode is rewritten to "static" by export_static.py. The read-only build
      drops the journal, the source list, and the run history entirely — not with
@@ -110,6 +110,9 @@
     <div id="tags" class="chips" role="group" aria-label="Filter by topic"></div>
   </section>
 
+<!-- Book drafts are private: book/ is gitignored and lives in its own
+       private repository. data-live-only is what keeps this out of the
+       published build, the same mechanism that strips the journal. -->
 </aside>
 
 <main id="main" class="main" aria-live="polite">
@@ -141,7 +144,7 @@
 <div id="scrim" class="scrim" hidden></div>
 
 <script src="theme.js?v=197105d2fa"></script>
-<script src="app.js?v=5c38b949c7"></script>
+<script src="app.js?v=646a379865"></script>
 
 <!-- GoatCounter. No cookies and no personal data, so no consent banner.
      ~3.4KB gzipped and loaded async, so it never blocks render. All four

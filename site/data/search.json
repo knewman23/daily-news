@@ -1,6 +1,203 @@
 {
   "topics": [
     {
+      "date": "2026-09-16",
+      "headline": "Seven Republicans break with Trump in vote to limit Iran war powers",
+      "tags": [
+        "politics",
+        "war"
+      ],
+      "snippet": "Seven Republicans in Congress voted to restrain the president's war powers regarding Iran, a record number and up from four in a previous vote. Several of those voting against the president rely on hi\u2026",
+      "text": "seven republicans break with trump in vote to limit iran war powers\nseven republicans in congress voted to restrain the president's war powers regarding iran, a record number and up from four in a previous vote. several of those voting against the president rely on his endorsement. supporters of the measure argued the ongoing war in iran is being waged illegally."
+    },
+    {
+      "date": "2026-09-16",
+      "headline": "Massie files impeachment articles against Hegseth as Johnson cancels House votes",
+      "tags": [
+        "politics",
+        "defense"
+      ],
+      "snippet": "Rep. Thomas Massie, a Republican, filed eight articles of impeachment against Defense Secretary Pete Hegseth, primarily challenging the administration's conduct of the war in Iran. Speaker Mike Johnso\u2026",
+      "text": "massie files impeachment articles against hegseth as johnson cancels house votes\nrep. thomas massie, a republican, filed eight articles of impeachment against defense secretary pete hegseth, primarily challenging the administration's conduct of the war in iran. speaker mike johnson subsequently cancelled all house votes until after election day, including the scheduled impeachment vote and measures on ai regulation and affordability. massie noted that neither the president nor prominent allies had publicly defended hegseth against the articles, comparing the situation to george w. bush's dismissal of donald rumsfeld after the 2006 midterms."
+    },
+    {
+      "date": "2026-09-16",
+      "headline": "Trump administration prepares $2.8 billion bomb sale to Israel",
+      "tags": [
+        "politics",
+        "war"
+      ],
+      "snippet": "The administration plans to sell Israel a $2.8 billion munitions package of 40,000 2,000-pound bombs, comprising 20,000 MK 84s and 20,000 BLU-117s, according to a U.S. official. The proposal has been\u2026",
+      "text": "trump administration prepares $2.8 billion bomb sale to israel\nthe administration plans to sell israel a $2.8 billion munitions package of 40,000 2,000-pound bombs, comprising 20,000 mk 84s and 20,000 blu-117s, according to a u.s. official. the proposal has been shared with congressional committees. israel has used 2,000-pound bombs in gaza and lebanon, drawing scrutiny over civilian casualties; gaza health authorities say more than 73,000 palestinians have been killed since 2023, and a u.n. inquiry found israel committed genocide in gaza, a finding israel rejects, citing the hamas-led oct. 7 attack that killed 1,200 people and took more than 250 hostages."
+    },
+    {
+      "date": "2026-09-16",
+      "headline": "Leaked images show Iranian missile damage to US bases in the Middle East",
+      "tags": [
+        "war",
+        "defense"
+      ],
+      "snippet": "CBS News obtained images showing damage to American military bases in the Middle East caused by Iranian ballistic missiles. One image from an air base in Saudi Arabia shows a destroyed U.S. Air Force\u2026",
+      "text": "leaked images show iranian missile damage to us bases in the middle east\ncbs news obtained images showing damage to american military bases in the middle east caused by iranian ballistic missiles. one image from an air base in saudi arabia shows a destroyed u.s. air force plane, and another, reportedly from kuwait, shows a demolished building. the images were provided by service members who remained anonymous out of fear of retribution."
+    },
+    {
+      "date": "2026-09-16",
+      "headline": "Indictment charges Russian intelligence operatives over murder-for-hire plot on US soil",
+      "tags": [
+        "legal",
+        "politics"
+      ],
+      "snippet": "The Southern District of New York unsealed an indictment charging five people connected to Russia's FSB with murder-for-hire plots in the United States and abroad, including an attempted assassination\u2026",
+      "text": "indictment charges russian intelligence operatives over murder-for-hire plot on us soil\nthe southern district of new york unsealed an indictment charging five people connected to russia's fsb with murder-for-hire plots in the united states and abroad, including an attempted assassination on u.s. soil roughly two weeks ago. prosecutors allege the group surveilled, recruited and attempted to kill targets globally. none of the plots on u.s. soil succeeded, and all five individuals remain at large; the white house has not publicly responded."
+    },
+    {
+      "date": "2026-09-16",
+      "headline": "ICE detention sees rising miscarriages as arrests of pregnant women increase",
+      "tags": [
+        "immigration",
+        "health"
+      ],
+      "snippet": "A Guardian investigation reported that Immigration and Customs Enforcement has escalated arrests of pregnant women and children while the Department of Homeland Security has stopped tracking the numbe\u2026",
+      "text": "ice detention sees rising miscarriages as arrests of pregnant women increase\na guardian investigation reported that immigration and customs enforcement has escalated arrests of pregnant women and children while the department of homeland security has stopped tracking the number of miscarriages occurring in custody. more than a dozen miscarriages are known to have occurred since the start of the current administration, with cases attributed to inadequate medical care in detention facilities. one account describes a 35-year-old woman who learned she was pregnant only after being arrested and told to take a pregnancy test, and who bled heavily a month later and was told she was no longer pregnant."
+    },
+    {
+      "date": "2026-09-16",
+      "headline": "60 Minutes investigation finds brokers selling access to presidential pardons",
+      "tags": [
+        "politics",
+        "legal"
+      ],
+      "snippet": "A 60 Minutes investigation revealed a network of pardon brokers charging wealthy felons between $300,000 and $3 million to secure presidential pardons, with hidden camera footage capturing operatives\u2026",
+      "text": "60 minutes investigation finds brokers selling access to presidential pardons\na 60 minutes investigation revealed a network of pardon brokers charging wealthy felons between $300,000 and $3 million to secure presidential pardons, with hidden camera footage capturing operatives pitching their services. the traditional process routes applications through the justice department's pardon attorney's office for review and recommendation. the pardons wipe away criminal convictions and also millions of dollars in restitution owed to victims."
+    },
+    {
+      "date": "2026-09-16",
+      "headline": "Administration has lost 23 voting cases in court as midterm voting begins",
+      "tags": [
+        "politics",
+        "legal"
+      ],
+      "snippet": "Voting in the midterm elections has begun, with North Carolina already casting ballots and more states set to follow. The administration's legal efforts to restrict voting and alter voter rolls have f\u2026",
+      "text": "administration has lost 23 voting cases in court as midterm voting begins\nvoting in the midterm elections has begun, with north carolina already casting ballots and more states set to follow. the administration's legal efforts to restrict voting and alter voter rolls have failed in all 23 cases brought so far. separately, judge carl nichols in the district of columbia, a trump appointee, blocked the administration's executive order concerning the u.s. postal service."
+    },
+    {
+      "date": "2026-09-16",
+      "headline": "Hacker exposes surveillance capabilities inside Flock license plate cameras",
+      "tags": [
+        "surveillance",
+        "privacy"
+      ],
+      "snippet": "A report from 404 Media detailed how a hacker extracted and analyzed software running on a Flock automated license plate reader. The software explicitly detects people, vehicles, license plates and bi\u2026",
+      "text": "hacker exposes surveillance capabilities inside flock license plate cameras\na report from 404 media detailed how a hacker extracted and analyzed software running on a flock automated license plate reader. the software explicitly detects people, vehicles, license plates and bicycles, and recovered logs from several weeks showed the device generated more than a million images, sometimes isolating bumper stickers and other graphics, including an american flag patch on a motorcyclist's bag. the cameras transmit images and vehicle characteristics such as make, model and color to company servers as timestamped searchable records. a federal lawsuit has been filed alleging federal agencies use the technology to target americans for exercising first amendment rights."
+    },
+    {
+      "date": "2026-09-16",
+      "headline": "Administration moves to site AI data centers on federal public lands",
+      "tags": [
+        "tech",
+        "climate",
+        "politics"
+      ],
+      "snippet": "Executive Order 14318, signed on July 23, 2025, directed federal agencies to accelerate permits for data centers on public lands. On July 22, 2026, the U.S. Geological Survey released a synthesis and\u2026",
+      "text": "administration moves to site ai data centers on federal public lands\nexecutive order 14318, signed on july 23, 2025, directed federal agencies to accelerate permits for data centers on public lands. on july 22, 2026, the u.s. geological survey released a synthesis and spatial analysis of colocating ai data centers with energy infrastructure on bureau of land management lands, mapping transmission systems and power plants mainly in the west without recommending specific sites. the interior department has since instructed blm state directors to identify tracts that could accommodate data centers, giving them roughly three days to respond. separately, bernie sanders and steve bannon both spoke against artificial intelligence at an event in washington, d.c."
+    },
+    {
+      "date": "2026-09-16",
+      "headline": "Israeli offensive cyber firm Toca moves headquarters to Maryland amid Epstein-era links",
+      "tags": [
+        "surveillance",
+        "privacy"
+      ],
+      "snippet": "Toca, an Israeli offensive cyber contractor co-founded by former Israeli prime minister Ehud Barak, relocated its headquarters in February 2026 to Columbia, Maryland, citing the United States' role in\u2026",
+      "text": "israeli offensive cyber firm toca moves headquarters to maryland amid epstein-era links\ntoca, an israeli offensive cyber contractor co-founded by former israeli prime minister ehud barak, relocated its headquarters in february 2026 to columbia, maryland, citing the united states' role in global security innovation and government collaboration. the company markets capabilities including hacking internet-of-things devices, hijacking wifi security camera feeds, intercepting audio from smart electronics, covertly altering or erasing past video recordings, and extracting data from encrypted hardware, and holds undisclosed contracts with the u.s. government. barak received a february 2019 email from jeffrey epstein forwarding an article about robert kraft's arrest in a florida prostitution sting, months before epstein's own arrest. toca is backed by andreessen horowitz, which is also a lead backer of the license plate camera company flock."
+    },
+    {
+      "date": "2026-09-16",
+      "headline": "Pentagon confirms United States has weapons in orbit",
+      "tags": [
+        "defense"
+      ],
+      "snippet": "The Pentagon has confirmed that the United States maintains weapons in space. What those systems are capable of remains classified.",
+      "text": "pentagon confirms united states has weapons in orbit\nthe pentagon has confirmed that the united states maintains weapons in space. what those systems are capable of remains classified."
+    },
+    {
+      "date": "2026-09-16",
+      "headline": "US median household income reaches record $87,460 in 2025",
+      "tags": [
+        "economy",
+        "markets"
+      ],
+      "snippet": "Census Bureau data showed inflation-adjusted median household income reached a record $87,460 in 2025, up 2.6% from the prior year and above the 2019 pre-pandemic level of $85,320, while the poverty r\u2026",
+      "text": "us median household income reaches record $87,460 in 2025\ncensus bureau data showed inflation-adjusted median household income reached a record $87,460 in 2025, up 2.6% from the prior year and above the 2019 pre-pandemic level of $85,320, while the poverty rate fell to 10.2%. income has risen 2.5% since 2019, compared with 19% between 2013 and 2019. women's earnings rose 3.2% while men's fell, narrowing the gender pay gap to nearly 84 cents on the dollar, and the top 10% of households reported median income of $261,300 against just over $20,000 for the lowest 10%."
+    },
+    {
+      "date": "2026-09-16",
+      "headline": "Saudi Arabia announces major rare earth and uranium discovery in Madinah",
+      "tags": [
+        "markets",
+        "energy"
+      ],
+      "snippet": "Energy Minister Prince Abdulaziz bin Salman announced an estimated 110 million tonnes of ore containing rare earth minerals and uranium in the Madinah region. The find came from exploration and geolog\u2026",
+      "text": "saudi arabia announces major rare earth and uranium discovery in madinah\nenergy minister prince abdulaziz bin salman announced an estimated 110 million tonnes of ore containing rare earth minerals and uranium in the madinah region. the find came from exploration and geological studies at the jabal sayid project, which identified high concentrations of rare earths, including heavy elements, alongside promising uranium concentrations. the announcement was made at the international atomic energy agency general conference."
+    },
+    {
+      "date": "2026-09-16",
+      "headline": "McConnell returns to the Senate after three-month absence",
+      "tags": [
+        "politics"
+      ],
+      "snippet": "Sen. Mitch McConnell returned to the Senate on Monday for his first vote since June, ending a three-month absence following a fall at his Washington home. The 84-year-old, who used a wheelchair, voted\u2026",
+      "text": "mcconnell returns to the senate after three-month absence\nsen. mitch mcconnell returned to the senate on monday for his first vote since june, ending a three-month absence following a fall at his washington home. the 84-year-old, who used a wheelchair, voted on judicial nominee matthew byrne and said he remains in recovery and is not yet back to full strength. his return gives republicans an additional vote as they seek to advance a stalled farm bill; he plans to retire when his term ends in january."
+    },
+    {
+      "date": "2026-09-16",
+      "headline": "European Union offers Canada first-ever associate membership",
+      "tags": [
+        "politics"
+      ],
+      "snippet": "European Commission president Ursula von der Leyen offered Canada the opportunity to join the bloc as its first associate member. The offer comes as relations between Canada and the United States have\u2026",
+      "text": "european union offers canada first-ever associate membership\neuropean commission president ursula von der leyen offered canada the opportunity to join the bloc as its first associate member. the offer comes as relations between canada and the united states have deteriorated."
+    },
+    {
+      "date": "2026-09-16",
+      "headline": "Proposed bill would sharply raise VA refinance fees for veterans",
+      "tags": [
+        "politics",
+        "economy"
+      ],
+      "snippet": "A proposed bill could raise a $2,000 VA refinance fee to $5,680 on a $400,000 loan. The measure has not been enacted.",
+      "text": "proposed bill would sharply raise va refinance fees for veterans\na proposed bill could raise a $2,000 va refinance fee to $5,680 on a $400,000 loan. the measure has not been enacted."
+    },
+    {
+      "date": "2026-09-16",
+      "headline": "NATO officer loses clearance after counterintelligence probe into Tinder relationship",
+      "tags": [
+        "defense",
+        "surveillance"
+      ],
+      "snippet": "An officer met a woman through the dating app Tinder, triggering a counterintelligence investigation. His security clearance was suspended and he was removed from a NATO command.",
+      "text": "nato officer loses clearance after counterintelligence probe into tinder relationship\nan officer met a woman through the dating app tinder, triggering a counterintelligence investigation. his security clearance was suspended and he was removed from a nato command."
+    },
+    {
+      "date": "2026-09-16",
+      "headline": "Pentagon sets appearance criteria for troops attending Hegseth speech",
+      "tags": [
+        "defense",
+        "politics"
+      ],
+      "snippet": "The Pentagon issued new criteria for troops nominated to attend Defense Secretary Pete Hegseth's Sept. 30 speech. Commanders were told to select personnel who are fit, within body-composition standard\u2026",
+      "text": "pentagon sets appearance criteria for troops attending hegseth speech\nthe pentagon issued new criteria for troops nominated to attend defense secretary pete hegseth's sept. 30 speech. commanders were told to select personnel who are fit, within body-composition standards, and impeccably groomed."
+    },
+    {
+      "date": "2026-09-16",
+      "headline": "Man pleads guilty in $124,000 VA fraud after falsely claiming combat valor",
+      "tags": [
+        "legal"
+      ],
+      "snippet": "A man who claimed Vietnam combat service and two valor medals, including a Silver Star, has pleaded guilty in a $124,000 Department of Veterans Affairs fraud case. He never served in combat.",
+      "text": "man pleads guilty in $124,000 va fraud after falsely claiming combat valor\na man who claimed vietnam combat service and two valor medals, including a silver star, has pleaded guilty in a $124,000 department of veterans affairs fraud case. he never served in combat."
+    },
+    {
       "date": "2026-09-15",
       "headline": "Supreme Court blocks Trump mail-in ballot restrictions through the midterms",
       "tags": [
