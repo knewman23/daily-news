@@ -208,10 +208,16 @@ def classified_days(book_dir: str | Path) -> list[date]:
 
 
 def stale_days(book_dir: str | Path) -> list[date]:
-    """Days filed under an older outline version.
+    """Days filed under an older *thread* vocabulary.
 
-    What makes a structural revision affordable: only these need re-filing, not
-    the whole archive.
+    `version` counts the threads, not the outline as a whole, because threads are
+    the only thing filing depends on. Moving a thread between parts, renaming a
+    part or adding one changes no assignment, so it must not bump `version`:
+    doing so would mark every day stale and invite a re-file that recomputes
+    exactly what is already on disk — one model call per day, for nothing.
+
+    Bump `version` when a thread is added, removed, split or merged. Record a
+    part-only edit in `revised_at` alone.
     """
     current = load_outline(book_dir).version
     out = []

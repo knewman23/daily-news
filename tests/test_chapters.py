@@ -233,3 +233,29 @@ def test_stale_days_are_the_ones_filed_under_an_older_version(tmp_path):
     chapters.save_outline(book, bumped)
 
     assert chapters.stale_days(book) == [date(2026, 9, 15)]
+
+
+def test_moving_a_thread_between_parts_leaves_no_day_stale(tmp_path):
+    """A part-only edit must not trigger a re-file.
+
+    Threads are the classification target; parts are a layer above them. Marking
+    days stale for a change that cannot alter an assignment would cost one model
+    call per day to recompute what is already on disk.
+    """
+    book = book_dir(tmp_path)
+    chapters.classify_day(book, date(2026, 9, 15), [],
+                          runner=fake_runner({"assignments": []}))
+
+    moved = {
+        **OUTLINE,
+        "revised_at": "2026-09-16",
+        "parts": [
+            {"id": "unauthorized-war", "title": "The War Nobody Authorized",
+             "thread_ids": ["iran-authorization"]},
+            {"id": "readiness", "title": "Readiness",
+             "thread_ids": ["force-readiness"]},
+        ],
+    }
+    chapters.save_outline(book, chapters.outline_from_dict(moved))
+
+    assert chapters.stale_days(book) == []
