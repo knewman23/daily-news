@@ -334,3 +334,70 @@ def test_rare_subjects_are_below_the_floor(tmp_path):
     book = fragment_fixture(tmp_path, rows)
 
     assert chapters.fragments(book, min_items=5, min_threads=2) == []
+
+
+# --- fragmentation, the model reading ---------------------------------------
+
+
+def test_split_subjects_names_the_threads_the_subject_is_spread_over(tmp_path):
+    book = fragment_fixture(tmp_path, [
+        ("alpha", "Airstrike on Kestrel reported"),
+        ("beta", "Senate funds Kestrel programme"),
+    ])
+    runner = fake_runner({"subjects": [
+        {"subject": "The Kestrel programme", "why": "split between war and money",
+         "thread_ids": ["alpha", "beta"]},
+    ]})
+
+    found = chapters.split_subjects(book, runner=runner)
+
+    assert found[0]["subject"] == "The Kestrel programme"
+    assert found[0]["thread_ids"] == ["alpha", "beta"]
+
+
+def test_split_subjects_drops_thread_ids_the_outline_does_not_have(tmp_path):
+    """Same rule as filing: the model's thread ids are checked, not trusted."""
+    book = fragment_fixture(tmp_path, [
+        ("alpha", "Airstrike on Kestrel reported"),
+        ("beta", "Senate funds Kestrel programme"),
+    ])
+    runner = fake_runner({"subjects": [
+        {"subject": "Kestrel", "why": "scattered",
+         "thread_ids": ["alpha", "beta", "invented"]},
+    ]})
+
+    found = chapters.split_subjects(book, runner=runner)
+
+    assert found[0]["thread_ids"] == ["alpha", "beta"]
+    assert found[0]["unknown"] == ["invented"]
+
+
+def test_a_subject_left_with_one_real_thread_is_not_reported(tmp_path):
+    """Two ids, one invented, leaves one real thread — which is not a split.
+
+    Reporting it would claim a scatter the outline cannot be shown to have.
+    """
+    book = fragment_fixture(tmp_path, [("alpha", "Airstrike on Kestrel reported")])
+    runner = fake_runner({"subjects": [
+        {"subject": "Kestrel", "why": "scattered",
+         "thread_ids": ["alpha", "invented"]},
+    ]})
+
+    assert chapters.split_subjects(book, runner=runner) == []
+
+
+def test_split_subjects_discards_a_subject_naming_fewer_than_two_threads(tmp_path):
+    """A subject in one thread is not split; it is just a thread."""
+    book = fragment_fixture(tmp_path, [("alpha", "Airstrike on Kestrel reported")])
+    runner = fake_runner({"subjects": [
+        {"subject": "Kestrel", "why": "", "thread_ids": ["alpha"]},
+    ]})
+
+    assert chapters.split_subjects(book, runner=runner) == []
+
+
+def test_split_subjects_survives_a_reply_that_is_not_the_shape_asked_for(tmp_path):
+    book = fragment_fixture(tmp_path, [("alpha", "Airstrike on Kestrel reported")])
+    runner = fake_runner({"nonsense": True})
+
+    assert chapters.split_subjects(book, runner=runner) == []

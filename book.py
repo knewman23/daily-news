@@ -36,6 +36,10 @@ def main(argv: list[str] | None = None) -> int:
     frag = sub.add_parser(
         "fragments",
         help="Subjects that are filed but scattered across many threads.")
+    frag.add_argument("--offline", action="store_true",
+                      help="Count terms instead of asking the model. Free and "
+                           "deterministic, but blind to a subject spelled "
+                           "several ways.")
     frag.add_argument("--min-items", type=int, default=8)
     frag.add_argument("--min-threads", type=int, default=3)
 
@@ -56,7 +60,8 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "sync":
         return _sync(cfg, book, refile=args.refile, limit=args.limit)
     if args.command == "fragments":
-        return _fragments(cfg, book, args.min_items, args.min_threads)
+        return _fragments(cfg, book, args.offline, args.min_items,
+                          args.min_threads)
     return _status(cfg, book)
 
 
@@ -137,7 +142,8 @@ def _sync(cfg, book: Path, refile: bool, limit: int | None) -> int:
     return 1 if failed else 0
 
 
-def _fragments(cfg, book: Path, min_items: int, min_threads: int) -> int:
+def _fragments(cfg, book: Path, offline: bool, min_items: int,
+               min_threads: int) -> int:
     """Report subjects the outline has filed but never gathered.
 
     The counterpart to the unfiled queue. Unfiled finds gaps; this finds
@@ -146,20 +152,40 @@ def _fragments(cfg, book: Path, min_items: int, min_threads: int) -> int:
     """
     outline = chapters.load_outline(book)
     title = {t.id: t.title for t in outline.threads}
-    rows = chapters.fragments(book, min_items=min_items, min_threads=min_threads)
 
-    if not rows:
-        print("nothing looks fragmented at this threshold")
+    if offline:
+        rows = chapters.fragments(book, min_items=min_items,
+                                  min_threads=min_threads)
+        if not rows:
+            print("nothing looks fragmented at this threshold")
+            return 0
+        print(f"{len(rows)} term(s) spread across threads, "
+              f"largest consolidation first\n")
+        for row in rows:
+            print(f"  {row['term']}  —  {row['items']} items in "
+                  f"{row['threads']} threads, {row['away']} away from the "
+                  f"biggest ({int(row['top_share'] * 100)}% there)")
+            for tid, n in row["where"][:4]:
+                print(f"        {n:3}  {title.get(tid, tid)}")
+            print()
         return 0
 
-    print(f"{len(rows)} subject(s) filed across several threads, "
-          f"largest consolidation first\n")
+    rows = chapters.split_subjects(book)
+    if not rows:
+        print("no split subjects reported")
+        return 0
+
+    print(f"{len(rows)} subject(s) spread across threads that hold no one "
+          f"of them\n")
     for row in rows:
-        print(f"  {row['term']}  —  {row['items']} items in {row['threads']} "
-              f"threads, {row['away']} away from the biggest "
-              f"({int(row['top_share'] * 100)}% there)")
-        for tid, n in row["where"][:4]:
-            print(f"        {n:3}  {title.get(tid, tid)}")
+        print(f"  {row['subject']}")
+        if row["why"]:
+            print(f"      {row['why']}")
+        for name in row["titles"]:
+            print(f"        - {name}")
+        if row["unknown"]:
+            print(f"        (ignored unknown thread ids: "
+                  f"{', '.join(row['unknown'])})")
         print()
     return 0
 

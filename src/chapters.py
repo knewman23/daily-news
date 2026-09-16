@@ -585,6 +585,89 @@ def _terms(headline: str) -> list[tuple[str, bool, bool]]:
     return list(out.values())
 
 
+def split_subjects(
+    book_dir: str | Path,
+    per_thread: int = 30,
+    runner: Runner = subprocess.run,
+    model: str = DEFAULT_MODEL,
+) -> list[dict]:
+    """Subjects spread across threads, judged by reading rather than counting.
+
+    `fragments` counts words, and that is precisely why it missed the case it was
+    built for: Israel, Israeli, Gaza and Netanyahu are one subject appearing as
+    four terms, each individually too small or too concentrated to trip a
+    threshold — "gaza" looked like a model citizen at 22 items in a single
+    thread. No amount of tuning fixes that, because "the same subject" is a
+    semantic judgement, not a frequency.
+
+    So this asks the model, which is what the rest of the pipeline already pays
+    for. Thread ids come back checked against the outline, on the same rule
+    filing uses: an id that does not exist is reported as unknown rather than
+    silently naming a thread nobody can open.
+    """
+    outline = load_outline(book_dir)
+    known = outline.thread_ids
+    title = {t.id: t.title for t in outline.threads}
+
+    items: dict[str, list[str]] = {t.id: [] for t in outline.threads}
+    for day in classified_days(book_dir):
+        record = load_day(book_dir, day) or {}
+        for row in record.get("assignments") or []:
+            bucket = items.get(row.get("thread_id"))
+            if bucket is not None:
+                bucket.append(str(row.get("headline") or ""))
+
+    blocks = []
+    for thread_id, headlines in items.items():
+        if not headlines:
+            continue
+        shown = headlines[:per_thread]
+        lines = "\n".join(f"    - {h}" for h in shown)
+        more = (f"\n    …and {len(headlines) - len(shown)} more"
+                if len(headlines) > len(shown) else "")
+        blocks.append(f"[{thread_id}] {title[thread_id]}\n{lines}{more}")
+
+    if not blocks:
+        return []
+
+    prompt = (
+        "This is a book outline's threads and the news items filed into each.\n\n"
+        + "\n\n".join(blocks)
+        + "\n\nFind subjects that are SPLIT: material about one subject filed "
+        "across several threads, so that no thread gathers it. Judge by subject, "
+        "not by wording — Israel, Israeli, Gaza and Netanyahu are one subject, "
+        "not four.\n\n"
+        "Ignore a subject that one thread already holds most of, and ignore "
+        "subjects so broad they touch everything. Report only what a reader "
+        "would expect to find gathered in one place and cannot.\n\n"
+        "Use only the bracketed thread ids above. Reply with JSON only:\n"
+        "{\"subjects\": [{\"subject\": \"...\", \"why\": \"one sentence\", "
+        "\"thread_ids\": [\"...\", \"...\"]}]}"
+    )
+
+    payload = _call(prompt, runner=runner, model=model)
+    rows = payload.get("subjects") if isinstance(payload, dict) else None
+
+    out = []
+    for row in rows or []:
+        if not isinstance(row, dict) or not row.get("subject"):
+            continue
+        named = [str(t) for t in (row.get("thread_ids") or [])]
+        good = [t for t in named if t in known]
+        unknown = [t for t in named if t not in known]
+        # One thread is not a split subject, it is a thread.
+        if len(good) < 2:
+            continue
+        out.append({
+            "subject": str(row["subject"]),
+            "why": str(row.get("why") or ""),
+            "thread_ids": good,
+            "titles": [title[t] for t in good],
+            "unknown": unknown,
+        })
+    return out
+
+
 # --- the review rollup -----------------------------------------------------
 
 
