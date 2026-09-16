@@ -259,3 +259,78 @@ def test_moving_a_thread_between_parts_leaves_no_day_stale(tmp_path):
     chapters.save_outline(book, chapters.outline_from_dict(moved))
 
     assert chapters.stale_days(book) == []
+
+
+# --- fragmentation ---------------------------------------------------------
+
+
+def fragment_fixture(tmp_path, rows):
+    """rows: (thread_id, headline). Builds an outline and one filed day."""
+    threads = sorted({tid for tid, _ in rows})
+    outline = {
+        "version": 1, "revised_at": "2026-09-16",
+        "threads": [{"id": t, "title": t, "description": ""} for t in threads],
+        "parts": [{"id": "p", "title": "P", "thread_ids": threads}],
+    }
+    book = book_dir(tmp_path, outline)
+    chapters._write_day(
+        book, date(2026, 9, 15), 1,
+        [{"headline": h, "thread_id": t} for t, h in rows], [],
+    )
+    return book
+
+
+def test_a_subject_living_in_one_thread_is_not_fragmented(tmp_path):
+    rows = [("alpha", f"Court rules on Kestrel number {n}") for n in range(10)]
+    book = fragment_fixture(tmp_path, rows)
+
+    found = chapters.fragments(book, min_items=4, min_threads=2)
+
+    assert [f["term"] for f in found] == []
+
+
+def test_a_subject_split_across_threads_is_flagged(tmp_path):
+    """The Israel case: filed everywhere, owned by nothing."""
+    # Eight threads, kestrel in three of them. A realistic outline is what makes
+    # the background guard mean anything: in a four-thread fixture, a subject in
+    # three threads looks like weather rather than a subject.
+    rows = (
+        [("alpha", f"Airstrike on Kestrel reported {n}") for n in range(4)]
+        + [("beta", f"Senate funds Kestrel programme {n}") for n in range(4)]
+        + [("gamma", f"Protests over Kestrel policy {n}") for n in range(4)]
+        + [(tid, f"Unrelated housing item {tid}{n}")
+           for tid in ("delta", "epsilon", "zeta", "eta", "theta")
+           for n in range(3)]
+    )
+    book = fragment_fixture(tmp_path, rows)
+
+    found = chapters.fragments(book, min_items=4, min_threads=2)
+    terms = [f["term"] for f in found]
+
+    assert "kestrel" in terms
+    row = next(f for f in found if f["term"] == "kestrel")
+    assert row["items"] == 12
+    assert row["threads"] == 3
+    assert row["top_share"] < 0.5
+
+
+def test_a_term_in_almost_every_thread_is_background_not_a_subject(tmp_path):
+    """'Trump' appears everywhere; that is noise, not a missing chapter."""
+    rows = [
+        (tid, f"Senator asks Trump something {n}")
+        for tid in ("alpha", "beta", "gamma", "delta")
+        for n in range(4)
+    ]
+    book = fragment_fixture(tmp_path, rows)
+
+    found = chapters.fragments(book, min_items=4, min_threads=2,
+                               max_thread_spread=0.5)
+
+    assert "trump" not in [f["term"] for f in found]
+
+
+def test_rare_subjects_are_below_the_floor(tmp_path):
+    rows = [("alpha", "Vote on Kestrel one"), ("beta", "Vote on Kestrel two")]
+    book = fragment_fixture(tmp_path, rows)
+
+    assert chapters.fragments(book, min_items=5, min_threads=2) == []

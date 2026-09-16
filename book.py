@@ -33,6 +33,12 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_parser("bootstrap", help="Derive the first outline from the archive.")
     sub.add_parser("status", help="Show what is filed and what is not.")
 
+    frag = sub.add_parser(
+        "fragments",
+        help="Subjects that are filed but scattered across many threads.")
+    frag.add_argument("--min-items", type=int, default=8)
+    frag.add_argument("--min-threads", type=int, default=3)
+
     sync = sub.add_parser("sync", help="Classify days that have no day file.")
     sync.add_argument("--refile", action="store_true",
                       help="Also re-file days stamped with an older version.")
@@ -49,6 +55,8 @@ def main(argv: list[str] | None = None) -> int:
         return _bootstrap(cfg, book)
     if args.command == "sync":
         return _sync(cfg, book, refile=args.refile, limit=args.limit)
+    if args.command == "fragments":
+        return _fragments(cfg, book, args.min_items, args.min_threads)
     return _status(cfg, book)
 
 
@@ -127,6 +135,33 @@ def _sync(cfg, book: Path, refile: bool, limit: int | None) -> int:
     if failed:
         log.error("%d day(s) failed; re-run to retry them", failed)
     return 1 if failed else 0
+
+
+def _fragments(cfg, book: Path, min_items: int, min_threads: int) -> int:
+    """Report subjects the outline has filed but never gathered.
+
+    The counterpart to the unfiled queue. Unfiled finds gaps; this finds
+    mis-grouping — material that is all filed, just filed apart, which no
+    amount of looking at unfiled items will ever surface.
+    """
+    outline = chapters.load_outline(book)
+    title = {t.id: t.title for t in outline.threads}
+    rows = chapters.fragments(book, min_items=min_items, min_threads=min_threads)
+
+    if not rows:
+        print("nothing looks fragmented at this threshold")
+        return 0
+
+    print(f"{len(rows)} subject(s) filed across several threads, "
+          f"largest consolidation first\n")
+    for row in rows:
+        print(f"  {row['term']}  —  {row['items']} items in {row['threads']} "
+              f"threads, {row['away']} away from the biggest "
+              f"({int(row['top_share'] * 100)}% there)")
+        for tid, n in row["where"][:4]:
+            print(f"        {n:3}  {title.get(tid, tid)}")
+        print()
+    return 0
 
 
 def _status(cfg, book: Path) -> int:

@@ -25,6 +25,7 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 import subprocess
 from dataclasses import dataclass, field
 from datetime import date
@@ -457,6 +458,131 @@ def consolidate(
         "threads": payload.get("threads") or [],
         "parts": payload.get("parts") or [],
     })
+
+
+# --- fragmentation ---------------------------------------------------------
+
+# Words that say nothing about what an item is about. Deliberately short: the
+# thread-spread guard below does the heavy lifting, because a term common enough
+# to need suppressing is a term that appears in most threads anyway.
+_STOPWORDS = frozenset("""
+about after again against amid among another over under into with without from
+that this these those than then there their them they when what which while who
+whom whose will would could should says said tell told more most other some such
+being been have has had was were are is be as at by for in of on to a an and or
+but not no its it his her him she he you your our us we new now first last two
+three report reports reported plan plans call calls called make makes made take
+takes taken say back down out off up how why also may might can cause claim
+claims year years day days week weeks month months time times people
+""".split())
+
+
+def fragments(
+    book_dir: str | Path,
+    min_items: int = 8,
+    min_threads: int = 3,
+    max_top_share: float = 0.7,
+    max_thread_spread: float = 0.5,
+    proper_ratio: float = 0.7,
+    limit: int = 20,
+) -> list[dict]:
+    """Subjects that are filed but scattered — the gap `unfiled` cannot show.
+
+    The revision command proposes new threads from the unfiled queue, which
+    finds gaps. It cannot find *mis-grouping*: material that is all filed, just
+    filed apart. Israel was the case that exposed this — 84 items across 16
+    threads in 6 parts, nothing unfiled, and no part named for it.
+
+    A subject is fragmented when a term recurs often (`min_items`), across
+    several threads (`min_threads`), with no thread holding most of it
+    (`max_top_share`).
+
+    `max_thread_spread` is what separates a subject from background. A term in
+    most of the threads is not a missing chapter, it is the archive's weather —
+    "trump" appears everywhere and means nothing structural. A real subject
+    clusters in a minority of threads.
+    """
+    by_term: dict[str, dict[str, int]] = {}
+    caps: dict[str, list[int]] = {}       # [capitalised, total], off-initial only
+
+    for day in classified_days(book_dir):
+        record = load_day(book_dir, day) or {}
+        for row in record.get("assignments") or []:
+            thread_id = row.get("thread_id")
+            if not thread_id:
+                continue
+            for term, capitalised, initial in _terms(str(row.get("headline") or "")):
+                counts = by_term.setdefault(term, {})
+                counts[thread_id] = counts.get(thread_id, 0) + 1
+                if not initial:
+                    seen = caps.setdefault(term, [0, 0])
+                    seen[0] += int(capitalised)
+                    seen[1] += 1
+
+    total_threads = len({
+        tid for counts in by_term.values() for tid in counts
+    }) or 1
+
+    # A subject already named by a part is gathered, not scattered. "iran" is in
+    # sixteen threads because The Iran War is a whole part of the book — that is
+    # the structure working, not a defect to report.
+    covered = {
+        w for part in load_outline(book_dir).parts
+        for w in re.findall(r"[a-z][a-z'\-]{3,}", part.title.lower())
+    }
+
+    out = []
+    for term, counts in by_term.items():
+        items = sum(counts.values())
+        threads = len(counts)
+        if items < min_items or threads < min_threads:
+            continue
+        if threads / total_threads > max_thread_spread:
+            continue
+        if term in covered:
+            continue
+
+        # Proper nouns are the terms that deserve a chapter. "strikes" and
+        # "military" spread across threads because three different wars involve
+        # strikes; that is description, not a subject anyone would gather.
+        capitalised, seen = caps.get(term, (0, 0))
+        if not seen or capitalised / seen < proper_ratio:
+            continue
+
+        top = max(counts.values())
+        share = top / items
+        if share > max_top_share:
+            continue
+
+        out.append({
+            "term": term,
+            "items": items,
+            "threads": threads,
+            "top_share": round(share, 2),
+            # How many items sit outside the thread that holds the most of them:
+            # the size of the consolidation this would be.
+            "away": items - top,
+            "where": sorted(counts.items(), key=lambda kv: -kv[1]),
+        })
+
+    out.sort(key=lambda r: (-r["away"], -r["items"]))
+    return out[:limit]
+
+
+def _terms(headline: str) -> list[tuple[str, bool, bool]]:
+    """(term, was capitalised, was the first word), one per distinct term.
+
+    The possessive is folded away so "Trump's" and "Trump" are one subject
+    rather than two half-sized ones.
+    """
+    words = re.findall(r"[A-Za-z][A-Za-z'\-]{2,}", headline)
+    out: dict[str, tuple[str, bool, bool]] = {}
+    for at, word in enumerate(words):
+        term = word.lower().removesuffix("'s").removesuffix("s'")
+        if len(term) < 4 or term in _STOPWORDS:
+            continue
+        out.setdefault(term, (term, word[:1].isupper(), at == 0))
+    return list(out.values())
 
 
 # --- the review rollup -----------------------------------------------------
