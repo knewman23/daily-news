@@ -2,6 +2,55 @@
   "last_updated": "2026-09-16T17:54:02.319926+00:00",
   "days": [
     {
+      "date": "2026-09-17",
+      "tags": [
+        "markets",
+        "economy",
+        "politics",
+        "war",
+        "defence",
+        "legal",
+        "immigration",
+        "climate",
+        "tech",
+        "ai",
+        "policing",
+        "media",
+        "surveillance",
+        "health"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@groundnews",
+        "@oafnation_actual",
+        "@hunteralexanderhowell",
+        "@ericmoutsos",
+        "@total.hypocrisy",
+        "@carolinegleich"
+      ],
+      "post_count": 43,
+      "transcribed_count": 42,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Ed Sheeran tour loses all opening acts after Macklemore dropped over pro-Palestinian comments",
+          "reason": "Entertainment-industry booking dispute with no government or policy action behind it."
+        },
+        {
+          "headline": "Archival Carter and Nixon remarks on pro-Israel influence in Washington resurface",
+          "reason": "Archival clips replayed as commentary; reports nothing new."
+        },
+        {
+          "headline": "Creator says account was suspended after anti-Flock surveillance campaign",
+          "reason": "Mainly a creator's platform suspension and petition drive rather than new reporting on surveillance."
+        },
+        {
+          "headline": "Climber completes Utah's fourth-highest peak in a single day",
+          "reason": "Personal outdoor trip report with no news content."
+        }
+      ]
+    },
+    {
       "date": "2026-09-16",
       "tags": [
         "politics",
