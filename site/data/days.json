@@ -2,6 +2,79 @@
   "last_updated": "2026-09-17T17:19:19.922635+00:00",
   "days": [
     {
+      "date": "2026-09-18",
+      "tags": [
+        "politics",
+        "legal",
+        "war",
+        "privacy",
+        "markets",
+        "economy",
+        "defence",
+        "tech",
+        "energy",
+        "immigration",
+        "health",
+        "climate"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@total.hypocrisy",
+        "@groundnews",
+        "@oafnation_actual",
+        "@carolinegleich"
+      ],
+      "post_count": 36,
+      "transcribed_count": 36,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Joe Rogan calls Trump supporters rabid",
+          "reason": "Commentary reaction to a podcast clip that reports no new political development"
+        },
+        {
+          "headline": "Scientists identify first new cat species in about a century in Bolivia",
+          "reason": "Science discovery with no policy, political or environmental-policy angle"
+        },
+        {
+          "headline": "FDA classifies hand soap recall across 15 states as Class II",
+          "reason": "Consumer product recall rather than public health policy"
+        },
+        {
+          "headline": "Lone holdout juror in Lindsay Clancy trial retains counsel",
+          "reason": "Individual criminal case with no policy or civil liberties angle"
+        },
+        {
+          "headline": "Crowd sings Canadian anthem together at Buffalo Bills game",
+          "reason": "Human interest sports moment with no policy angle"
+        },
+        {
+          "headline": "Green Beret receives Purple Heart 16 years after Afghanistan blast",
+          "reason": "Human interest military award story with no policy angle"
+        },
+        {
+          "headline": "DNA technology may identify Korean War Unknown after 68 years",
+          "reason": "Human interest military history story with no policy angle"
+        },
+        {
+          "headline": "Army study of 1.4 million injuries finds embedded health teams speed recovery",
+          "reason": "Fitness and injury recovery research rather than public health policy"
+        },
+        {
+          "headline": "Naval Station Norfolk reviews towing after sailors' cars removed during deployment",
+          "reason": "Base administrative incident with no policy or political angle"
+        },
+        {
+          "headline": "Creator questions official history of early 20th century architecture",
+          "reason": "Personal speculation about historical photographs with no news content"
+        },
+        {
+          "headline": "Ultrarunner completes 50-mile run across land cut from Bears Ears",
+          "reason": "Personal race report; the policy substance from this post is covered in the Bears Ears topic"
+        }
+      ]
+    },
+    {
       "date": "2026-09-17",
       "tags": [
         "markets",
