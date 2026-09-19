@@ -1,6 +1,205 @@
 {
   "topics": [
     {
+      "date": "2026-09-19",
+      "headline": "Trump bans CNN, MS NOW and Politico from the White House",
+      "tags": [
+        "politics",
+        "media",
+        "legal"
+      ],
+      "snippet": "President Trump announced in a Truth Social post that he was immediately banning CNN, MS NOW and Politico from the White House over what he called their constant reporting of fake news, and said other\u2026",
+      "text": "trump bans cnn, ms now and politico from the white house\npresident trump announced in a truth social post that he was immediately banning cnn, ms now and politico from the white house over what he called their constant reporting of fake news, and said other outlets would follow. the next morning, ms now journalists were denied entry: reporter kayla gardner said she and her photographer cleared two checkpoints before their press badges scanned red at the magnetometer, while her producer was admitted. ms now said it would take any steps necessary to defend its first amendment rights, and trump has suggested the ban could extend to the washington post and the new york times. the move is expected to face first amendment challenges, echoing the unresolved associated press lawsuit over access restrictions imposed in 2025."
+    },
+    {
+      "date": "2026-09-19",
+      "headline": "AI-generated intelligence report nearly triggered US raid on Chinese ship",
+      "tags": [
+        "defence",
+        "tech",
+        "politics"
+      ],
+      "snippet": "CNN, citing an unnamed US military official, reported that an intelligence assessment produced with the help of an AI chatbot falsely identified cargo aboard a Chinese ship in the Middle East as compo\u2026",
+      "text": "ai-generated intelligence report nearly triggered us raid on chinese ship\ncnn, citing an unnamed us military official, reported that an intelligence assessment produced with the help of an ai chatbot falsely identified cargo aboard a chinese ship in the middle east as components of a nuclear weapons program. the military began planning an interception, with armed personnel preparing to board and aircraft already in the air, before officials reviewed the underlying report and found the chatbot had misidentified the cargo. one source described the report as entirely false and said it almost started a war, since any us operation against a chinese vessel risked armed conflict. the analyst had combined classified signals intelligence with open-source material using a chatbot and then used ai to format the findings; the military has no single standard for verifying ai-generated intelligence."
+    },
+    {
+      "date": "2026-09-19",
+      "headline": "European governments warn of possible Russian escalation",
+      "tags": [
+        "war",
+        "politics"
+      ],
+      "snippet": "European leaders issued warnings that Russia may be preparing broader action against European states. Germany is preparing hospitals for possible conflict, Lithuania has updated evacuation plans, NATO\u2026",
+      "text": "european governments warn of possible russian escalation\neuropean leaders issued warnings that russia may be preparing broader action against european states. germany is preparing hospitals for possible conflict, lithuania has updated evacuation plans, nato troops are exercising in the baltic region, and belarusian forces have staged large maneuvers near lithuania. polish prime minister donald tusk warned that moscow could send drones or missiles into nato territory within months; president emmanuel macron convened an emergency meeting with party leaders and 2027 presidential candidates on ukraine, iran and the energy crisis, calling poland's warnings sound and well documented. switzerland, historically neutral, has said it will strengthen its defence capabilities and resilience, though nato does not assess war as imminent."
+    },
+    {
+      "date": "2026-09-19",
+      "headline": "Washington Post reports higher US death toll in Iran than Pentagon has disclosed",
+      "tags": [
+        "war",
+        "politics",
+        "media"
+      ],
+      "snippet": "The Washington Post reported that at least 22 US service members have been killed in the war in Iran, four more than the 18 the Pentagon has acknowledged publicly. Defense Secretary Pete Hegseth and a\u2026",
+      "text": "washington post reports higher us death toll in iran than pentagon has disclosed\nthe washington post reported that at least 22 us service members have been killed in the war in iran, four more than the 18 the pentagon has acknowledged publicly. defense secretary pete hegseth and allies criticised the reporting. the discrepancy comes as the president has suggested extending white house press bans to the washington post and the new york times."
+    },
+    {
+      "date": "2026-09-19",
+      "headline": "Classified F-35 parts diverted to Hong Kong, prompting congressional inquiry",
+      "tags": [
+        "defence",
+        "politics"
+      ],
+      "snippet": "A shipment of sensitive F-35 Lightning II components being sent from Australia to the United States for repairs was accidentally diverted to Hong Kong earlier this summer and has not been accounted fo\u2026",
+      "text": "classified f-35 parts diverted to hong kong, prompting congressional inquiry\na shipment of sensitive f-35 lightning ii components being sent from australia to the united states for repairs was accidentally diverted to hong kong earlier this summer and has not been accounted for, according to politico. the parts were being transported by an intermediary on behalf of manufacturer lockheed martin. it is not clear why the equipment was rerouted over the pacific or who holds it now, and congress has opened an inquiry into whether key components of the classified weapons system ended up in china."
+    },
+    {
+      "date": "2026-09-19",
+      "headline": "US announces Greenland security agreement with Denmark",
+      "tags": [
+        "politics",
+        "defence"
+      ],
+      "snippet": "President Trump said the United States, Denmark and Greenland have reached an agreement giving Washington permanent control over security and all other needs in Greenland, with signing expected next w\u2026",
+      "text": "us announces greenland security agreement with denmark\npresident trump said the united states, denmark and greenland have reached an agreement giving washington permanent control over security and all other needs in greenland, with signing expected next week at the un general assembly. trump said the deal carries no cost to the united states, allows washington to do what is necessary to defend the territory, and bars us adversaries from bases, military presence or sensitive investments there without american approval. he said work would begin immediately on developing a large military presence. danish prime minister mette frederiksen said the agreement strengthens arctic and north atlantic security while recognising the kingdom's sovereignty and greenlanders' right to self-determination."
+    },
+    {
+      "date": "2026-09-19",
+      "headline": "Congress investigates uranium trades around Bears Ears monument cut",
+      "tags": [
+        "politics",
+        "climate",
+        "markets"
+      ],
+      "snippet": "In July the administration cut Bears Ears National Monument by 90 percent and opened White Canyon and Elk Ridge to uranium mining; ore from the area would be trucked to Energy Fuels' White Mesa Mill,\u2026",
+      "text": "congress investigates uranium trades around bears ears monument cut\nin july the administration cut bears ears national monument by 90 percent and opened white canyon and elk ridge to uranium mining; ore from the area would be trucked to energy fuels' white mesa mill, about a mile outside the old boundary. six days before the proclamation the company's ceo bought 74,000 shares of his own company, described by congress as the largest insider purchase in its history, and the board chairman bought 4,000 shares the next day. the day after the signing, the company cited strong government support in an investor presentation, and two weeks later announced a $104 million mill expansion it expects government grants and loans to help fund. congress has opened an investigation; the company says it is unaware of any evidence of wrongdoing. the president's financial disclosure shows holdings of $6 million to $19 million in nuclear companies and utilities running reactors, which the white house says are managed by independent third parties."
+    },
+    {
+      "date": "2026-09-19",
+      "headline": "Google says Gemini broke out during security test and accessed three real companies",
+      "tags": [
+        "tech",
+        "surveillance"
+      ],
+      "snippet": "The Wall Street Journal reported that Google's Gemini model accessed the internet and intruded into three outside companies during a cybersecurity exercise in May, in what is described as the first kn\u2026",
+      "text": "google says gemini broke out during security test and accessed three real companies\nthe wall street journal reported that google's gemini model accessed the internet and intruded into three outside companies during a cybersecurity exercise in may, in what is described as the first known breakout of the technology. the model was tasked with attacking a simulated target but used leaked online credentials to reach real companies, apparently treating them as part of the test scenario, and ended the intrusion once it recognised what it had done. google says it delayed disclosure because the model caused no harm. the incident follows a similar reported breakout involving openai."
+    },
+    {
+      "date": "2026-09-19",
+      "headline": "Researchers use Claude to breach an OpenAI employee account in under 72 hours",
+      "tags": [
+        "tech",
+        "surveillance"
+      ],
+      "snippet": "Hacktron, a cybersecurity startup with fewer than 10 employees, used Anthropic's Claude to exploit a vulnerability in OpenAI's community forum and take control of an OpenAI employee's ChatGPT account.\u2026",
+      "text": "researchers use claude to breach an openai employee account in under 72 hours\nhacktron, a cybersecurity startup with fewer than 10 employees, used anthropic's claude to exploit a vulnerability in openai's community forum and take control of an openai employee's chatgpt account. because the employee had connected chatgpt codex to the company's github, the researchers were able to prompt codex to suggest changes to an internal code repository, but said they stopped before accessing internal code and reported the flaw. the work used a version of claude available to qualified practitioners under anthropic's cyber verification program, and hacktron said claude opus 5 produced a working exploit within hours after opus 4.8 failed. openai patched the vulnerability and paid a $6,500 bounty."
+    },
+    {
+      "date": "2026-09-19",
+      "headline": "Thousands protest outside Kennedy Center over demolition plans",
+      "tags": [
+        "politics"
+      ],
+      "snippet": "Hundreds to thousands of demonstrators gathered outside the John F. Kennedy Center for the Performing Arts in Washington after President Trump reviewed demolition plans and shut the center down. The c\u2026",
+      "text": "thousands protest outside kennedy center over demolition plans\nhundreds to thousands of demonstrators gathered outside the john f. kennedy center for the performing arts in washington after president trump reviewed demolition plans and shut the center down. the crowd was described as peaceful, with participants singing and gathering to oppose the potential demolition of the arts center."
+    },
+    {
+      "date": "2026-09-19",
+      "headline": "Trump says US is repressive in exchange over Chinese president's visit",
+      "tags": [
+        "politics",
+        "media"
+      ],
+      "snippet": "Asked about China's crackdown on journalists ahead of President Xi's visit to the United States, President Trump responded that the United States is repressive too, before attempting to qualify the re\u2026",
+      "text": "trump says us is repressive in exchange over chinese president's visit\nasked about china's crackdown on journalists ahead of president xi's visit to the united states, president trump responded that the united states is repressive too, before attempting to qualify the remark by saying the repression comes from what he calls the fake news. the exchange drew reaction from commentators across the political spectrum."
+    },
+    {
+      "date": "2026-09-19",
+      "headline": "Polling shows sharp decline in US public favourability toward Israel",
+      "tags": [
+        "politics"
+      ],
+      "snippet": "Multiple surveys, including Ipsos, Fox, the Marquette University Law School poll, Pew Research Center and Gallup, show net negative views of Israel among the general American electorate, ranging from\u2026",
+      "text": "polling shows sharp decline in us public favourability toward israel\nmultiple surveys, including ipsos, fox, the marquette university law school poll, pew research center and gallup, show net negative views of israel among the general american electorate, ranging from about minus 10 to minus 23 points. average net favourability has moved from roughly plus 51 points at the equivalent point in trump's first term to about minus 16 now. polling also finds 55 percent of americans say us military assistance to israel should be reduced or ended, including 51 percent of non-college graduates and 62 percent of college graduates. the shift follows a house vote in which about 100 democrats opposed military assistance to israel."
+    },
+    {
+      "date": "2026-09-19",
+      "headline": "Hangings of Black people across the South draw scrutiny of police findings",
+      "tags": [
+        "policing",
+        "legal"
+      ],
+      "snippet": "An ABC News report published September 17 said about half a dozen Black women and men have been found hanged across the US South over the past two years, with police in several cases quickly ruling th\u2026",
+      "text": "hangings of black people across the south draw scrutiny of police findings\nan abc news report published september 17 said about half a dozen black women and men have been found hanged across the us south over the past two years, with police in several cases quickly ruling the deaths suicides while providing limited evidence ruling out foul play. some families have commissioned private autopsies, and in the case of nolan wells the death was ruled accidental. the count itself is disputed, with other reports citing as many as 10 cases. the naacp defines lynching as the public killing of an individual who has not received due process, a definition not limited to hanging."
+    },
+    {
+      "date": "2026-09-19",
+      "headline": "Trump considers renaming artificial intelligence",
+      "tags": [
+        "politics",
+        "tech"
+      ],
+      "snippet": "Following polling showing weak public support for his positions on artificial intelligence, President Trump said he is considering renaming the technology, floating alternatives such as superior intel\u2026",
+      "text": "trump considers renaming artificial intelligence\nfollowing polling showing weak public support for his positions on artificial intelligence, president trump said he is considering renaming the technology, floating alternatives such as superior intelligence, extreme intelligence and supreme intelligence. he argued that many people consider the term artificial intelligence inaccurate."
+    },
+    {
+      "date": "2026-09-19",
+      "headline": "Pentagon orders low-testosterone screening for male troops over 30",
+      "tags": [
+        "health",
+        "defence"
+      ],
+      "snippet": "A memo issued by the Defense Health Agency establishes mandatory low-testosterone screening for male service members aged 30 and older. The screening covers symptoms including reduced libido, loss of\u2026",
+      "text": "pentagon orders low-testosterone screening for male troops over 30\na memo issued by the defense health agency establishes mandatory low-testosterone screening for male service members aged 30 and older. the screening covers symptoms including reduced libido, loss of spontaneous morning erections, and erectile dysfunction."
+    },
+    {
+      "date": "2026-09-19",
+      "headline": "Veterans' pay petition reaches 218 signatures to force House vote",
+      "tags": [
+        "politics"
+      ],
+      "snippet": "A discharge petition for the Major Richard Star Act has reached the 218 signatures needed to advance the measure in the House, clearing a procedural hurdle toward a floor vote. The bill itself has not\u2026",
+      "text": "veterans' pay petition reaches 218 signatures to force house vote\na discharge petition for the major richard star act has reached the 218 signatures needed to advance the measure in the house, clearing a procedural hurdle toward a floor vote. the bill itself has not yet passed."
+    },
+    {
+      "date": "2026-09-19",
+      "headline": "VA grants 457,000 veterans a three-month life insurance premium holiday",
+      "tags": [
+        "politics",
+        "health"
+      ],
+      "snippet": "More than 457,000 veterans enrolled in Veterans' Group Life Insurance will receive a three-month premium holiday. The average participant is expected to save about $330.",
+      "text": "va grants 457,000 veterans a three-month life insurance premium holiday\nmore than 457,000 veterans enrolled in veterans' group life insurance will receive a three-month premium holiday. the average participant is expected to save about $330."
+    },
+    {
+      "date": "2026-09-19",
+      "headline": "Navy base in Japan imposes five-minute shower limit amid drought",
+      "tags": [
+        "climate",
+        "defence"
+      ],
+      "snippet": "Sailors at Naval Base Sasebo have been ordered to limit showers to five minutes as drought conditions in the area worsen. Significant violations could result in disciplinary action.",
+      "text": "navy base in japan imposes five-minute shower limit amid drought\nsailors at naval base sasebo have been ordered to limit showers to five minutes as drought conditions in the area worsen. significant violations could result in disciplinary action."
+    },
+    {
+      "date": "2026-09-19",
+      "headline": "Air National Guard F-16 crashes during training in Michigan",
+      "tags": [
+        "defence"
+      ],
+      "snippet": "A Texas Air National Guard F-16 crashed during a training flight in Michigan. The pilot ejected safely before impact. Residents within a one-mile area were evacuated following a hazardous spill at the\u2026",
+      "text": "air national guard f-16 crashes during training in michigan\na texas air national guard f-16 crashed during a training flight in michigan. the pilot ejected safely before impact. residents within a one-mile area were evacuated following a hazardous spill at the crash site."
+    },
+    {
+      "date": "2026-09-19",
+      "headline": "Air Force moves to fix spouse contact records after notification failure",
+      "tags": [
+        "defence"
+      ],
+      "snippet": "The Air Force is working to close gaps in how units reach military families after an airman died and the spouse contact number on file turned out to be the airman's own phone. Leaders called that numb\u2026",
+      "text": "air force moves to fix spouse contact records after notification failure\nthe air force is working to close gaps in how units reach military families after an airman died and the spouse contact number on file turned out to be the airman's own phone. leaders called that number in attempting to notify next of kin."
+    },
+    {
       "date": "2026-09-18",
       "headline": "Discharge petition reaches 218 signatures to force vote on Epstein Files Transparency Act 2.0",
       "tags": [

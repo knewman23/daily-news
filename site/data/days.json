@@ -1,6 +1,60 @@
 {
-  "last_updated": "2026-09-17T17:19:19.922635+00:00",
+  "last_updated": "2026-09-18T18:19:33.198039+00:00",
   "days": [
+    {
+      "date": "2026-09-19",
+      "tags": [
+        "politics",
+        "media",
+        "legal",
+        "defence",
+        "tech",
+        "war",
+        "climate",
+        "markets",
+        "surveillance",
+        "policing",
+        "health"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@groundnews",
+        "@oafnation_actual",
+        "@total.hypocrisy",
+        "@hunteralexanderhowell",
+        "@carolinegleich",
+        "@ericmoutsos"
+      ],
+      "post_count": 37,
+      "transcribed_count": 35,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Marines deploy 471 goats for wildfire prevention",
+          "reason": "Light human-interest framing of a routine land-management measure with no policy angle."
+        },
+        {
+          "headline": "Japan's centenarian population passes 100,000 for the first time",
+          "reason": "Demographic statistics rather than public health policy."
+        },
+        {
+          "headline": "Study finds T. rex was warm-blooded",
+          "reason": "Paleontology research with no policy or political dimension."
+        },
+        {
+          "headline": "Offbeat news roundup: YouTube ad charges, a bird flock mistaken for a drone, and a one-euro award",
+          "reason": "Packaged as an offbeat miscellany; no substantive policy content."
+        },
+        {
+          "headline": "Commentary warns of a coming engineered crisis and digital currency",
+          "reason": "Speculative commentary that reports nothing new."
+        },
+        {
+          "headline": "Repeated breaking-news openers with no story",
+          "reason": "No news content."
+        }
+      ]
+    },
     {
       "date": "2026-09-18",
       "tags": [
