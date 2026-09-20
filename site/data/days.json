@@ -1,6 +1,52 @@
 {
-  "last_updated": "2026-09-18T18:19:33.198039+00:00",
+  "last_updated": "2026-09-19T18:04:57.982140+00:00",
   "days": [
+    {
+      "date": "2026-09-20",
+      "tags": [
+        "politics",
+        "war",
+        "tech",
+        "health",
+        "legal",
+        "climate",
+        "media",
+        "markets"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@ericmoutsos",
+        "@carolinegleich",
+        "@oafnation_actual",
+        "@groundnews"
+      ],
+      "post_count": 28,
+      "transcribed_count": 26,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Carney mocks Trump's gestures at press conference, drawing Republican anger",
+          "reason": "Viral clip and reaction with no policy or governmental substance."
+        },
+        {
+          "headline": "George W. Bush to publish paintings of political prisoners and dissidents",
+          "reason": "A book release rather than a development in policy, government or a live investigation."
+        },
+        {
+          "headline": "Claims circulate that Israel's skin bank is sourced from Palestinian dead",
+          "reason": "Unverified conspiracy claim presenting no new or sourced reporting."
+        },
+        {
+          "headline": "German Shepherd filmed minding a litter of Doberman puppies",
+          "reason": "Human interest clip with no news content."
+        },
+        {
+          "headline": "Claim that The Matrix and The Terminator carry a hidden spiritual message",
+          "reason": "Film theory and personal commentary, not news."
+        }
+      ]
+    },
     {
       "date": "2026-09-19",
       "tags": [
