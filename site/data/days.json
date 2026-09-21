@@ -1,6 +1,43 @@
 {
-  "last_updated": "2026-09-19T18:04:57.982140+00:00",
+  "last_updated": "2026-09-20T18:31:34.596182+00:00",
   "days": [
+    {
+      "date": "2026-09-21",
+      "tags": [
+        "politics",
+        "media",
+        "health",
+        "defence",
+        "legal",
+        "privacy",
+        "tech",
+        "environment",
+        "immigration"
+      ],
+      "sources": [
+        "@groundnews",
+        "@aaronparnas",
+        "@ericmoutsos",
+        "@oafnation_actual"
+      ],
+      "post_count": 17,
+      "transcribed_count": 16,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Compilation contrasts Trump's campaign promises with war and prices",
+          "reason": "Commentary built entirely from resurfaced clips; reports no new development."
+        },
+        {
+          "headline": "Creator going offline for 25 hours for Yom Kippur",
+          "reason": "Creator's personal schedule and observance; no news content."
+        },
+        {
+          "headline": "Salem tourists told Bewitched statue sits where executions began",
+          "reason": "Creator's own travel and a historical aside with no policy or political angle."
+        }
+      ]
+    },
     {
       "date": "2026-09-20",
       "tags": [
