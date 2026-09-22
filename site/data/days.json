@@ -1,6 +1,60 @@
 {
-  "last_updated": "2026-09-20T18:31:34.596182+00:00",
+  "last_updated": "2026-09-21T18:11:34.433122+00:00",
   "days": [
+    {
+      "date": "2026-09-22",
+      "tags": [
+        "politics",
+        "media",
+        "legal",
+        "surveillance",
+        "tech",
+        "immigration",
+        "policing",
+        "climate",
+        "markets",
+        "health",
+        "elections",
+        "defence",
+        "economy"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@oafnation_actual",
+        "@carolinegleich",
+        "@groundnews"
+      ],
+      "post_count": 33,
+      "transcribed_count": 32,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Vance mocked over 'Fart Left' slip at Senate campaign rally",
+          "reason": "A verbal gaffe and the online reaction to it, with no policy or electoral substance."
+        },
+        {
+          "headline": "Jake and Logan Paul tour the Pentagon and address service members",
+          "reason": "A celebrity appearance and the reaction to it, with no defence policy content."
+        },
+        {
+          "headline": "Fat Bear Week returns at Katmai National Park",
+          "reason": "A light seasonal contest with no environmental policy angle."
+        },
+        {
+          "headline": "Commentary ties 1973 cartoon about a universal computer to present-day AI",
+          "reason": "Commentary on an old cartoon that reports nothing new."
+        },
+        {
+          "headline": "Air Force lost drone recovered by Florida fishermen",
+          "reason": "A novelty recovery story with no policy or operational significance."
+        },
+        {
+          "headline": "Fort Hood dining facility reopens after hidden roach infestation",
+          "reason": "A single-facility maintenance incident with no wider policy angle."
+        }
+      ]
+    },
     {
       "date": "2026-09-21",
       "tags": [

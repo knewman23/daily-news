@@ -1,6 +1,226 @@
 {
   "topics": [
     {
+      "date": "2026-09-22",
+      "headline": "Trump administration launches taxpayer-funded 'Trump TV' streaming channel",
+      "tags": [
+        "politics",
+        "media"
+      ],
+      "snippet": "The administration launched a 24-hour streaming channel dubbed Trump TV, carrying announcements, clips and administration messaging in real time and funded with taxpayer money. The launch came the sam\u2026",
+      "text": "trump administration launches taxpayer-funded 'trump tv' streaming channel\nthe administration launched a 24-hour streaming channel dubbed trump tv, carrying announcements, clips and administration messaging in real time and funded with taxpayer money. the launch came the same day three major outlets were barred from the white house. early viewership was reported at roughly 1,300 to 1,400 concurrent viewers, far below conventional morning news audiences."
+    },
+    {
+      "date": "2026-09-22",
+      "headline": "CNN, MS NOW and Politico sue over White House ban as networks suspend pool coverage",
+      "tags": [
+        "media",
+        "politics",
+        "legal"
+      ],
+      "snippet": "CNN, MS NOW and Politico filed suit in federal court after being barred from White House coverage, and major television networks suspended the shared presidential pool in response. President Trump com\u2026",
+      "text": "cnn, ms now and politico sue over white house ban as networks suspend pool coverage\ncnn, ms now and politico filed suit in federal court after being barred from white house coverage, and major television networks suspended the shared presidential pool in response. president trump complained that the judge assigned to the lawsuit was unfavorable to him. at the united nations the following day he objected to cnn's presence, telling the network it should not be covering him; cnn was part of a spray pool arranged by the un and had not said it would stop covering him."
+    },
+    {
+      "date": "2026-09-22",
+      "headline": "Hackers claim theft of personal data on all FBI employees",
+      "tags": [
+        "surveillance",
+        "legal",
+        "tech"
+      ],
+      "snippet": "A group calling itself Shiny Hunters told 404 Media it had breached the FBI and obtained data on all bureau employees and applicants, including names, home addresses, phone numbers and details about s\u2026",
+      "text": "hackers claim theft of personal data on all fbi employees\na group calling itself shiny hunters told 404 media it had breached the fbi and obtained data on all bureau employees and applicants, including names, home addresses, phone numbers and details about spouses. the group provided a sample covering about 5,000 employees, and 404 media said open-source checks matched names in the file to real people. the group also briefly took over the fbi's jobs website."
+    },
+    {
+      "date": "2026-09-22",
+      "headline": "ICE agents shoot Austin DoorDash driver who says he was denied medical care",
+      "tags": [
+        "immigration",
+        "policing"
+      ],
+      "snippet": "Wilbur Rafael Garces Perez, a DoorDash driver in Austin, Texas, was shot in the torso by ICE agents on Sunday and released from hospital the same day into an infirmary at a South Texas processing faci\u2026",
+      "text": "ice agents shoot austin doordash driver who says he was denied medical care\nwilbur rafael garces perez, a doordash driver in austin, texas, was shot in the torso by ice agents on sunday and released from hospital the same day into an infirmary at a south texas processing facility. his lawyer says a bullet remains lodged in his back, that he has not received required treatment, and that he has lost movement on one side of his body and faces paralysis. ice has not explained why agents opened fire, and protests have followed in austin."
+    },
+    {
+      "date": "2026-09-22",
+      "headline": "Texas pauses new data center permits as grid requests top 474 gigawatts",
+      "tags": [
+        "tech",
+        "climate",
+        "markets"
+      ],
+      "snippet": "Texas regulators have halted approvals for new data centers while they review the power and water demands of pending projects. More than 474 gigawatts of proposed capacity is seeking grid access, over\u2026",
+      "text": "texas pauses new data center permits as grid requests top 474 gigawatts\ntexas regulators have halted approvals for new data centers while they review the power and water demands of pending projects. more than 474 gigawatts of proposed capacity is seeking grid access, over five times the state's record peak demand."
+    },
+    {
+      "date": "2026-09-22",
+      "headline": "Utah regulators move to drop 2027 closure date for Intermountain coal units",
+      "tags": [
+        "climate",
+        "health",
+        "tech"
+      ],
+      "snippet": "The coal units at Utah's Intermountain Power Plant stopped running last November and the state committed in writing to closing them permanently by the end of 2027, but state regulators this month prop\u2026",
+      "text": "utah regulators move to drop 2027 closure date for intermountain coal units\nthe coal units at utah's intermountain power plant stopped running last november and the state committed in writing to closing them permanently by the end of 2027, but state regulators this month proposed removing that deadline. hyperscale data centers have expressed interest in buying the power, and the state legislature is aligned with a federal push to sustain coal generation. in their last year of operation the units emitted more than 1,000 tons of nitrogen oxides and 6,000 tons of sulfur dioxide, contributing to haze over arches, bryce canyon, canyonlands, capitol reef and zion. the utah air quality board takes public comment on thursday, september 24 at 2 p.m. in salt lake city and online."
+    },
+    {
+      "date": "2026-09-22",
+      "headline": "Republican senator calls for Senate subpoena of Donald Trump Jr over Russian ties",
+      "tags": [
+        "politics",
+        "legal"
+      ],
+      "snippet": "Senator John Curtis of Utah broke with his party to urge the Senate to subpoena Donald Trump Jr. and investigate his connection to a Russian oligarch who helped bankroll parts of his wedding. Curtis h\u2026",
+      "text": "republican senator calls for senate subpoena of donald trump jr over russian ties\nsenator john curtis of utah broke with his party to urge the senate to subpoena donald trump jr. and investigate his connection to a russian oligarch who helped bankroll parts of his wedding. curtis has framed the request as part of a broader inquiry into personal enrichment by presidents' families, including hunter biden. the president has said the arrangement is acceptable because his son is repaying the money."
+    },
+    {
+      "date": "2026-09-22",
+      "headline": "Democrats expand midterm map into reliably Republican districts",
+      "tags": [
+        "politics",
+        "elections"
+      ],
+      "snippet": "Democratic campaigns are investing millions of dollars in districts previously considered unwinnable, forcing Republicans to spend to defend safe seats. Senator Mark Kelly of Arizona said he has commi\u2026",
+      "text": "democrats expand midterm map into reliably republican districts\ndemocratic campaigns are investing millions of dollars in districts previously considered unwinnable, forcing republicans to spend to defend safe seats. senator mark kelly of arizona said he has committed $10 million to such areas, citing the need to gain four senate seats. kelly pointed to the war with iran, farm costs including diesel and fertilizer prices, and the prospect of more farm bankruptcies in iowa as motivating voters."
+    },
+    {
+      "date": "2026-09-22",
+      "headline": "Senators seek investigation after faulty AI intelligence nearly triggered boarding of Chinese ship",
+      "tags": [
+        "defence",
+        "tech"
+      ],
+      "snippet": "U.S. aircraft were already airborne for a planned operation against a Chinese vessel when officials determined the underlying intelligence was wrong. Senators are calling for an investigation into the\u2026",
+      "text": "senators seek investigation after faulty ai intelligence nearly triggered boarding of chinese ship\nu.s. aircraft were already airborne for a planned operation against a chinese vessel when officials determined the underlying intelligence was wrong. senators are calling for an investigation into the ai-assisted failure."
+    },
+    {
+      "date": "2026-09-22",
+      "headline": "Severed fiber optic cable in New Jersey grounds hundreds of Northeast flights",
+      "tags": [
+        "politics",
+        "tech"
+      ],
+      "snippet": "Contractors working along an Amtrak rail line between New Brunswick and Newark cut a Verizon fiber optic cable carrying air traffic control communications, affecting roughly 600 feet of line. More tha\u2026",
+      "text": "severed fiber optic cable in new jersey grounds hundreds of northeast flights\ncontractors working along an amtrak rail line between new brunswick and newark cut a verizon fiber optic cable carrying air traffic control communications, affecting roughly 600 feet of line. more than 400 flights were canceled nationwide, including 280 at newark liberty, with delays also at philadelphia, laguardia and jfk; philadelphia's tracon lost a circuit and then found its backup line had also been cut. transportation secretary sean duffy said the outage underscored the need for additional funding to modernize aging infrastructure. the disruption coincided with diplomats arriving in new york for the u.n. general assembly."
+    },
+    {
+      "date": "2026-09-22",
+      "headline": "US to shift Reaper drones from Africa to South America as cartel operations expand",
+      "tags": [
+        "defence"
+      ],
+      "snippet": "The United States is preparing to move Reaper drones from Africa to South America as military operations against cartels grow. The redeployment draws the aircraft away from existing AFRICOM missions.",
+      "text": "us to shift reaper drones from africa to south america as cartel operations expand\nthe united states is preparing to move reaper drones from africa to south america as military operations against cartels grow. the redeployment draws the aircraft away from existing africom missions."
+    },
+    {
+      "date": "2026-09-22",
+      "headline": "Trump says US government will rename artificial intelligence 'superintelligence'",
+      "tags": [
+        "tech",
+        "politics"
+      ],
+      "snippet": "In his address to the United Nations General Assembly, President Trump announced that the United States will replace the term artificial intelligence with superintelligence across official government\u2026",
+      "text": "trump says us government will rename artificial intelligence 'superintelligence'\nin his address to the united nations general assembly, president trump announced that the united states will replace the term artificial intelligence with superintelligence across official government websites and documents. the announcement drew no applause in the hall."
+    },
+    {
+      "date": "2026-09-22",
+      "headline": "Mississippi grand jury declines to indict anyone in death of Nolan Wells",
+      "tags": [
+        "legal",
+        "policing"
+      ],
+      "snippet": "A Mississippi grand jury returned a no true bill in the death of 18-year-old Nolan Wells, finding insufficient evidence to indict anyone. In a statement issued through attorney Benjamin Crump, Wells's\u2026",
+      "text": "mississippi grand jury declines to indict anyone in death of nolan wells\na mississippi grand jury returned a no true bill in the death of 18-year-old nolan wells, finding insufficient evidence to indict anyone. in a statement issued through attorney benjamin crump, wells's family said the outcome leaves more questions than answers and called on the state to continue investigating, saying neither they nor the state know how he died."
+    },
+    {
+      "date": "2026-09-22",
+      "headline": "Federal permitting delays keep completed solar and wind projects off the grid",
+      "tags": [
+        "climate",
+        "politics",
+        "markets"
+      ],
+      "snippet": "Federal environmental reviews average four and a half years, with some projects waiting close to a decade, and a congressional report found paperwork alone added more than $4 million to one project. T\u2026",
+      "text": "federal permitting delays keep completed solar and wind projects off the grid\nfederal environmental reviews average four and a half years, with some projects waiting close to a decade, and a congressional report found paperwork alone added more than $4 million to one project. thousands of solar and wind projects are designed, funded and ready to build but await approval, even as those sources are the cheapest new power available. advocates are pressing senate democrats to prioritise permitting reform."
+    },
+    {
+      "date": "2026-09-22",
+      "headline": "ICE said to be withholding locations of thousands facing final deportation orders",
+      "tags": [
+        "immigration"
+      ],
+      "snippet": "According to reporting in the Guardian, ICE is concealing the whereabouts of thousands of undocumented immigrants who have final orders of deportation.",
+      "text": "ice said to be withholding locations of thousands facing final deportation orders\naccording to reporting in the guardian, ice is concealing the whereabouts of thousands of undocumented immigrants who have final orders of deportation."
+    },
+    {
+      "date": "2026-09-22",
+      "headline": "Air Force reports $14 billion aircraft parts supply gap",
+      "tags": [
+        "defence"
+      ],
+      "snippet": "The Air Force says it faces a $14 billion shortfall in aircraft parts supply. Groundings attributed to supply problems have risen 87% over seven years.",
+      "text": "air force reports $14 billion aircraft parts supply gap\nthe air force says it faces a $14 billion shortfall in aircraft parts supply. groundings attributed to supply problems have risen 87% over seven years."
+    },
+    {
+      "date": "2026-09-22",
+      "headline": "USS Abraham Lincoln left with two mental health clinicians for 5,000 sailors",
+      "tags": [
+        "defence",
+        "health"
+      ],
+      "snippet": "About 5,000 people aboard the USS Abraham Lincoln were left with two licensed mental health clinicians after one counselor departed. Sailors say waits for care can stretch to weeks or months.",
+      "text": "uss abraham lincoln left with two mental health clinicians for 5,000 sailors\nabout 5,000 people aboard the uss abraham lincoln were left with two licensed mental health clinicians after one counselor departed. sailors say waits for care can stretch to weeks or months."
+    },
+    {
+      "date": "2026-09-22",
+      "headline": "Texas leads states in annual job growth",
+      "tags": [
+        "markets",
+        "economy"
+      ],
+      "snippet": "Texas added 159,400 nonfarm jobs in the year to August 2026, more than any other state, with employment up 1.1% against about 0.4% nationally. The state reported 14.47 million nonfarm jobs in August,\u2026",
+      "text": "texas leads states in annual job growth\ntexas added 159,400 nonfarm jobs in the year to august 2026, more than any other state, with employment up 1.1% against about 0.4% nationally. the state reported 14.47 million nonfarm jobs in august, with professional and business services supplying 41% of the year's gains, followed by leisure and hospitality and construction. twelve states and the district of columbia had fewer jobs than a year earlier, with washington dc down 3.6%, the steepest fall recorded, and virginia losing the most positions at 37,700."
+    },
+    {
+      "date": "2026-09-22",
+      "headline": "Influencer known as Clavicular charged with rape and drugging in Massachusetts",
+      "tags": [
+        "legal"
+      ],
+      "snippet": "Braden Peters, the 'looksmaxxing' influencer known online as Clavicular, has been charged in Massachusetts with rape, drugging a person for sexual intercourse, and procuring liquor for someone under 2\u2026",
+      "text": "influencer known as clavicular charged with rape and drugging in massachusetts\nbraden peters, the 'looksmaxxing' influencer known online as clavicular, has been charged in massachusetts with rape, drugging a person for sexual intercourse, and procuring liquor for someone under 21, over alleged offences in may 2025. a related civil suit filed in florida by 18-year-old creator aleksandra vasilevna mendoza alleges she was injected with an unapproved substance without consent and subjected to nonconsensual encounters while intoxicated; she says she was paid $1,000 to appear in his videos when she was 16. peters denies the allegations and a spokesperson called the charges bogus, saying they stem from a civil suit he refused to settle. arraignment is set for october 14."
+    },
+    {
+      "date": "2026-09-22",
+      "headline": "Former AFSOC command chief sentenced to 10 years and reduced to E1",
+      "tags": [
+        "legal",
+        "defence"
+      ],
+      "snippet": "A former Air Force Special Operations Command chief was sentenced to 10 years following conviction. He was dishonorably discharged and reduced in rank from E9 to E1.",
+      "text": "former afsoc command chief sentenced to 10 years and reduced to e1\na former air force special operations command chief was sentenced to 10 years following conviction. he was dishonorably discharged and reduced in rank from e9 to e1."
+    },
+    {
+      "date": "2026-09-22",
+      "headline": "Marine warrant officer sentenced to two years for domestic violence",
+      "tags": [
+        "legal",
+        "defence"
+      ],
+      "snippet": "A Marine intelligence warrant officer received a two-year sentence for domestic violence and child endangerment. His plea agreement barred both dismissal from the service and reduction in rank.",
+      "text": "marine warrant officer sentenced to two years for domestic violence\na marine intelligence warrant officer received a two-year sentence for domestic violence and child endangerment. his plea agreement barred both dismissal from the service and reduction in rank."
+    },
+    {
+      "date": "2026-09-22",
+      "headline": "Army to automatically promote qualified drill sergeants to E6",
+      "tags": [
+        "defence"
+      ],
+      "snippet": "Qualified Army sergeants who graduate from drill sergeant training will advance from E5 to E6. The promotion becomes permanent once they complete the assignment.",
+      "text": "army to automatically promote qualified drill sergeants to e6\nqualified army sergeants who graduate from drill sergeant training will advance from e5 to e6. the promotion becomes permanent once they complete the assignment."
+    },
+    {
       "date": "2026-09-21",
       "headline": "Networks suspend White House pool coverage after Trump bars three outlets",
       "tags": [
