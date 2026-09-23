@@ -1,6 +1,57 @@
 {
-  "last_updated": "2026-09-21T18:11:34.433122+00:00",
+  "last_updated": "2026-09-22T17:52:11.344946+00:00",
   "days": [
+    {
+      "date": "2026-09-23",
+      "tags": [
+        "politics",
+        "health",
+        "elections",
+        "markets",
+        "energy",
+        "media",
+        "legal",
+        "surveillance",
+        "privacy",
+        "policing",
+        "tech",
+        "climate",
+        "immigration",
+        "economy",
+        "foreign-policy",
+        "security",
+        "government",
+        "defence"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@groundnews",
+        "@ericmoutsos",
+        "@carolinegleich",
+        "@oafnation_actual"
+      ],
+      "post_count": 34,
+      "transcribed_count": 33,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "United passenger says airline seated her beside man masturbating on flight",
+          "reason": "Individual consumer incident with no policy, enforcement or political angle."
+        },
+        {
+          "headline": "Solar costs, Alzheimer's treatment and battery recycling lead good news roundup",
+          "reason": "A mixed feel-good roundup, largely human interest and general science rather than policy news."
+        },
+        {
+          "headline": "Amherst changes veteran aid policy after disabled Navy veteran paid $16,500",
+          "reason": "Institutional financial aid dispute framed as an individual case, without a policy or political dimension."
+        },
+        {
+          "headline": "Social media creator announces job search",
+          "reason": "Personal career self-promotion with no news content."
+        }
+      ]
+    },
     {
       "date": "2026-09-22",
       "tags": [

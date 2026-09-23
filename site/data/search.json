@@ -1,6 +1,267 @@
 {
   "topics": [
     {
+      "date": "2026-09-23",
+      "headline": "Administration cancels ACA coverage for about 750,000 people over alleged fraud",
+      "tags": [
+        "politics",
+        "health"
+      ],
+      "snippet": "The Centers for Medicare & Medicaid Services canceled roughly 315,000 Affordable Care Act plans covering about 750,000 to 760,000 people, citing unverified citizenship or immigration records and suspe\u2026",
+      "text": "administration cancels aca coverage for about 750,000 people over alleged fraud\nthe centers for medicare & medicaid services canceled roughly 315,000 affordable care act plans covering about 750,000 to 760,000 people, citing unverified citizenship or immigration records and suspected improper enrollments. vice president jd vance and cms administrator mehmet oz said the cancellations followed an antifraud task force review, with officials estimating $2.2 billion in savings and warning unauthorized enrollments could produce up to $6.6 billion in improper federal spending next year. cms also plans to block about 569 brokers accused of submitting questionable 2026 applications and to freeze new broker registrations. critics note that prior removals framed as fraud cleanups, including social security records, have also swept up living beneficiaries, and enrollees are being urged to verify their coverage is intact."
+    },
+    {
+      "date": "2026-09-23",
+      "headline": "Republicans distance themselves from Trump as party privately fears midterm wipeout",
+      "tags": [
+        "politics",
+        "elections"
+      ],
+      "snippet": "Republican candidates have begun removing images and references to President Trump from their campaign materials, with screenshots obtained by the Miami Herald showing Florida gubernatorial candidate\u2026",
+      "text": "republicans distance themselves from trump as party privately fears midterm wipeout\nrepublican candidates have begun removing images and references to president trump from their campaign materials, with screenshots obtained by the miami herald showing florida gubernatorial candidate byron donalds scrubbing trump from his website despite holding the president's endorsement. behind the scenes, republicans quoted by ms now say they expect to be \"crushed\" and describe themselves as \"doomed\" heading into november. contributing factors cited include the historical pattern of midterm losses for the party holding the white house, rising fuel prices including diesel at a record $6.53 a gallon, the ongoing war overseas, and low presidential approval ratings."
+    },
+    {
+      "date": "2026-09-23",
+      "headline": "Fuel prices surge as US reserves fall to lowest level since 1982",
+      "tags": [
+        "markets",
+        "energy"
+      ],
+      "snippet": "Gasoline and diesel prices have climbed sharply, with some stations posting $8.99 a gallon for regular unleaded and $9.99 for diesel, and California drivers averaging more than $6 a gallon against rou\u2026",
+      "text": "fuel prices surge as us reserves fall to lowest level since 1982\ngasoline and diesel prices have climbed sharply, with some stations posting $8.99 a gallon for regular unleaded and $9.99 for diesel, and california drivers averaging more than $6 a gallon against roughly $4.44 nationwide. analysts attribute the increases to higher oil prices driven by the war in iran, damaged refinery infrastructure in ukraine and russia, and a saudi pipeline rendered inoperable. us reserves have fallen to their lowest level since 1982 after drawdowns intended to offset pump prices, with about 30% depleted over the past year, and some oil executives are warning of a broader fuel crisis."
+    },
+    {
+      "date": "2026-09-23",
+      "headline": "Trump attacks CNN as outlets sue over White House press bans and administration launches 'Trump TV'",
+      "tags": [
+        "politics",
+        "media",
+        "legal"
+      ],
+      "snippet": "President Trump posted overnight criticism of CNN and correspondent Kaitlan Collins after the network covered him at the United Nations, which admitted reporters he had barred from White House grounds\u2026",
+      "text": "trump attacks cnn as outlets sue over white house press bans and administration launches 'trump tv'\npresident trump posted overnight criticism of cnn and correspondent kaitlan collins after the network covered him at the united nations, which admitted reporters he had barred from white house grounds. cnn, politico and ms now sued the administration on monday over the bans, arguing they violate press freedoms and the first amendment; the case is before judge tim kelly, a trump appointee, where the justice department is arguing reporters can be excluded on national security grounds. days after the bans, the white house launched a 24/7 youtube stream featuring trump's speeches and administration videos, debuting with his july 3 mount rushmore address."
+    },
+    {
+      "date": "2026-09-23",
+      "headline": "Flock Safety says people who object to its surveillance network can opt out of society",
+      "tags": [
+        "surveillance",
+        "privacy",
+        "policing"
+      ],
+      "snippet": "Flock Safety's chief communications officer said those who do not wish to be recorded in the company's nationwide database can \"opt out of society,\" echoing an earlier company statement that there is\u2026",
+      "text": "flock safety says people who object to its surveillance network can opt out of society\nflock safety's chief communications officer said those who do not wish to be recorded in the company's nationwide database can \"opt out of society,\" echoing an earlier company statement that there is no practical choice but to be captured. the private company operates roughly 120,000 license plate reading cameras nationwide and sells access to government agencies. when a journalist filmed a flock technician installing a camera on public roads near milton, georgia, the technician called 911 and three police cars responded; the journalist was released without charges."
+    },
+    {
+      "date": "2026-09-23",
+      "headline": "Dallas uses AI cameras on trash trucks to assign homes 'blight scores'",
+      "tags": [
+        "surveillance",
+        "privacy",
+        "tech"
+      ],
+      "snippet": "City records obtained by NBC5 Investigates show Dallas has mounted AI cameras on bulk trash collection trucks that photograph homes and identify possible code violations, assigning each property a bli\u2026",
+      "text": "dallas uses ai cameras on trash trucks to assign homes 'blight scores'\ncity records obtained by nbc5 investigates show dallas has mounted ai cameras on bulk trash collection trucks that photograph homes and identify possible code violations, assigning each property a blight score from one to four. more than 21,000 properties have been photographed since testing began in april, with hundreds of homeowners receiving code enforcement warnings that can escalate to fines. the city has not released the camera images requested under an open records request. homeowners interviewed described the program as a revenue-driven violation of privacy, including one whose property was flagged over what he believes is mildew on a chimney."
+    },
+    {
+      "date": "2026-09-23",
+      "headline": "EPA to test drinking water for abortion and contraception drugs",
+      "tags": [
+        "politics",
+        "health",
+        "climate"
+      ],
+      "snippet": "The Environmental Protection Agency announced a study that will test drinking water samples from metropolitan areas across the United States for traces of mifepristone, misoprostol, contraceptives, ho\u2026",
+      "text": "epa to test drinking water for abortion and contraception drugs\nthe environmental protection agency announced a study that will test drinking water samples from metropolitan areas across the united states for traces of mifepristone, misoprostol, contraceptives, hormones used in gender-affirming care, and more than 1,400 other drugs, pesticides and synthetic chemicals, including several classes of forever chemicals. politico reported that anti-abortion groups are describing the move as a major victory. opponents of abortion have said the aim is to build a case for restricting access to the medications."
+    },
+    {
+      "date": "2026-09-23",
+      "headline": "Cato Institute finds immigrants paid more in taxes than they received for 30 straight years",
+      "tags": [
+        "immigration",
+        "economy"
+      ],
+      "snippet": "A Cato Institute analysis of federal, state and local budgets from 1994 to 2023 found that immigrants paid more in taxes than they received in benefits in every year studied. In 2023, immigrants paid\u2026",
+      "text": "cato institute finds immigrants paid more in taxes than they received for 30 straight years\na cato institute analysis of federal, state and local budgets from 1994 to 2023 found that immigrants paid more in taxes than they received in benefits in every year studied. in 2023, immigrants paid $1.3 trillion in taxes and received $761 billion in benefits, roughly $1.70 paid in for every dollar received. over three decades the net contribution totaled $14.5 trillion; without it, national debt would stand near $52 trillion rather than about $40 trillion, or roughly 205% of the economy instead of just over 100%. the analysis attributes part of the effect to immigrants arriving at an average age of 25, after another country has borne the cost of their upbringing and education."
+    },
+    {
+      "date": "2026-09-23",
+      "headline": "ICE stops publishing locations of detainees with final removal orders",
+      "tags": [
+        "immigration",
+        "legal"
+      ],
+      "snippet": "Immigration and Customs Enforcement has stopped displaying the locations of thousands of detainees with final removal orders in its public detainee locator system. Attorneys say clients have abruptly\u2026",
+      "text": "ice stops publishing locations of detainees with final removal orders\nimmigration and customs enforcement has stopped displaying the locations of thousands of detainees with final removal orders in its public detainee locator system. attorneys say clients have abruptly disappeared from the database."
+    },
+    {
+      "date": "2026-09-23",
+      "headline": "Trump tells UN that Cuba's government will fall",
+      "tags": [
+        "politics",
+        "foreign-policy"
+      ],
+      "snippet": "In his address to the UN General Assembly, President Trump called Cuba \"an absolutely failed state\" and said the government \"will fall,\" adding that his administration is seeking fundamental change on\u2026",
+      "text": "trump tells un that cuba's government will fall\nin his address to the un general assembly, president trump called cuba \"an absolutely failed state\" and said the government \"will fall,\" adding that his administration is seeking fundamental change on the island and that secretary of state marco rubio is deep in negotiations. he accused the cuban government of cultivating ties with groups in the united states including the communist party usa, antifa and the democratic socialists of america. cuba's delegation walked out during the remarks. the united states has maintained a trade embargo on cuba for more than 60 years, and the administration has expanded regional pressure, including january's military operation that removed venezuelan president nicol\u00e1s maduro."
+    },
+    {
+      "date": "2026-09-23",
+      "headline": "Climate Impact Lab projects 450,000 heat deaths from super El Ni\u00f1o",
+      "tags": [
+        "climate",
+        "health"
+      ],
+      "snippet": "A new Climate Impact Lab report estimates that more than 450,000 people worldwide could die over the coming months from heat-related causes as temperatures rise during an unusually strong El Ni\u00f1o even\u2026",
+      "text": "climate impact lab projects 450,000 heat deaths from super el ni\u00f1o\na new climate impact lab report estimates that more than 450,000 people worldwide could die over the coming months from heat-related causes as temperatures rise during an unusually strong el ni\u00f1o event. hawaii faces a possible major hurricane this weekend that could bring catastrophic flooding to the big island and maui, following several hurricane threats to the islands over the past two months."
+    },
+    {
+      "date": "2026-09-23",
+      "headline": "Armed group shuts valve at Libya's largest oil field",
+      "tags": [
+        "markets",
+        "energy"
+      ],
+      "snippet": "Libya's National Oil Corporation said an armed group closed a valve on the pipeline carrying crude from the El Sharara field to the Zawiya terminal, cutting output by about 130,000 barrels a day. The\u2026",
+      "text": "armed group shuts valve at libya's largest oil field\nlibya's national oil corporation said an armed group closed a valve on the pipeline carrying crude from the el sharara field to the zawiya terminal, cutting output by about 130,000 barrels a day. the noc did not identify the group and said appeals to the petroleum facilities guard to reopen the line have failed, following a week of guard protests over pay and conditions. el sharara is operated by a joint venture of the state oil company with repsol, totalenergies, omv and equinor, and the zawiya refinery has also been shut down, raising libya's reliance on imported fuel. the noc may declare force majeure as prices sit above $100 a barrel amid middle east shipping disruptions."
+    },
+    {
+      "date": "2026-09-23",
+      "headline": "Hackers claim breach of FBI data on thousands of agents and applicants",
+      "tags": [
+        "security",
+        "privacy"
+      ],
+      "snippet": "The group ShinyHunters claims it breached the FBI and stole data on thousands of agents and applicants. Portions of a 5,000-person sample appear authentic. The FBI has not confirmed the breach.",
+      "text": "hackers claim breach of fbi data on thousands of agents and applicants\nthe group shinyhunters claims it breached the fbi and stole data on thousands of agents and applicants. portions of a 5,000-person sample appear authentic. the fbi has not confirmed the breach."
+    },
+    {
+      "date": "2026-09-23",
+      "headline": "FCC chairman Brendan Carr was member of AA group accused of sexual exploitation",
+      "tags": [
+        "politics",
+        "legal"
+      ],
+      "snippet": "The Guardian reported that FCC chairman Brendan Carr belonged to a breakaway Alcoholics Anonymous group known as Midtown, which former members describe as a cult where teenage girls and young women we\u2026",
+      "text": "fcc chairman brendan carr was member of aa group accused of sexual exploitation\nthe guardian reported that fcc chairman brendan carr belonged to a breakaway alcoholics anonymous group known as midtown, which former members describe as a cult where teenage girls and young women were pressured and coerced into dating and having sex with older male members. one former member said she believes what happened could be described as sex trafficking. carr joined in 1996 at age 17; he gave a recorded midtown speech in 2005 and appeared in a 2006 men's retreat photograph. the guardian noted there are no accusations or evidence of wrongdoing on carr's part."
+    },
+    {
+      "date": "2026-09-23",
+      "headline": "Questions persist over Mitch McConnell's fitness as he returns to the Senate",
+      "tags": [
+        "politics"
+      ],
+      "snippet": "New video captured by Desiree Townsend shows Senator Mitch McConnell during his fifth day back in public since returning to the Senate, responding to questions only with a peace sign. The footage has\u2026",
+      "text": "questions persist over mitch mcconnell's fitness as he returns to the senate\nnew video captured by desiree townsend shows senator mitch mcconnell during his fifth day back in public since returning to the senate, responding to questions only with a peace sign. the footage has renewed questions about his cognitive condition and his ability to serve."
+    },
+    {
+      "date": "2026-09-23",
+      "headline": "Trump aides weigh putting president's name on Ford's Theatre",
+      "tags": [
+        "politics"
+      ],
+      "snippet": "According to MS NOW, aides to President Trump have spent recent weeks identifying landmarks that could carry his name, including Ford's Theatre, the Washington venue where Abraham Lincoln was assassin\u2026",
+      "text": "trump aides weigh putting president's name on ford's theatre\naccording to ms now, aides to president trump have spent recent weeks identifying landmarks that could carry his name, including ford's theatre, the washington venue where abraham lincoln was assassinated in 1865. the effort follows a judge's order removing trump's name from the kennedy center. ford's theatre is owned by the department of the interior and a renaming would require congressional approval. no final decisions have been made."
+    },
+    {
+      "date": "2026-09-23",
+      "headline": "New York City reaches record $131.5 million labor settlement with DoorDash",
+      "tags": [
+        "politics",
+        "economy",
+        "legal"
+      ],
+      "snippet": "Mayor Zohran Mamdani's administration announced a $131.5 million settlement with DoorDash over allegations the company underpaid or paid late more than 260,000 New York City delivery workers, which th\u2026",
+      "text": "new york city reaches record $131.5 million labor settlement with doordash\nmayor zohran mamdani's administration announced a $131.5 million settlement with doordash over allegations the company underpaid or paid late more than 260,000 new york city delivery workers, which the city called the largest labor enforcement action in its history. about $115 million will go to drivers and more than $16 million will cover civil penalties. doordash will submit monthly pay data to the city for three years and update its software, saying \"simply put, we screwed up.\""
+    },
+    {
+      "date": "2026-09-23",
+      "headline": "FAA communications failure disrupts about 7,000 flights",
+      "tags": [
+        "government",
+        "tech"
+      ],
+      "snippet": "About 7,000 flights were delayed or canceled Monday following a Federal Aviation Administration communications failure. Separately the same day, federal auditors warned that major aircraft communicati\u2026",
+      "text": "faa communications failure disrupts about 7,000 flights\nabout 7,000 flights were delayed or canceled monday following a federal aviation administration communications failure. separately the same day, federal auditors warned that major aircraft communications security gaps remain unresolved."
+    },
+    {
+      "date": "2026-09-23",
+      "headline": "Glock and gun groups sue over Connecticut handgun law",
+      "tags": [
+        "legal",
+        "politics"
+      ],
+      "snippet": "Glock and firearms industry groups have filed separate lawsuits in federal court challenging Connecticut's new handgun restrictions. The law is scheduled to take effect October 1.",
+      "text": "glock and gun groups sue over connecticut handgun law\nglock and firearms industry groups have filed separate lawsuits in federal court challenging connecticut's new handgun restrictions. the law is scheduled to take effect october 1."
+    },
+    {
+      "date": "2026-09-23",
+      "headline": "Knife and gun rights groups sue New Jersey over self-defense weapon laws",
+      "tags": [
+        "legal",
+        "politics"
+      ],
+      "snippet": "Knife Rights and gun rights organizations have sued New Jersey over laws governing knives and other objects carried for self defense. A fourth-degree weapons offense under the statutes can carry up to\u2026",
+      "text": "knife and gun rights groups sue new jersey over self-defense weapon laws\nknife rights and gun rights organizations have sued new jersey over laws governing knives and other objects carried for self defense. a fourth-degree weapons offense under the statutes can carry up to 18 months in prison."
+    },
+    {
+      "date": "2026-09-23",
+      "headline": "Pentagon adds simulated war tests for officers seeking first star",
+      "tags": [
+        "defence"
+      ],
+      "snippet": "Officers competing for promotion to general or admiral will undergo new warfighter evaluations built around military problems, simulations and wargames. The first tests are scheduled to begin in 2027.",
+      "text": "pentagon adds simulated war tests for officers seeking first star\nofficers competing for promotion to general or admiral will undergo new warfighter evaluations built around military problems, simulations and wargames. the first tests are scheduled to begin in 2027."
+    },
+    {
+      "date": "2026-09-23",
+      "headline": "Dozens sue GLP-1 makers over sudden vision loss",
+      "tags": [
+        "health",
+        "legal"
+      ],
+      "snippet": "Dozens of US patients have sued manufacturers of GLP-1 drugs including Ozempic, Wegovy, Mounjaro and Zepbound, alleging the treatments caused nonarteritic anterior ischemic optic neuropathy, a rare co\u2026",
+      "text": "dozens sue glp-1 makers over sudden vision loss\ndozens of us patients have sued manufacturers of glp-1 drugs including ozempic, wegovy, mounjaro and zepbound, alleging the treatments caused nonarteritic anterior ischemic optic neuropathy, a rare condition that can cause sudden and irreversible vision loss. more than 90 lawsuits have been filed against novo nordisk in new jersey state court since 2025, with separate federal cases alleging failure to warn. ophthalmology bodies say some studies suggest a small increased risk while others found no correlation, and the european medicines agency estimates the condition may affect up to one in 10,000 diabetes patients using the drugs."
+    },
+    {
+      "date": "2026-09-23",
+      "headline": "USDA recalls more than 167,000 pounds of uninspected meat",
+      "tags": [
+        "health",
+        "government"
+      ],
+      "snippet": "The US Department of Agriculture issued a recall covering over 167,000 pounds of raw beef, pork and goat products produced by Star Meat Delivery of North Carolina without federal inspection. Officials\u2026",
+      "text": "usda recalls more than 167,000 pounds of uninspected meat\nthe us department of agriculture issued a recall covering over 167,000 pounds of raw beef, pork and goat products produced by star meat delivery of north carolina without federal inspection. officials said the products carried a false usda mark of inspection and could contain harmful bacteria or other contaminants. products bearing establishment number est 1363 and produced before september 22, 2026 should be considered misbranded and unsafe; they were vacuum sealed and shipped in cardboard boxes, though retail stores may have applied their own labels. no illnesses have been reported."
+    },
+    {
+      "date": "2026-09-23",
+      "headline": "Veteran housing in California dispenses free syringes through vending machines",
+      "tags": [
+        "health"
+      ],
+      "snippet": "Supportive housing buildings for veterans in California have installed vending machines that dispense free syringes and other harm reduction supplies. A new study published in JAMA examined the progra\u2026",
+      "text": "veteran housing in california dispenses free syringes through vending machines\nsupportive housing buildings for veterans in california have installed vending machines that dispense free syringes and other harm reduction supplies. a new study published in jama examined the program."
+    },
+    {
+      "date": "2026-09-23",
+      "headline": "Navy veteran sentenced to three years over $9.1 million fraud",
+      "tags": [
+        "legal",
+        "defence"
+      ],
+      "snippet": "A Navy veteran was sentenced to three years in federal prison after admitting to a scheme that defrauded the Navy of more than $9.1 million. He was ordered to repay the full amount.",
+      "text": "navy veteran sentenced to three years over $9.1 million fraud\na navy veteran was sentenced to three years in federal prison after admitting to a scheme that defrauded the navy of more than $9.1 million. he was ordered to repay the full amount."
+    },
+    {
+      "date": "2026-09-23",
+      "headline": "Former postal worker sentenced for stealing veterans' narcotics",
+      "tags": [
+        "legal",
+        "health"
+      ],
+      "snippet": "A former postal worker was sentenced to one year in federal prison after targeting VA prescription packages, stealing veterans' narcotic medications and replacing them with over-the-counter pills befo\u2026",
+      "text": "former postal worker sentenced for stealing veterans' narcotics\na former postal worker was sentenced to one year in federal prison after targeting va prescription packages, stealing veterans' narcotic medications and replacing them with over-the-counter pills before forwarding the packages to the veterans."
+    },
+    {
       "date": "2026-09-22",
       "headline": "Trump administration launches taxpayer-funded 'Trump TV' streaming channel",
       "tags": [
