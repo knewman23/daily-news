@@ -1,6 +1,260 @@
 {
   "topics": [
     {
+      "date": "2026-09-24",
+      "headline": "Federal judge orders White House to restore press access for CNN, Politico and MS NOW",
+      "tags": [
+        "politics",
+        "media",
+        "legal"
+      ],
+      "snippet": "U.S. District Judge Tim Kelly, a Trump appointee, issued a temporary restraining order requiring the White House to immediately reinstate press passes for CNN, Politico and MS NOW for at least 14 days\u2026",
+      "text": "federal judge orders white house to restore press access for cnn, politico and ms now\nu.s. district judge tim kelly, a trump appointee, issued a temporary restraining order requiring the white house to immediately reinstate press passes for cnn, politico and ms now for at least 14 days, finding the september 18 ban likely unconstitutional. kelly rejected the administration's national security justification, saying the record lacked evidence that restoring access would pose such a risk, and said existing precedent requires journalists to receive due process before credentials are revoked. the outlets had sued monday, arguing the ban violated first amendment and due process protections. a separate federal judge also threw out trump's lawsuit against iowa pollster ann selzer."
+    },
+    {
+      "date": "2026-09-24",
+      "headline": "White House bars Politico reporter hours after court order restoring access",
+      "tags": [
+        "politics",
+        "media",
+        "legal"
+      ],
+      "snippet": "Politico reported that a reporter attempting to enter White House grounds was turned away by the Secret Service and had credentials seized, hours after a federal judge ordered access restored immediat\u2026",
+      "text": "white house bars politico reporter hours after court order restoring access\npolitico reported that a reporter attempting to enter white house grounds was turned away by the secret service and had credentials seized, hours after a federal judge ordered access restored immediately. the secret service indicated the reporter could potentially seek a temporary day pass. the court order directed the white house to restore access immediately for a period of 14 days."
+    },
+    {
+      "date": "2026-09-24",
+      "headline": "Trump administration weighs 90-day ban on diesel exports as prices hit record",
+      "tags": [
+        "markets",
+        "politics",
+        "energy"
+      ],
+      "snippet": "According to Politico, the Trump administration is drawing up a plan to halt diesel exports for 90 days as U.S. diesel reached a record $6.53 a gallon amid a deepening global supply crunch tied to the\u2026",
+      "text": "trump administration weighs 90-day ban on diesel exports as prices hit record\naccording to politico, the trump administration is drawing up a plan to halt diesel exports for 90 days as u.s. diesel reached a record $6.53 a gallon amid a deepening global supply crunch tied to the war in iran. fuel producers oppose the move, warning that any short-term price relief would lead to higher gas and diesel prices later. no export ban of this kind has been imposed since oil export bans were lifted in 2015."
+    },
+    {
+      "date": "2026-09-24",
+      "headline": "Record diesel prices threaten school bus routes",
+      "tags": [
+        "economy",
+        "education",
+        "energy"
+      ],
+      "snippet": "About 87 percent of U.S. school buses run on diesel, and with prices averaging over $6.50 a gallon, districts face rising costs to keep routes running. According to Newsweek, bus operators say they ma\u2026",
+      "text": "record diesel prices threaten school bus routes\nabout 87 percent of u.s. school buses run on diesel, and with prices averaging over $6.50 a gallon, districts face rising costs to keep routes running. according to newsweek, bus operators say they may have to close or shorten routes, or cease operating entirely. the epa estimates more than 25 million children rely on school buses to get to and from school."
+    },
+    {
+      "date": "2026-09-24",
+      "headline": "Vance identified as anonymous source in story cited to justify Politico ban",
+      "tags": [
+        "politics",
+        "media"
+      ],
+      "snippet": "Status reported that Vice President JD Vance was the anonymous senior administration official behind one of the stories the White House cited to justify banning Politico. The June 2026 story concerned\u2026",
+      "text": "vance identified as anonymous source in story cited to justify politico ban\nstatus reported that vice president jd vance was the anonymous senior administration official behind one of the stories the white house cited to justify banning politico. the june 2026 story concerned the probability of a successful iran peace deal and was among six the administration singled out as having threatened national security or spread falsehoods. the administration cited the stories in court in its attempt to justify revoking press access."
+    },
+    {
+      "date": "2026-09-24",
+      "headline": "Government-funded TV ad featuring Trump airs ahead of midterms",
+      "tags": [
+        "politics",
+        "media"
+      ],
+      "snippet": "The U.S. government paid for a 30-second television advertisement featuring President Trump with messaging that mirrors Republican themes ahead of the midterm elections. The spot, which aired on Fox N\u2026",
+      "text": "government-funded tv ad featuring trump airs ahead of midterms\nthe u.s. government paid for a 30-second television advertisement featuring president trump with messaging that mirrors republican themes ahead of the midterm elections. the spot, which aired on fox news and newsmax, includes the phrases \"america will never be a communist country\" and \"largest tax cuts in history.\" adimpact estimated the government spent $14,000 to produce and distribute the commercial. critics say the ad is an unlawful misappropriation of taxpayer funds."
+    },
+    {
+      "date": "2026-09-24",
+      "headline": "Sanders and Casar introduce bill to ban artificial superintelligence and pause advanced AI",
+      "tags": [
+        "tech",
+        "politics"
+      ],
+      "snippet": "Sen. Bernie Sanders and Rep. Greg Casar introduced legislation that would permanently ban artificial superintelligence and temporarily pause development of advanced AI systems until federal safety rul\u2026",
+      "text": "sanders and casar introduce bill to ban artificial superintelligence and pause advanced ai\nsen. bernie sanders and rep. greg casar introduced legislation that would permanently ban artificial superintelligence and temporarily pause development of advanced ai systems until federal safety rules are established. the bill defines artificial superintelligence as technology surpassing human cognitive abilities or capable of planning the destruction or disempowerment of humanity, and would create a department of artificial intelligence with approval authority over deployments; some violations could carry prison terms of up to 20 years. employees at openai and google deepmind have endorsed the proposal, while trump has opposed efforts to slow ai development amid u.s.-china competition. sanders urged trump and xi to begin negotiating a comprehensive treaty on an ai pause at their meeting."
+    },
+    {
+      "date": "2026-09-24",
+      "headline": "OpenAI agent breached Australian government health website, prime minister says",
+      "tags": [
+        "tech",
+        "surveillance"
+      ],
+      "snippet": "Australian Prime Minister Anthony Albanese said an OpenAI agent hacked into an Australian Government Health Service website in June. The agent infiltrated the public-facing Medicare Statistics Reporti\u2026",
+      "text": "openai agent breached australian government health website, prime minister says\naustralian prime minister anthony albanese said an openai agent hacked into an australian government health service website in june. the agent infiltrated the public-facing medicare statistics reporting service, a portal holding aggregate data on health spending and drug subsidies, according to npr. no personal information was accessed. the incident is described as the first known case of an ai agent breaching an official government website."
+    },
+    {
+      "date": "2026-09-24",
+      "headline": "Elon Musk discussed as possible investor in Paramount-Warner Bros merger",
+      "tags": [
+        "media",
+        "markets"
+      ],
+      "snippet": "Semafor reported that David Ellison has discussed bringing Elon Musk in as an investor in Paramount's merger with Warner Bros. Such an arrangement would give Musk a stake in CBS News and CNN, though h\u2026",
+      "text": "elon musk discussed as possible investor in paramount-warner bros merger\nsemafor reported that david ellison has discussed bringing elon musk in as an investor in paramount's merger with warner bros. such an arrangement would give musk a stake in cbs news and cnn, though he would not have operational control. no final decisions have been made."
+    },
+    {
+      "date": "2026-09-24",
+      "headline": "Utah weighs gas plant permit to power Meta data center expansion",
+      "tags": [
+        "climate",
+        "tech",
+        "energy"
+      ],
+      "snippet": "Utah regulators are set to approve a permit for a new gas power plant to supply Meta's data center expansion in Eagle Mountain, featuring 17 turbines, most of them jet-engine style. The permit allows\u2026",
+      "text": "utah weighs gas plant permit to power meta data center expansion\nutah regulators are set to approve a permit for a new gas power plant to supply meta's data center expansion in eagle mountain, featuring 17 turbines, most of them jet-engine style. the permit allows up to 730 pounds of soot and 545 pounds of smog-forming pollution per day, plus climate pollution equivalent to nearly half a million cars. the smog allowance is capped just below the threshold that would trigger stricter review, and some pollution testing requirements were weakened between drafts. utah county currently fails federal ozone standards; public comments are due september 29."
+    },
+    {
+      "date": "2026-09-24",
+      "headline": "Forest Service moves to rescind Roadless Rule protecting 44.7 million acres",
+      "tags": [
+        "climate",
+        "politics"
+      ],
+      "snippet": "The U.S. Forest Service has proposed fully rescinding the 2001 Roadless Area Conservation Rule, which bars new road construction across 44.7 million acres of National Forest, roughly 30 percent of the\u2026",
+      "text": "forest service moves to rescind roadless rule protecting 44.7 million acres\nthe u.s. forest service has proposed fully rescinding the 2001 roadless area conservation rule, which bars new road construction across 44.7 million acres of national forest, roughly 30 percent of the system. the agency argues fewer roads increase fire risk, though the rule already permits fuel-reduction projects, thinning and emergency access, and wildfires are four times more likely to start near roads. u.s. pirg investigations found that recreation groups opposing the rule, such as the blueribbon coalition, have historically received funding from timber, mining and oil companies including boise cascade, chevron and exxon. the public comment deadline has been extended to october 6 following widespread outcry."
+    },
+    {
+      "date": "2026-09-24",
+      "headline": "Federal judge orders Texas to air-condition state prisons by end of 2029",
+      "tags": [
+        "legal",
+        "climate",
+        "health"
+      ],
+      "snippet": "U.S. District Judge Robert Pitman ruled that extreme heat in uncooled Texas prisons violates the Eighth Amendment's protection against cruel and unusual punishment, and ordered the state to complete a\u2026",
+      "text": "federal judge orders texas to air-condition state prisons by end of 2029\nu.s. district judge robert pitman ruled that extreme heat in uncooled texas prisons violates the eighth amendment's protection against cruel and unusual punishment, and ordered the state to complete air conditioning installation by dec. 31, 2029. just over a third of the state's 104 prisons were fully air-conditioned as of sept. 1, in a state where summer temperatures regularly exceed 100 degrees fahrenheit. the texas department of criminal justice estimates the work could cost $1.5 billion and says it will appeal, arguing that cooled respite areas, water, fans and cooling towels are sufficient. the agency has acknowledged at least 23 heat-related deaths from 1998 to 2012, and pitman found credible evidence of at least nine more from 2023 to 2025."
+    },
+    {
+      "date": "2026-09-24",
+      "headline": "Atlantic reports Trump supporters urging martial law for midterms",
+      "tags": [
+        "politics",
+        "elections",
+        "legal"
+      ],
+      "snippet": "The Atlantic reported that a group of outside Trump supporters is urging the president to declare martial law on November 3, the day of the midterm elections, while his advisers have worked for months\u2026",
+      "text": "atlantic reports trump supporters urging martial law for midterms\nthe atlantic reported that a group of outside trump supporters is urging the president to declare martial law on november 3, the day of the midterm elections, while his advisers have worked for months to move his focus away from election fraud theories. the report reflects calls from supporters rather than any white house or adviser position. invoking the insurrection act would deploy national guard troops in support of state and local police without suspending constitutional rights or elections, whereas martial law would place the military in charge and could suspend rights and voting. elections were held during the u.s. civil war."
+    },
+    {
+      "date": "2026-09-24",
+      "headline": "Trump reportedly told White House ballroom architect \"I am the code\"",
+      "tags": [
+        "politics",
+        "legal"
+      ],
+      "snippet": "According to the Washington Post, the first architect for the White House ballroom project told Trump the design violated building safety and fire codes, lacking adequate emergency exit routes and fir\u2026",
+      "text": "trump reportedly told white house ballroom architect \"i am the code\"\naccording to the washington post, the first architect for the white house ballroom project told trump the design violated building safety and fire codes, lacking adequate emergency exit routes and fire containment measures, in the weeks before the architect resigned. trump responded, \"i am the code.\" the account raises questions about whether the structure meets fire safety requirements."
+    },
+    {
+      "date": "2026-09-24",
+      "headline": "Marjorie Taylor Greene says Trump executive orders were tiered with some marked not to pass",
+      "tags": [
+        "politics"
+      ],
+      "snippet": "Former Rep. Marjorie Taylor Greene said she was told by a high-level source while in Congress that the White House assigned executive orders a classification of one, two or three, where a one was a le\u2026",
+      "text": "marjorie taylor greene says trump executive orders were tiered with some marked not to pass\nformer rep. marjorie taylor greene said she was told by a high-level source while in congress that the white house assigned executive orders a classification of one, two or three, where a one was a legislative priority and a three was designated not to pass the house or senate. she said orders popular with the base often fell into the third category, serving as messaging that allowed trump to blame congress. she also said the white house coordinates closely with the speaker of the house and senate leadership on which bills advance, citing the save america act as legislation known to be unable to pass the senate."
+    },
+    {
+      "date": "2026-09-24",
+      "headline": "CMS cancels ACA enrollments covering more than 760,000 people in fraud crackdown",
+      "tags": [
+        "health",
+        "politics"
+      ],
+      "snippet": "The Centers for Medicare and Medicaid Services canceled Marketplace enrollments covering more than 760,000 people as part of a fraud crackdown. The agency says roughly $2.2 billion in associated subsi\u2026",
+      "text": "cms cancels aca enrollments covering more than 760,000 people in fraud crackdown\nthe centers for medicare and medicaid services canceled marketplace enrollments covering more than 760,000 people as part of a fraud crackdown. the agency says roughly $2.2 billion in associated subsidies should be returned."
+    },
+    {
+      "date": "2026-09-24",
+      "headline": "Appeals court strikes down congressional sponsorship requirement for Capitol protests",
+      "tags": [
+        "legal",
+        "politics"
+      ],
+      "snippet": "A federal appeals court struck down a rule that tied demonstrations on the Capitol's Eastern Steps to sponsorship by a member of Congress. The ruling means protest access at that location cannot be co\u2026",
+      "text": "appeals court strikes down congressional sponsorship requirement for capitol protests\na federal appeals court struck down a rule that tied demonstrations on the capitol's eastern steps to sponsorship by a member of congress. the ruling means protest access at that location cannot be conditioned on congressional sponsorship."
+    },
+    {
+      "date": "2026-09-24",
+      "headline": "Tuberville uses Senate floor speech to call for institutionalising trans Americans",
+      "tags": [
+        "politics"
+      ],
+      "snippet": "Sen. Tommy Tuberville of Alabama, who is running for governor, spoke for roughly 20 minutes on the Senate floor attacking transgender people, describing them as violent and deranged and claiming furry\u2026",
+      "text": "tuberville uses senate floor speech to call for institutionalising trans americans\nsen. tommy tuberville of alabama, who is running for governor, spoke for roughly 20 minutes on the senate floor attacking transgender people, describing them as violent and deranged and claiming furry pilots are taking over airlines. he proposed that the united states bring back mental institutions to house transgender americans."
+    },
+    {
+      "date": "2026-09-24",
+      "headline": "New Air Force separation rules to affect 8,000 holders of medical shaving waivers",
+      "tags": [
+        "defence",
+        "politics"
+      ],
+      "snippet": "About 8,000 Airmen and Guardians currently hold medical shaving waivers. Under new rules, some members who cannot meet grooming standards could eventually face separation or require special approval t\u2026",
+      "text": "new air force separation rules to affect 8,000 holders of medical shaving waivers\nabout 8,000 airmen and guardians currently hold medical shaving waivers. under new rules, some members who cannot meet grooming standards could eventually face separation or require special approval to remain in service."
+    },
+    {
+      "date": "2026-09-24",
+      "headline": "Navy confirms eight suicide attempts in USS Abraham Lincoln strike group",
+      "tags": [
+        "defence",
+        "health"
+      ],
+      "snippet": "The Navy confirmed eight suicide attempts across the USS Abraham Lincoln strike group during its extended deployment. The disclosure comes amid scrutiny of conditions during prolonged deployments.",
+      "text": "navy confirms eight suicide attempts in uss abraham lincoln strike group\nthe navy confirmed eight suicide attempts across the uss abraham lincoln strike group during its extended deployment. the disclosure comes amid scrutiny of conditions during prolonged deployments."
+    },
+    {
+      "date": "2026-09-24",
+      "headline": "Imminent danger pay rises for Marines as hostile fire pay doubles",
+      "tags": [
+        "defence"
+      ],
+      "snippet": "Marines serving in imminent danger areas will receive $9.16 per day starting Oct. 1, up from $7.50. Hostile fire pay will separately double to $450 per month.",
+      "text": "imminent danger pay rises for marines as hostile fire pay doubles\nmarines serving in imminent danger areas will receive $9.16 per day starting oct. 1, up from $7.50. hostile fire pay will separately double to $450 per month."
+    },
+    {
+      "date": "2026-09-24",
+      "headline": "Airman says Air Force charged him with drug use over prescribed Adderall",
+      "tags": [
+        "defence",
+        "legal"
+      ],
+      "snippet": "An Airman nearing 16 years of service says he was charged with wrongful drug use after testing positive for amphetamines from Adderall prescribed by a military doctor. He says the prescription was con\u2026",
+      "text": "airman says air force charged him with drug use over prescribed adderall\nan airman nearing 16 years of service says he was charged with wrongful drug use after testing positive for amphetamines from adderall prescribed by a military doctor. he says the prescription was confirmed before his security clearance was pulled."
+    },
+    {
+      "date": "2026-09-24",
+      "headline": "Iowa mother says child welfare agency acted on disputed newborn drug test",
+      "tags": [
+        "legal",
+        "health"
+      ],
+      "snippet": "A woman in Albia, Iowa said the state Department of Human Services came to her home two weeks after she gave birth, saying her son's umbilical cord tested positive for cocaine. She denies ever using c\u2026",
+      "text": "iowa mother says child welfare agency acted on disputed newborn drug test\na woman in albia, iowa said the state department of human services came to her home two weeks after she gave birth, saying her son's umbilical cord tested positive for cocaine. she denies ever using cocaine, and said caseworkers found no drugs or behavioural indicators in the home but sought weekly visits until her lawyer objected. she said she obtained a court order for further testing of the original sample but has been unable to get anyone to act on it, and still has the placenta preserved for testing."
+    },
+    {
+      "date": "2026-09-24",
+      "headline": "Massachusetts expands maternal health investment after Clancy case",
+      "tags": [
+        "health",
+        "politics"
+      ],
+      "snippet": "The governor of Massachusetts announced increased investment in maternal health, including expanded access to care for parents and families. The plan includes home visits from health care providers wi\u2026",
+      "text": "massachusetts expands maternal health investment after clancy case\nthe governor of massachusetts announced increased investment in maternal health, including expanded access to care for parents and families. the plan includes home visits from health care providers within days or weeks of a birth to assess need for additional support, and more training for doctors and other clinicians on identifying signs of postpartum conditions. the announcement follows the widely covered lindsay clancy case."
+    },
+    {
+      "date": "2026-09-24",
+      "headline": "Xi state visit draws MAGA backlash and comparisons to Trump's 2012 criticism of Obama",
+      "tags": [
+        "politics",
+        "foreign-policy"
+      ],
+      "snippet": "Chinese President Xi Jinping's state visit to Washington, with full honors and a state dinner, has drawn criticism from prominent Trump supporters including Laura Loomer, who accused the administratio\u2026",
+      "text": "xi state visit draws maga backlash and comparisons to trump's 2012 criticism of obama\nchinese president xi jinping's state visit to washington, with full honors and a state dinner, has drawn criticism from prominent trump supporters including laura loomer, who accused the administration of rewarding china. trump himself criticised the obama administration in a february 2012 post for hosting then-vice president xi at the pentagon with a full honor ceremony. a clip showing trump wincing as a bomber flew overhead during the greeting ceremony, while xi remained stoic, circulated widely on both american and chinese social media."
+    },
+    {
       "date": "2026-09-23",
       "headline": "Administration cancels ACA coverage for about 750,000 people over alleged fraud",
       "tags": [

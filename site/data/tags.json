@@ -1,23 +1,24 @@
 {
   "tags": [
     "politics",
-    "health",
-    "elections",
-    "markets",
-    "energy",
     "media",
     "legal",
+    "markets",
+    "energy",
+    "economy",
+    "education",
+    "tech",
     "surveillance",
+    "climate",
+    "health",
+    "elections",
+    "defence",
+    "foreign-policy",
     "privacy",
     "policing",
-    "tech",
-    "climate",
     "immigration",
-    "economy",
-    "foreign-policy",
     "security",
     "government",
-    "defence",
     "environment",
     "war",
     "ai",
@@ -34,7 +35,6 @@
     "gaza",
     "conflict",
     "epstein",
-    "history",
-    "education"
+    "history"
   ]
 }
