@@ -1,6 +1,56 @@
 {
-  "last_updated": "2026-09-23T18:04:52.915785+00:00",
+  "last_updated": "2026-09-24T18:08:16.911669+00:00",
   "days": [
+    {
+      "date": "2026-09-25",
+      "tags": [
+        "politics",
+        "war",
+        "media",
+        "legal",
+        "privacy",
+        "markets",
+        "tech",
+        "health",
+        "climate",
+        "elections",
+        "defence",
+        "economy"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@groundnews",
+        "@hunteralexanderhowell",
+        "@ericmoutsos",
+        "@carolinegleich",
+        "@oafnation_actual"
+      ],
+      "post_count": 36,
+      "transcribed_count": 36,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Senator Tommy Tuberville claims many airline workers are furries",
+          "reason": "Culture-war remark with no policy, governance or legal substance."
+        },
+        {
+          "headline": "Conservative Freedom Fest cancelled after six VIP tickets sold",
+          "reason": "Entertainment-event failure with no policy or political consequence."
+        },
+        {
+          "headline": "Jimmy Kimmel segment on Trump and Natalie Harp draws conservative backlash",
+          "reason": "Late-night comedy and online reaction; reports nothing new."
+        },
+        {
+          "headline": "Florida man arrested after shooting 62-year-old in the leg",
+          "reason": "Local crime item with no policy or civil-liberties angle."
+        },
+        {
+          "headline": "Post carrying no news content",
+          "reason": "No news content."
+        }
+      ]
+    },
     {
       "date": "2026-09-24",
       "tags": [
