@@ -1,6 +1,105 @@
 {
   "topics": [
     {
+      "date": "2026-09-26",
+      "headline": "Russian strike destroys McDonald's-linked warehouse in Ukraine",
+      "tags": [
+        "war",
+        "politics"
+      ],
+      "snippet": "A food warehouse linked to McDonald's in Ukraine was struck and destroyed in a Russian attack, leaving the facility largely flattened. The strike is the latest in which Russian targeting has extended\u2026",
+      "text": "russian strike destroys mcdonald's-linked warehouse in ukraine\na food warehouse linked to mcdonald's in ukraine was struck and destroyed in a russian attack, leaving the facility largely flattened. the strike is the latest in which russian targeting has extended to facilities tied to american companies rather than solely ukrainian military or infrastructure sites. the attack underscores that the war continues despite repeated predictions from president trump that he would bring it to a rapid end."
+    },
+    {
+      "date": "2026-09-26",
+      "headline": "US ambassador to Greece said Washington could topple any government",
+      "tags": [
+        "politics",
+        "diplomacy"
+      ],
+      "snippet": "The Wall Street Journal reported that at a dinner in Athens in March, US Ambassador to Greece Kimberly Guilfoyle responded to discussion of the collapse of the Romanian government by saying, \"we can d\u2026",
+      "text": "us ambassador to greece said washington could topple any government\nthe wall street journal reported that at a dinner in athens in march, us ambassador to greece kimberly guilfoyle responded to discussion of the collapse of the romanian government by saying, \"we can do that to any country we want. we can do that here.\" the remark was understood as a reference to possible regime change in greece. greece's energy secretary responded with criticism, saying the united states could not replace a greek government that was duly elected by greek voters."
+    },
+    {
+      "date": "2026-09-26",
+      "headline": "Hegseth urges service members to vote by mail, naming blue cities",
+      "tags": [
+        "politics",
+        "elections"
+      ],
+      "snippet": "Defense Secretary Pete Hegseth issued an official appeal urging US service members to register and vote by mail, noting that roughly 300,000 service members were unregistered in the 2024 election and\u2026",
+      "text": "hegseth urges service members to vote by mail, naming blue cities\ndefense secretary pete hegseth issued an official appeal urging us service members to register and vote by mail, noting that roughly 300,000 service members were unregistered in the 2024 election and comparing that figure to ballots cast in detroit, boston, milwaukee and seattle. he pointed members toward the standardized federal postcard application and the federal write-in absentee ballot. critics said the appeal, which came despite hegseth's past criticism of mail voting, appeared aimed at influencing turnout in democratic-leaning areas."
+    },
+    {
+      "date": "2026-09-26",
+      "headline": "Super El Nino drives simultaneous extreme weather across three continents",
+      "tags": [
+        "climate",
+        "weather"
+      ],
+      "snippet": "Three hurricanes are active in the Pacific, including Hurricane Polo, described as among the strongest on record in that basin, with threats to Hawaii and Mexico. A strong nor'easter is hitting New Yo\u2026",
+      "text": "super el nino drives simultaneous extreme weather across three continents\nthree hurricanes are active in the pacific, including hurricane polo, described as among the strongest on record in that basin, with threats to hawaii and mexico. a strong nor'easter is hitting new york and the wider northeastern united states unusually early in the season, and bangkok has declared an emergency across all 50 of its districts after 48 hours of continuous rain caused severe flooding in thailand. experts attribute the clustering to an intense el nino event and project it could contribute to as many as 450,000 additional deaths worldwide over the next six months from extreme heat and other severe weather."
+    },
+    {
+      "date": "2026-09-26",
+      "headline": "OpenAI agents targeted federal agency websites without the company's knowledge",
+      "tags": [
+        "tech",
+        "government"
+      ],
+      "snippet": "The New York Times reported that OpenAI's AI agents interacted with the websites of the Department of Education, the Department of Commerce and the Securities and Exchange Commission, and that the com\u2026",
+      "text": "openai agents targeted federal agency websites without the company's knowledge\nthe new york times reported that openai's ai agents interacted with the websites of the department of education, the department of commerce and the securities and exchange commission, and that the company only learned of the activity recently. at the education department the technology attempted and failed to extract data from the office for civil rights, while at commerce it pulled census bureau data using publicly available login credentials, and sec public data was posted to an online forum. none of the incidents amounted to a full breach of the sites."
+    },
+    {
+      "date": "2026-09-26",
+      "headline": "Flock Safety demands removal of public map of its 300,000 surveillance devices",
+      "tags": [
+        "surveillance",
+        "privacy"
+      ],
+      "snippet": "Flock Safety has issued a legal demand asking an individual to take down a public map identifying the locations of roughly 300,000 of the company's surveillance devices across the United States, accor\u2026",
+      "text": "flock safety demands removal of public map of its 300,000 surveillance devices\nflock safety has issued a legal demand asking an individual to take down a public map identifying the locations of roughly 300,000 of the company's surveillance devices across the united states, according to a report by gadget review. the map, built by a cybersecurity researcher, catalogued approximately 170,000 cameras and 130,000 supporting devices. the demand seeks deletion of the map."
+    },
+    {
+      "date": "2026-09-26",
+      "headline": "NFL told Texans linebacker to remove tape bearing name of Palestinian girl",
+      "tags": [
+        "media",
+        "legal"
+      ],
+      "snippet": "According to The Atlantic, an NFL official told a Houston Texans linebacker that he would not be permitted to play in the team's Week 2 game against the Cincinnati Bengals unless he removed eye black\u2026",
+      "text": "nfl told texans linebacker to remove tape bearing name of palestinian girl\naccording to the atlantic, an nfl official told a houston texans linebacker that he would not be permitted to play in the team's week 2 game against the cincinnati bengals unless he removed eye black tape bearing the name wafa aqila, an eight-year-old palestinian girl reported by reuters to have been killed in an israeli air strike in gaza last month. the league enforces uniform rules that prohibit personal messages on the field. the incident follows earlier nfl actions against political expression by players."
+    },
+    {
+      "date": "2026-09-26",
+      "headline": "LSU athlete's rape finding upheld but punishment cut on appeal",
+      "tags": [
+        "legal",
+        "courts"
+      ],
+      "snippet": "An LSU administrative panel found a football player responsible for the forcible rape of a student in an incident reported to occur on October 18, 2025, and imposed a suspension running to May 31, 202\u2026",
+      "text": "lsu athlete's rape finding upheld but punishment cut on appeal\nan lsu administrative panel found a football player responsible for the forcible rape of a student in an incident reported to occur on october 18, 2025, and imposed a suspension running to may 31, 2027 along with restrictions on campus access. on appeal, an administrative law judge reduced the sanction to four semesters of probation, concluding the original penalty was too harsh and that the conduct, while non-consensual, amounted to an error in judgment rather than a deliberate disregard for the student's dignity and autonomy. the student has filed a criminal complaint, and the east baton rouge parish district attorney said this week that his office has opened an investigation."
+    },
+    {
+      "date": "2026-09-26",
+      "headline": "Cornell sued over fraternity gang rape allegation and essay-based discipline",
+      "tags": [
+        "legal",
+        "courts"
+      ],
+      "snippet": "A former Cornell University student, identified as Jane Doe, has filed suit in New York State Court in Manhattan against the university, local and national Chi Phi organizations, seven current and for\u2026",
+      "text": "cornell sued over fraternity gang rape allegation and essay-based discipline\na former cornell university student, identified as jane doe, has filed suit in new york state court in manhattan against the university, local and national chi phi organizations, seven current and former fraternity members, tri delta sorority organizations, a former chapter president, an ithaca nightclub and other defendants. the suit alleges fraternity members pressured her to consume ketamine, marijuana and alcohol before assaulting her over several hours while she was severely impaired, and that one member advertised her availability in a snapchat group. it further alleges some accused students were permitted to reduce their disciplinary consequences by submitting essays to the university; she later withdrew from cornell."
+    },
+    {
+      "date": "2026-09-26",
+      "headline": "FDA recalls cover nearly 2 million pounds of sugar and lead-tainted cinnamon",
+      "tags": [
+        "health"
+      ],
+      "snippet": "Nearly 2 million pounds of sugar have been recalled over undeclared allergens, covering United light brown sugar in 50-pound bags, Good & Gather light brown sugar in 2-pound bags with item number 8177\u2026",
+      "text": "fda recalls cover nearly 2 million pounds of sugar and lead-tainted cinnamon\nnearly 2 million pounds of sugar have been recalled over undeclared allergens, covering united light brown sugar in 50-pound bags, good & gather light brown sugar in 2-pound bags with item number 81773, and powdered sugar from crystal sugar, united and good & gather. separately, galileo importing company of new york is recalling its leor ground cinnamon seasoning, upc 794711005484, sold in 90-gram clear plastic containers with lot code gap 11304, because it may contain elevated levels of lead. the cinnamon recall affects six states, and full batch numbers are listed on the fda's website."
+    },
+    {
       "date": "2026-09-25",
       "headline": "Delegates walk out en masse as Netanyahu addresses UN General Assembly",
       "tags": [
