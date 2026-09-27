@@ -4,28 +4,67 @@
     {
       "date": "2026-09-26",
       "tags": [
-        "war",
-        "politics",
-        "diplomacy",
-        "elections",
-        "climate",
-        "weather",
-        "tech",
-        "government",
-        "surveillance",
-        "privacy",
-        "media",
+        "defence",
         "legal",
-        "courts",
-        "health"
+        "politics",
+        "immigration",
+        "tech",
+        "surveillance",
+        "policing",
+        "climate",
+        "health",
+        "markets",
+        "media",
+        "environment"
       ],
       "sources": [
-        "@aaronparnas"
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@oafnation_actual",
+        "@groundnews",
+        "@carolinegleich"
       ],
-      "post_count": 10,
-      "transcribed_count": 10,
-      "incomplete": true,
-      "skipped": []
+      "post_count": 37,
+      "transcribed_count": 36,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Multi-state cheese recall issued after E. coli outbreak sickens 13",
+          "reason": "Consumer product recall and foodborne outbreak notice rather than public health policy."
+        },
+        {
+          "headline": "Nearly 2 million pounds of sugar and ground cinnamon recalled",
+          "reason": "Consumer product recall notice rather than public health policy."
+        },
+        {
+          "headline": "Speculation that Fetterman's party switch is tied to his wife's immigration history",
+          "reason": "Speculative commentary stringing together known facts rather than new reporting."
+        },
+        {
+          "headline": "Creator argues both parties are a uniparty and urges non-compliance",
+          "reason": "Opinion commentary that reports no new information."
+        },
+        {
+          "headline": "SNL sketch about Trump's assistant draws Republican anger",
+          "reason": "Reaction to a comedy sketch with no policy or political substance."
+        },
+        {
+          "headline": "Largest bat genome and fossil study places their origin in Europe",
+          "reason": "Basic science research with no policy or political angle."
+        },
+        {
+          "headline": "Teeth from 25,000 years ago yield earliest known evidence of human drug use",
+          "reason": "Archaeology research with no policy or political angle."
+        },
+        {
+          "headline": "Creator shares personal fitness comparison",
+          "reason": "Personal fitness content, not news."
+        },
+        {
+          "headline": "Post shows a puppy as a break from the news",
+          "reason": "No news content."
+        }
+      ]
     },
     {
       "date": "2026-09-25",

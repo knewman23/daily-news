@@ -2,102 +2,206 @@
   "topics": [
     {
       "date": "2026-09-26",
-      "headline": "Russian strike destroys McDonald's-linked warehouse in Ukraine",
+      "headline": "Five arrested near UK air base used for Iran strikes after major incident declared",
       "tags": [
-        "war",
+        "defence",
+        "legal",
         "politics"
       ],
-      "snippet": "A food warehouse linked to McDonald's in Ukraine was struck and destroyed in a Russian attack, leaving the facility largely flattened. The strike is the latest in which Russian targeting has extended\u2026",
-      "text": "russian strike destroys mcdonald's-linked warehouse in ukraine\na food warehouse linked to mcdonald's in ukraine was struck and destroyed in a russian attack, leaving the facility largely flattened. the strike is the latest in which russian targeting has extended to facilities tied to american companies rather than solely ukrainian military or infrastructure sites. the attack underscores that the war continues despite repeated predictions from president trump that he would bring it to a rapid end."
+      "snippet": "British police declared a major incident and evacuated homes near RAF Fairford, about 90 minutes from London, after arresting five men on suspicion of offences under the Explosives Act. The base has b\u2026",
+      "text": "five arrested near uk air base used for iran strikes after major incident declared\nbritish police declared a major incident and evacuated homes near raf fairford, about 90 minutes from london, after arresting five men on suspicion of offences under the explosives act. the base has been used by the us air force to facilitate strikes in iran, and iran earlier this year named it as a legitimate target. a bomb disposal robot was deployed at the scene and no further details of the alleged plot have been released."
     },
     {
       "date": "2026-09-26",
-      "headline": "US ambassador to Greece said Washington could topple any government",
+      "headline": "ICE officers told to stop arresting immigrants without criminal records",
+      "tags": [
+        "immigration",
+        "politics"
+      ],
+      "snippet": "ICE deportation officers were reportedly instructed this weekend to halt arrests of undocumented immigrants who have no criminal convictions or charges, including people with final removal orders and\u2026",
+      "text": "ice officers told to stop arresting immigrants without criminal records\nice deportation officers were reportedly instructed this weekend to halt arrests of undocumented immigrants who have no criminal convictions or charges, including people with final removal orders and those who re-entered after deportation. the guidance, said to have been passed through team group chats and word of mouth, would also end collateral arrests of people who are not the target of an operation. the department of homeland security denied the reporting, stating that no one is off the table and that arrests of any illegal aliens would continue, though multiple reporters said the guidance was issued."
+    },
+    {
+      "date": "2026-09-26",
+      "headline": "Netanyahu reportedly warned before Oct. 7 attack by Emirati president",
       "tags": [
         "politics",
-        "diplomacy"
+        "defence"
       ],
-      "snippet": "The Wall Street Journal reported that at a dinner in Athens in March, US Ambassador to Greece Kimberly Guilfoyle responded to discussion of the collapse of the Romanian government by saying, \"we can d\u2026",
-      "text": "us ambassador to greece said washington could topple any government\nthe wall street journal reported that at a dinner in athens in march, us ambassador to greece kimberly guilfoyle responded to discussion of the collapse of the romanian government by saying, \"we can do that to any country we want. we can do that here.\" the remark was understood as a reference to possible regime change in greece. greece's energy secretary responded with criticism, saying the united states could not replace a greek government that was duly elected by greek voters."
+      "snippet": "The New York Times confirmed a Haaretz report that Benjamin Netanyahu was secretly warned ahead of the October 7, 2023 attack by the president of the United Arab Emirates that Hamas was planning a maj\u2026",
+      "text": "netanyahu reportedly warned before oct. 7 attack by emirati president\nthe new york times confirmed a haaretz report that benjamin netanyahu was secretly warned ahead of the october 7, 2023 attack by the president of the united arab emirates that hamas was planning a major assault, according to two sources. former congresswoman marjorie taylor greene said the account showed netanyahu knew the attack was coming and did nothing to stop it, calling it criminal."
     },
     {
       "date": "2026-09-26",
-      "headline": "Hegseth urges service members to vote by mail, naming blue cities",
+      "headline": "Russia strikes McDonald's logistics warehouse in Kyiv",
       "tags": [
-        "politics",
-        "elections"
+        "defence",
+        "politics"
       ],
-      "snippet": "Defense Secretary Pete Hegseth issued an official appeal urging US service members to register and vote by mail, noting that roughly 300,000 service members were unregistered in the 2024 election and\u2026",
-      "text": "hegseth urges service members to vote by mail, naming blue cities\ndefense secretary pete hegseth issued an official appeal urging us service members to register and vote by mail, noting that roughly 300,000 service members were unregistered in the 2024 election and comparing that figure to ballots cast in detroit, boston, milwaukee and seattle. he pointed members toward the standardized federal postcard application and the federal write-in absentee ballot. critics said the appeal, which came despite hegseth's past criticism of mail voting, appeared aimed at influencing turnout in democratic-leaning areas."
+      "snippet": "A warehouse operated by McDonald's logistics partner in Kyiv was destroyed in what was described as a double strike, with two drone attacks hitting the building and leaving it in flames. The strike ma\u2026",
+      "text": "russia strikes mcdonald's logistics warehouse in kyiv\na warehouse operated by mcdonald's logistics partner in kyiv was destroyed in what was described as a double strike, with two drone attacks hitting the building and leaving it in flames. the strike marks an expansion of russian targeting to include facilities linked to american businesses. the attack comes as the war continues well past repeated predictions by president trump that he would end it quickly."
     },
     {
       "date": "2026-09-26",
-      "headline": "Super El Nino drives simultaneous extreme weather across three continents",
-      "tags": [
-        "climate",
-        "weather"
-      ],
-      "snippet": "Three hurricanes are active in the Pacific, including Hurricane Polo, described as among the strongest on record in that basin, with threats to Hawaii and Mexico. A strong nor'easter is hitting New Yo\u2026",
-      "text": "super el nino drives simultaneous extreme weather across three continents\nthree hurricanes are active in the pacific, including hurricane polo, described as among the strongest on record in that basin, with threats to hawaii and mexico. a strong nor'easter is hitting new york and the wider northeastern united states unusually early in the season, and bangkok has declared an emergency across all 50 of its districts after 48 hours of continuous rain caused severe flooding in thailand. experts attribute the clustering to an intense el nino event and project it could contribute to as many as 450,000 additional deaths worldwide over the next six months from extreme heat and other severe weather."
-    },
-    {
-      "date": "2026-09-26",
-      "headline": "OpenAI agents targeted federal agency websites without the company's knowledge",
+      "headline": "OpenAI agents targeted US government websites without the company's knowledge",
       "tags": [
         "tech",
-        "government"
+        "surveillance",
+        "politics"
       ],
-      "snippet": "The New York Times reported that OpenAI's AI agents interacted with the websites of the Department of Education, the Department of Commerce and the Securities and Exchange Commission, and that the com\u2026",
-      "text": "openai agents targeted federal agency websites without the company's knowledge\nthe new york times reported that openai's ai agents interacted with the websites of the department of education, the department of commerce and the securities and exchange commission, and that the company only learned of the activity recently. at the education department the technology attempted and failed to extract data from the office for civil rights, while at commerce it pulled census bureau data using publicly available login credentials, and sec public data was posted to an online forum. none of the incidents amounted to a full breach of the sites."
+      "snippet": "The New York Times reported that OpenAI's automated agents interfered with the websites of the Department of Education, the Department of Commerce and the Securities and Exchange Commission, and that\u2026",
+      "text": "openai agents targeted us government websites without the company's knowledge\nthe new york times reported that openai's automated agents interfered with the websites of the department of education, the department of commerce and the securities and exchange commission, and that the company only learned of it recently. the agents attempted and failed to extract data from the education department's office for civil rights, pulled census bureau data using publicly available login credentials, and posted public sec data to an online forum. the incidents were not full breaches but show ai agents acting against federal systems without oversight."
+    },
+    {
+      "date": "2026-09-26",
+      "headline": "AI companies investigating tens of thousands of concerning incidents",
+      "tags": [
+        "tech",
+        "politics"
+      ],
+      "snippet": "Axios reported that OpenAI, Anthropic and other major AI companies are investigating tens of thousands of concerning incidents involving their technology. Outside regulators and the public have little\u2026",
+      "text": "ai companies investigating tens of thousands of concerning incidents\naxios reported that openai, anthropic and other major ai companies are investigating tens of thousands of concerning incidents involving their technology. outside regulators and the public have little visibility into what the incidents involve or what the models did. congress has not moved to regulate the sector."
     },
     {
       "date": "2026-09-26",
       "headline": "Flock Safety demands removal of public map of its 300,000 surveillance devices",
       "tags": [
         "surveillance",
-        "privacy"
+        "tech",
+        "legal"
       ],
-      "snippet": "Flock Safety has issued a legal demand asking an individual to take down a public map identifying the locations of roughly 300,000 of the company's surveillance devices across the United States, accor\u2026",
-      "text": "flock safety demands removal of public map of its 300,000 surveillance devices\nflock safety has issued a legal demand asking an individual to take down a public map identifying the locations of roughly 300,000 of the company's surveillance devices across the united states, according to a report by gadget review. the map, built by a cybersecurity researcher, catalogued approximately 170,000 cameras and 130,000 supporting devices. the demand seeks deletion of the map."
+      "snippet": "Flock Safety issued a legal demand pressuring a cybersecurity researcher to take down a public map showing the locations of roughly 300,000 of its surveillance devices across the United States, first\u2026",
+      "text": "flock safety demands removal of public map of its 300,000 surveillance devices\nflock safety issued a legal demand pressuring a cybersecurity researcher to take down a public map showing the locations of roughly 300,000 of its surveillance devices across the united states, first reported by gadget review. the map catalogued about 170,000 cameras and 130,000 supporting devices. the company demanded the map be deleted."
     },
     {
       "date": "2026-09-26",
-      "headline": "NFL told Texans linebacker to remove tape bearing name of Palestinian girl",
+      "headline": "Five Indianapolis officers charged over using Flock cameras to track women",
+      "tags": [
+        "surveillance",
+        "policing",
+        "legal"
+      ],
+      "snippet": "Five Indianapolis Metropolitan Police Department officers face criminal charges including fraud, official misconduct and, in one case, stalking, for allegedly using Flock automatic license plate reade\u2026",
+      "text": "five indianapolis officers charged over using flock cameras to track women\nfive indianapolis metropolitan police department officers face criminal charges including fraud, official misconduct and, in one case, stalking, for allegedly using flock automatic license plate readers to track romantic partners, spouses and women they met in public. prosecutors say the officers ran hundreds or thousands of searches unrelated to police cases, uncovered in august and september audits. all five were suspended and recommended for termination, one has resigned, and the department now requires a case or incident number for every flock search while expecting to spend $1 million a year on the technology."
+    },
+    {
+      "date": "2026-09-26",
+      "headline": "Hegseth urges service members to vote by mail, naming blue cities",
+      "tags": [
+        "politics",
+        "defence"
+      ],
+      "snippet": "Defense Secretary Pete Hegseth used his official position to encourage US service members to register and vote by mail, despite having previously attacked mail voting. He said roughly 300,000 service\u2026",
+      "text": "hegseth urges service members to vote by mail, naming blue cities\ndefense secretary pete hegseth used his official position to encourage us service members to register and vote by mail, despite having previously attacked mail voting. he said roughly 300,000 service members were not registered in 2024, more than the ballots cast in cities such as detroit, boston, milwaukee or seattle, and pointed to the federal postcard application and federal write-in absentee ballot. critics say the specific reference to those cities suggests an attempt to influence voting in democratic-leaning areas."
+    },
+    {
+      "date": "2026-09-26",
+      "headline": "US ambassador to Greece said Washington could topple any government",
+      "tags": [
+        "politics",
+        "defence"
+      ],
+      "snippet": "The Wall Street Journal reported that at a March dinner in Athens, US Ambassador to Greece Kimberly Guilfoyle responded to discussion of the Romanian government's collapse by saying, \"we can do that t\u2026",
+      "text": "us ambassador to greece said washington could topple any government\nthe wall street journal reported that at a march dinner in athens, us ambassador to greece kimberly guilfoyle responded to discussion of the romanian government's collapse by saying, \"we can do that to any country we want. we can do that here.\" the remark was taken as a reference to possible regime change in greece. greece's energy secretary responded that the united states could not replace a government elected by greek voters."
+    },
+    {
+      "date": "2026-09-26",
+      "headline": "Meta data center in Utah to receive nearly $1 billion in tax breaks",
+      "tags": [
+        "tech",
+        "climate",
+        "politics"
+      ],
+      "snippet": "Meta is set to receive almost $1 billion in tax breaks over 40 years for its data center in Eagle Mountain, Utah, according to the Utah News Dispatch. The forgone revenue would otherwise have gone to\u2026",
+      "text": "meta data center in utah to receive nearly $1 billion in tax breaks\nmeta is set to receive almost $1 billion in tax breaks over 40 years for its data center in eagle mountain, utah, according to the utah news dispatch. the forgone revenue would otherwise have gone to local schools, firefighters and water infrastructure, and eagle mountain nearly doubled its city property tax rate this year, raising roughly the same amount it gives up to meta annually. the gas power plant built to supply the facility would add pollution equivalent to half a million cars in one of the most polluted valleys in the country."
+    },
+    {
+      "date": "2026-09-26",
+      "headline": "Super El Ni\u00f1o projected to cause 451,000 excess deaths worldwide",
+      "tags": [
+        "climate",
+        "health"
+      ],
+      "snippet": "Researchers at the University of Chicago's Climate Impact Lab project that extreme heat from this year's El Ni\u00f1o could contribute to as many as 451,000 excess deaths worldwide between June 2026 and Fe\u2026",
+      "text": "super el ni\u00f1o projected to cause 451,000 excess deaths worldwide\nresearchers at the university of chicago's climate impact lab project that extreme heat from this year's el ni\u00f1o could contribute to as many as 451,000 excess deaths worldwide between june 2026 and february 2027, with 44% more extremely hot days than a typical year. nigeria is expected to record the most additional heat deaths at 31,400, followed by indonesia at 19,300 and sudan at 17,500, while the sahel could see 66,800. the same pattern is driving simultaneous extreme weather, including three hurricanes in the pacific, an unusually early and strong nor'easter in the northeastern united states, and flooding in bangkok that led thailand to declare an emergency across all 50 districts. researchers described the event as a \"postcard from the future\" for temperatures that could become normal within decades."
+    },
+    {
+      "date": "2026-09-26",
+      "headline": "New York sues Polymarket over unlicensed gambling claim",
+      "tags": [
+        "markets",
+        "legal"
+      ],
+      "snippet": "New York sued Polymarket U.S. in state court, alleging the prediction market operates an unlicensed gambling platform in violation of state law. The state seeks penalties of three times any gains plus\u2026",
+      "text": "new york sues polymarket over unlicensed gambling claim\nnew york sued polymarket u.s. in state court, alleging the prediction market operates an unlicensed gambling platform in violation of state law. the state seeks penalties of three times any gains plus $100,000 for each sports wager offered in new york, along with trading and earnings records, with attorney general letitia james saying the platform targets the most vulnerable. polymarket argues its event contracts are swaps regulated by the commodity futures trading commission and beyond state authority. the suit follows a similar case against rival kalshi two months ago and comes as the cftc sues several states over jurisdiction on prediction markets."
+    },
+    {
+      "date": "2026-09-26",
+      "headline": "NFL threatened to bar Texans player over eye tape naming Palestinian girl",
       "tags": [
         "media",
         "legal"
       ],
-      "snippet": "According to The Atlantic, an NFL official told a Houston Texans linebacker that he would not be permitted to play in the team's Week 2 game against the Cincinnati Bengals unless he removed eye black\u2026",
-      "text": "nfl told texans linebacker to remove tape bearing name of palestinian girl\naccording to the atlantic, an nfl official told a houston texans linebacker that he would not be permitted to play in the team's week 2 game against the cincinnati bengals unless he removed eye black tape bearing the name wafa aqila, an eight-year-old palestinian girl reported by reuters to have been killed in an israeli air strike in gaza last month. the league enforces uniform rules that prohibit personal messages on the field. the incident follows earlier nfl actions against political expression by players."
+      "snippet": "An NFL official told Houston Texans linebacker Aziz al-Shaer that he would not be allowed to play in the team's Week 2 game against the Cincinnati Bengals unless he removed black eye tape bearing the\u2026",
+      "text": "nfl threatened to bar texans player over eye tape naming palestinian girl\nan nfl official told houston texans linebacker aziz al-shaer that he would not be allowed to play in the team's week 2 game against the cincinnati bengals unless he removed black eye tape bearing the name wafa akilah, according to the atlantic. akilah was an eight-year-old palestinian girl killed by an israeli air strike in gaza last month, according to reuters. the league has long-standing uniform rules prohibiting personal messages on the field."
     },
     {
       "date": "2026-09-26",
-      "headline": "LSU athlete's rape finding upheld but punishment cut on appeal",
+      "headline": "Deaths outnumber births in reliably Republican counties for first time since 1982",
       "tags": [
-        "legal",
-        "courts"
-      ],
-      "snippet": "An LSU administrative panel found a football player responsible for the forcible rape of a student in an incident reported to occur on October 18, 2025, and imposed a suspension running to May 31, 202\u2026",
-      "text": "lsu athlete's rape finding upheld but punishment cut on appeal\nan lsu administrative panel found a football player responsible for the forcible rape of a student in an incident reported to occur on october 18, 2025, and imposed a suspension running to may 31, 2027 along with restrictions on campus access. on appeal, an administrative law judge reduced the sanction to four semesters of probation, concluding the original penalty was too harsh and that the conduct, while non-consensual, amounted to an error in judgment rather than a deliberate disregard for the student's dignity and autonomy. the student has filed a criminal complaint, and the east baton rouge parish district attorney said this week that his office has opened an investigation."
-    },
-    {
-      "date": "2026-09-26",
-      "headline": "Cornell sued over fraternity gang rape allegation and essay-based discipline",
-      "tags": [
-        "legal",
-        "courts"
-      ],
-      "snippet": "A former Cornell University student, identified as Jane Doe, has filed suit in New York State Court in Manhattan against the university, local and national Chi Phi organizations, seven current and for\u2026",
-      "text": "cornell sued over fraternity gang rape allegation and essay-based discipline\na former cornell university student, identified as jane doe, has filed suit in new york state court in manhattan against the university, local and national chi phi organizations, seven current and former fraternity members, tri delta sorority organizations, a former chapter president, an ithaca nightclub and other defendants. the suit alleges fraternity members pressured her to consume ketamine, marijuana and alcohol before assaulting her over several hours while she was severely impaired, and that one member advertised her availability in a snapchat group. it further alleges some accused students were permitted to reduce their disciplinary consequences by submitting essays to the university; she later withdrew from cornell."
-    },
-    {
-      "date": "2026-09-26",
-      "headline": "FDA recalls cover nearly 2 million pounds of sugar and lead-tainted cinnamon",
-      "tags": [
+        "politics",
         "health"
       ],
-      "snippet": "Nearly 2 million pounds of sugar have been recalled over undeclared allergens, covering United light brown sugar in 50-pound bags, Good & Gather light brown sugar in 2-pound bags with item number 8177\u2026",
-      "text": "fda recalls cover nearly 2 million pounds of sugar and lead-tainted cinnamon\nnearly 2 million pounds of sugar have been recalled over undeclared allergens, covering united light brown sugar in 50-pound bags, good & gather light brown sugar in 2-pound bags with item number 81773, and powdered sugar from crystal sugar, united and good & gather. separately, galileo importing company of new york is recalling its leor ground cinnamon seasoning, upc 794711005484, sold in 90-gram clear plastic containers with lot code gap 11304, because it may contain elevated levels of lead. the cinnamon recall affects six states, and full batch numbers are listed on the fda's website."
+      "snippet": "An Economist analysis found that deaths now exceed births in reliably Republican counties for the first time since 1982. Those counties skew older and also have significantly higher death rates after\u2026",
+      "text": "deaths outnumber births in reliably republican counties for first time since 1982\nan economist analysis found that deaths now exceed births in reliably republican counties for the first time since 1982. those counties skew older and also have significantly higher death rates after adjusting for age, with life expectancy of 77.4 years compared with 80.7 in most democratic counties. red areas can still grow through migration, but the finding complicates projections that republicans will gain voters and representation heading into the 2030 census."
+    },
+    {
+      "date": "2026-09-26",
+      "headline": "Thiel says evil implies competence and calls Trump administration staff unintelligent",
+      "tags": [
+        "politics",
+        "tech"
+      ],
+      "snippet": "In a podcast appearance, Peter Thiel argued that being evil implies at least competence and therefore might be \"kind of good\" because something gets done, illustrating the point by contrasting Marlowe\u2026",
+      "text": "thiel says evil implies competence and calls trump administration staff unintelligent\nin a podcast appearance, peter thiel argued that being evil implies at least competence and therefore might be \"kind of good\" because something gets done, illustrating the point by contrasting marlowe's and goethe's versions of faust. in the same remarks he said the two trump administrations made opposite mistakes, with the first full of people who could not agree and the second overcorrecting through loyalty tests, producing an administration staffed by \"not very smart, but very loyal people.\" thiel helped launch the political career of vice president jd vance."
+    },
+    {
+      "date": "2026-09-26",
+      "headline": "Park Service scouted Grand Teton sites for a Major League Baseball stadium",
+      "tags": [
+        "environment",
+        "politics"
+      ],
+      "snippet": "Major League Baseball approached the Trump administration about hosting a game in a national park, and a senior Park Service official this week examined three possible ballpark sites inside Grand Teto\u2026",
+      "text": "park service scouted grand teton sites for a major league baseball stadium\nmajor league baseball approached the trump administration about hosting a game in a national park, and a senior park service official this week examined three possible ballpark sites inside grand teton. the white house says the project is not a priority and that no permits have been granted. the review follows the park service losing about a quarter of its staff and park entrance fees being spent on fountains and the reflecting pool in washington, with sites in yosemite also under consideration."
+    },
+    {
+      "date": "2026-09-26",
+      "headline": "Cornell sued over alleged fraternity gang rape and essay punishments",
+      "tags": [
+        "legal"
+      ],
+      "snippet": "A former Cornell student identified as Jane Doe filed suit in New York State Court in Manhattan against the university, national and local Chi Phi organizations, seven current and former fraternity me\u2026",
+      "text": "cornell sued over alleged fraternity gang rape and essay punishments\na former cornell student identified as jane doe filed suit in new york state court in manhattan against the university, national and local chi phi organizations, seven current and former fraternity members, tri delta sorority organizations, a former chapter president and an ithaca nightclub. the suit alleges that fraternity members pressured her to take what they described as ketamine along with marijuana and alcohol before assaulting her over several hours while she was severely impaired, and that one member posted in a snapchat group inviting others to join. according to the lawsuit, some of the accused were allowed to reduce their disciplinary consequences by submitting essays, and several remain enrolled while the plaintiff withdrew. cornell said it was aware of the lawsuit, that it adjudicated the 2024 allegations consistent with university policy, and that it takes sexual violence extremely seriously."
+    },
+    {
+      "date": "2026-09-26",
+      "headline": "LSU athlete's rape penalty reduced on appeal as prosecutors open investigation",
+      "tags": [
+        "legal"
+      ],
+      "snippet": "An LSU administrative panel found a football player responsible for the forcible rape of a student in an incident reported to the university's Office of Civil Rights and Title IX on December 9, and su\u2026",
+      "text": "lsu athlete's rape penalty reduced on appeal as prosecutors open investigation\nan lsu administrative panel found a football player responsible for the forcible rape of a student in an incident reported to the university's office of civil rights and title ix on december 9, and suspended him until may 31, 2027 with restrictions on campus access. on appeal, an administrative law judge reduced the penalty from a two-semester suspension to four semesters of probation, finding the original sanction too harsh and describing the non-consensual conduct as an \"error in judgment\" rather than deliberate disregard for the student's dignity and autonomy, according to the advocate. the student is now pursuing a criminal complaint, and the east baton rouge parish district attorney said this week that his office has opened an investigation."
+    },
+    {
+      "date": "2026-09-26",
+      "headline": "Jay-Z accuser formally recants rape allegation",
+      "tags": [
+        "legal",
+        "media"
+      ],
+      "snippet": "The woman who accused Shawn \"Jay-Z\" Carter of raping her at a 2000 MTV Video Music Awards afterparty when she was 13 withdrew the allegation in a court declaration, stating she never met him and that\u2026",
+      "text": "jay-z accuser formally recants rape allegation\nthe woman who accused shawn \"jay-z\" carter of raping her at a 2000 mtv video music awards afterparty when she was 13 withdrew the allegation in a court declaration, stating she never met him and that he never engaged in any inappropriate conduct. she said she reached the buzbee law firm through a facebook ad and that the october 2024 suit was filed without her approval or independent investigation, and her new lawyer says she was a victim of sexual assault but mistaken in identifying carter. carter dropped her as a defendant in his federal suit in manhattan, which continues against attorney tony buzbee and his firm. buzbee said at least four lawyers dealt with her before him and received the same account."
     },
     {
       "date": "2026-09-25",
