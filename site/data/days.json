@@ -1,6 +1,64 @@
 {
-  "last_updated": "2026-09-27T16:04:12.106707+00:00",
+  "last_updated": "2026-09-27T17:37:24.505642+00:00",
   "days": [
+    {
+      "date": "2026-09-28",
+      "tags": [
+        "war",
+        "politics",
+        "defence",
+        "economy",
+        "legal",
+        "media",
+        "immigration",
+        "tech",
+        "climate",
+        "health",
+        "surveillance",
+        "privacy"
+      ],
+      "sources": [
+        "@groundnews",
+        "@oafnation_actual",
+        "@aaronparnas",
+        "@total.hypocrisy",
+        "@hunteralexanderhowell",
+        "@carolinegleich"
+      ],
+      "post_count": 33,
+      "transcribed_count": 32,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Claims of aerosol spraying over Utah skies",
+          "reason": "Unverified conspiracy claim reporting no actual news event or source"
+        },
+        {
+          "headline": "Claims that graphene oxide in food and air enables mind control",
+          "reason": "Unverified conspiracy claim with no news content, paired with a supplement pitch"
+        },
+        {
+          "headline": "Sylvester Stallone says all war is futile",
+          "reason": "Celebrity commentary on an old interview, reporting nothing new"
+        },
+        {
+          "headline": "DeleteMe data broker removal service promotion",
+          "reason": "Paid advertisement"
+        },
+        {
+          "headline": "Dating experience prompts commentary on men and relationships",
+          "reason": "Personal anecdote and social commentary with no policy angle"
+        },
+        {
+          "headline": "Lizzie Borden series prompts reflection on 1980s new wave culture",
+          "reason": "Pop culture commentary with no news or policy content"
+        },
+        {
+          "headline": "Army Reserve Drill Sergeant of the Year says the role requires empathy",
+          "reason": "Human interest profile with no policy or defence-decision angle"
+        }
+      ]
+    },
     {
       "date": "2026-09-27",
       "tags": [
