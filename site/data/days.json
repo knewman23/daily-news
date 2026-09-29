@@ -1,6 +1,68 @@
 {
-  "last_updated": "2026-09-27T17:37:24.505642+00:00",
+  "last_updated": "2026-09-28T18:06:07.140663+00:00",
   "days": [
+    {
+      "date": "2026-09-29",
+      "tags": [
+        "politics",
+        "legal",
+        "immigration",
+        "media",
+        "health",
+        "climate",
+        "defence",
+        "surveillance",
+        "policing"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@groundnews",
+        "@total.hypocrisy",
+        "@carolinegleich",
+        "@oafnation_actual"
+      ],
+      "post_count": 40,
+      "transcribed_count": 39,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "National Weather Service issues excessive rainfall outlook for Midwest",
+          "reason": "Routine short-term weather forecast with no climate or environmental policy angle."
+        },
+        {
+          "headline": "Republicans call for NFL boycott after mariachi band performs anthem",
+          "reason": "Culture-war reaction to a sports broadcast with no policy or governmental substance."
+        },
+        {
+          "headline": "Commentator criticises public doubt over Cornell accuser's account",
+          "reason": "Commentary on a story already covered elsewhere; reports nothing new."
+        },
+        {
+          "headline": "Commentator ties conservative opposition to debt relief to narcissism research",
+          "reason": "Opinion commentary and psychological framing rather than reported news."
+        },
+        {
+          "headline": "Creator publicly applies for a job on Jen Psaki's show",
+          "reason": "Personal job-seeking appeal with no news content."
+        },
+        {
+          "headline": "Post claims vaccines and 5G enable population-wide electromagnetic control",
+          "reason": "Unsubstantiated conspiracy claims presented without any reported factual development."
+        },
+        {
+          "headline": "Post juxtaposes Netanyahu clips and a meeting with Elon Musk",
+          "reason": "Reaction commentary on previously published clips, with speculation rather than new reporting."
+        },
+        {
+          "headline": "Army promotes holistic fitness programme beyond physical training",
+          "reason": "Institutional fitness programme promotion rather than defence policy news."
+        },
+        {
+          "headline": "Navy galley at Gulfport adds coffee and smoothie bar",
+          "reason": "Quality-of-life feature with no policy, budget or defence significance."
+        }
+      ]
+    },
     {
       "date": "2026-09-28",
       "tags": [
