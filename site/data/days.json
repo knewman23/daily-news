@@ -1,6 +1,70 @@
 {
-  "last_updated": "2026-09-28T18:06:07.140663+00:00",
+  "last_updated": "2026-09-29T17:22:33.701970+00:00",
   "days": [
+    {
+      "date": "2026-09-30",
+      "tags": [
+        "politics",
+        "legal",
+        "tech",
+        "defence",
+        "climate",
+        "environment",
+        "elections",
+        "aviation",
+        "conflict",
+        "media",
+        "policing",
+        "privacy",
+        "surveillance"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@groundnews",
+        "@total.hypocrisy",
+        "@oafnation_actual",
+        "@ericmoutsos",
+        "@hunteralexanderhowell",
+        "@carolinegleich"
+      ],
+      "post_count": 48,
+      "transcribed_count": 48,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Commentators criticise The View segment on Cornell case",
+          "reason": "Reaction commentary on a television segment that reports no new facts."
+        },
+        {
+          "headline": "Creator pledges continued coverage of sexual violence cases",
+          "reason": "A creator talking about his own motivations rather than reporting news."
+        },
+        {
+          "headline": "Commentator describes everyday experiences of harassment",
+          "reason": "Personal reflection with no policy or news development."
+        },
+        {
+          "headline": "Creator describes altering appearance to be taken seriously online",
+          "reason": "A creator discussing her own presentation choices rather than news."
+        },
+        {
+          "headline": "Archival interview clip with convicted serial killer",
+          "reason": "An archival clip with no current news development attached."
+        },
+        {
+          "headline": "Fort Bragg opens campus-style dining venue",
+          "reason": "A base amenity change with no policy, budget or defence significance."
+        },
+        {
+          "headline": "Weekly roundup of underreported good news",
+          "reason": "A human-interest roundup; the one environmental item carries no policy angle."
+        },
+        {
+          "headline": "Anniversary of the killing of Muhammad al-Durrah in Gaza",
+          "reason": "A historical commemoration rather than a current development."
+        }
+      ]
+    },
     {
       "date": "2026-09-29",
       "tags": [
