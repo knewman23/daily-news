@@ -1,6 +1,67 @@
 {
-  "last_updated": "2026-09-29T17:22:33.701970+00:00",
+  "last_updated": "2026-09-30T18:11:43.298627+00:00",
   "days": [
+    {
+      "date": "2026-10-01",
+      "tags": [
+        "defence",
+        "politics",
+        "legal",
+        "immigration",
+        "surveillance",
+        "privacy",
+        "climate",
+        "tech",
+        "media",
+        "markets",
+        "health"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@groundnews",
+        "@total.hypocrisy",
+        "@carolinegleich",
+        "@oafnation_actual"
+      ],
+      "post_count": 36,
+      "transcribed_count": 36,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Commentary ties Iran standoff to oil pricing and the dollar",
+          "reason": "Commentary reposting decades-old lecture material; reports nothing new."
+        },
+        {
+          "headline": "Post questions account of Israeli plumber who landed stricken plane",
+          "reason": "Reaction commentary with no new reporting."
+        },
+        {
+          "headline": "Video of Trump's posture at press conference goes viral",
+          "reason": "Viral reaction content with no underlying reporting."
+        },
+        {
+          "headline": "Patagonia offers $100 credit for sending friends voting plans",
+          "reason": "Sponsored brand promotion."
+        },
+        {
+          "headline": "Creator walks through safety routine while running errands",
+          "reason": "Personal experience piece with no policy or news angle."
+        },
+        {
+          "headline": "Creator defends value of independent reporting after criticism",
+          "reason": "Creator talking about their own work; reports nothing new."
+        },
+        {
+          "headline": "Roundup highlights campaign ads making headlines",
+          "reason": "Media-literacy explainer with no reported news event."
+        },
+        {
+          "headline": "Skier marks eight years since summit engagement",
+          "reason": "Personal life content."
+        }
+      ]
+    },
     {
       "date": "2026-09-30",
       "tags": [
