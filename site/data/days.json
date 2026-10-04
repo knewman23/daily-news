@@ -1,29 +1,60 @@
 {
-  "last_updated": "2026-10-02T17:30:40.776332+00:00",
+  "last_updated": "2026-10-04T17:50:49.783848+00:00",
   "days": [
     {
       "date": "2026-10-03",
       "tags": [
+        "war",
         "politics",
-        "economy",
         "legal",
+        "economy",
         "health",
-        "privacy"
+        "privacy",
+        "immigration",
+        "tech",
+        "climate",
+        "media"
       ],
       "sources": [
-        "@aaronparnas"
+        "@hunteralexanderhowell",
+        "@oafnation_actual",
+        "@aaronparnas",
+        "@groundnews",
+        "@carolinegleich",
+        "@ericmoutsos",
+        "@total.hypocrisy"
       ],
-      "post_count": 9,
-      "transcribed_count": 9,
-      "incomplete": true,
+      "post_count": 49,
+      "transcribed_count": 47,
+      "incomplete": false,
       "skipped": [
         {
-          "headline": "Hawaii's Holei Sea Arch collapses into the Pacific",
-          "reason": "Natural landmark loss with no climate policy or political angle."
+          "headline": "University of Oregon reports five sexual assaults in first week of classes",
+          "reason": "Campus crime report with no policy, legal or political development attached."
         },
         {
-          "headline": "Study finds the solar system is less stable than previously estimated",
-          "reason": "Astronomy research with no bearing on the reader's listed interest areas."
+          "headline": "Zach Bryan wears Free Palestine shirt at Gillette Stadium",
+          "reason": "Entertainment and celebrity controversy; commentary rather than new reporting on the conflict."
+        },
+        {
+          "headline": "Commentary on why Americans are not protesting in the streets",
+          "reason": "Opinion commentary that reports no new facts."
+        },
+        {
+          "headline": "Hawaii's Holei Sea Arch collapses into the Pacific",
+          "reason": "Natural landmark loss with no policy or environmental-governance angle."
+        },
+        {
+          "headline": "Study finds solar system is terminally unstable on a shorter timescale",
+          "reason": "Astronomy research outside the reader's stated interests."
+        },
+        {
+          "headline": "Dog brains track consonant patterns in continuous speech",
+          "reason": "Animal cognition research outside the reader's stated interests."
+        },
+        {
+          "headline": "Long training run logged ahead of an upcoming goal",
+          "reason": "Personal fitness content with no news value."
         }
       ]
     },
