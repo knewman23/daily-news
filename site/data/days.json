@@ -1,6 +1,38 @@
 {
-  "last_updated": "2026-10-04T17:50:49.783848+00:00",
+  "last_updated": "2026-10-04T22:32:11.848638+00:00",
   "days": [
+    {
+      "date": "2026-10-04",
+      "tags": [
+        "politics",
+        "legal",
+        "war",
+        "immigration",
+        "climate",
+        "tech",
+        "health"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@oafnation_actual",
+        "@groundnews",
+        "@carolinegleich"
+      ],
+      "post_count": 22,
+      "transcribed_count": 22,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "University of Oregon reports five sexual assaults in first week of classes",
+          "reason": "Campus safety advisory with no policy, legal or political development attached."
+        },
+        {
+          "headline": "Former hospital surgeon alleges COVID-era fraud and suppressed treatments",
+          "reason": "Unverified first-person retrospective commentary rather than a reported development."
+        }
+      ]
+    },
     {
       "date": "2026-10-03",
       "tags": [
