@@ -2,6 +2,50 @@
   "last_updated": "2026-10-04T22:35:48.261874+00:00",
   "days": [
     {
+      "date": "2026-10-05",
+      "tags": [
+        "war",
+        "politics",
+        "defence",
+        "elections",
+        "legal",
+        "tech",
+        "ai",
+        "health",
+        "immigration",
+        "policing",
+        "media"
+      ],
+      "sources": [
+        "@hunteralexanderhowell",
+        "@aaronparnas",
+        "@carolinegleich",
+        "@groundnews",
+        "@oafnation_actual"
+      ],
+      "post_count": 18,
+      "transcribed_count": 18,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Boise police investigate Snapchat group chat threats against student",
+          "reason": "Local school crime investigation with no policy, court or civil liberties angle."
+        },
+        {
+          "headline": "Fort Stewart unveils rebuilt barracks with private rooms for every soldier",
+          "reason": "Military living-conditions feature with no defence policy or budget angle."
+        },
+        {
+          "headline": "Commentary ties Trump rally clip to Phantom of the Opera plot",
+          "reason": "Pop-culture commentary that reports no new information."
+        },
+        {
+          "headline": "Post links John Lennon interview to Tupac Shakur conspiracy claim",
+          "reason": "Unsubstantiated conspiracy commentary with no news content."
+        }
+      ]
+    },
+    {
       "date": "2026-10-04",
       "tags": [
         "politics",
