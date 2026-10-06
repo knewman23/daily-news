@@ -1,6 +1,72 @@
 {
-  "last_updated": "2026-10-04T22:35:48.261874+00:00",
+  "last_updated": "2026-10-05T17:53:55.261773+00:00",
   "days": [
+    {
+      "date": "2026-10-06",
+      "tags": [
+        "politics",
+        "war",
+        "defence",
+        "health",
+        "legal",
+        "markets",
+        "surveillance",
+        "immigration",
+        "climate",
+        "tech",
+        "economy",
+        "media"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@oafnation_actual",
+        "@groundnews",
+        "@carolinegleich",
+        "@ericmoutsos"
+      ],
+      "post_count": 42,
+      "transcribed_count": 42,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Cornell students and faculty demand leadership accountability over Jane Doe case",
+          "reason": "A university governance and campus protest story with no policy, court or political angle."
+        },
+        {
+          "headline": "Public health groups press Formula 1 over tobacco industry sponsorships",
+          "reason": "Delivered as a disclosed paid partnership with a call to action, which the filter excludes as sponsorship."
+        },
+        {
+          "headline": "Creator warns of impersonation account spreading false California plague claims",
+          "reason": "A creator's personal account-impersonation problem and request for engagement rather than a news event."
+        },
+        {
+          "headline": "Voter turnout appeals ahead of the November midterms",
+          "reason": "Get-out-the-vote exhortation and audience calls to action, reporting no new information."
+        },
+        {
+          "headline": "Essay links the Odyssey to ten years of American politics",
+          "reason": "Personal commentary and reflection that reports nothing new."
+        },
+        {
+          "headline": "Creator takes a sick day and points followers to a Netanyahu series",
+          "reason": "A personal update and promotion of the creator's own work, with no news content."
+        },
+        {
+          "headline": "Fox News airs account of a man who says he met Jesus during a coma",
+          "reason": "A broadcast-segment curiosity with no policy or political angle."
+        },
+        {
+          "headline": "Video argues the Kailasa Temple could not have been built with ancient tools",
+          "reason": "Speculative history content unrelated to any of the reader's subject areas."
+        },
+        {
+          "headline": "Archive interview with Charles Manson shared with claims the full story is untold",
+          "reason": "Archival clip and commentary with no news content or policy angle."
+        }
+      ]
+    },
     {
       "date": "2026-10-05",
       "tags": [
