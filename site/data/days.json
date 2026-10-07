@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-06T17:40:31.237762+00:00",
+  "last_updated": "2026-10-07T18:11:49.975763+00:00",
   "days": [
     {
       "date": "2026-10-07",
@@ -30,22 +30,6 @@
       "transcribed_count": 37,
       "incomplete": false,
       "skipped": [
-        {
-          "headline": "Megyn Kelly criticized over remarks about fraternity assault accuser",
-          "reason": "Media commentary and reaction to a pundit's remarks, with no policy, legal or political development reported."
-        },
-        {
-          "headline": "Naked Trump statue goes on display in European Parliament building",
-          "reason": "An art installation and the outrage around it; no governmental, policy or electoral substance."
-        },
-        {
-          "headline": "Claims link Israeli plague vaccine to Russian outbreak",
-          "reason": "Insinuation built on a year-old research announcement; no new public health development or policy reported."
-        },
-        {
-          "headline": "Compilation of pandemic-era official statements presented as evidence of planning",
-          "reason": "A commentary montage of old clips that reports no new events or policy."
-        },
         {
           "headline": "Good-news roundup covers search dog rescue, UK airline seat fees and NYC cancellation rule",
           "reason": "A feel-good roundup; the consumer rules are minor and the lead item is human interest."
@@ -92,10 +76,6 @@
       "transcribed_count": 42,
       "incomplete": false,
       "skipped": [
-        {
-          "headline": "Cornell students and faculty demand leadership accountability over Jane Doe case",
-          "reason": "A university governance and campus protest story with no policy, court or political angle."
-        },
         {
           "headline": "Public health groups press Formula 1 over tobacco industry sponsorships",
           "reason": "Delivered as a disclosed paid partnership with a call to action, which the filter excludes as sponsorship."
