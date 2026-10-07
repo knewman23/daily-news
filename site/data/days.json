@@ -1,6 +1,69 @@
 {
-  "last_updated": "2026-10-05T17:53:55.261773+00:00",
+  "last_updated": "2026-10-06T17:40:31.237762+00:00",
   "days": [
+    {
+      "date": "2026-10-07",
+      "tags": [
+        "politics",
+        "war",
+        "elections",
+        "defence",
+        "immigration",
+        "legal",
+        "economy",
+        "health",
+        "climate",
+        "markets",
+        "media",
+        "privacy",
+        "tech"
+      ],
+      "sources": [
+        "@groundnews",
+        "@carolinegleich",
+        "@hunteralexanderhowell",
+        "@total.hypocrisy",
+        "@aaronparnas",
+        "@oafnation_actual"
+      ],
+      "post_count": 38,
+      "transcribed_count": 37,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Megyn Kelly criticized over remarks about fraternity assault accuser",
+          "reason": "Media commentary and reaction to a pundit's remarks, with no policy, legal or political development reported."
+        },
+        {
+          "headline": "Naked Trump statue goes on display in European Parliament building",
+          "reason": "An art installation and the outrage around it; no governmental, policy or electoral substance."
+        },
+        {
+          "headline": "Claims link Israeli plague vaccine to Russian outbreak",
+          "reason": "Insinuation built on a year-old research announcement; no new public health development or policy reported."
+        },
+        {
+          "headline": "Compilation of pandemic-era official statements presented as evidence of planning",
+          "reason": "A commentary montage of old clips that reports no new events or policy."
+        },
+        {
+          "headline": "Good-news roundup covers search dog rescue, UK airline seat fees and NYC cancellation rule",
+          "reason": "A feel-good roundup; the consumer rules are minor and the lead item is human interest."
+        },
+        {
+          "headline": "Army Apache showers Alabama classic-car show with rotor wash",
+          "reason": "Human interest incident with no policy or defence significance."
+        },
+        {
+          "headline": "Creator promotes series on Victoria Coates and Heritage Foundation ties",
+          "reason": "Primarily a promotion for the creator's own Substack and subscriptions."
+        },
+        {
+          "headline": "Creator announces a break from daily livestreams",
+          "reason": "A creator's personal update about another creator's time away; no news content."
+        }
+      ]
+    },
     {
       "date": "2026-10-06",
       "tags": [
