@@ -2,6 +2,75 @@
   "last_updated": "2026-10-07T18:11:49.975763+00:00",
   "days": [
     {
+      "date": "2026-10-08",
+      "tags": [
+        "war",
+        "politics",
+        "defence",
+        "surveillance",
+        "legal",
+        "economy",
+        "markets",
+        "immigration",
+        "climate",
+        "tech",
+        "health",
+        "media",
+        "government",
+        "policing"
+      ],
+      "sources": [
+        "@hunteralexanderhowell",
+        "@oafnation_actual",
+        "@aaronparnas",
+        "@groundnews",
+        "@ericmoutsos",
+        "@carolinegleich",
+        "@total.hypocrisy"
+      ],
+      "post_count": 40,
+      "transcribed_count": 39,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Arizona congressional candidate says she was raped while fixing campaign signs",
+          "reason": "Violent crime against an individual with no policy or governmental angle."
+        },
+        {
+          "headline": "Police suspect serial killer behind five deaths in Lansing",
+          "reason": "Local crime story with no policy, political or civil liberties dimension."
+        },
+        {
+          "headline": "Milwaukee woman charged with posing as substitute teacher",
+          "reason": "Local criminal oddity with no policy angle."
+        },
+        {
+          "headline": "Nude gold-leaf Trump statue installed at European Parliament",
+          "reason": "Political art installation rather than substantive policy or governmental news."
+        },
+        {
+          "headline": "Crowd chants traitor at New York Mayor Mamdani",
+          "reason": "Reaction commentary that reports no new information."
+        },
+        {
+          "headline": "Commentary rejects claim Trump voters were manipulated",
+          "reason": "Opinion commentary with no new reporting."
+        },
+        {
+          "headline": "Commentary attributes Trump missile remark to attention seeking",
+          "reason": "Speculative commentary on a prior statement, reporting nothing new."
+        },
+        {
+          "headline": "Commentary links conservative hostility to education to anti-intellectualism",
+          "reason": "Opinion essay with no news content."
+        },
+        {
+          "headline": "Briton completes 28-year walk around the world",
+          "reason": "Human interest story with no policy or political angle."
+        }
+      ]
+    },
+    {
       "date": "2026-10-07",
       "tags": [
         "politics",
