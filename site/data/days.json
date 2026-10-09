@@ -1,6 +1,75 @@
 {
-  "last_updated": "2026-10-07T18:11:49.975763+00:00",
+  "last_updated": "2026-10-08T18:29:01.812330+00:00",
   "days": [
+    {
+      "date": "2026-10-09",
+      "tags": [
+        "legal",
+        "politics",
+        "media",
+        "immigration",
+        "policing",
+        "elections",
+        "foreign-policy",
+        "war",
+        "defence",
+        "tech",
+        "surveillance",
+        "climate",
+        "environment",
+        "health",
+        "economy"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@total.hypocrisy",
+        "@groundnews",
+        "@oafnation_actual",
+        "@carolinegleich",
+        "@hunteralexanderhowell"
+      ],
+      "post_count": 43,
+      "transcribed_count": 42,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Study finds humans disrupt dogs' sleep more than dogs disrupt humans'",
+          "reason": "Human interest science story with no policy or political angle."
+        },
+        {
+          "headline": "Satanic invocation at Iowa city council meeting prompts mayor to call for reversal",
+          "reason": "Local meeting incident presented as religious commentary, reporting no new policy or political development."
+        },
+        {
+          "headline": "Compilation revisits COVID-era vaccine messaging",
+          "reason": "Archival clip compilation reporting nothing new."
+        },
+        {
+          "headline": "Creator urges donations to Abdul El-Sayed's Michigan Senate campaign",
+          "reason": "Solicitation asking viewers to donate rather than reporting news."
+        },
+        {
+          "headline": "History of tranquilizers marketed to women precedes a midterm voting appeal",
+          "reason": "Historical retrospective with a voting appeal attached; reports no current news."
+        },
+        {
+          "headline": "Creator urges viewers to keep acting despite political anxiety",
+          "reason": "Personal motivational commentary reporting nothing new."
+        },
+        {
+          "headline": "Commentary compares midterm voting to wearing a seatbelt",
+          "reason": "Opinion commentary responding to a viewer; reports no new information."
+        },
+        {
+          "headline": "Readings from banned books framed against American education and politics",
+          "reason": "Literary commentary with no new reporting."
+        },
+        {
+          "headline": "Camp Pendleton opens second chow hall drive-thru for Marines",
+          "reason": "Base amenity story with no policy or defence significance."
+        }
+      ]
+    },
     {
       "date": "2026-10-08",
       "tags": [
