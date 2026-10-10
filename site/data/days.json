@@ -1,6 +1,28 @@
 {
-  "last_updated": "2026-10-08T18:29:01.812330+00:00",
+  "last_updated": "2026-10-09T18:49:18.555908+00:00",
   "days": [
+    {
+      "date": "2026-10-10",
+      "tags": [
+        "politics",
+        "privacy",
+        "media",
+        "defence",
+        "legal"
+      ],
+      "sources": [
+        "@aaronparnas"
+      ],
+      "post_count": 3,
+      "transcribed_count": 3,
+      "incomplete": true,
+      "skipped": [
+        {
+          "headline": "Nine killed in Erie mass shooting as US passes 365 mass shootings this year",
+          "reason": "Crime reporting on individual shootings with no policy, legislative, or enforcement angle attached."
+        }
+      ]
+    },
     {
       "date": "2026-10-09",
       "tags": [

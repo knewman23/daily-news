@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-10",
+  "html": "<h1>October 10, 2026</h1>\n<h2>Musk-linked PAC accused of misleading election texts and voter data collection</h2>\n<p>tags: politics, privacy, media<br />\nsources: <a href=\"https://www.instagram.com/p/DeUaY2OR7X6/\">@aaronparnas</a></p>\n<p>County officials in Colorado and Washington say a political action committee funded by Elon Musk has sent misleading messages to voters and is gathering voter information nationwide through a website, votesafe.org. CNN confirmed that Colorado voters received texts stating their ballot request was in and prompting them to confirm where and when to return it, which caused confusion because every registered voter in the state already receives a mail-in ballot. The site does not identify itself as connected to Musk on its front page, and millions of dollars in digital advertising are being spent to drive people to it, where entering an address to check registration passes that data to the PAC.</p>\n<h2>Service members seek religious exemptions to avoid taking part in planned public execution</h2>\n<p>tags: defence, legal, politics<br />\nsources: <a href=\"https://www.instagram.com/p/DeUjzLoAjgV/\">@aaronparnas</a></p>\n<p>The Washington Sun reports that a number of military service members intend to file religious exemptions so they will not have to participate in the planned public execution of al-Hassan. Firing squad executions in the United States typically involve five to seven shooters, with most issued blanks and one live round so that no participant knows who fired the fatal shot. It is not yet clear how the military execution will be carried out, given that it is to be livestreamed and that the condemned man is a paraplegic who uses a wheelchair. The United Nations has described the planned execution as torture.</p>",
+  "tags": [
+    "politics",
+    "privacy",
+    "media",
+    "defence",
+    "legal"
+  ],
+  "sources": [
+    "@aaronparnas"
+  ],
+  "post_count": 3,
+  "transcribed_count": 3,
+  "incomplete": true,
+  "skipped": [
+    {
+      "headline": "Nine killed in Erie mass shooting as US passes 365 mass shootings this year",
+      "reason": "Crime reporting on individual shootings with no policy, legislative, or enforcement angle attached."
+    }
+  ]
+}
