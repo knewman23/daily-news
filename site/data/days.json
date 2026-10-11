@@ -1,25 +1,51 @@
 {
-  "last_updated": "2026-10-09T18:49:18.555908+00:00",
+  "last_updated": "2026-10-10T18:07:15.740058+00:00",
   "days": [
     {
       "date": "2026-10-10",
       "tags": [
         "politics",
-        "privacy",
-        "media",
+        "war",
+        "legal",
         "defence",
-        "legal"
+        "immigration",
+        "privacy",
+        "policing",
+        "tech",
+        "climate",
+        "markets",
+        "health",
+        "economy",
+        "environment"
       ],
       "sources": [
-        "@aaronparnas"
+        "@aaronparnas",
+        "@oafnation_actual",
+        "@total.hypocrisy",
+        "@carolinegleich",
+        "@groundnews",
+        "@hunteralexanderhowell",
+        "@ericmoutsos"
       ],
-      "post_count": 3,
-      "transcribed_count": 3,
-      "incomplete": true,
+      "post_count": 32,
+      "transcribed_count": 32,
+      "incomplete": false,
       "skipped": [
         {
-          "headline": "Nine killed in Erie mass shooting as US passes 365 mass shootings this year",
-          "reason": "Crime reporting on individual shootings with no policy, legislative, or enforcement angle attached."
+          "headline": "Trump fixates on Nobel loss as rally crowds thin",
+          "reason": "Commentary on the president's demeanor and crowd sizes with no policy or governmental development."
+        },
+        {
+          "headline": "Trump supporters demand SNL cancellation over Nobel sketch",
+          "reason": "Media reaction segment reporting no new policy or political development."
+        },
+        {
+          "headline": "Man dies after entering tiger enclosure at Yorkshire Wildlife Park",
+          "reason": "Human interest incident with no policy or political angle."
+        },
+        {
+          "headline": "Gene therapy restores hearing in deaf two-year-old",
+          "reason": "Human interest medical story with no health policy angle."
         }
       ]
     },
