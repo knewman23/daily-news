@@ -1,28 +1,33 @@
 {
-  "last_updated": "2026-10-11T16:11:37.401297+00:00",
+  "last_updated": "2026-10-11T16:13:35.781872+00:00",
   "days": [
     {
       "date": "2026-10-11",
       "tags": [
-        "immigration",
-        "policing",
         "politics",
         "legal",
+        "immigration",
+        "policing",
+        "health",
+        "tech",
         "climate",
-        "environment",
-        "media"
+        "environment"
       ],
       "sources": [
+        "@aaronparnas",
         "@oafnation_actual",
-        "@groundnews",
-        "@aaronparnas"
+        "@groundnews"
       ],
-      "post_count": 7,
-      "transcribed_count": 7,
+      "post_count": 10,
+      "transcribed_count": 10,
       "incomplete": false,
       "skipped": [
         {
-          "headline": "Yorkshire Zoo says tiger that killed visitor will not be euthanized",
+          "headline": "Trump supporters call for SNL cancellation as president demands eight Nobel Prizes",
+          "reason": "Mainly commentary on a viral sketch and the reaction to it rather than new policy or governmental news."
+        },
+        {
+          "headline": "Yorkshire zoo says tiger that killed intruder will not be euthanized",
           "reason": "Human interest story with no policy or political angle."
         }
       ]
