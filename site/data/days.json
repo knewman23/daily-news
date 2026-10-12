@@ -1,6 +1,61 @@
 {
-  "last_updated": "2026-10-11T16:13:35.781872+00:00",
+  "last_updated": "2026-10-11T17:41:30.573616+00:00",
   "days": [
+    {
+      "date": "2026-10-12",
+      "tags": [
+        "politics",
+        "legal",
+        "immigration",
+        "war",
+        "tech",
+        "defence",
+        "media",
+        "environment",
+        "elections",
+        "health",
+        "markets",
+        "economy"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@total.hypocrisy",
+        "@oafnation_actual",
+        "@groundnews",
+        "@carolinegleich",
+        "@ericmoutsos"
+      ],
+      "post_count": 32,
+      "transcribed_count": 32,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Speculation ties Russian diesel release to weapons flows to Iran",
+          "reason": "Open-ended speculation that reports no new development beyond the diesel release."
+        },
+        {
+          "headline": "Trump's rally vocalisations draw renewed scrutiny",
+          "reason": "Reaction commentary on rally footage with no new reporting."
+        },
+        {
+          "headline": "Kelly Clarkson and Brooklyn shop trade accounts of store visit",
+          "reason": "Celebrity human interest story with no policy or political angle."
+        },
+        {
+          "headline": "Red sprite photographed above Corsica",
+          "reason": "Photographic curiosity with no policy or environmental-policy angle."
+        },
+        {
+          "headline": "Commentator defends criticising both political sides",
+          "reason": "Creator discussing their own approach; no news content."
+        },
+        {
+          "headline": "Bedtime wind-down reminder",
+          "reason": "Wellness segment with no news content."
+        }
+      ]
+    },
     {
       "date": "2026-10-11",
       "tags": [
