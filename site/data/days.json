@@ -1,6 +1,83 @@
 {
-  "last_updated": "2026-10-11T17:41:30.573616+00:00",
+  "last_updated": "2026-10-12T18:40:20.399467+00:00",
   "days": [
+    {
+      "date": "2026-10-13",
+      "tags": [
+        "health",
+        "politics",
+        "legal",
+        "immigration",
+        "economy",
+        "markets",
+        "war",
+        "media",
+        "tech",
+        "climate",
+        "defence"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@total.hypocrisy",
+        "@groundnews",
+        "@oafnation_actual",
+        "@carolinegleich",
+        "@ericmoutsos"
+      ],
+      "post_count": 39,
+      "transcribed_count": 38,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "ABC News corrects fabricated quote attributed to creator",
+          "reason": "A creator's own dispute with a broadcaster, with no policy or political angle."
+        },
+        {
+          "headline": "Kacey Musgraves responds to Kristi Noem over Texas music comments",
+          "reason": "Celebrity exchange with no substantive policy content."
+        },
+        {
+          "headline": "Creator calls for boycott of SNL over Shane Gillis monologue",
+          "reason": "Commentary and a boycott call that reports no new events."
+        },
+        {
+          "headline": "Creator urges post-midterm economic disruption",
+          "reason": "Opinion and exhortation; reports nothing new."
+        },
+        {
+          "headline": "Creator presses male peers to speak out on Cornell and Gillis",
+          "reason": "Personal commentary aimed at other creators, with no reporting."
+        },
+        {
+          "headline": "Creator points to immigrant labour while watching roof repair",
+          "reason": "Personal observation and opinion rather than news."
+        },
+        {
+          "headline": "Seinfeld heckled over Gaza remarks",
+          "reason": "Reaction to a celebrity clip; no new reporting or policy content."
+        },
+        {
+          "headline": "Parody clip mocks new press secretary's briefing",
+          "reason": "Satirical clip containing no reporting of its own."
+        },
+        {
+          "headline": "Black Hawk crew chief survives 300-foot dangle after faulty tether",
+          "reason": "A single military incident with no policy or defence-policy angle."
+        },
+        {
+          "headline": "Army military policeman sentenced over child sexual abuse material",
+          "reason": "Individual criminal case with no broader policy angle."
+        },
+        {
+          "headline": "Army sergeant sentenced for assaulting girlfriend's 3-year-old",
+          "reason": "Individual criminal case with no broader policy angle."
+        },
+        {
+          "headline": "Combat radio chatter from Ukraine",
+          "reason": "Audio fragment with no reportable news content."
+        }
+      ]
+    },
     {
       "date": "2026-10-12",
       "tags": [
