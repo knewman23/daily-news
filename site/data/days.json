@@ -1,6 +1,78 @@
 {
-  "last_updated": "2026-10-12T18:40:20.399467+00:00",
+  "last_updated": "2026-10-13T18:45:40.545413+00:00",
   "days": [
+    {
+      "date": "2026-10-14",
+      "tags": [
+        "war",
+        "politics",
+        "tech",
+        "legal",
+        "defence",
+        "economy",
+        "markets",
+        "climate",
+        "media",
+        "immigration",
+        "surveillance",
+        "environment",
+        "health"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@groundnews",
+        "@oafnation_actual",
+        "@ericmoutsos",
+        "@total.hypocrisy",
+        "@carolinegleich"
+      ],
+      "post_count": 41,
+      "transcribed_count": 41,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Pope Leo diagnosed with lung cancer after surgery",
+          "reason": "Health news about an individual religious figure, with no public health policy or political angle."
+        },
+        {
+          "headline": "Cornell found to have issued reprimands in most sexual assault cases",
+          "reason": "University disciplinary practice rather than courts, policing or public policy."
+        },
+        {
+          "headline": "Police report describes men cheering during sexual assault at University of Chicago fraternity",
+          "reason": "Individual crime report with no policy or political angle."
+        },
+        {
+          "headline": "Campaign urges Congress to pass Alzheimer's screening coverage bill",
+          "reason": "Sponsored advocacy campaign asking viewers to sign a petition rather than reported news."
+        },
+        {
+          "headline": "Free tool maps candidates who do not take AIPAC funding",
+          "reason": "Marked as an ad and built around promoting a tool and asking viewers to share it."
+        },
+        {
+          "headline": "Trump dances to YMCA before thinning crowd in Ohio",
+          "reason": "Commentary on circulating footage that reports no new information."
+        },
+        {
+          "headline": "\"God made Trump\" video recirculates ahead of midterms",
+          "reason": "Republished campaign media with no new reporting."
+        },
+        {
+          "headline": "First major snowfall of the season reaches Utah's Wasatch",
+          "reason": "Personal seasonal update rather than climate or policy reporting."
+        },
+        {
+          "headline": "3D-printed plant-based meat heads to US grocery stores",
+          "reason": "Consumer food product launch outside the reader's interests."
+        },
+        {
+          "headline": "Weekly roundup of positive science and health stories",
+          "reason": "Human-interest and science roundup assembled as uplifting content rather than policy news."
+        }
+      ]
+    },
     {
       "date": "2026-10-13",
       "tags": [
