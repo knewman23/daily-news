@@ -1,6 +1,56 @@
 {
-  "last_updated": "2026-10-13T18:45:40.545413+00:00",
+  "last_updated": "2026-10-14T18:40:01.279298+00:00",
   "days": [
+    {
+      "date": "2026-10-15",
+      "tags": [
+        "war",
+        "politics",
+        "defence",
+        "legal",
+        "surveillance",
+        "immigration",
+        "markets",
+        "economy",
+        "health",
+        "policing",
+        "climate",
+        "tech"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@total.hypocrisy",
+        "@oafnation_actual",
+        "@carolinegleich",
+        "@groundnews"
+      ],
+      "post_count": 35,
+      "transcribed_count": 34,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Musk attacks forthcoming Alex Gibney documentary before release",
+          "reason": "Mainly a promotion of and reaction to an upcoming documentary rather than new reporting."
+        },
+        {
+          "headline": "Former gang leader sentenced to 40 years over Tupac Shakur's murder",
+          "reason": "A celebrity criminal case with no policy or political dimension."
+        },
+        {
+          "headline": "Man pleads guilty to killing Camp Lejeune Marine",
+          "reason": "Local crime case with no policy angle."
+        },
+        {
+          "headline": "3D-printed salmon and plant-based steak reach US shelves",
+          "reason": "Food-industry commentary framed as speculation about future control, not policy or environmental reporting."
+        },
+        {
+          "headline": "Creator promotes Together Purple organisation",
+          "reason": "A promotional shout-out with no news content."
+        }
+      ]
+    },
     {
       "date": "2026-10-14",
       "tags": [
