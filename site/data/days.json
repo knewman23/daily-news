@@ -2,6 +2,63 @@
   "last_updated": "2026-10-19T00:39:56.420956+00:00",
   "days": [
     {
+      "date": "2026-10-19",
+      "tags": [
+        "war",
+        "politics",
+        "defence",
+        "markets",
+        "legal",
+        "media",
+        "immigration",
+        "economy",
+        "tech",
+        "health",
+        "policing",
+        "environment"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@oafnation_actual",
+        "@carolinegleich",
+        "@groundnews",
+        "@hunteralexanderhowell"
+      ],
+      "post_count": 35,
+      "transcribed_count": 35,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Airman killed in rappelling demonstration before Navy-UTSA game identified",
+          "reason": "An accidental death with no policy or defence-policy angle."
+        },
+        {
+          "headline": "Austrian Airlines flight from Tel Aviv diverts to Sofia after bomb threat",
+          "reason": "An isolated aviation security incident with no policy or conflict angle established."
+        },
+        {
+          "headline": "flydubai captain describes fighting off axe attack by his co-pilot",
+          "reason": "A single criminal case covered as a survivor interview, with no policy angle."
+        },
+        {
+          "headline": "Calls for Americans to follow European protest movements",
+          "reason": "Commentary and calls to action that report no new information."
+        },
+        {
+          "headline": "Creator crowdsources a cause to advertise on his forehead",
+          "reason": "A promotional audience-engagement bit rather than news."
+        },
+        {
+          "headline": "Priest killed during mass in Ecuador when crucifix falls",
+          "reason": "Human interest with no policy or political angle."
+        },
+        {
+          "headline": "Jalen Hurts out for the season after playing with blood clots on no sleep",
+          "reason": "Sports injury news with no public health policy angle."
+        }
+      ]
+    },
+    {
       "date": "2026-10-18",
       "tags": [
         "politics",
