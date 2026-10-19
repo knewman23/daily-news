@@ -1,23 +1,98 @@
 {
-  "last_updated": "2026-10-17T17:52:43.645247+00:00",
+  "last_updated": "2026-10-19T00:34:33.113414+00:00",
   "days": [
     {
       "date": "2026-10-18",
-      "tags": [],
-      "sources": [],
-      "post_count": 0,
-      "transcribed_count": 0,
-      "incomplete": true,
-      "skipped": []
+      "tags": [
+        "politics",
+        "war",
+        "tech",
+        "legal",
+        "media",
+        "climate"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@oafnation_actual",
+        "@total.hypocrisy",
+        "@groundnews"
+      ],
+      "post_count": 31,
+      "transcribed_count": 31,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Air Force member dies after fall during Alamodome rappelling demonstration",
+          "reason": "An accident at a sporting event rather than a defence, policy or political story."
+        },
+        {
+          "headline": "Seven-year-old survives Oregon elementary school shooting",
+          "reason": "A survivor's recovery and fundraiser, with no policy or political angle."
+        },
+        {
+          "headline": "Study links late-night eating to higher likelihood of liver disease",
+          "reason": "A dietary health study with no public health policy angle."
+        },
+        {
+          "headline": "Annual dementia cases projected to more than double by 2050",
+          "reason": "A medical projection study with no public health policy angle."
+        },
+        {
+          "headline": "Chicago archdiocese dedicates first US memorial for suicide victims",
+          "reason": "A religious institution's memorial, with no policy or political angle."
+        },
+        {
+          "headline": "Creator urges left-leaning accounts to stop amplifying a viral political take",
+          "reason": "Commentary about other creators that reports no news of its own."
+        }
+      ]
     },
     {
       "date": "2026-10-17",
-      "tags": [],
-      "sources": [],
-      "post_count": 0,
-      "transcribed_count": 0,
-      "incomplete": true,
-      "skipped": []
+      "tags": [
+        "politics",
+        "war",
+        "markets",
+        "economy",
+        "tech",
+        "climate",
+        "legal",
+        "health"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@oafnation_actual",
+        "@hunteralexanderhowell",
+        "@carolinegleich",
+        "@total.hypocrisy",
+        "@groundnews",
+        "@ericmoutsos"
+      ],
+      "post_count": 41,
+      "transcribed_count": 40,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Man shot dead on Midtown subway platform",
+          "reason": "A single local crime with no policy, policing-reform, or political angle."
+        },
+        {
+          "headline": "NBA restricts player performance bets after gambling scandals",
+          "reason": "Sports league rulemaking, outside the reader's listed interests."
+        },
+        {
+          "headline": "Vietnam buries remains of 731 war dead from the Tet Offensive",
+          "reason": "Historical commemoration with no current policy or foreign-policy angle."
+        },
+        {
+          "headline": "Commentary questions Trump's fitness over rally remarks",
+          "reason": "Reaction commentary and speculation about the president's health that reports nothing new."
+        },
+        {
+          "headline": "Hunger Games clip used to urge midterm turnout",
+          "reason": "A film clip used as turnout exhortation, containing no news."
+        }
+      ]
     },
     {
       "date": "2026-10-16",
