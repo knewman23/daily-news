@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-19T00:34:33.113414+00:00",
+  "last_updated": "2026-10-19T00:39:56.420956+00:00",
   "days": [
     {
       "date": "2026-10-18",
@@ -21,14 +21,6 @@
       "transcribed_count": 31,
       "incomplete": false,
       "skipped": [
-        {
-          "headline": "Air Force member dies after fall during Alamodome rappelling demonstration",
-          "reason": "An accident at a sporting event rather than a defence, policy or political story."
-        },
-        {
-          "headline": "Seven-year-old survives Oregon elementary school shooting",
-          "reason": "A survivor's recovery and fundraiser, with no policy or political angle."
-        },
         {
           "headline": "Study links late-night eating to higher likelihood of liver disease",
           "reason": "A dietary health study with no public health policy angle."
@@ -72,10 +64,6 @@
       "transcribed_count": 40,
       "incomplete": false,
       "skipped": [
-        {
-          "headline": "Man shot dead on Midtown subway platform",
-          "reason": "A single local crime with no policy, policing-reform, or political angle."
-        },
         {
           "headline": "NBA restricts player performance bets after gambling scandals",
           "reason": "Sports league rulemaking, outside the reader's listed interests."
