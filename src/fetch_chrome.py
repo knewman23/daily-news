@@ -59,6 +59,7 @@ POSTS_QUERIES = (
     "PolarisProfilePostsTabContentQuery_connection",
 )
 POSTS_QUERY = POSTS_QUERIES[0]          # for messages that name just one
+GRAPHQL_PATHS = ("/graphql/query", "/api/graphql")
 POSTS_ROOT_FIELD = "xdt_api__v1__feed__user_timeline_graphql_connection"
 
 
@@ -422,7 +423,9 @@ class CdpBrowser:
 
 
 def _is_posts_response(response: Any) -> bool:
-    if "/graphql/query" not in response.url:
+    # The endpoint moves too: `/graphql/query` until 2026-10-16, `/api/graphql`
+    # from 2026-10-17. The friendly name is what identifies the query.
+    if urlparse(response.url).path.rstrip("/") not in GRAPHQL_PATHS:
         return False
     try:
         return is_posts_query(response.request.headers.get("x-fb-friendly-name"))

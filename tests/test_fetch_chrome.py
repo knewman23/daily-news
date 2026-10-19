@@ -425,3 +425,30 @@ def test_another_browser_holding_the_port_is_named_not_fought_over():
 
     assert launcher.launched == []
 
+
+
+# --- the endpoint is not stable either -------------------------------------
+
+
+class _Response:
+    def __init__(self, url: str, name: str):
+        self.url = url
+        self.request = type("R", (), {"headers": {"x-fb-friendly-name": name}})()
+
+
+def test_the_posts_response_is_recognised_on_either_graphql_endpoint():
+    """Observed live on 2026-10-18: PolarisProfilePostsQuery arrived on
+    `/api/graphql`, not `/graphql/query`. Matching only the old path made every
+    handle time out for two days while the timeout report listed the very
+    query it was waiting for.
+    """
+    for url in ("https://www.instagram.com/graphql/query",
+                "https://www.instagram.com/api/graphql"):
+        assert fetch_chrome._is_posts_response(
+            _Response(url, "PolarisProfilePostsQuery")), url
+
+
+def test_a_posts_named_request_off_graphql_is_not_the_posts_response():
+    assert not fetch_chrome._is_posts_response(
+        _Response("https://www.instagram.com/api/v1/feed/",
+                  "PolarisProfilePostsQuery"))
