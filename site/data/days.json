@@ -1,6 +1,81 @@
 {
-  "last_updated": "2026-10-19T00:39:56.420956+00:00",
+  "last_updated": "2026-10-19T18:25:04.629820+00:00",
   "days": [
+    {
+      "date": "2026-10-20",
+      "tags": [
+        "war",
+        "politics",
+        "markets",
+        "defence",
+        "surveillance",
+        "legal",
+        "immigration",
+        "tech",
+        "energy",
+        "policing",
+        "climate",
+        "environment",
+        "economy"
+      ],
+      "sources": [
+        "@hunteralexanderhowell",
+        "@oafnation_actual",
+        "@aaronparnas",
+        "@total.hypocrisy",
+        "@groundnews",
+        "@carolinegleich"
+      ],
+      "post_count": 46,
+      "transcribed_count": 46,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Creator publishes full 2026 general election endorsement slate",
+          "reason": "A creator's personal endorsement list and get-out-the-vote guide rather than reporting."
+        },
+        {
+          "headline": "Unconfirmed online rumours circulate about Kim Jong-un's health",
+          "reason": "Commentary on other creators' conduct around an unconfirmed rumour; no verified news."
+        },
+        {
+          "headline": "Grand Theft Auto release projected to cost US economy $1 billion in productivity",
+          "reason": "Novelty economic estimate tied to an entertainment release, with no policy or market consequence."
+        },
+        {
+          "headline": "Claims linking COVID-19 mRNA vaccines to blood clots and millions of deaths",
+          "reason": "Unverified health claims presented without substantiation; not reporting on public health policy."
+        },
+        {
+          "headline": "Account questions the official account of Antarctica",
+          "reason": "Conspiracy speculation with no news content."
+        },
+        {
+          "headline": "Account argues inequitable content moderation on TikTok",
+          "reason": "A creator-versus-creator argument about platform moderation rather than reported news."
+        },
+        {
+          "headline": "Commentary argues the administration's politics outlast Trump",
+          "reason": "Opinion monologue that reports nothing new."
+        },
+        {
+          "headline": "Trump says he is looking into launching a dating app for MAGA men",
+          "reason": "Novelty item with no policy substance."
+        },
+        {
+          "headline": "81-year-old Mississippi man killed with his own gun during home invasion",
+          "reason": "Local crime story with no policy or political angle."
+        },
+        {
+          "headline": "Good news roundup: wildlife overpass, coral recovery and a recovered dog",
+          "reason": "Human interest and science roundup with no policy angle."
+        },
+        {
+          "headline": "Creator reflects on her younger self",
+          "reason": "Personal content with no news value."
+        }
+      ]
+    },
     {
       "date": "2026-10-19",
       "tags": [
