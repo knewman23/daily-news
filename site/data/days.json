@@ -1,6 +1,74 @@
 {
-  "last_updated": "2026-10-19T18:25:04.629820+00:00",
+  "last_updated": "2026-10-20T17:28:16.585125+00:00",
   "days": [
+    {
+      "date": "2026-10-21",
+      "tags": [
+        "legal",
+        "politics",
+        "war",
+        "tech",
+        "surveillance",
+        "media",
+        "climate",
+        "economy",
+        "health",
+        "defence"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@groundnews",
+        "@total.hypocrisy",
+        "@hunteralexanderhowell",
+        "@carolinegleich",
+        "@oafnation_actual"
+      ],
+      "post_count": 40,
+      "transcribed_count": 40,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Trump heckled repeatedly at North Carolina events",
+          "reason": "Campaign-trail color with no new policy or governance substance."
+        },
+        {
+          "headline": "Video of Trump waving while walking to Marine One goes viral",
+          "reason": "Viral-clip speculation that reports no verifiable news."
+        },
+        {
+          "headline": "Trump remarks about a man's physique draw criticism from Republicans",
+          "reason": "Commentary on an off-hand remark with no policy content."
+        },
+        {
+          "headline": "Vance mocked over delivery of remarks on English requirement for commercial licences",
+          "reason": "Mockery of a verbal stumble rather than reporting on the policy."
+        },
+        {
+          "headline": "Commentary urges turnout, citing abortion, Iran and student loan collection",
+          "reason": "Get-out-the-vote advocacy that reports no new information."
+        },
+        {
+          "headline": "Commentary compares voting to choosing a carpool rather than a spouse",
+          "reason": "Turnout advocacy with no reported news."
+        },
+        {
+          "headline": "Commentary rejects framing of European unrest as a Muslim takeover",
+          "reason": "Conspiracy commentary containing no reported news."
+        },
+        {
+          "headline": "Commentary disputes Glenn Beck's account of Trump's foreign policy strategy",
+          "reason": "Reaction to another commentator's video, reporting nothing new."
+        },
+        {
+          "headline": "Documentary on Kilimanjaro climb to screen at Coast Film and Music Festival",
+          "reason": "Event promotion for a film screening."
+        },
+        {
+          "headline": "Korean War soldier's casket left exposed in Louisiana cemetery",
+          "reason": "Human interest story with no policy or political angle."
+        }
+      ]
+    },
     {
       "date": "2026-10-20",
       "tags": [
