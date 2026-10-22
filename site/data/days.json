@@ -1,6 +1,63 @@
 {
-  "last_updated": "2026-10-20T17:28:16.585125+00:00",
+  "last_updated": "2026-10-21T18:18:27.486650+00:00",
   "days": [
+    {
+      "date": "2026-10-22",
+      "tags": [
+        "war",
+        "politics",
+        "markets",
+        "defense",
+        "policing",
+        "immigration",
+        "civil-liberties",
+        "elections",
+        "tech",
+        "climate",
+        "legal",
+        "media",
+        "surveillance",
+        "privacy",
+        "economy",
+        "government",
+        "health",
+        "environment"
+      ],
+      "sources": [
+        "@hunteralexanderhowell",
+        "@oafnation_actual",
+        "@total.hypocrisy",
+        "@aaronparnas",
+        "@carolinegleich",
+        "@ericmoutsos",
+        "@groundnews"
+      ],
+      "post_count": 38,
+      "transcribed_count": 38,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "JD Vance ignored by Bengals players in locker room visit",
+          "reason": "Human interest moment with no policy or political substance."
+        },
+        {
+          "headline": "Commentary questions Trump's fraud tip commission and press conduct",
+          "reason": "Reaction and commentary over existing clips that reports nothing new."
+        },
+        {
+          "headline": "Creator criticizes treatment of women in political commentary spaces",
+          "reason": "A creator discussing her own experience rather than a news event."
+        },
+        {
+          "headline": "Clip depicts officers arranging assault on detainee with cameras off",
+          "reason": "A dramatized or synthetic clip carrying no verifiable news content."
+        },
+        {
+          "headline": "Senate fundraising text leading with candidate's sexuality draws criticism",
+          "reason": "Opinion commentary on campaign messaging that reports no new development."
+        }
+      ]
+    },
     {
       "date": "2026-10-21",
       "tags": [
