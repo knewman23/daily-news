@@ -1,6 +1,53 @@
 {
-  "last_updated": "2026-10-21T18:18:27.486650+00:00",
+  "last_updated": "2026-10-22T17:32:31.495923+00:00",
   "days": [
+    {
+      "date": "2026-10-23",
+      "tags": [
+        "politics",
+        "conflict",
+        "war",
+        "defence",
+        "legal",
+        "elections",
+        "health",
+        "immigration",
+        "media",
+        "markets",
+        "tech",
+        "privacy",
+        "climate"
+      ],
+      "sources": [
+        "@groundnews",
+        "@oafnation_actual",
+        "@total.hypocrisy",
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@ericmoutsos"
+      ],
+      "post_count": 40,
+      "transcribed_count": 39,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Theranos founder's lies detailed in retrospective account",
+          "reason": "Retrospective explainer about a concluded case rather than new developments."
+        },
+        {
+          "headline": "Viral exchange over Michigan Senate nominee's name",
+          "reason": "A viral clip and commentary on it, reporting no new information."
+        },
+        {
+          "headline": "Knicks employees sent phishing test disguised as championship ring offer",
+          "reason": "Sports business and workplace story with no policy or political angle."
+        },
+        {
+          "headline": "Creator reflects on choosing a spouse",
+          "reason": "Personal life content with no news value."
+        }
+      ]
+    },
     {
       "date": "2026-10-22",
       "tags": [
