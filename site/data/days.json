@@ -1,30 +1,36 @@
 {
-  "last_updated": "2026-10-24T17:30:58.494802+00:00",
+  "last_updated": "2026-10-26T01:25:48.897009+00:00",
   "days": [
     {
       "date": "2026-10-25",
       "tags": [
         "politics",
         "war",
-        "defence",
-        "climate",
-        "health",
+        "elections",
         "tech",
+        "health",
+        "climate",
+        "defence",
         "legal",
         "markets",
-        "elections",
+        "economy",
+        "environment",
         "media"
       ],
       "sources": [
-        "@aaronparnas"
+        "@aaronparnas",
+        "@carolinegleich",
+        "@groundnews",
+        "@ericmoutsos",
+        "@oafnation_actual"
       ],
-      "post_count": 9,
-      "transcribed_count": 9,
-      "incomplete": true,
+      "post_count": 23,
+      "transcribed_count": 22,
+      "incomplete": false,
       "skipped": [
         {
-          "headline": "Creator completes first marathon in four hours and 35 minutes",
-          "reason": "Personal race report with no policy or political angle"
+          "headline": "Aaron Parnas finishes first marathon in 4:35",
+          "reason": "Personal race report by the creator, no policy or political content."
         }
       ]
     },
@@ -32,22 +38,72 @@
       "date": "2026-10-24",
       "tags": [
         "politics",
-        "markets",
+        "elections",
+        "war",
+        "defence",
+        "energy",
         "legal",
+        "climate",
+        "health",
         "tech",
-        "media",
-        "economy"
+        "markets",
+        "economy",
+        "environment",
+        "media"
       ],
       "sources": [
-        "@aaronparnas"
+        "@aaronparnas",
+        "@groundnews",
+        "@carolinegleich",
+        "@ericmoutsos"
       ],
-      "post_count": 7,
-      "transcribed_count": 7,
-      "incomplete": true,
+      "post_count": 39,
+      "transcribed_count": 38,
+      "incomplete": false,
       "skipped": [
         {
-          "headline": "Fire destroys Hitler's Eagle's Nest estate in Bavaria",
-          "reason": "A fire at a historic site abroad with no policy, political or civil-liberties angle."
+          "headline": "Arson destroys Hitler's Eagle's Nest estate in Bavaria",
+          "reason": "A single arson incident at a historic site with no policy or political dimension."
+        },
+        {
+          "headline": "Trump merchandise stores close across several states",
+          "reason": "A retail trend piece with no policy, legal or electoral substance."
+        },
+        {
+          "headline": "Fox News reporter cuts short campus interview on prices",
+          "reason": "A viral clip reaction that reports no new information."
+        },
+        {
+          "headline": "White House floats Nicki Minaj as press secretary",
+          "reason": "Acknowledged by the speaker as a joke rather than a report."
+        },
+        {
+          "headline": "Two female sailors advance through Navy BUD/S training",
+          "reason": "Commentary framed as a grievance rather than reporting on a defence policy decision."
+        },
+        {
+          "headline": "Marine Corps groups raise funds to restore defaced Iwo Jima Memorial",
+          "reason": "Human interest incident paired with a fundraising appeal."
+        },
+        {
+          "headline": "Singapore introduces fines of up to $391 for loud audio on buses",
+          "reason": "Foreign transit regulation outside the listed areas of interest."
+        },
+        {
+          "headline": "Airbnb bans hosts from requiring checkout chores",
+          "reason": "Consumer company policy change with no economic or political angle."
+        },
+        {
+          "headline": "Political account warns of imminent TikTok ban days before midterms",
+          "reason": "A creator discussing their own account and soliciting support."
+        },
+        {
+          "headline": "Commentary alleges elite conspiracy over pandemics and geoengineering",
+          "reason": "Unsourced conspiracy commentary reporting no verifiable news."
+        },
+        {
+          "headline": "Creator completes first marathon",
+          "reason": "A personal race report with no news content."
         }
       ]
     },
