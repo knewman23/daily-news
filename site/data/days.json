@@ -1,6 +1,52 @@
 {
-  "last_updated": "2026-10-26T01:25:48.897009+00:00",
+  "last_updated": "2026-10-26T01:29:33.530745+00:00",
   "days": [
+    {
+      "date": "2026-10-26",
+      "tags": [
+        "war",
+        "politics",
+        "defence",
+        "legal",
+        "elections",
+        "immigration",
+        "tech",
+        "privacy",
+        "economy"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@oafnation_actual",
+        "@hunteralexanderhowell",
+        "@groundnews",
+        "@carolinegleich"
+      ],
+      "post_count": 19,
+      "transcribed_count": 18,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Army investigates Bradley vehicles spray-painted with insults at Fort Bliss",
+          "reason": "A unit prank investigation with no policy, defence or civil liberties angle."
+        },
+        {
+          "headline": "Former soldier sentenced to 59 years for murdering National Guard wife",
+          "reason": "An individual criminal case with no policy or civil liberties dimension."
+        },
+        {
+          "headline": "Ted Cruz booed by Formula One crowd in Austin",
+          "reason": "A crowd reaction clip that reports no new political development."
+        },
+        {
+          "headline": "Photograph of Trump with Nicki Minaj in Michigan draws attention",
+          "reason": "Commentary on a photograph with no substantive news content."
+        },
+        {
+          "headline": "Creator promotes personal data removal service",
+          "reason": "A paid sponsorship with no news content."
+        }
+      ]
+    },
     {
       "date": "2026-10-25",
       "tags": [
