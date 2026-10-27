@@ -1,6 +1,51 @@
 {
-  "last_updated": "2026-10-26T01:29:33.530745+00:00",
+  "last_updated": "2026-10-26T17:22:50.957647+00:00",
   "days": [
+    {
+      "date": "2026-10-27",
+      "tags": [
+        "politics",
+        "elections",
+        "legal",
+        "immigration",
+        "defence",
+        "war",
+        "economy",
+        "health",
+        "tech",
+        "markets",
+        "climate",
+        "surveillance",
+        "media",
+        "policing"
+      ],
+      "sources": [
+        "@oafnation_actual",
+        "@total.hypocrisy",
+        "@groundnews",
+        "@hunteralexanderhowell",
+        "@aaronparnas",
+        "@carolinegleich",
+        "@ericmoutsos"
+      ],
+      "post_count": 41,
+      "transcribed_count": 41,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Rising pumpkin patch costs blamed on squeeze on small farms",
+          "reason": "Mainly a personal consumer anecdote rather than reported news on policy or the economy."
+        },
+        {
+          "headline": "Account defends describing Iranian civilian deaths as genocide",
+          "reason": "Commentary responding to a comment, recounting historical background without reporting anything new."
+        },
+        {
+          "headline": "Firearm malfunction underscores need for eye protection",
+          "reason": "Personal safety anecdote with no news or policy content."
+        }
+      ]
+    },
     {
       "date": "2026-10-26",
       "tags": [
