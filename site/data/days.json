@@ -1,6 +1,70 @@
 {
-  "last_updated": "2026-10-26T17:22:50.957647+00:00",
+  "last_updated": "2026-10-27T18:07:25.290881+00:00",
   "days": [
+    {
+      "date": "2026-10-28",
+      "tags": [
+        "politics",
+        "elections",
+        "legal",
+        "surveillance",
+        "tech",
+        "health",
+        "climate",
+        "defence",
+        "economy",
+        "war",
+        "media",
+        "markets",
+        "policing"
+      ],
+      "sources": [
+        "@total.hypocrisy",
+        "@groundnews",
+        "@oafnation_actual",
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@carolinegleich",
+        "@ericmoutsos"
+      ],
+      "post_count": 45,
+      "transcribed_count": 44,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "At least 64 killed in high-speed train collision in Spain",
+          "reason": "Transport disaster abroad with no policy, political or security angle among the reader's interests."
+        },
+        {
+          "headline": "White House website loops video responding to Obama jab",
+          "reason": "A personality spat with no governing, policy or legal substance."
+        },
+        {
+          "headline": "Harris responds to Trump mocking her name at Texas rally",
+          "reason": "Personality commentary and a personal anecdote rather than reporting on policy or events."
+        },
+        {
+          "headline": "Trump compares physiques of Republican Senate candidates at rally",
+          "reason": "Rally banter with no policy or news substance."
+        },
+        {
+          "headline": "Trump's delivery at Texas rally draws attention",
+          "reason": "Commentary clip that reports nothing new."
+        },
+        {
+          "headline": "Creator alleges dark money and gatekeeping within political creator network",
+          "reason": "Creator-community dispute and a teaser for future reporting rather than news itself."
+        },
+        {
+          "headline": "Ancient Athenian officials faced mandatory audits after a single one-year term",
+          "reason": "Historical anecdote with no connection to current events."
+        },
+        {
+          "headline": "Creator questions mainstream accounts of ancient construction techniques",
+          "reason": "Speculative content about architecture with no news or policy relevance."
+        }
+      ]
+    },
     {
       "date": "2026-10-27",
       "tags": [
