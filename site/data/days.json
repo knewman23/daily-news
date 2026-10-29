@@ -1,6 +1,75 @@
 {
-  "last_updated": "2026-10-27T18:07:25.290881+00:00",
+  "last_updated": "2026-10-28T17:47:56.252247+00:00",
   "days": [
+    {
+      "date": "2026-10-29",
+      "tags": [
+        "war",
+        "politics",
+        "defence",
+        "elections",
+        "legal",
+        "immigration",
+        "surveillance",
+        "privacy",
+        "environment",
+        "energy",
+        "health",
+        "epstein",
+        "economy",
+        "media"
+      ],
+      "sources": [
+        "@groundnews",
+        "@oafnation_actual",
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@carolinegleich",
+        "@total.hypocrisy",
+        "@ericmoutsos"
+      ],
+      "post_count": 45,
+      "transcribed_count": 43,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Etsy to restrict AI-generated listings",
+          "reason": "Marketplace content policy rather than AI infrastructure, energy or public policy."
+        },
+        {
+          "headline": "Commentary ties immigration and terror groups to global banking conspiracy",
+          "reason": "Reaction commentary on another video that reports no new information."
+        },
+        {
+          "headline": "Mary Trump passage used to argue Trump will not cede power",
+          "reason": "Commentary on an existing book; reports nothing new."
+        },
+        {
+          "headline": "Creator says she turned down a $5,000 sponsorship",
+          "reason": "Personal and sponsorship-related, not news."
+        },
+        {
+          "headline": "Creator questions incentives of political content accounts",
+          "reason": "Opinion about the media ecosystem with no new reporting."
+        },
+        {
+          "headline": "Fox News interviews rally attendee who compares event to Jonestown",
+          "reason": "Viral clip with no news content."
+        },
+        {
+          "headline": "Obama rally clip circulates online",
+          "reason": "Viral clip commentary that reports nothing new."
+        },
+        {
+          "headline": "Grey seal rolls in leaves at Polish zoo",
+          "reason": "Human interest with no policy angle."
+        },
+        {
+          "headline": "Athlete completes final strength session before NYC Marathon",
+          "reason": "Personal fitness and race preparation."
+        }
+      ]
+    },
     {
       "date": "2026-10-28",
       "tags": [
