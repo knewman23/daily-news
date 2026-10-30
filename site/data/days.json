@@ -1,6 +1,70 @@
 {
-  "last_updated": "2026-10-28T17:47:56.252247+00:00",
+  "last_updated": "2026-10-29T18:18:27.131870+00:00",
   "days": [
+    {
+      "date": "2026-10-30",
+      "tags": [
+        "politics",
+        "war",
+        "defence",
+        "legal",
+        "markets",
+        "tech",
+        "immigration",
+        "climate",
+        "health",
+        "economy"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@oafnation_actual",
+        "@groundnews",
+        "@carolinegleich",
+        "@total.hypocrisy"
+      ],
+      "post_count": 43,
+      "transcribed_count": 42,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Patrick Stewart dies at 86",
+          "reason": "Celebrity obituary with no policy or political angle"
+        },
+        {
+          "headline": "Mbapp\u00e9 apologises for calling Mao Zedong a dictator",
+          "reason": "Sports and celebrity controversy rather than policy or foreign affairs"
+        },
+        {
+          "headline": "Israeli actress criticises occupation in unaired-on-air remarks",
+          "reason": "A viral clip shared as commentary, reporting no new development"
+        },
+        {
+          "headline": "Creator questions purpose of 19th-century asylums and old architecture",
+          "reason": "Speculative commentary containing no news"
+        },
+        {
+          "headline": "Creator argues against voting in the midterms",
+          "reason": "Opinion commentary that reports nothing new"
+        },
+        {
+          "headline": "Creator feud over post about military mass grave training",
+          "reason": "Creator-versus-creator dispute reporting nothing new"
+        },
+        {
+          "headline": "Creator attends Josh Shapiro campaign event in Pennsylvania",
+          "reason": "Creator narrating their own day rather than reporting news"
+        },
+        {
+          "headline": "Montage of officials answering \"not to my knowledge\"",
+          "reason": "Clip montage with no identifiable news content"
+        },
+        {
+          "headline": "Creator reports personal half marathon result",
+          "reason": "Personal race report with no news content"
+        }
+      ]
+    },
     {
       "date": "2026-10-29",
       "tags": [
