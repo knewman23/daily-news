@@ -1,6 +1,60 @@
 {
-  "last_updated": "2026-10-29T18:18:27.131870+00:00",
+  "last_updated": "2026-10-30T17:33:51.065659+00:00",
   "days": [
+    {
+      "date": "2026-10-31",
+      "tags": [
+        "war",
+        "politics",
+        "legal",
+        "immigration",
+        "health",
+        "defence",
+        "energy",
+        "climate",
+        "tech",
+        "markets",
+        "elections",
+        "government",
+        "policing",
+        "surveillance"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@oafnation_actual",
+        "@groundnews",
+        "@carolinegleich"
+      ],
+      "post_count": 34,
+      "transcribed_count": 32,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Fitts says COVID pandemic was engineered as part of a financial reset",
+          "reason": "Commentary on past events reporting nothing new."
+        },
+        {
+          "headline": "Archival Pat Buchanan interview on the pro-Israel lobby resurfaces",
+          "reason": "Archival clip with commentary; reports nothing new."
+        },
+        {
+          "headline": "Questioner presses conservative figure on housing costs and family formation",
+          "reason": "Event banter with no substantive answer or new reporting."
+        },
+        {
+          "headline": "Offbeat roundup covers word of the year, microplastics bill and Vegemite ruling",
+          "reason": "Offbeat human-interest roundup with no policy angle."
+        },
+        {
+          "headline": "NASA identifies 4.1-billion-year-old Martian meteorite found in the Sahara",
+          "reason": "Space science, outside the reader's stated interests."
+        },
+        {
+          "headline": "Athlete prepares to run the New York City Marathon",
+          "reason": "Personal race report from the creator."
+        }
+      ]
+    },
     {
       "date": "2026-10-30",
       "tags": [
