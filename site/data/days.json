@@ -1,6 +1,53 @@
 {
-  "last_updated": "2026-10-30T17:33:51.065659+00:00",
+  "last_updated": "2026-10-31T17:23:05.221492+00:00",
   "days": [
+    {
+      "date": "2026-11-01",
+      "tags": [
+        "defence",
+        "politics",
+        "economy",
+        "immigration",
+        "legal",
+        "media",
+        "health",
+        "tech"
+      ],
+      "sources": [
+        "@oafnation_actual",
+        "@groundnews",
+        "@aaronparnas"
+      ],
+      "post_count": 28,
+      "transcribed_count": 26,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Scientists edit DNA inside the human body for the first time using prime editing",
+          "reason": "Biomedical research milestone with no public health policy angle."
+        },
+        {
+          "headline": "Business jet crashes in Palm Beach County, Florida",
+          "reason": "Accident coverage with no policy or political angle."
+        },
+        {
+          "headline": "Compilation questions US political support for Israel",
+          "reason": "Commentary montage of previously aired clips that reports nothing new."
+        },
+        {
+          "headline": "Creator promotes tool for looking up whether others have voted",
+          "reason": "Promotion of a link in bio rather than reported news."
+        },
+        {
+          "headline": "JD Vance's Dumbledore Halloween costume draws critical comments",
+          "reason": "Social media reaction roundup reporting nothing new."
+        },
+        {
+          "headline": "Creator shares Halloween costumes from past years",
+          "reason": "Personal lifestyle content about the creator's own costumes."
+        }
+      ]
+    },
     {
       "date": "2026-10-31",
       "tags": [
