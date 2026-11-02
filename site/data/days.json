@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31T17:23:05.221492+00:00",
+  "last_updated": "2026-11-01T20:29:51.482890+00:00",
   "days": [
     {
       "date": "2026-11-01",
@@ -22,14 +22,6 @@
       "transcribed_count": 26,
       "incomplete": false,
       "skipped": [
-        {
-          "headline": "Scientists edit DNA inside the human body for the first time using prime editing",
-          "reason": "Biomedical research milestone with no public health policy angle."
-        },
-        {
-          "headline": "Business jet crashes in Palm Beach County, Florida",
-          "reason": "Accident coverage with no policy or political angle."
-        },
         {
           "headline": "Compilation questions US political support for Israel",
           "reason": "Commentary montage of previously aired clips that reports nothing new."
@@ -77,10 +69,6 @@
       "incomplete": false,
       "skipped": [
         {
-          "headline": "Fitts says COVID pandemic was engineered as part of a financial reset",
-          "reason": "Commentary on past events reporting nothing new."
-        },
-        {
           "headline": "Archival Pat Buchanan interview on the pro-Israel lobby resurfaces",
           "reason": "Archival clip with commentary; reports nothing new."
         },
@@ -91,10 +79,6 @@
         {
           "headline": "Offbeat roundup covers word of the year, microplastics bill and Vegemite ruling",
           "reason": "Offbeat human-interest roundup with no policy angle."
-        },
-        {
-          "headline": "NASA identifies 4.1-billion-year-old Martian meteorite found in the Sahara",
-          "reason": "Space science, outside the reader's stated interests."
         },
         {
           "headline": "Athlete prepares to run the New York City Marathon",
@@ -129,16 +113,8 @@
       "incomplete": false,
       "skipped": [
         {
-          "headline": "Patrick Stewart dies at 86",
-          "reason": "Celebrity obituary with no policy or political angle"
-        },
-        {
           "headline": "Mbapp\u00e9 apologises for calling Mao Zedong a dictator",
           "reason": "Sports and celebrity controversy rather than policy or foreign affairs"
-        },
-        {
-          "headline": "Israeli actress criticises occupation in unaired-on-air remarks",
-          "reason": "A viral clip shared as commentary, reporting no new development"
         },
         {
           "headline": "Creator questions purpose of 19th-century asylums and old architecture",
@@ -197,10 +173,6 @@
       "transcribed_count": 43,
       "incomplete": false,
       "skipped": [
-        {
-          "headline": "Etsy to restrict AI-generated listings",
-          "reason": "Marketplace content policy rather than AI infrastructure, energy or public policy."
-        },
         {
           "headline": "Commentary ties immigration and terror groups to global banking conspiracy",
           "reason": "Reaction commentary on another video that reports no new information."
