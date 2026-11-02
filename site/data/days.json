@@ -2,6 +2,46 @@
   "last_updated": "2026-11-01T20:29:51.482890+00:00",
   "days": [
     {
+      "date": "2026-11-02",
+      "tags": [
+        "war",
+        "politics",
+        "defence",
+        "health",
+        "elections",
+        "legal",
+        "markets",
+        "policing",
+        "tech",
+        "security"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@oafnation_actual",
+        "@ericmoutsos",
+        "@groundnews",
+        "@total.hypocrisy"
+      ],
+      "post_count": 33,
+      "transcribed_count": 31,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Learjet carrying nine crashes in Palm Beach County",
+          "reason": "An aviation accident with no policy or political angle, covered mainly as commentary about online conspiracy theories."
+        },
+        {
+          "headline": "Trump rally rhetoric described as escalating",
+          "reason": "Commentary that reports nothing new."
+        },
+        {
+          "headline": "Runner finishes New York City Marathon with a personal best",
+          "reason": "A personal race report with no news content."
+        }
+      ]
+    },
+    {
       "date": "2026-11-01",
       "tags": [
         "defence",
