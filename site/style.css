@@ -1,16 +1,8 @@
 /* Self-hosted so the page has no third-party dependency and no render-blocking
    round trip. Same four faces as knewman23.github.io, byte for byte. */
-@font-face {
-  font-family: "Space Grotesk";
-  src: url("fonts/space-grotesk-var.woff2") format("woff2-variations");
-  font-weight: 300 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face { font-family:"IBM Plex Mono"; src:url("fonts/plex-mono-400.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:swap; }
-@font-face { font-family:"IBM Plex Mono"; src:url("fonts/plex-mono-500.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:swap; }
-@font-face { font-family:"IBM Plex Mono"; src:url("fonts/plex-mono-600.woff2") format("woff2"); font-weight:600; font-style:normal; font-display:swap; }
-
+@font-face { font-family:"Red Hat Display"; src:url("fonts/red-hat-display-var.woff2") format("woff2-variations"); font-weight:500 700; font-style:normal; font-display:swap; }
+@font-face { font-family:"Red Hat Text"; src:url("fonts/red-hat-text-var.woff2") format("woff2-variations"); font-weight:400 700; font-style:normal; font-display:swap; }
+@font-face { font-family:"Red Hat Mono"; src:url("fonts/red-hat-mono-var.woff2") format("woff2-variations"); font-weight:400 600; font-style:normal; font-display:swap; }
 /* ============================================================
    Daily News
 
@@ -51,8 +43,9 @@
   --band-ink:#ffffff;
   --band-dim:#8b8f98;
 
-  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  --sans: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Red Hat Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --sans: "Red Hat Text", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --display: "Red Hat Display", "Red Hat Text", system-ui, sans-serif;
   --serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
 
   --gut: 40px;
@@ -97,6 +90,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-wrap: break-word;               /* long ids and urls must not widen the page */
 }
+
+h1, h2, h3 { font-family: var(--display); }
 
 body.drawer-open { overflow: hidden; }      /* the page must not scroll behind the drawer */
 
@@ -212,7 +207,7 @@ a { color: var(--accent); }
 
 .masthead h1 {
   margin: 0;
-  font: 700 clamp(2.1rem, 5.4vw, 3.1rem)/1.02 var(--sans);
+  font: 700 clamp(2.1rem, 5.4vw, 3.1rem)/1.02 var(--display);
   letter-spacing: -.035em;
 }
 
@@ -668,7 +663,7 @@ details.panel > .panel-title { cursor: pointer; }
 
 .day-head h2 {
   margin: 0;
-  font: 600 clamp(1.5rem, 3.2vw, 1.9rem)/1.12 var(--sans);
+  font: 600 clamp(1.5rem, 3.2vw, 1.9rem)/1.12 var(--display);
   letter-spacing: -.022em;
 }
 
@@ -710,7 +705,7 @@ details.panel > .panel-title { cursor: pointer; }
 
 .article h2 {
   margin: 3.25rem 0 0.2rem;
-  font: 600 1.3125rem/1.3 var(--sans);
+  font: 600 1.3125rem/1.3 var(--display);
   letter-spacing: -.012em;
   color: var(--ink);
 }
