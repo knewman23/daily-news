@@ -2,6 +2,89 @@
   "last_updated": "2026-11-02T18:26:38.831564+00:00",
   "days": [
     {
+      "date": "2026-11-03",
+      "tags": [
+        "war",
+        "politics",
+        "media",
+        "defence",
+        "legal",
+        "immigration",
+        "tech",
+        "health",
+        "markets",
+        "economy",
+        "education",
+        "climate"
+      ],
+      "sources": [
+        "@hunteralexanderhowell",
+        "@total.hypocrisy",
+        "@aaronparnas",
+        "@groundnews",
+        "@oafnation_actual",
+        "@carolinegleich",
+        "@ericmoutsos"
+      ],
+      "post_count": 52,
+      "transcribed_count": 51,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Creator says political accounts face takedowns and mass unfollows",
+          "reason": "A creator discussing his own account metrics and audience, not verified reporting on platform policy."
+        },
+        {
+          "headline": "NTSB says Florida Learjet may have broken up before impact",
+          "reason": "An accident investigation with no policy or political angle among the reader's interests."
+        },
+        {
+          "headline": "NASA crew emerges from 378-day simulated Mars mission",
+          "reason": "Space research with no bearing on the reader's listed policy interests."
+        },
+        {
+          "headline": "Mexico marks Day of the Dead amid tourism friction",
+          "reason": "A cultural and human interest story with no policy angle."
+        },
+        {
+          "headline": "Man describes rituals involving bodies in synagogue tunnels",
+          "reason": "Unverified conspiracy-framed claims with no policy, legal or political development reported."
+        },
+        {
+          "headline": "Creator urges voters to turn out on election day",
+          "reason": "Get-out-the-vote exhortation and personal commentary that reports nothing new."
+        },
+        {
+          "headline": "Creator publishes full endorsement slate for the midterms",
+          "reason": "A personal endorsement list and voter guide promotion rather than reported news."
+        },
+        {
+          "headline": "Ground News runs election prediction quiz with prizes",
+          "reason": "A promotional giveaway for the account's own subscription product."
+        },
+        {
+          "headline": "Commentary warns of misinformation panic after polls close",
+          "reason": "Media literacy commentary that reports no new information."
+        },
+        {
+          "headline": "Creator criticises other political accounts over Michigan candidate",
+          "reason": "Infighting between creators with no reported news."
+        },
+        {
+          "headline": "Clip attacks Trump's record on national security",
+          "reason": "Recycled campaign commentary that reports nothing new."
+        },
+        {
+          "headline": "Election night live coverage announcement",
+          "reason": "Promotion of the account's own upcoming broadcast."
+        },
+        {
+          "headline": "Celebrity finishing times at the New York City Marathon",
+          "reason": "A race report and celebrity sports trivia, outside the reader's interests."
+        }
+      ]
+    },
+    {
       "date": "2026-11-02",
       "tags": [
         "war",
