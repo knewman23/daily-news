@@ -1,6 +1,95 @@
 {
-  "last_updated": "2026-11-02T18:26:38.831564+00:00",
+  "last_updated": "2026-11-03T19:55:41.854382+00:00",
   "days": [
+    {
+      "date": "2026-11-04",
+      "tags": [
+        "politics",
+        "elections",
+        "war",
+        "defence",
+        "legal",
+        "markets",
+        "economy",
+        "immigration",
+        "tech",
+        "health"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@groundnews",
+        "@hunteralexanderhowell",
+        "@total.hypocrisy",
+        "@oafnation_actual",
+        "@carolinegleich",
+        "@ericmoutsos"
+      ],
+      "post_count": 98,
+      "transcribed_count": 93,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Creator reflects on first-time voters born in 2008",
+          "reason": "Personal aside with no news content"
+        },
+        {
+          "headline": "Commentator says promised $5,000 checks are not coming",
+          "reason": "Offhand commentary with no reporting or detail behind the claim"
+        },
+        {
+          "headline": "Creator previews a long election night",
+          "reason": "No news content"
+        },
+        {
+          "headline": "Commentator dismisses Trump's pre-election appeal",
+          "reason": "Reaction and opinion rather than new reporting"
+        },
+        {
+          "headline": "Creator marks two-year anniversary and thanks followers",
+          "reason": "Creator talking about their own life and audience"
+        },
+        {
+          "headline": "Creator describes emotional reaction to historic firsts",
+          "reason": "Personal emotional reaction; the underlying firsts are covered in a kept topic"
+        },
+        {
+          "headline": "Commentator calls for new Democratic congressional leadership",
+          "reason": "Advocacy and opinion rather than reported news"
+        },
+        {
+          "headline": "Commentator anticipates backlash over creator-network claims",
+          "reason": "Creator dispute with no reported news"
+        },
+        {
+          "headline": "Commentator notes White House silence on social media",
+          "reason": "Observation already covered by reported coverage of the president's response"
+        },
+        {
+          "headline": "Caroline Gleich receives Coast Film Festival Changemaker Award",
+          "reason": "Personal award and creator activity, no policy angle"
+        },
+        {
+          "headline": "Creator frames midterm result as a rejection of cruelty and war",
+          "reason": "Reaction post that reports nothing new"
+        },
+        {
+          "headline": "Commentators argue MAGA was built around AI data centers and war",
+          "reason": "Speculative commentary with no verifiable new reporting"
+        },
+        {
+          "headline": "Post mocks Hegseth over election night",
+          "reason": "Joke repost with no news content"
+        },
+        {
+          "headline": "Account warns DHS and DOD personnel over unlawful operations",
+          "reason": "Opinion post rather than reported news"
+        },
+        {
+          "headline": "Account jokes that regime change happened in the US rather than Iran",
+          "reason": "Commentary line repeating points already covered elsewhere"
+        }
+      ]
+    },
     {
       "date": "2026-11-03",
       "tags": [
