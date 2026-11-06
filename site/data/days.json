@@ -1,6 +1,20 @@
 {
-  "last_updated": "2026-11-05T18:39:28.764752+00:00",
+  "last_updated": "2026-11-06T19:35:12.291547+00:00",
   "days": [
+    {
+      "date": "2026-11-06",
+      "tags": [
+        "politics",
+        "government"
+      ],
+      "sources": [
+        "@oafnation_actual"
+      ],
+      "post_count": 1,
+      "transcribed_count": 1,
+      "incomplete": false,
+      "skipped": []
+    },
     {
       "date": "2026-11-05",
       "tags": [
