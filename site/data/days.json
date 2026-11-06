@@ -1,14 +1,107 @@
 {
-  "last_updated": "2026-11-04T18:50:27.701532+00:00",
+  "last_updated": "2026-11-05T18:39:28.764752+00:00",
   "days": [
     {
       "date": "2026-11-05",
-      "tags": [],
-      "sources": [],
-      "post_count": 0,
-      "transcribed_count": 0,
-      "incomplete": true,
-      "skipped": []
+      "tags": [
+        "politics",
+        "elections",
+        "legal",
+        "defence",
+        "war",
+        "markets",
+        "tech",
+        "immigration",
+        "policing",
+        "media",
+        "health"
+      ],
+      "sources": [
+        "@groundnews",
+        "@aaronparnas",
+        "@oafnation_actual",
+        "@total.hypocrisy",
+        "@ericmoutsos",
+        "@hunteralexanderhowell",
+        "@carolinegleich"
+      ],
+      "post_count": 96,
+      "transcribed_count": 95,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Trump's preferred golf tour files for bankruptcy",
+          "reason": "Sports business story with no policy or political angle."
+        },
+        {
+          "headline": "White House posts Legend of Zelda parody after election defeat",
+          "reason": "Social media trivia with no substantive news content."
+        },
+        {
+          "headline": "Time magazine releases post-election cover",
+          "reason": "Reaction to a magazine cover with no reportable information."
+        },
+        {
+          "headline": "Compilation shows Republicans predicting midterm victory",
+          "reason": "Reaction compilation that reports nothing new."
+        },
+        {
+          "headline": "Compilation contrasts Trump's campaign promises with the Iran war and Epstein files",
+          "reason": "Commentary montage of previously broadcast clips rather than new reporting."
+        },
+        {
+          "headline": "Creator rejects claim that influencers delivered the election result",
+          "reason": "Commentary about creators rather than reported news."
+        },
+        {
+          "headline": "Trump cabinet members go quiet on social media after the election",
+          "reason": "Observational social media roundup with no new information."
+        },
+        {
+          "headline": "Challenge issued to political creators over Israel positions",
+          "reason": "A call-out aimed at other creators rather than a news event."
+        },
+        {
+          "headline": "Aerial spraying blamed for illness in southern Utah",
+          "reason": "Unsupported personal health claim with no policy content."
+        },
+        {
+          "headline": "Creator asks public figures to deny being shape shifters",
+          "reason": "No news content."
+        },
+        {
+          "headline": "Scholarship opportunity for STEM students at HBCUs",
+          "reason": "Promotional call to action, not news."
+        },
+        {
+          "headline": "Creator says Meta is automatically unfollowing his audience",
+          "reason": "A creator complaining about his own platform metrics."
+        },
+        {
+          "headline": "Creator returns from reporting trip to Beijing",
+          "reason": "Personal travel post."
+        },
+        {
+          "headline": "Social media reactions collected after the election",
+          "reason": "Collection of jokes with no news content."
+        },
+        {
+          "headline": "Why election relief can feel like hypervigilance",
+          "reason": "Personal essay about the creator's own reaction."
+        },
+        {
+          "headline": "Voters reject corruption, high costs and data centers",
+          "reason": "No reportable content beyond a repeated yes-and-no refrain."
+        },
+        {
+          "headline": "Cristiano Ronaldo retires from Portugal's national team",
+          "reason": "Sports retirement with no policy angle."
+        },
+        {
+          "headline": "Loomer post questions election outcome in religious terms",
+          "reason": "A single social media post shared as commentary, with no reported news."
+        }
+      ]
     },
     {
       "date": "2026-11-04",
