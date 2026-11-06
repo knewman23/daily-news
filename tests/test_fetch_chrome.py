@@ -8,6 +8,7 @@ backend was blocked. The shapes -- `code`, `taken_at`, `media_type`,
 `carousel_media`, `page_info` -- are the verified ones, not invented.
 """
 
+import json
 from datetime import datetime, timezone
 
 import pytest
@@ -452,3 +453,30 @@ def test_a_posts_named_request_off_graphql_is_not_the_posts_response():
     assert not fetch_chrome._is_posts_response(
         _Response("https://www.instagram.com/api/v1/feed/",
                   "PolarisProfilePostsQuery"))
+
+
+# --- the first page can arrive in the HTML, not a query ---------------------
+
+
+def test_the_first_page_is_read_from_the_server_rendered_prefetch():
+    """Observed live on 2026-11-05: the profile HTML carries the first page as
+    a relay prefetch and no posts query is issued for it, so waiting for the
+    query timed out on every handle for two days.
+    """
+    payload = {"data": {fetch_chrome.POSTS_ROOT_FIELD: {
+        "edges": [{"node": {"code": "ABC"}}],
+        "page_info": {"has_next_page": False}}}}
+    blob = {"require": [["ScheduledServerJS", "handle", None, [{"__bbox": {
+        "require": [["RelayPrefetchedStreamCache", "next", [], [
+            "adp_PolarisProfilePostsQueryRelayPreloader_x",
+            {"__bbox": {"complete": True, "result": payload}}]]]}}]]]}
+    html = ('<script type="application/json" data-sjs>{"other": 1}</script>'
+            f'<script type="application/json" nonce="" data-sjs="">'
+            f'{json.dumps(blob)}</script>')
+
+    assert fetch_chrome._prefetched_posts(html) == payload
+
+
+def test_html_without_a_prefetch_yields_nothing():
+    assert fetch_chrome._prefetched_posts(
+        '<script type="application/json">{"data": {}}</script>') is None

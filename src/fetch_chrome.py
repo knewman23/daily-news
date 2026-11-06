@@ -31,6 +31,7 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 import subprocess
 import time
 import urllib.error
@@ -337,15 +338,31 @@ class CdpBrowser:
             if name:
                 seen.append(name)
 
+        caught: list[Any] = []
+
+        def catch(response: Any) -> None:
+            if _is_posts_response(response):
+                caught.append(response)
+
         self._page.on("request", note)
+        self._page.on("response", catch)
         try:
-            with self._page.expect_response(_is_posts_response,
-                                            timeout=self._timeout_ms) as caught:
-                if cursor is None:
-                    self._page.goto(url, timeout=self._timeout_ms,
-                                    wait_until="domcontentloaded")
-                else:
-                    self._page.mouse.wheel(0, 20000)
+            if cursor is None:
+                doc = self._page.goto(url, timeout=self._timeout_ms,
+                                      wait_until="domcontentloaded")
+                # Since 2026-11-05 the first page is server-rendered into the
+                # HTML as a relay prefetch, and no posts query is issued for it.
+                # Scrolling still issues the query for later pages.
+                prefetched = _prefetched_posts(doc.text() if doc else "")
+                if prefetched is not None:
+                    return prefetched
+            else:
+                self._page.mouse.wheel(0, 20000)
+            # Sync playwright dispatches events only inside a blocking call, so
+            # nothing can slip between this check and the wait registering.
+            if not caught:
+                caught.append(self._page.wait_for_event(
+                    "response", _is_posts_response, timeout=self._timeout_ms))
         except Exception as exc:
             if type(exc).__name__ != "TimeoutError":
                 raise
@@ -371,8 +388,9 @@ class CdpBrowser:
             ) from exc
         finally:
             self._page.remove_listener("request", note)
+            self._page.remove_listener("response", catch)
 
-        return caught.value.json()
+        return caught[0].json()
 
     def logged_in(self) -> bool:
         """Whether this browser holds an Instagram session cookie."""
@@ -433,6 +451,46 @@ def _is_posts_response(response: Any) -> bool:
         # A predicate that raises is a predicate that never matches, which
         # would present as an inexplicable timeout.
         return False
+
+
+_JSON_SCRIPT = re.compile(
+    r'<script type="application/json"[^>]*>(.*?)</script>', re.S)
+
+
+def _prefetched_posts(html: str) -> dict | None:
+    """The posts payload the server embedded in the profile HTML, if any.
+
+    It sits in a `data-sjs` script as `{"result": {"data": {POSTS_ROOT_FIELD:
+    ...}}}` deep inside relay bookkeeping. The inner `{"data": ...}` is the same
+    shape the posts query returns, so it is returned as-is.
+    """
+    for body in _JSON_SCRIPT.findall(html):
+        if POSTS_ROOT_FIELD not in body:
+            continue
+        try:
+            found = _find_posts_payload(json.loads(body))
+        except ValueError:
+            continue
+        if found is not None:
+            return found
+    return None
+
+
+def _find_posts_payload(node: Any) -> dict | None:
+    if isinstance(node, dict):
+        data = node.get("data")
+        if isinstance(data, dict) and POSTS_ROOT_FIELD in data:
+            return node
+        children = node.values()
+    elif isinstance(node, list):
+        children = node
+    else:
+        return None
+    for child in children:
+        found = _find_posts_payload(child)
+        if found is not None:
+            return found
+    return None
 
 
 def _timeout_detail(seen: Sequence[str]) -> str:
