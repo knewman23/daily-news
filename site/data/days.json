@@ -1,6 +1,41 @@
 {
-  "last_updated": "2026-11-12T00:55:19.376642+00:00",
+  "last_updated": "2026-11-12T01:00:51.144794+00:00",
   "days": [
+    {
+      "date": "2026-11-12",
+      "tags": [
+        "politics",
+        "defence",
+        "legal",
+        "immigration",
+        "surveillance",
+        "climate",
+        "tech",
+        "markets",
+        "policing",
+        "war"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@oafnation_actual",
+        "@carolinegleich",
+        "@groundnews",
+        "@ericmoutsos"
+      ],
+      "post_count": 18,
+      "transcribed_count": 18,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Microsoft Outlook hit by widespread outage",
+          "reason": "A service outage with no policy, political or economic angle among the reader's interests."
+        },
+        {
+          "headline": "SS United States sunk off Florida to become world's largest artificial reef",
+          "reason": "Historical and human interest; no environmental policy or regulatory angle."
+        }
+      ]
+    },
     {
       "date": "2026-11-11",
       "tags": [
