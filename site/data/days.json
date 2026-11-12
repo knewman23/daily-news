@@ -1,19 +1,327 @@
 {
-  "last_updated": "2026-11-06T19:35:12.291547+00:00",
+  "last_updated": "2026-11-12T00:55:19.376642+00:00",
   "days": [
+    {
+      "date": "2026-11-11",
+      "tags": [
+        "politics",
+        "elections",
+        "legal",
+        "markets",
+        "tech",
+        "climate",
+        "defence",
+        "war",
+        "economy"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@groundnews",
+        "@oafnation_actual",
+        "@carolinegleich"
+      ],
+      "post_count": 37,
+      "transcribed_count": 35,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Documentary examines AIPAC's influence over US politics",
+          "reason": "Promotional trailer for a documentary; reports no new facts itself."
+        },
+        {
+          "headline": "Commentary argues Congress is beyond reform and urges local organizing",
+          "reason": "Opinion commentary with no new reporting."
+        },
+        {
+          "headline": "Commentary attacks fractional reserve banking and central banks",
+          "reason": "Opinion compilation with no new reporting."
+        },
+        {
+          "headline": "Veterans Day reflection on cigarettes in military rations and veterans' health care",
+          "reason": "Primarily a personal family remembrance rather than news."
+        },
+        {
+          "headline": "Logitech gives staff a paid day off to play Grand Theft Auto VI",
+          "reason": "Corporate perk story with no policy or political angle."
+        },
+        {
+          "headline": "Dispute over Democratic creators and the Chorus network",
+          "reason": "Online creator dispute rather than news reporting."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "tags": [
+        "politics",
+        "legal",
+        "war",
+        "health",
+        "immigration",
+        "climate",
+        "tech",
+        "markets",
+        "surveillance",
+        "media",
+        "defence"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@oafnation_actual",
+        "@total.hypocrisy",
+        "@groundnews",
+        "@carolinegleich"
+      ],
+      "post_count": 40,
+      "transcribed_count": 39,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Study reports carbon nanodots in Coca-Cola and Pepsi",
+          "reason": "Consumer health speculation with no policy or regulatory angle."
+        },
+        {
+          "headline": "Old Gates and WEF cyberattack warnings replayed as predictive programming",
+          "reason": "Commentary on archival clips that reports nothing new."
+        },
+        {
+          "headline": "Veterans for Public Lands opens applications for Defenders Corps",
+          "reason": "Recruitment call for a programme rather than a news event."
+        },
+        {
+          "headline": "Ground News audience loses forecasting contest to pollsters",
+          "reason": "Audience contest and app promotion."
+        },
+        {
+          "headline": "Marine Corps birthday message",
+          "reason": "Commemorative greeting with no news content."
+        },
+        {
+          "headline": "Reflections on a trip to Madeira between campaign and race commitments",
+          "reason": "Personal travel reflection with no news content."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "tags": [
+        "politics",
+        "defence",
+        "legal",
+        "elections",
+        "surveillance",
+        "tech",
+        "immigration",
+        "war",
+        "climate",
+        "markets",
+        "media"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@oafnation_actual",
+        "@groundnews",
+        "@total.hypocrisy",
+        "@ericmoutsos",
+        "@carolinegleich"
+      ],
+      "post_count": 42,
+      "transcribed_count": 41,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Trump says Air Force pilots reported a fast-moving object near an F-22",
+          "reason": "Novelty item with no policy, defence or political substance."
+        },
+        {
+          "headline": "Commentary questions the Russell Brand conviction",
+          "reason": "Reaction commentary that reports nothing new beyond the sentencing already covered."
+        },
+        {
+          "headline": "Creator retracts claim about a named individual",
+          "reason": "Creator-account housekeeping with no news content."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "tags": [
+        "immigration",
+        "politics",
+        "tech",
+        "legal",
+        "defence",
+        "media",
+        "climate",
+        "health",
+        "environment"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@groundnews",
+        "@total.hypocrisy",
+        "@oafnation_actual",
+        "@carolinegleich"
+      ],
+      "post_count": 35,
+      "transcribed_count": 33,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Polish officers who stopped Krakow gunman remain in serious condition",
+          "reason": "Human interest follow-up on injured officers with no policy or political angle."
+        },
+        {
+          "headline": "New York Times in talks to buy Letterboxd for $330 million",
+          "reason": "Media-industry acquisition with no political, policy or macroeconomic angle."
+        },
+        {
+          "headline": "SNL mocks Elon Musk over midterm spending",
+          "reason": "Comedy segment and reaction coverage that reports no new political development."
+        },
+        {
+          "headline": "Creator rejects claim that content creators delivered the midterms",
+          "reason": "Commentary about other creators that reports no new news of its own."
+        },
+        {
+          "headline": "Creator opposes Jeffries and Schumer for Democratic leadership",
+          "reason": "Personal opinion piece reporting no new development."
+        },
+        {
+          "headline": "Creator criticises Chorus network over funding and past posts",
+          "reason": "Creator-versus-creator media dispute with no policy or political substance."
+        },
+        {
+          "headline": "A story about two boys and a poor man's shoes",
+          "reason": "Inspirational story with no news content."
+        },
+        {
+          "headline": "Signage and street scenes from Seoul",
+          "reason": "Personal travel post with no news content."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-07",
+      "tags": [
+        "politics",
+        "legal",
+        "immigration",
+        "climate",
+        "tech",
+        "markets",
+        "defence",
+        "media",
+        "energy"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@oafnation_actual",
+        "@groundnews",
+        "@carolinegleich",
+        "@total.hypocrisy",
+        "@ericmoutsos"
+      ],
+      "post_count": 38,
+      "transcribed_count": 36,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Salon to shut down after 31 years",
+          "reason": "Media business closure with no policy or political angle."
+        },
+        {
+          "headline": "West Hollywood opens domestic partner registry to groups of three or more",
+          "reason": "Local social policy outside the reader's listed interests."
+        },
+        {
+          "headline": "China's space station sets atomic cooling record",
+          "reason": "Basic science result, not policy, defence or economics."
+        },
+        {
+          "headline": "LIV Golf to liquidate after Saudi funding ends",
+          "reason": "Sports business story with no policy angle."
+        },
+        {
+          "headline": "Trump dollar coin to reach banks next month",
+          "reason": "Partisan stunt commentary rather than reported news."
+        }
+      ]
+    },
     {
       "date": "2026-11-06",
       "tags": [
         "politics",
-        "government"
+        "government",
+        "legal",
+        "elections",
+        "defence",
+        "immigration",
+        "war",
+        "markets",
+        "health",
+        "tech",
+        "economy"
       ],
       "sources": [
-        "@oafnation_actual"
+        "@aaronparnas",
+        "@groundnews",
+        "@oafnation_actual",
+        "@total.hypocrisy",
+        "@hunteralexanderhowell",
+        "@carolinegleich"
       ],
-      "post_count": 1,
-      "transcribed_count": 1,
+      "post_count": 48,
+      "transcribed_count": 47,
       "incomplete": false,
-      "skipped": []
+      "skipped": [
+        {
+          "headline": "Supercut contrasts Trump campaign promises with Iran war, prices and Epstein files",
+          "reason": "A montage of previously aired clips that reports no new information itself."
+        },
+        {
+          "headline": "Kimmel compiles Republican predictions that midterm polling was wrong",
+          "reason": "A commentary clip reacting to the election result without reporting anything new."
+        },
+        {
+          "headline": "Tesla to end Cybertruck production in 2027",
+          "reason": "Single-company product news with no policy or broader economic angle."
+        },
+        {
+          "headline": "Thomas Markle Sr. arrested on child sexual abuse material charges",
+          "reason": "A celebrity criminal case with no policy or political dimension."
+        },
+        {
+          "headline": "Creator alleges Chorus influencer network is funded by undisclosed money",
+          "reason": "An ongoing feud between online creators rather than reported news."
+        },
+        {
+          "headline": "Creators debate whether House Democrats should replace Jeffries as leader",
+          "reason": "Commentary on other creators' opinions rather than new reporting."
+        },
+        {
+          "headline": "Schumer clip resurfaces pledging continued security assistance to Israel",
+          "reason": "An undated clip posted as commentary, with no new development reported."
+        },
+        {
+          "headline": "Post-election relief mixed with persistent hypervigilance",
+          "reason": "A personal essay on emotional reaction rather than a news development."
+        },
+        {
+          "headline": "Creator says Meta is automatically unfollowing accounts",
+          "reason": "A creator discussing their own account metrics rather than reported news."
+        },
+        {
+          "headline": "FOSSI scholarship offers up to $40,000 for HBCU-bound STEM students",
+          "reason": "A promotional call to action rather than news."
+        },
+        {
+          "headline": "Offbeat stories: stolen Bugatti, hacked billboard, 53 red cards",
+          "reason": "Human interest and novelty items with no policy angle."
+        }
+      ]
     },
     {
       "date": "2026-11-05",
@@ -22,10 +330,10 @@
         "elections",
         "legal",
         "defence",
-        "war",
+        "immigration",
         "markets",
         "tech",
-        "immigration",
+        "foreign",
         "policing",
         "media",
         "health"
@@ -36,84 +344,67 @@
         "@oafnation_actual",
         "@total.hypocrisy",
         "@ericmoutsos",
-        "@hunteralexanderhowell",
         "@carolinegleich"
       ],
-      "post_count": 96,
-      "transcribed_count": 95,
+      "post_count": 74,
+      "transcribed_count": 73,
       "incomplete": false,
       "skipped": [
         {
           "headline": "Trump's preferred golf tour files for bankruptcy",
-          "reason": "Sports business story with no policy or political angle."
-        },
-        {
-          "headline": "White House posts Legend of Zelda parody after election defeat",
-          "reason": "Social media trivia with no substantive news content."
-        },
-        {
-          "headline": "Time magazine releases post-election cover",
-          "reason": "Reaction to a magazine cover with no reportable information."
-        },
-        {
-          "headline": "Compilation shows Republicans predicting midterm victory",
-          "reason": "Reaction compilation that reports nothing new."
-        },
-        {
-          "headline": "Compilation contrasts Trump's campaign promises with the Iran war and Epstein files",
-          "reason": "Commentary montage of previously broadcast clips rather than new reporting."
-        },
-        {
-          "headline": "Creator rejects claim that influencers delivered the election result",
-          "reason": "Commentary about creators rather than reported news."
-        },
-        {
-          "headline": "Trump cabinet members go quiet on social media after the election",
-          "reason": "Observational social media roundup with no new information."
-        },
-        {
-          "headline": "Challenge issued to political creators over Israel positions",
-          "reason": "A call-out aimed at other creators rather than a news event."
-        },
-        {
-          "headline": "Aerial spraying blamed for illness in southern Utah",
-          "reason": "Unsupported personal health claim with no policy content."
-        },
-        {
-          "headline": "Creator asks public figures to deny being shape shifters",
-          "reason": "No news content."
-        },
-        {
-          "headline": "Scholarship opportunity for STEM students at HBCUs",
-          "reason": "Promotional call to action, not news."
-        },
-        {
-          "headline": "Creator says Meta is automatically unfollowing his audience",
-          "reason": "A creator complaining about his own platform metrics."
-        },
-        {
-          "headline": "Creator returns from reporting trip to Beijing",
-          "reason": "Personal travel post."
-        },
-        {
-          "headline": "Social media reactions collected after the election",
-          "reason": "Collection of jokes with no news content."
-        },
-        {
-          "headline": "Why election relief can feel like hypervigilance",
-          "reason": "Personal essay about the creator's own reaction."
-        },
-        {
-          "headline": "Voters reject corruption, high costs and data centers",
-          "reason": "No reportable content beyond a repeated yes-and-no refrain."
+          "reason": "Business and sports item about a golf tour with no policy or political angle."
         },
         {
           "headline": "Cristiano Ronaldo retires from Portugal's national team",
-          "reason": "Sports retirement with no policy angle."
+          "reason": "Sports retirement, outside the reader's interests."
         },
         {
-          "headline": "Loomer post questions election outcome in religious terms",
-          "reason": "A single social media post shared as commentary, with no reported news."
+          "headline": "White House posts Legend of Zelda parody after midterm losses",
+          "reason": "Commentary on a social media post with no new reporting."
+        },
+        {
+          "headline": "Time magazine releases new cover",
+          "reason": "Reaction to a magazine cover with no news content."
+        },
+        {
+          "headline": "Creator rejects claims that influencers delivered the election",
+          "reason": "Commentary about creator credit-taking rather than new reporting."
+        },
+        {
+          "headline": "Trump cabinet officials go quiet on social media after midterms",
+          "reason": "Observational commentary on social media activity, reporting nothing new."
+        },
+        {
+          "headline": "Creator calls for pressure on Schumer as well as Jeffries",
+          "reason": "Opinion and a challenge to other creators rather than reported news."
+        },
+        {
+          "headline": "Creator says aerial spraying is causing illness in Utah",
+          "reason": "Unsubstantiated personal health claim, not public health policy."
+        },
+        {
+          "headline": "Creator challenges public figures to deny being shape shifters",
+          "reason": "Joke content with no news value."
+        },
+        {
+          "headline": "Creator returns from Beijing trip",
+          "reason": "Creator talking about their own travel."
+        },
+        {
+          "headline": "Social media reactions collected after Democratic wins",
+          "reason": "A roundup of social media reactions with no reporting."
+        },
+        {
+          "headline": "Creator posts yes-and-no reaction to election results",
+          "reason": "Reaction video containing no reportable content."
+        },
+        {
+          "headline": "Laura Loomer posts about country being taken over",
+          "reason": "A single social media post with no news content."
+        },
+        {
+          "headline": "Creator urges food storage preparation over cyberattack fears",
+          "reason": "Preparedness advice and speculation rather than news; the underlying bank and blood bank reporting is covered above."
         }
       ]
     },
