@@ -1,6 +1,174 @@
 {
   "topics": [
     {
+      "date": "2026-11-13",
+      "headline": "Nvidia CEO's resignation triggers national security questions over Trump ties and China chip sales",
+      "tags": [
+        "politics",
+        "tech",
+        "security"
+      ],
+      "snippet": "Jensen Huang resigned as Nvidia's chief executive after reports of extramarital affairs, including one with Alice Huang, whom U.S. intelligence suspects of spying for China. Reuters reported a third r\u2026",
+      "text": "nvidia ceo's resignation triggers national security questions over trump ties and china chip sales\njensen huang resigned as nvidia's chief executive after reports of extramarital affairs, including one with alice huang, whom u.s. intelligence suspects of spying for china. reuters reported a third relationship involving another nvidia employee, while kimberly powell, who leads nvidia's health care business, was named in earlier reporting. according to the new york times, trump was warned more than once about the relationship and nonetheless urged huang to remain as ceo, brought him to china, followed his advice on selling chips there, and accepted nvidia money for the inauguration and the white house ballroom. senator chris coons said trump was \"in bed with nvidia while nvidia was in bed with china,\" and members of both parties are demanding testimony from huang and commerce secretary howard lutnick over export controls on advanced ai chips."
+    },
+    {
+      "date": "2026-11-13",
+      "headline": "White House weighs firing Commerce Secretary Lutnick as cabinet turns on him",
+      "tags": [
+        "politics",
+        "tech",
+        "legal"
+      ],
+      "snippet": "The White House is weighing whether to remove Commerce Secretary Howard Lutnick, whose department decides whether advanced American chips may be exported to China. According to Axios, Lutnick was sent\u2026",
+      "text": "white house weighs firing commerce secretary lutnick as cabinet turns on him\nthe white house is weighing whether to remove commerce secretary howard lutnick, whose department decides whether advanced american chips may be exported to china. according to axios, lutnick was sent a highly classified memo warning that nvidia's then-ceo jensen huang had a relationship with a woman u.s. officials suspect of spying for china; the commerce department has not commented and it is unclear whether lutnick read it. treasury secretary scott bessent, asked on television about export control regulations, directed questions to lutnick, and republicans in congress are demanding lutnick testify. separately, lutnick declined at his 2025 confirmation to commit to recusing himself from working groups touching his firm cantor fitzgerald, saying only that he would follow applicable ethics rules; his department moved in january to delete some of those rules as \"unnecessary department specific regulations.\""
+    },
+    {
+      "date": "2026-11-13",
+      "headline": "White House counsel threatens criminal investigations over planned Democratic oversight",
+      "tags": [
+        "politics",
+        "legal"
+      ],
+      "snippet": "White House lawyer Will Scharf wrote to incoming House Oversight Committee Chairman Robert Garcia warning that subpoenas issued to harass officials or violate constitutional rights could constitute cr\u2026",
+      "text": "white house counsel threatens criminal investigations over planned democratic oversight\nwhite house lawyer will scharf wrote to incoming house oversight committee chairman robert garcia warning that subpoenas issued to harass officials or violate constitutional rights could constitute criminal acts, citing watkins v. united states and trump v. mazars. the letter catalogued statements by democratic members and members-elect about issuing subpoenas \"like candy\" and prosecuting administration officials, and said the administration \"will not be extorted.\" garcia rejected the warning, writing that \"congress' authority comes from article i of the constitution, not from the permission of the white house.\" incoming house judiciary chairman jamie raskin said the threats could warrant legal action."
+    },
+    {
+      "date": "2026-11-13",
+      "headline": "ICE deportations and arrests reach record highs in fiscal 2026",
+      "tags": [
+        "immigration",
+        "politics"
+      ],
+      "snippet": "U.S. Immigration and Customs Enforcement deported 483,200 people in fiscal year 2026, the highest annual total in the agency's 23-year history, according to Department of Homeland Security figures. Th\u2026",
+      "text": "ice deportations and arrests reach record highs in fiscal 2026\nu.s. immigration and customs enforcement deported 483,200 people in fiscal year 2026, the highest annual total in the agency's 23-year history, according to department of homeland security figures. that is a 9% increase over 2025 and a 78% increase over 2024, while administrative arrests reached nearly 475,000 compared with about 240,000 in 2025 and 113,000 in 2024. cbs news found more than half of ice arrests in july involved immigrants without criminal convictions or pending charges, and a migration policy institute analysis found roughly 20% of ice and customs and border protection deportations between january 2025 and july 2026 involved people with criminal convictions. ice officials have been instructed to target about 19,000 arrests per week as stephen miller takes over as white house chief of staff."
+    },
+    {
+      "date": "2026-11-13",
+      "headline": "Van Hollen challenges Schumer for Senate Democratic leader",
+      "tags": [
+        "politics"
+      ],
+      "snippet": "Senator Chris Van Hollen of Maryland announced he will run against Chuck Schumer for Senate majority leader as Democrats prepare to take control of the chamber, saying Americans \"called on us to unrig\u2026",
+      "text": "van hollen challenges schumer for senate democratic leader\nsenator chris van hollen of maryland announced he will run against chuck schumer for senate majority leader as democrats prepare to take control of the chamber, saying americans \"called on us to unrig an economy rigged against working people\" and that \"to deliver, we need new leadership.\" schumer responded on x that he welcomes a debate about the caucus's future, pointed to the party's 55 seats, and said he has the votes to continue serving as democratic leader. supporters point to van hollen's rejection of corporate pac and aipac money, his authorship of the disclose act, his push to claw back ice's budget, and his trip to el salvador on behalf of kilmar abrego garcia."
+    },
+    {
+      "date": "2026-11-13",
+      "headline": "Putin warns European troops in Ukraine would be legitimate targets",
+      "tags": [
+        "war",
+        "politics"
+      ],
+      "snippet": "Vladimir Putin told U.S. envoys Steve Witkoff and Jared Kushner that European troops deployed to Ukraine after a ceasefire would be treated as legitimate targets and that the war would resume immediat\u2026",
+      "text": "putin warns european troops in ukraine would be legitimate targets\nvladimir putin told u.s. envoys steve witkoff and jared kushner that european troops deployed to ukraine after a ceasefire would be treated as legitimate targets and that the war would resume immediately, according to the associated press. the warning came during kremlin talks following negotiations in abu dhabi. witkoff had sought putin's backing for european participation in the next round of talks."
+    },
+    {
+      "date": "2026-11-13",
+      "headline": "Trump says he wants to \"get Cuba done\" and would consider military action",
+      "tags": [
+        "politics",
+        "war"
+      ],
+      "snippet": "President Trump said he wants to \"get Cuba done\" before leaving office and would \"certainly consider\" a short military campaign against the island if needed, according to Newsmax. Speaking to Hugh Hew\u2026",
+      "text": "trump says he wants to \"get cuba done\" and would consider military action\npresident trump said he wants to \"get cuba done\" before leaving office and would \"certainly consider\" a short military campaign against the island if needed, according to newsmax. speaking to hugh hewitt, trump said secretary of state marco rubio is leading the effort. he added that the united states is watching cuba \"very closely.\""
+    },
+    {
+      "date": "2026-11-13",
+      "headline": "Trump sidelines Vance from Iran talks as 2028 prospects dim",
+      "tags": [
+        "politics",
+        "war"
+      ],
+      "snippet": "Trump removed Vice President JD Vance from all Iran negotiations, telling him to stand down and focus on corruption instead, after the talks failed to progress. Asked whether he would endorse a succes\u2026",
+      "text": "trump sidelines vance from iran talks as 2028 prospects dim\ntrump removed vice president jd vance from all iran negotiations, telling him to stand down and focus on corruption instead, after the talks failed to progress. asked whether he would endorse a successor for 2028, trump was noncommittal, calling it \"a feeling thing.\" people close to vance told cnn he is giving serious consideration to not running for president in 2028 following the republican midterm losses, with allies describing the iran war as the biggest obstacle to any republican run. vance had previously broken with the white house publicly over the iran war."
+    },
+    {
+      "date": "2026-11-13",
+      "headline": "Intelligence chiefs press Congress to reauthorize FISA Section 702 before December deadline",
+      "tags": [
+        "surveillance",
+        "politics",
+        "legal"
+      ],
+      "snippet": "Attorney General Blanche, Director of National Intelligence Clayton and CIA Director Ratcliffe sent a letter urging Congress to reauthorize Section 702 of the Foreign Intelligence Surveillance Act ahe\u2026",
+      "text": "intelligence chiefs press congress to reauthorize fisa section 702 before december deadline\nattorney general blanche, director of national intelligence clayton and cia director ratcliffe sent a letter urging congress to reauthorize section 702 of the foreign intelligence surveillance act ahead of a december 9 deadline, according to fox news. the letter warns that further delay risks the surveillance authority lapsing. the office of the director of national intelligence credits section 702 with thwarting terror plots."
+    },
+    {
+      "date": "2026-11-13",
+      "headline": "House Republicans pass veterans package by voice vote after luring Democrat off floor",
+      "tags": [
+        "politics",
+        "defence"
+      ],
+      "snippet": "House Republicans advanced the Take Care of America's Veterans Act, a package of roughly 60 bills containing a provision described as Section 108 that funds current veterans' benefits by reducing bene\u2026",
+      "text": "house republicans pass veterans package by voice vote after luring democrat off floor\nhouse republicans advanced the take care of america's veterans act, a package of roughly 60 bills containing a provision described as section 108 that funds current veterans' benefits by reducing benefits for future generations, an estimated $60 billion. committee chairman bost asked ranking member mark takano, the senior democrat on the house committee on veterans' affairs, to come off the house floor to negotiate an amendment fixing section 108; while takano was away, republicans called a voice vote with no recorded roll call, allowing the bill to pass as though unanimously. separately, the major richard star act, which ends the tax on combat-wounded veterans, passed the house by roll call with 18 republicans voting against. whether the republican-controlled senate brings either measure up before january 3 remains open."
+    },
+    {
+      "date": "2026-11-13",
+      "headline": "Eleven Democratic absences stall Hegseth impeachment vote",
+      "tags": [
+        "politics",
+        "legal"
+      ],
+      "snippet": "House Republicans voted 211-204 to send eight articles of impeachment against Defense Secretary Pete Hegseth to committee, a referral that eight additional votes against would have blocked. Eleven Dem\u2026",
+      "text": "eleven democratic absences stall hegseth impeachment vote\nhouse republicans voted 211-204 to send eight articles of impeachment against defense secretary pete hegseth to committee, a referral that eight additional votes against would have blocked. eleven democrats missed the vote; reps. melanie stansbury and jonathan jackson cited traffic, rep. steven horsford cited a personal emergency, and nancy pelosi's office said she was at a veterans day event in san francisco. rep. ro khanna wants another vote when democrats take control in january, while rep. pete aguilar said leaders plan to begin with oversight and have no plans for another impeachment vote. rep. alexandria ocasio-cortez called losing a vote on absences \"absolutely unacceptable.\""
+    },
+    {
+      "date": "2026-11-13",
+      "headline": "Democratic governors will govern 75% of Americans after Alaska flip",
+      "tags": [
+        "politics"
+      ],
+      "snippet": "Alaska's governorship has flipped to the Democrats for the first time in years. Once all new governors are sworn in, 30 states will have Democratic governors and 20 will have Republican governors. Bec\u2026",
+      "text": "democratic governors will govern 75% of americans after alaska flip\nalaska's governorship has flipped to the democrats for the first time in years. once all new governors are sworn in, 30 states will have democratic governors and 20 will have republican governors. because of where population is concentrated, roughly 75% of the american public will live under democratic state governance."
+    },
+    {
+      "date": "2026-11-13",
+      "headline": "University of Maryland student and recent valedictorian detained by ICE faces deportation",
+      "tags": [
+        "immigration",
+        "legal"
+      ],
+      "snippet": "Maria Flores Garcia, 19, was detained by immigration agents alongside her mother at a routine immigration appointment and is being held at an ICE detention facility in Louisiana. She delivered her hig\u2026",
+      "text": "university of maryland student and recent valedictorian detained by ice faces deportation\nmaria flores garcia, 19, was detained by immigration agents alongside her mother at a routine immigration appointment and is being held at an ice detention facility in louisiana. she delivered her high school valedictorian speech in the spring and is a university of maryland student studying public health who intended to become an emergency room physician, according to friends who spoke to the washington post, which first reported the case. her family fears she will be deported to mexico, a country where her loved ones say she knows no one, despite her lacking legal status there."
+    },
+    {
+      "date": "2026-11-13",
+      "headline": "House Democratic leadership contest takes shape around Jeffries",
+      "tags": [
+        "politics"
+      ],
+      "snippet": "Alexandria Ocasio-Cortez endorsed Hakeem Jeffries for Speaker of the House. Ro Khanna and Ayanna Pressley continue to be named as potential challengers for the role. The gavel is due to change hands i\u2026",
+      "text": "house democratic leadership contest takes shape around jeffries\nalexandria ocasio-cortez endorsed hakeem jeffries for speaker of the house. ro khanna and ayanna pressley continue to be named as potential challengers for the role. the gavel is due to change hands in january."
+    },
+    {
+      "date": "2026-11-13",
+      "headline": "Mar-a-Lago event features mockery of Muslims",
+      "tags": [
+        "politics",
+        "media"
+      ],
+      "snippet": "An event at the president's Mar-a-Lago club, billed as a journalism award ceremony, included imagery and material mocking and demeaning Muslims in the United States and abroad. Video from the event wa\u2026",
+      "text": "mar-a-lago event features mockery of muslims\nan event at the president's mar-a-lago club, billed as a journalism award ceremony, included imagery and material mocking and demeaning muslims in the united states and abroad. video from the event was circulated publicly. the event is being cited in commentary as a factor behind recent shifts in the electorate."
+    },
+    {
+      "date": "2026-11-13",
+      "headline": "Cabinet Secretary Meghan Bauer resigns from White House",
+      "tags": [
+        "politics"
+      ],
+      "snippet": "Cabinet Secretary Meghan Bauer resigned Wednesday, according to the Daily Mail. White House spokesperson Allison Schuster confirmed she is stepping down and said Bauer will continue in a new role. MS\u2026",
+      "text": "cabinet secretary meghan bauer resigns from white house\ncabinet secretary meghan bauer resigned wednesday, according to the daily mail. white house spokesperson allison schuster confirmed she is stepping down and said bauer will continue in a new role. ms now reported that trump had grown frustrated with her and that she is expected to leave the white house at the end of the year."
+    },
+    {
+      "date": "2026-11-13",
+      "headline": "Global Microsoft 365 outage disrupts government and hospital systems into second day",
+      "tags": [
+        "tech"
+      ],
+      "snippet": "A global Microsoft 365 outage affecting Outlook and Teams entered a second day Friday, disrupting governments, hospitals and businesses, including U.S. House staff, the Los Angeles County Sheriff and\u2026",
+      "text": "global microsoft 365 outage disrupts government and hospital systems into second day\na global microsoft 365 outage affecting outlook and teams entered a second day friday, disrupting governments, hospitals and businesses, including u.s. house staff, the los angeles county sheriff and nhs hospitals, according to gizmodo. microsoft said there is no evidence of malicious activity and reported progress through the day, later saying outlook was approaching normal levels. users were warned they may still see disruptions to email deliverability through the weekend. the cause has not yet been explained."
+    },
+    {
       "date": "2026-11-12",
       "headline": "House passes largest cuts to veterans' benefits on Veterans Day",
       "tags": [

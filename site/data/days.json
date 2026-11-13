@@ -1,6 +1,51 @@
 {
-  "last_updated": "2026-11-12T01:00:51.144794+00:00",
+  "last_updated": "2026-11-12T18:54:38.530964+00:00",
   "days": [
+    {
+      "date": "2026-11-13",
+      "tags": [
+        "politics",
+        "tech",
+        "security",
+        "legal",
+        "immigration",
+        "war",
+        "surveillance",
+        "defence",
+        "media"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@groundnews",
+        "@oafnation_actual",
+        "@carolinegleich"
+      ],
+      "post_count": 33,
+      "transcribed_count": 32,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Trump says Tim Cook should replace Huang as Nvidia CEO",
+          "reason": "Corporate succession commentary rather than a policy, market or national security development."
+        },
+        {
+          "headline": "Pentagon awards medal to soldier who reprimanded Hegseth at Tomb of the Unknown Soldier",
+          "reason": "Follow-up on a personnel photo op with no policy consequence."
+        },
+        {
+          "headline": "Meta disables Russell Brand's accounts after rape conviction",
+          "reason": "Platform moderation of an individual celebrity, not a courts, civil liberties or policy story."
+        },
+        {
+          "headline": "Creator accuses Chorus network of coordinated political messaging",
+          "reason": "Commentary about other creators and media criticism that reports no new development."
+        },
+        {
+          "headline": "USS Michael Murphy returns to Pearl Harbor after 346-day deployment",
+          "reason": "Routine ship homecoming with no policy or operational development."
+        }
+      ]
+    },
     {
       "date": "2026-11-12",
       "tags": [
