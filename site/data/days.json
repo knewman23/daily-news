@@ -1,6 +1,44 @@
 {
-  "last_updated": "2026-11-12T18:54:38.530964+00:00",
+  "last_updated": "2026-11-13T19:12:06.801240+00:00",
   "days": [
+    {
+      "date": "2026-11-14",
+      "tags": [
+        "government",
+        "tech",
+        "politics",
+        "defence",
+        "markets",
+        "health",
+        "policing",
+        "legal"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@carolinegleich"
+      ],
+      "post_count": 22,
+      "transcribed_count": 20,
+      "incomplete": true,
+      "skipped": [
+        {
+          "headline": "Tanker collides with riverboat cruise in New Orleans",
+          "reason": "Accident with no policy or political angle"
+        },
+        {
+          "headline": "Criticism of officials citing college football disruption during ground stop",
+          "reason": "Commentary reaction that reports nothing new"
+        },
+        {
+          "headline": "Social media reaction compilation to the FAA ground stop",
+          "reason": "Aggregated social media reaction with no independently reported news"
+        },
+        {
+          "headline": "Traveller stuck at airport during flight disruption",
+          "reason": "Creator describing their own travel experience"
+        }
+      ]
+    },
     {
       "date": "2026-11-13",
       "tags": [

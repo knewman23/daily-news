@@ -1,6 +1,66 @@
 {
   "topics": [
     {
+      "date": "2026-11-14",
+      "headline": "FAA orders nationwide ground stop after air traffic communications failure",
+      "tags": [
+        "government",
+        "tech"
+      ],
+      "snippet": "The Federal Aviation Administration grounded all departing aircraft across the United States after a communications outage struck every air route traffic control center, in only the third nationwide g\u2026",
+      "text": "faa orders nationwide ground stop after air traffic communications failure\nthe federal aviation administration grounded all departing aircraft across the united states after a communications outage struck every air route traffic control center, in only the third nationwide ground stop in american history after 9/11 and a 2023 incident. homeland security secretary mark wayne mullin said there was no indication of a terrorist attack or hack and that all airborne planes would land safely, though officials did not rule anything out. the stop lasted roughly five hours before being cancelled, with more than 7,800 flights cancelled or delayed on the first day and over 3,000 cancellations the next. officials have pointed variously at a system reboot, a fiber-optic contractor and insufficient funding from congress, with transportation secretary sean duffy requesting about $50 billion to modernize the aviation system; the faa was already short hundreds of technicians and cisa has lost roughly a third of its staff."
+    },
+    {
+      "date": "2026-11-14",
+      "headline": "Cuba says it is preparing to repel a possible US military attack",
+      "tags": [
+        "politics",
+        "defence"
+      ],
+      "snippet": "Cuba's president said the country is determined to repel any attempt at foreign military aggression and is actively preparing for a possible United States military attack. The statement follows televi\u2026",
+      "text": "cuba says it is preparing to repel a possible us military attack\ncuba's president said the country is determined to repel any attempt at foreign military aggression and is actively preparing for a possible united states military attack. the statement follows televised remarks by donald trump saying he would consider a military intervention to free cuba and that he wants to get cuba done before he leaves office. no decision on us military action has been announced."
+    },
+    {
+      "date": "2026-11-14",
+      "headline": "Hassett departs as US producer prices surge 6.5%",
+      "tags": [
+        "markets",
+        "politics"
+      ],
+      "snippet": "Kevin Hassett, a leading economic voice for the Trump administration, is leaving his post, according to reports. The departure comes as US producer prices rose 6.5% year over year in October, the high\u2026",
+      "text": "hassett departs as us producer prices surge 6.5%\nkevin hassett, a leading economic voice for the trump administration, is leaving his post, according to reports. the departure comes as us producer prices rose 6.5% year over year in october, the highest rate since november 2020, with core producer inflation at 5%."
+    },
+    {
+      "date": "2026-11-14",
+      "headline": "United States loses measles elimination status",
+      "tags": [
+        "health",
+        "politics"
+      ],
+      "snippet": "The United States has lost its measles elimination status after sustained transmission of the disease for more than a year. The status had been held for decades. The loss comes under Health and Human\u2026",
+      "text": "united states loses measles elimination status\nthe united states has lost its measles elimination status after sustained transmission of the disease for more than a year. the status had been held for decades. the loss comes under health and human services secretary robert f. kennedy jr."
+    },
+    {
+      "date": "2026-11-14",
+      "headline": "Trump silent through five-hour shutdown of US airspace",
+      "tags": [
+        "politics",
+        "government"
+      ],
+      "snippet": "Donald Trump made no public comment about the nationwide ground stop during or after the five-hour shutdown of US airspace, posting twice on Truth Social on unrelated subjects. He did not appear at th\u2026",
+      "text": "trump silent through five-hour shutdown of us airspace\ndonald trump made no public comment about the nationwide ground stop during or after the five-hour shutdown of us airspace, posting twice on truth social on unrelated subjects. he did not appear at the white house press briefing, and sean duffy said he does not run the president's communications. the absence has drawn criticism from americans calling for leadership during the disruption."
+    },
+    {
+      "date": "2026-11-14",
+      "headline": "Bomb found at central Illinois ethanol plant prompts evacuations",
+      "tags": [
+        "policing",
+        "legal"
+      ],
+      "snippet": "A device was found at the BioUrja Renewables facility in Peoria, Illinois, and has since been rendered safe, according to the Associated Press. Residents within a one-mile radius are under an evacuati\u2026",
+      "text": "bomb found at central illinois ethanol plant prompts evacuations\na device was found at the biourja renewables facility in peoria, illinois, and has since been rendered safe, according to the associated press. residents within a one-mile radius are under an evacuation notice while authorities search for additional devices. the peoria police chief described it as a credible threat and said the blast radius had to be taken seriously."
+    },
+    {
       "date": "2026-11-13",
       "headline": "Nvidia CEO's resignation triggers national security questions over Trump ties and China chip sales",
       "tags": [
