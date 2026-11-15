@@ -1,6 +1,32 @@
 {
-  "last_updated": "2026-11-13T19:12:06.801240+00:00",
+  "last_updated": "2026-11-14T18:54:01.249471+00:00",
   "days": [
+    {
+      "date": "2026-11-15",
+      "tags": [
+        "politics",
+        "government",
+        "legal",
+        "markets",
+        "media"
+      ],
+      "sources": [
+        "@aaronparnas"
+      ],
+      "post_count": 13,
+      "transcribed_count": 13,
+      "incomplete": true,
+      "skipped": [
+        {
+          "headline": "Traveller stranded at airport as flights are cancelled",
+          "reason": "A creator narrating their own travel experience rather than reporting news."
+        },
+        {
+          "headline": "Runner sets personal best at New York City Marathon",
+          "reason": "A personal race report with no policy or political content."
+        }
+      ]
+    },
     {
       "date": "2026-11-14",
       "tags": [
