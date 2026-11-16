@@ -1,72 +1,59 @@
 {
-  "last_updated": "2026-11-16T15:40:00.321967+00:00",
+  "last_updated": "2026-11-16T15:54:23.255954+00:00",
   "days": [
     {
       "date": "2026-11-16",
       "tags": [
         "politics",
-        "defence",
         "tech",
-        "war",
-        "markets",
+        "defence",
         "legal",
         "climate",
+        "markets",
         "health",
         "surveillance",
         "media"
       ],
       "sources": [
-        "@ericmoutsos",
-        "@hunteralexanderhowell",
-        "@total.hypocrisy",
         "@groundnews",
         "@oafnation_actual",
+        "@hunteralexanderhowell",
+        "@total.hypocrisy",
+        "@ericmoutsos",
         "@carolinegleich",
         "@aaronparnas"
       ],
-      "post_count": 75,
-      "transcribed_count": 74,
+      "post_count": 80,
+      "transcribed_count": 79,
       "incomplete": false,
       "skipped": [
         {
-          "headline": "Price gouging alleged as stranded travelers try to get home",
-          "reason": "Opinion commentary with no specific reporting of companies, prices or enforcement action."
+          "headline": "Lindsay Clancy to be retried on first-degree murder charges",
+          "reason": "A single criminal case with no policy, civil liberties or political dimension."
         },
         {
-          "headline": "American Airlines criticised over $12 food credit response",
-          "reason": "Consumer-service complaint and commentary rather than news with a policy angle."
+          "headline": "BMW recalls more than 720,000 vehicles over fire risk",
+          "reason": "A consumer product recall, not economic, political or regulatory news in the reader's areas."
         },
         {
-          "headline": "BMW recalls 720,000 vehicles over fire risk",
-          "reason": "Consumer product safety recall with no policy or political angle."
+          "headline": "Former CIA officer's account of covert operations and the Kennedy assassination recirculates",
+          "reason": "Commentary on a decades-old archival clip that reports nothing new."
         },
         {
-          "headline": "Offbeat stories of the week",
-          "reason": "Light human-interest roundup with no policy relevance."
+          "headline": "Creator disputes circulating list of alleged Chorus members",
+          "reason": "A personal feud between creators and audience housekeeping rather than news."
         },
         {
-          "headline": "Former CIA officer's account of covert operations and the Kennedy assassination recirculated",
-          "reason": "Archival footage with personal commentary; reports nothing new."
+          "headline": "Offbeat news roundup",
+          "reason": "Light human interest items with no policy or political angle."
         },
         {
-          "headline": "Creator responds to critics and smear campaigns over Chorus coverage",
-          "reason": "Creator-versus-creator dispute and audience management rather than news."
+          "headline": "Runner completes tenth marathon with personal best in New York",
+          "reason": "A personal race report."
         },
         {
-          "headline": "Creator seeks help building a public earnings transparency site",
-          "reason": "Self-promotion and a request for support rather than news."
-        },
-        {
-          "headline": "Speculation that the ground stop could precede martial law",
-          "reason": "Explicitly unconfirmed speculation that reports nothing new."
-        },
-        {
-          "headline": "Creator posts marathon race report",
-          "reason": "Personal race report with no news content."
-        },
-        {
-          "headline": "Miscellaneous posts with no news content",
-          "reason": "No news content."
+          "headline": "Posts with no news content",
+          "reason": "No news content: prayer, jokes, teasers and self-promotion."
         }
       ]
     },

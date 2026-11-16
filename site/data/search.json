@@ -2,23 +2,33 @@
   "topics": [
     {
       "date": "2026-11-16",
-      "headline": "Officials relocated to military bases over reported Iranian drone plot",
-      "tags": [
-        "politics",
-        "defence"
-      ],
-      "snippet": "Israeli intelligence passed a warning to the CIA that Iran was planning a drone swarm attack targeting President Trump and senior officials, according to reports attributed to Mossad and the outlet Is\u2026",
-      "text": "officials relocated to military bases over reported iranian drone plot\nisraeli intelligence passed a warning to the cia that iran was planning a drone swarm attack targeting president trump and senior officials, according to reports attributed to mossad and the outlet israel hayom. treasury secretary scott bessent, secretary of state marco rubio, defense secretary pete hegseth, white house chief of staff stephen miller and attorney general todd blanche have been reported living on u.s. military bases, and trump's public appearances have been curtailed. the warning was said to be corroborated by a second western intelligence agency that was not named. separately, mossad chief roman goffman travelled to washington to meet senior administration officials and press for a resumption of the war against iran."
-    },
-    {
-      "date": "2026-11-16",
-      "headline": "FAA orders nationwide ground stop after air traffic communications failure",
+      "headline": "FAA orders third nationwide ground stop in US history after communications failure",
       "tags": [
         "politics",
         "tech"
       ],
-      "snippet": "The Federal Aviation Administration halted all departures at U.S. airports on Friday 13 November, citing \"extraordinary circumstances\" and reasons of safety, in only the third nationwide ground stop i\u2026",
-      "text": "faa orders nationwide ground stop after air traffic communications failure\nthe federal aviation administration halted all departures at u.s. airports on friday 13 november, citing \"extraordinary circumstances\" and reasons of safety, in only the third nationwide ground stop in u.s. history after 9/11 and january 2023. transportation secretary sean duffy said a contractor's router replacement in el dorado, arkansas triggered a texas router to flood air traffic centers with data; about 60 similar routers have been disabled and officials say there is no evidence of a cyberattack. three days of fallout produced 17,822 cancellations, with duffy requesting $50 billion for system upgrades after earlier figures of $30 billion. air traffic controllers interviewed by a reporter disputed the official account, and critics noted the administration fired hundreds of faa support staff in 2025 while a congressional watchdog warned in september that the overhaul had no reliable cost estimate or master schedule."
+      "snippet": "The Federal Aviation Administration halted all departures from US airports on Friday afternoon, citing \"extraordinary circumstances\" and reasons of safety, in only the third nationwide ground stop aft\u2026",
+      "text": "faa orders third nationwide ground stop in us history after communications failure\nthe federal aviation administration halted all departures from us airports on friday afternoon, citing \"extraordinary circumstances\" and reasons of safety, in only the third nationwide ground stop after those of september 11, 2001 and january 11, 2023. officials traced the failure to a communications outage that began during a contractor's upgrade from copper wiring to fiber-optic cable; transportation secretary sean duffy later said a router replacement in el dorado, arkansas caused a texas router to flood air traffic centers with data, and about 60 similar routers have been disabled. officials said there was no evidence of a cyberattack. cancellations reached 17,822 over three days, with roughly 1,924 on sunday alone, and duffy said operations should be normal by monday."
+    },
+    {
+      "date": "2026-11-16",
+      "headline": "Duffy seeks $50 billion for air traffic overhaul as staffing cuts draw scrutiny",
+      "tags": [
+        "politics",
+        "tech"
+      ],
+      "snippet": "Transportation Secretary Sean Duffy asked Congress for emergency funding to rebuild the air traffic control network, raising the figure from the $30 billion the administration had requested to $50 bil\u2026",
+      "text": "duffy seeks $50 billion for air traffic overhaul as staffing cuts draw scrutiny\ntransportation secretary sean duffy asked congress for emergency funding to rebuild the air traffic control network, raising the figure from the $30 billion the administration had requested to $50 billion. critics noted that three different explanations for the outage were given within 24 hours, that a congressional watchdog reported in september there was no reliable cost estimate or master schedule for the overhaul, and that congress has already appropriated $12.5 billion with phase one running billions over budget. the administration fired hundreds of faa support staff in 2025, with a court ordering more than 100 reinstated, while the faa was already short 800 technicians and the cybersecurity and infrastructure security agency has lost roughly a third of its staff. air traffic controllers interviewed by a reporter disputed the official account, questioning why major system changes would be made on a busy friday afternoon."
+    },
+    {
+      "date": "2026-11-16",
+      "headline": "Israeli intelligence warns of Iranian drone plot against Trump and senior officials",
+      "tags": [
+        "politics",
+        "defence"
+      ],
+      "snippet": "Israeli outlet Israel Hayom reported that Mossad passed intelligence to the CIA describing an Iranian plot to use explosive-laden drones against President Donald Trump and top US officials, with the w\u2026",
+      "text": "israeli intelligence warns of iranian drone plot against trump and senior officials\nisraeli outlet israel hayom reported that mossad passed intelligence to the cia describing an iranian plot to use explosive-laden drones against president donald trump and top us officials, with the warning said to be corroborated by another western intelligence agency. treasury secretary scott bessent, secretary of state marco rubio, defense secretary pete hegseth and white house chief of staff stephen miller are among officials reported to have moved to secure military bases, and attorney general todd blanche has reportedly lived on a base since early 2026. trump's public appearances have been curtailed and additional security measures put in place. some commentators questioned the intelligence, suggesting it could be used to build pressure for renewed war with iran."
     },
     {
       "date": "2026-11-16",
@@ -27,57 +37,28 @@
         "defence",
         "politics"
       ],
-      "snippet": "Army Maj. Stephen Ramsbottom has filed a complaint with Congress alleging that military leaders dismissed his warnings about aerial protection at Port Shuaiba, Kuwait, before an Iranian drone attack k\u2026",
-      "text": "army officer files whistleblower complaint over drone attack that killed six soldiers\narmy maj. stephen ramsbottom has filed a complaint with congress alleging that military leaders dismissed his warnings about aerial protection at port shuaiba, kuwait, before an iranian drone attack killed six u.s. service members on 1 march. he said he raised concerns with superiors and was told \"we don't have to worry about protection,\" and called the event a tactical failure by the army, its leadership and himself. the pentagon declined to comment. the complaint became public as trump posted an apparently ai-generated video of troops praying."
+      "snippet": "Army Major Stephen Ramsbottom filed a complaint with Congress alleging that military leaders dismissed his warnings about aerial protection at Port Shuaiba, Kuwait before an Iranian drone attack kille\u2026",
+      "text": "army officer files whistleblower complaint over drone attack that killed six soldiers\narmy major stephen ramsbottom filed a complaint with congress alleging that military leaders dismissed his warnings about aerial protection at port shuaiba, kuwait before an iranian drone attack killed six us service members on march 1. he described the episode as a \"tactical failure by the army, our leadership, and myself,\" and said he was told \"we don't have to worry about protection.\" the pentagon declined to comment. trump separately posted an apparently ai-generated video of troops praying."
     },
     {
       "date": "2026-11-16",
-      "headline": "Trump says he takes no responsibility for nationwide ground stop",
+      "headline": "Iran strikes US base in Bahrain as tanker sinks in Strait of Hormuz",
       "tags": [
+        "defence",
         "politics"
       ],
-      "snippet": "Trump made no public statement for days after the ground stop and had no entries on his public schedule, while cabinet secretaries Sean Duffy and Markwayne Mullin fronted a press conference that gave\u2026",
-      "text": "trump says he takes no responsibility for nationwide ground stop\ntrump made no public statement for days after the ground stop and had no entries on his public schedule, while cabinet secretaries sean duffy and markwayne mullin fronted a press conference that gave conflicting explanations. when reporters later asked whether he had been focused on white house construction projects rather than failing airline systems, he blamed biden for the airspace problems, said he took no responsibility for the ground stop that left over a million travelers stranded, and attacked the reporter. he said he had been holding meetings in the white house at the time and added that russia could be tougher on ukraine."
+      "snippet": "Bahrain's military said it intercepted several Iranian attacks on Sunday, its first interceptions since September, and accused Iran of a \"systematic hostile approach.\" Iran's Revolutionary Guards said\u2026",
+      "text": "iran strikes us base in bahrain as tanker sinks in strait of hormuz\nbahrain's military said it intercepted several iranian attacks on sunday, its first interceptions since september, and accused iran of a \"systematic hostile approach.\" iran's revolutionary guards said six drones targeted us radar at the al-rifaa helicopter base in response to \"hostile us actions\"; bahrain hosts the us navy's fifth fleet. the guards also said two oil tankers struck mines on an unauthorized route in the southern strait of hormuz and that one supertanker carrying more than two million barrels of crude sank, a claim that was not independently confirmed and which the us military countered by saying main routes had been cleared of mines. the war, which began with us and israeli strikes on iran in february, has yet to produce a deal, and a third us aircraft carrier, the uss theodore roosevelt, has arrived in the middle east."
     },
     {
       "date": "2026-11-16",
-      "headline": "Iran strikes US base in Bahrain with drones",
-      "tags": [
-        "war",
-        "politics"
-      ],
-      "snippet": "Bahrain's military said it intercepted several Iranian attacks on Sunday before they reached their targets, its first interceptions since September, and accused Iran of a \"systematic hostile approach.\u2026",
-      "text": "iran strikes us base in bahrain with drones\nbahrain's military said it intercepted several iranian attacks on sunday before they reached their targets, its first interceptions since september, and accused iran of a \"systematic hostile approach.\" iran's revolutionary guards said six drones targeted u.s. radar at the al-rifaa helicopter base in response to hostile u.s. actions. bahrain hosts the u.s. navy's fifth fleet. talks have not produced a deal to end the war, which began with u.s. and israeli strikes on iran in february."
-    },
-    {
-      "date": "2026-11-16",
-      "headline": "Trump to meet Xi and Putin in first three-way sit-down",
+      "headline": "Trump to meet Xi and Putin in first three-way summit",
       "tags": [
         "politics",
         "defence"
       ],
-      "snippet": "The White House confirmed that Trump will join China's Xi Jinping and Russia's Vladimir Putin on Thursday during the Asia-Pacific Economic Cooperation summit in Shenzhen. A senior U.S. official said t\u2026",
-      "text": "trump to meet xi and putin in first three-way sit-down\nthe white house confirmed that trump will join china's xi jinping and russia's vladimir putin on thursday during the asia-pacific economic cooperation summit in shenzhen. a senior u.s. official said the meeting could open nuclear arms talks among the three countries, that no deals were expected, and that trump planned to discuss the war with iran while avoiding ukraine. trump wants china included in a nuclear pact after new start expired in february, ending limits on the u.s. and russian arsenals. pentagon estimates put china's stockpile above 600 warheads against more than 5,000 each for russia and the united states."
-    },
-    {
-      "date": "2026-11-16",
-      "headline": "Third US aircraft carrier arrives in the Middle East",
-      "tags": [
-        "war",
-        "defence"
-      ],
-      "snippet": "Al Jazeera reported that the USS Theodore Roosevelt has reached the Middle East, making it the third U.S. aircraft carrier deployed to the region. The deployment coincided with Trump reposting a messa\u2026",
-      "text": "third us aircraft carrier arrives in the middle east\nal jazeera reported that the uss theodore roosevelt has reached the middle east, making it the third u.s. aircraft carrier deployed to the region. the deployment coincided with trump reposting a message asking god to protect u.s. troops alongside a video that appears to be ai-generated. senior administration officials have been moved to military bases over reported iranian threats."
-    },
-    {
-      "date": "2026-11-16",
-      "headline": "Iran says supertanker sank after striking mine in Strait of Hormuz",
-      "tags": [
-        "war",
-        "markets"
-      ],
-      "snippet": "The Revolutionary Guards said two oil tankers struck mines on an unauthorized route in the southern Strait of Hormuz and that one, a supertanker carrying more than two million barrels of crude, sank i\u2026",
-      "text": "iran says supertanker sank after striking mine in strait of hormuz\nthe revolutionary guards said two oil tankers struck mines on an unauthorized route in the southern strait of hormuz and that one, a supertanker carrying more than two million barrels of crude, sank in the gulf. the guards named no vessels and there was no independent confirmation. the u.s. military says it has cleared the main routes of mines."
+      "snippet": "The White House confirmed that Trump will join China's Xi Jinping and Russia's Vladimir Putin for an unprecedented trilateral meeting on Thursday during the Asia-Pacific Economic Cooperation summit in\u2026",
+      "text": "trump to meet xi and putin in first three-way summit\nthe white house confirmed that trump will join china's xi jinping and russia's vladimir putin for an unprecedented trilateral meeting on thursday during the asia-pacific economic cooperation summit in shenzhen. a senior us official said the talks could open nuclear arms discussions among the three countries and that no deals were expected, adding that trump planned to discuss the war with iran. new start expired in february, ending limits on the us and russian arsenals; pentagon estimates put china's stockpile above 600 warheads against more than 5,000 each for russia and the united states. trump said he may also meet kim jong-un while in asia."
     },
     {
       "date": "2026-11-16",
@@ -86,8 +67,8 @@
         "politics",
         "legal"
       ],
-      "snippet": "Senators John Cornyn of Texas and Thom Tillis of North Carolina are blocking judicial nominees from their states, slowing the White House's effort to confirm lifetime appointments before Democrats tak\u2026",
-      "text": "republican senators block trump judicial nominees as alito warns of democratic congress\nsenators john cornyn of texas and thom tillis of north carolina are blocking judicial nominees from their states, slowing the white house's effort to confirm lifetime appointments before democrats take control of the senate. justice samuel alito told a federalist society dinner that democrats leading congress hold the power of the purse and could, in effect, turn the lights off at the supreme court. with a democratic senate, it appears no judge or justice will be confirmed over the next two years."
+      "snippet": "Senators John Cornyn of Texas and Thom Tillis of North Carolina are blocking judicial nominees from their states, slowing the White House's push to confirm lifetime appointments before Democrats take\u2026",
+      "text": "republican senators block trump judicial nominees as alito warns of democratic congress\nsenators john cornyn of texas and thom tillis of north carolina are blocking judicial nominees from their states, slowing the white house's push to confirm lifetime appointments before democrats take control of the senate with an expected 56 seats. justice samuel alito, speaking at a federalist society dinner, warned conservative lawyers that a democratic congress holds the power of the purse and could effectively cut off funding to the supreme court. with a democratic senate, few or no judicial nominees are expected to be confirmed over the next two years."
     },
     {
       "date": "2026-11-16",
@@ -96,28 +77,86 @@
         "defence",
         "legal"
       ],
-      "snippet": "Defense Secretary Pete Hegseth said people should stop quoting laws to men with swords, arguing in effect that the U.S. military should not have to abide by international law. The remark responded to\u2026",
-      "text": "hegseth says international law should not constrain us military\ndefense secretary pete hegseth said people should stop quoting laws to men with swords, arguing in effect that the u.s. military should not have to abide by international law. the remark responded to marco rubio's comments about the international criminal court and its work holding war criminals accountable. the same military has been accused of a strike in iran that killed more than a hundred people at an all-girls school."
+      "snippet": "Defense Secretary Pete Hegseth said critics should stop quoting laws to \"men with swords,\" arguing that international law should not apply to the United States military. The remarks responded to Secre\u2026",
+      "text": "hegseth says international law should not constrain us military\ndefense secretary pete hegseth said critics should stop quoting laws to \"men with swords,\" arguing that international law should not apply to the united states military. the remarks responded to secretary of state marco rubio's comments on the international criminal court and its work holding war criminals accountable. the exchange follows us strikes in iran that killed more than a hundred people, including children at a girls' school."
     },
     {
       "date": "2026-11-16",
-      "headline": "Nvidia chief resigns amid China export control and spy scandal",
+      "headline": "Nvidia chief resigns over alleged Chinese spy affair as export controls fight widens",
       "tags": [
         "tech",
         "politics"
       ],
-      "snippet": "Jensen Huang resigned as Nvidia CEO after news of his affair with former Megaspeed executive Alice Huang, whom U.S. intelligence suspects of spying for China. Treasury Secretary Scott Bessent said Tre\u2026",
-      "text": "nvidia chief resigns amid china export control and spy scandal\njensen huang resigned as nvidia ceo after news of his affair with former megaspeed executive alice huang, whom u.s. intelligence suspects of spying for china. treasury secretary scott bessent said treasury, state, defense and the u.s. trade representative had backed export restrictions on singapore-based megaspeed for months and blamed the commerce department, which the new york times reported had opposed tighter curbs under secretary howard lutnick. a reuters review of more than 150 procurement notices found $3.2 billion in chinese ai projects designed around restricted h100, h200 and h800 processors."
+      "snippet": "Nvidia CEO Jensen Huang resigned after news of his affair with former Megaspeed executive Alice Huang, whom US intelligence suspects of spying for China. Treasury Secretary Scott Bessent said Treasury\u2026",
+      "text": "nvidia chief resigns over alleged chinese spy affair as export controls fight widens\nnvidia ceo jensen huang resigned after news of his affair with former megaspeed executive alice huang, whom us intelligence suspects of spying for china. treasury secretary scott bessent said treasury, state, defense and the us trade representative had backed export restrictions on singapore-based megaspeed for months and blamed the commerce department, which holds \"the pen,\" after reporting that commerce secretary howard lutnick opposed tighter restrictions on advanced chip sales to china. a reuters review of more than 150 procurement notices found $3.2 billion in chinese ai projects built around restricted h100, h200 and h800 processors. megaspeed said it takes compliance with us export law \"extremely seriously.\""
     },
     {
       "date": "2026-11-16",
-      "headline": "Senate nears vote on permitting bill that would fast-track data centers and gas plants",
+      "headline": "Senate nears vote on permitting bill that would fast-track pipelines and data centers",
       "tags": [
         "climate",
         "politics"
       ],
       "snippet": "The Senate could hold a final vote this week on BAAJA, a permitting bill co-written by Utah Senator Mike Lee that would speed approvals for gas pipelines, gas power plants and the data centers they su\u2026",
-      "text": "senate nears vote on permitting bill that would fast-track data centers and gas plants\nthe senate could hold a final vote this week on baaja, a permitting bill co-written by utah senator mike lee that would speed approvals for gas pipelines, gas power plants and the data centers they supply. it would give communities as little as 150 days to challenge a project in court, and tribal leaders and several senators warn it would weaken protections for sacred and cultural sites. supporters say the bill makes data centers pay their fair share of power costs. opponents argue the decision should wait for the congress elected this month, which takes office in january."
+      "text": "senate nears vote on permitting bill that would fast-track pipelines and data centers\nthe senate could hold a final vote this week on baaja, a permitting bill co-written by utah senator mike lee that would speed approvals for gas pipelines, gas power plants and the data centers they supply. the measure would give communities as little as 150 days to challenge a project in court, and tribal leaders and several senators warn it would weaken protections for sacred and cultural sites. supporters say the bill makes data centers pay their fair share of power costs. opponents are urging senators to delay the vote until the newly elected congress is seated in january."
+    },
+    {
+      "date": "2026-11-16",
+      "headline": "Trump denies responsibility for ground stop as absence draws questions",
+      "tags": [
+        "politics"
+      ],
+      "snippet": "Trump erupted at reporters who asked about his whereabouts during the nationwide ground stop, saying he takes no responsibility for more than a million stranded travelers and blaming Biden for airspac\u2026",
+      "text": "trump denies responsibility for ground stop as absence draws questions\ntrump erupted at reporters who asked about his whereabouts during the nationwide ground stop, saying he takes no responsibility for more than a million stranded travelers and blaming biden for airspace problems. asked whether he was focused on white house construction instead of the aviation system, he said \"the white house is flawless\" and called the reporter pathetic, adding that he had been holding meetings at the white house during the outage. for more than a day after the ground stop he made no public statement about it, posting on social media about other subjects while his published schedule listed no events."
+    },
+    {
+      "date": "2026-11-16",
+      "headline": "Mossad chief travels to Washington to press for renewed Iran campaign",
+      "tags": [
+        "defence",
+        "politics"
+      ],
+      "snippet": "Israeli Prime Minister Benjamin Netanyahu sent Mossad chief Roman Goffman to Washington, where he met senior Trump administration officials to press for a resumption of the war against Iran. He was ex\u2026",
+      "text": "mossad chief travels to washington to press for renewed iran campaign\nisraeli prime minister benjamin netanyahu sent mossad chief roman goffman to washington, where he met senior trump administration officials to press for a resumption of the war against iran. he was expected to meet envoy steve witkoff and cia director john ratcliffe. vice president vance was reported to be heading to camp david."
+    },
+    {
+      "date": "2026-11-16",
+      "headline": "Record $11.9 billion spent on 2026 US midterms",
+      "tags": [
+        "politics",
+        "markets"
+      ],
+      "snippet": "Candidates, parties and outside groups spent $11.9 billion on the 2026 midterms, the most expensive in US history, with $5.45 billion backing Republicans, $5.02 billion backing Democrats and $1.4 bill\u2026",
+      "text": "record $11.9 billion spent on 2026 us midterms\ncandidates, parties and outside groups spent $11.9 billion on the 2026 midterms, the most expensive in us history, with $5.45 billion backing republicans, $5.02 billion backing democrats and $1.4 billion from independent candidates and issue groups. spending has climbed steadily since the supreme court's 2010 citizens united ruling lifted limits on independent political spending. at $96.57 per voter, us spending far exceeds other democracies, with australia next at about $19. ai safety political action committees outspent groups favoring lighter ai rules, $44.4 million to $37.3 million, and california's proposition 40 billionaire wealth tax, defeated 52.4% to 47.6%, was the year's costliest ballot measure."
+    },
+    {
+      "date": "2026-11-16",
+      "headline": "Texas Democrats move to roll back Republican policies after election wins",
+      "tags": [
+        "politics"
+      ],
+      "snippet": "Texas Democrats have begun introducing legislation to undo Republican policies following their statewide victories, including a bill to end the required display of the Ten Commandments in public schoo\u2026",
+      "text": "texas democrats move to roll back republican policies after election wins\ntexas democrats have begun introducing legislation to undo republican policies following their statewide victories, including a bill to end the required display of the ten commandments in public schools. governor-elect gina hinojosa has made a teacher pay raise a priority. democrats also plan to roll back the state's confederate heroes day, observed each january."
+    },
+    {
+      "date": "2026-11-16",
+      "headline": "Administration cancels mandated pay raises for Head Start teachers",
+      "tags": [
+        "politics",
+        "health"
+      ],
+      "snippet": "The Trump administration announced over the weekend that it is canceling a rule requiring gradual pay raises for teachers in the Head Start program. The rule was created under the Biden administration\u2026",
+      "text": "administration cancels mandated pay raises for head start teachers\nthe trump administration announced over the weekend that it is canceling a rule requiring gradual pay raises for teachers in the head start program. the rule was created under the biden administration. head start provides preschool education to more than 700,000 children in underserved communities."
+    },
+    {
+      "date": "2026-11-16",
+      "headline": "United States skips UN human rights review, a first for any country",
+      "tags": [
+        "politics",
+        "legal"
+      ],
+      "snippet": "The United States is set to become the first country to fully skip a UN Human Rights Council review of its rights record since the council began work two decades ago. The council rescheduled the revie\u2026",
+      "text": "united states skips un human rights review, a first for any country\nthe united states is set to become the first country to fully skip a un human rights council review of its rights record since the council began work two decades ago. the council rescheduled the review for tuesday after washington missed its november 2025 appointment. the administration withdrew from the council in 2025, accusing it of bias against the united states and israel, and a state department spokesperson said it gives \"no credibility to the agency.\" the council reviews all 193 un member states on a four- to five-year cycle and says a review requires representatives from the country under scrutiny."
     },
     {
       "date": "2026-11-16",
@@ -125,124 +164,18 @@
       "tags": [
         "health"
       ],
-      "snippet": "The United States has lost its measles elimination status following continuous local transmission of the virus. The designation lapsed after a resurgence of outbreaks lasting longer than twelve months\u2026",
-      "text": "united states loses measles elimination status\nthe united states has lost its measles elimination status following continuous local transmission of the virus. the designation lapsed after a resurgence of outbreaks lasting longer than twelve months."
+      "snippet": "The United States has lost its measles elimination status after continuous local transmission and a resurgence of outbreaks lasting longer than 12 months. Elimination status is withdrawn when uninterr\u2026",
+      "text": "united states loses measles elimination status\nthe united states has lost its measles elimination status after continuous local transmission and a resurgence of outbreaks lasting longer than 12 months. elimination status is withdrawn when uninterrupted domestic transmission persists beyond a year."
     },
     {
       "date": "2026-11-16",
-      "headline": "Questions raised over FAA air traffic contract awarded to donor-linked AI firm",
+      "headline": "Pentagon revives OSS name for special operations oversight",
       "tags": [
-        "politics",
-        "tech"
-      ],
-      "snippet": "Boston-based AI startup Air Space Intelligence donated to the congressional campaign of 26-year-old Michael Alfonso in March, and in June the Transportation Department under Secretary Sean Duffy award\u2026",
-      "text": "questions raised over faa air traffic contract awarded to donor-linked ai firm\nboston-based ai startup air space intelligence donated to the congressional campaign of 26-year-old michael alfonso in march, and in june the transportation department under secretary sean duffy awarded the company a 12-year contract worth up to $875.9 million to build an ai air traffic tool called smart. alfonso, who won a seat in congress and is sworn in on 3 january, is duffy's son-in-law. the faa rolled the software out across 22 air traffic centers on 10 november, three days before the nationwide ground stop. the company says its software had nothing to do with the failure."
-    },
-    {
-      "date": "2026-11-16",
-      "headline": "Microsoft 365 outage hits governments and hospitals as CISA runs short-staffed",
-      "tags": [
-        "tech",
+        "defence",
         "politics"
       ],
-      "snippet": "A global Microsoft 365 outage entered a second day on Friday, disrupting Outlook and Teams for governments, hospitals and businesses, including U.S. House staff, the Los Angeles County Sheriff and NHS\u2026",
-      "text": "microsoft 365 outage hits governments and hospitals as cisa runs short-staffed\na global microsoft 365 outage entered a second day on friday, disrupting outlook and teams for governments, hospitals and businesses, including u.s. house staff, the los angeles county sheriff and nhs hospitals. microsoft said there was no evidence of malicious activity. the disruption came as the cybersecurity and infrastructure security agency, responsible for protecting critical infrastructure, operates with about a third fewer staff after the administration cut roughly 1,000 employees."
-    },
-    {
-      "date": "2026-11-16",
-      "headline": "US becomes first country to skip UN human rights review",
-      "tags": [
-        "politics",
-        "legal"
-      ],
-      "snippet": "The United States is set to become the first country to fully opt out of a U.N. Human Rights Council review of its rights record since the council began work two decades ago. The council rescheduled t\u2026",
-      "text": "us becomes first country to skip un human rights review\nthe united states is set to become the first country to fully opt out of a u.n. human rights council review of its rights record since the council began work two decades ago. the council rescheduled the review for tuesday after washington missed its november 2025 appointment. the trump administration withdrew from the council in 2025, accusing it of bias against the united states and israel, and a state department spokesperson said it gives the agency no credibility. the council reviews all 193 member states on a four- to five-year cycle and says a review requires the country's representatives."
-    },
-    {
-      "date": "2026-11-16",
-      "headline": "Alaska elects first Democratic governor since 1998",
-      "tags": [
-        "politics"
-      ],
-      "snippet": "Jonathan Kreiss-Tomkins, a former state legislator, won Alaska's race for governor, beating three Republicans including a candidate backed by Trump. Republican Senator Lisa Murkowski backed Kreiss-Tom\u2026",
-      "text": "alaska elects first democratic governor since 1998\njonathan kreiss-tomkins, a former state legislator, won alaska's race for governor, beating three republicans including a candidate backed by trump. republican senator lisa murkowski backed kreiss-tomkins, who campaigned on household costs and full funding for public schools. the result brings democrats to 30 governorships after midterm gains in states including georgia and texas."
-    },
-    {
-      "date": "2026-11-16",
-      "headline": "Texas Democrats move to roll back Republican policies after midterm wins",
-      "tags": [
-        "politics"
-      ],
-      "snippet": "Texas Democrats have begun introducing legislation to undo Republican measures in the state, including ending the required display of the Ten Commandments in schools. Governor-elect Gina Hinojosa is p\u2026",
-      "text": "texas democrats move to roll back republican policies after midterm wins\ntexas democrats have begun introducing legislation to undo republican measures in the state, including ending the required display of the ten commandments in schools. governor-elect gina hinojosa is prioritising a pay raise for teachers across the state. democrats also plan to roll back the state's confederate heroes day, observed each january."
-    },
-    {
-      "date": "2026-11-16",
-      "headline": "Campaign urges open contest for House Democratic leadership",
-      "tags": [
-        "politics"
-      ],
-      "snippet": "A call-your-representative campaign is pressing House Democrats not to hand the Speaker's gavel to Hakeem Jeffries without a competitive leadership vote in January. Organisers argue that voters who ga\u2026",
-      "text": "campaign urges open contest for house democratic leadership\na call-your-representative campaign is pressing house democrats not to hand the speaker's gavel to hakeem jeffries without a competitive leadership vote in january. organisers argue that voters who gave democrats the house expect an open process rather than a coronation. jeffries is running unopposed with support from progressives including alexandria ocasio-cortez and pramila jayapal, and has said leadership selection is an internal matter for house members."
-    },
-    {
-      "date": "2026-11-16",
-      "headline": "2026 midterms were the most expensive in US history at $11.9 billion",
-      "tags": [
-        "politics",
-        "markets"
-      ],
-      "snippet": "Candidates, parties and outside groups spent $11.9 billion on the 2026 midterms, with $5.45 billion backing Republicans, $5.02 billion backing Democrats and $1.4 billion from independents and issue gr\u2026",
-      "text": "2026 midterms were the most expensive in us history at $11.9 billion\ncandidates, parties and outside groups spent $11.9 billion on the 2026 midterms, with $5.45 billion backing republicans, $5.02 billion backing democrats and $1.4 billion from independents and issue groups. spending has roughly tripled since 2006, a rise dated to the supreme court's 2010 citizens united ruling. at $96.57 per voter, u.s. spending far exceeds other democracies, with australia next at about $19. california's proposition 40, a one-time 5% wealth tax on the state's roughly 200 billionaires, was the most expensive ballot measure and was rejected 52.4% to 47.6% after $161 million in opposition spending led by a group founded by sergey brin."
-    },
-    {
-      "date": "2026-11-16",
-      "headline": "Washington teachers union sues to block transgender school sports ban",
-      "tags": [
-        "legal",
-        "politics"
-      ],
-      "snippet": "Washington's teachers union, the nonprofit TransFamilies and parents of student athletes sued the state to block Initiative 638, which bars transgender girls from competing on girls' school teams, and\u2026",
-      "text": "washington teachers union sues to block transgender school sports ban\nwashington's teachers union, the nonprofit transfamilies and parents of student athletes sued the state to block initiative 638, which bars transgender girls from competing on girls' school teams, and asked king county superior court to halt it before it takes effect 3 december. plaintiffs say requiring girls to verify their sex to play school sports violates their privacy and breaches state antidiscrimination law and constitutional guarantees of equal rights and equal access to education. the measure passed on 3 november with about 56% support, with backers saying it would make competition fair for girls."
-    },
-    {
-      "date": "2026-11-16",
-      "headline": "Federal judge orders Iowa to let Satanic Temple hold Capitol event",
-      "tags": [
-        "legal",
-        "politics"
-      ],
-      "snippet": "Chief District Judge Stephanie M. Rose ruled that Iowa must grant the Satanic Temple's Iowa chapter a permit for a one-day holiday gathering in the Capitol rotunda, giving the state seven days to appr\u2026",
-      "text": "federal judge orders iowa to let satanic temple hold capitol event\nchief district judge stephanie m. rose ruled that iowa must grant the satanic temple's iowa chapter a permit for a one-day holiday gathering in the capitol rotunda, giving the state seven days to approve it. the group had sued alleging religious discrimination after officials denied its requests, and the judge found it had a strong chance of winning its free speech claim. state officials argued krampus costumes could scare children and that stick props could serve as weapons; the judge said the props could pass through standard security screening. attorney general brenna bird's office said the state plans to appeal."
-    },
-    {
-      "date": "2026-11-16",
-      "headline": "Spain extends eviction protections and caps some rents",
-      "tags": [
-        "politics"
-      ],
-      "snippet": "Spain's interim lower chamber passed a housing decree 35-34 on Thursday, shielding vulnerable tenants from eviction through 2030 where regional authorities cannot rehouse them, freezing rents above ne\u2026",
-      "text": "spain extends eviction protections and caps some rents\nspain's interim lower chamber passed a housing decree 35-34 on thursday, shielding vulnerable tenants from eviction through 2030 where regional authorities cannot rehouse them, freezing rents above neighbourhood benchmarks and barring real estate firms from buying properties below 70% of their value. lawmakers rejected a second decree that would have let tenants renew leases without a time limit. the conservative popular party vowed to repeal the measure if it wins the 29 november election. protests followed the october eviction and death of an 87-year-old madrid woman, and a nationwide general strike returned the issue to the streets."
-    },
-    {
-      "date": "2026-11-16",
-      "headline": "Beijing bans drone ownership across the municipality",
-      "tags": [
-        "surveillance",
-        "politics"
-      ],
-      "snippet": "Beijing began enforcing a ban on owning or storing drones on 15 November across its 16,400-square-kilometre municipality, including rural districts, with authorities saying the measure safeguards the\u2026",
-      "text": "beijing bans drone ownership across the municipality\nbeijing began enforcing a ban on owning or storing drones on 15 november across its 16,400-square-kilometre municipality, including rural districts, with authorities saying the measure safeguards the security of the capital. residents caught with drones face fines and confiscation, and bringing drones or parts into the city is prohibited; owners had to sell or relocate their devices before enforcement began. the city halted drone sales in may 2026 and had allowed registered owners to keep their devices. exemptions can be granted for uses including policing, disaster response and farming."
-    },
-    {
-      "date": "2026-11-16",
-      "headline": "Bomb found and neutralised at Illinois ethanol plant",
-      "tags": [
-        "legal",
-        "politics"
-      ],
-      "snippet": "Police said a large bomb was discovered at the Bio-Urja Renewables facility in Peoria, Illinois, and has been neutralised. Authorities, members of Congress and the FBI confirmed the find, and searches\u2026",
-      "text": "bomb found and neutralised at illinois ethanol plant\npolice said a large bomb was discovered at the bio-urja renewables facility in peoria, illinois, and has been neutralised. authorities, members of congress and the fbi confirmed the find, and searches continue for other possible explosives. no one was injured and evacuations in the area remain in place."
+      "snippet": "Defense Secretary Pete Hegseth is reviving the Office of Strategic Services, the World War II spy agency, to oversee special operations. According to a Pentagon release, the renamed office receives un\u2026",
+      "text": "pentagon revives oss name for special operations oversight\ndefense secretary pete hegseth is reviving the office of strategic services, the world war ii spy agency, to oversee special operations. according to a pentagon release, the renamed office receives under secretary level rank, at least $45 million a year and 100 dedicated billets. the original oss was the forerunner of the cia."
     },
     {
       "date": "2026-11-16",
@@ -251,54 +184,134 @@
         "tech",
         "defence"
       ],
-      "snippet": "The Defense Department has redesignated its Chief Digital and Artificial Intelligence Office as the Super Intelligence Office, according to Breaking Defense. The department said the change does not al\u2026",
-      "text": "pentagon renames ai office the super intelligence office\nthe defense department has redesignated its chief digital and artificial intelligence office as the super intelligence office, according to breaking defense. the department said the change does not alter the office's mission, leadership or budget. it follows a september order from trump replacing the term \"artificial intelligence\" with \"super intelligence\" across the federal government."
+      "snippet": "The Defense Department has redesignated its Chief Digital and Artificial Intelligence Office as the Super Intelligence Office. The department said the change does not alter the office's mission, leade\u2026",
+      "text": "pentagon renames ai office the super intelligence office\nthe defense department has redesignated its chief digital and artificial intelligence office as the super intelligence office. the department said the change does not alter the office's mission, leadership or budget. it follows a september order from trump replacing the term \"artificial intelligence\" with \"super intelligence\" across the federal government."
     },
     {
       "date": "2026-11-16",
-      "headline": "Hegseth revives OSS name for special operations oversight",
+      "headline": "Microsoft 365 outage disrupts governments and hospitals for a second day",
       "tags": [
-        "defence"
+        "tech",
+        "politics"
       ],
-      "snippet": "The Pentagon is reviving the Office of Strategic Services, the World War II spy agency, to oversee special operations. According to a Pentagon release, the renamed office is given under secretary leve\u2026",
-      "text": "hegseth revives oss name for special operations oversight\nthe pentagon is reviving the office of strategic services, the world war ii spy agency, to oversee special operations. according to a pentagon release, the renamed office is given under secretary level rank, at least $45 million a year and 100 dedicated billets. the original oss was the forerunner of the cia."
+      "snippet": "A global Microsoft 365 outage entered a second day Friday, disrupting Outlook and Teams for governments, hospitals and businesses. Affected users included US House staff, the Los Angeles County Sherif\u2026",
+      "text": "microsoft 365 outage disrupts governments and hospitals for a second day\na global microsoft 365 outage entered a second day friday, disrupting outlook and teams for governments, hospitals and businesses. affected users included us house staff, the los angeles county sheriff and nhs hospitals. microsoft said there was no evidence of malicious activity. the disruption came as the cybersecurity and infrastructure security agency operates short-staffed following cuts of about 1,000 employees."
     },
     {
       "date": "2026-11-16",
-      "headline": "Saudi court sentences Kenyan domestic worker to 100 lashes",
+      "headline": "Questions raised over FAA contract awarded to AI firm linked to Duffy's family",
       "tags": [
-        "legal"
+        "politics",
+        "tech"
       ],
-      "snippet": "Three Saudi judges sentenced Esther Wanja Muthoni, a 40-year-old Kenyan domestic worker, to 100 lashes in October after convicting her of sex outside marriage, basing the punishment on their reading o\u2026",
-      "text": "saudi court sentences kenyan domestic worker to 100 lashes\nthree saudi judges sentenced esther wanja muthoni, a 40-year-old kenyan domestic worker, to 100 lashes in october after convicting her of sex outside marriage, basing the punishment on their reading of islamic law. police detained her for questioning after a supervisor took her and her newborn to a hospital in august 2025, according to court records reviewed by the new york times. she has spent more than a year trying to return to kenya with her one-year-old son, and the case has prevented them from leaving."
+      "snippet": "A Boston-based AI startup, Air Space Intelligence, donated to the congressional campaign of Michael Alfonso in March, and in June the Transportation Department led by Sean Duffy awarded the same compa\u2026",
+      "text": "questions raised over faa contract awarded to ai firm linked to duffy's family\na boston-based ai startup, air space intelligence, donated to the congressional campaign of michael alfonso in march, and in june the transportation department led by sean duffy awarded the same company a 12-year contract worth up to $875.9 million to build an air traffic tool called smart. alfonso, 26, won a seat in congress and will be sworn in on january 3; duffy is his father-in-law. the faa rolled out the smart software across 22 air traffic centers on november 10, three days before the nationwide ground stop. the company says its software had nothing to do with the failure."
     },
     {
       "date": "2026-11-16",
-      "headline": "Dark money questions raised over political creator network Chorus",
+      "headline": "Alaska elects first Democratic governor since 1998",
+      "tags": [
+        "politics"
+      ],
+      "snippet": "Jonathan Kreiss-Tomkins won Alaska's governor's race, defeating three Republicans including a candidate backed by Trump. The former state legislator campaigned on household costs and full funding for\u2026",
+      "text": "alaska elects first democratic governor since 1998\njonathan kreiss-tomkins won alaska's governor's race, defeating three republicans including a candidate backed by trump. the former state legislator campaigned on household costs and full funding for public schools, and was endorsed by republican senator lisa murkowski. the result brings democrats to 30 governorships after midterm gains in states including georgia and texas."
+    },
+    {
+      "date": "2026-11-16",
+      "headline": "Washington teachers union sues to block transgender school sports ban",
+      "tags": [
+        "legal",
+        "politics"
+      ],
+      "snippet": "Washington's teachers union, the nonprofit TransFamilies and parents of student athletes sued the state to block Initiative 638, which bars transgender girls from competing on girls' school teams, ask\u2026",
+      "text": "washington teachers union sues to block transgender school sports ban\nwashington's teachers union, the nonprofit transfamilies and parents of student athletes sued the state to block initiative 638, which bars transgender girls from competing on girls' school teams, asking king county superior court to halt it before it takes effect december 3. the plaintiffs argue that requiring girls to verify their sex to play school sports violates their privacy and breaches state antidiscrimination laws and constitutional guarantees of equal rights and equal access to education. the measure passed november 3 with about 56% support, with backers saying it would make competition fair for girls."
+    },
+    {
+      "date": "2026-11-16",
+      "headline": "Federal judge orders Iowa to let Satanic Temple hold Capitol event",
+      "tags": [
+        "legal",
+        "politics"
+      ],
+      "snippet": "Chief District Judge Stephanie M. Rose ruled that Iowa must grant the Satanic Temple's state chapter a permit for a one-day holiday gathering in the Capitol rotunda, giving the state seven days to app\u2026",
+      "text": "federal judge orders iowa to let satanic temple hold capitol event\nchief district judge stephanie m. rose ruled that iowa must grant the satanic temple's state chapter a permit for a one-day holiday gathering in the capitol rotunda, giving the state seven days to approve it. the group sued after officials denied its requests, alleging religious discrimination, and the judge found it had a strong chance of winning its free speech claim. state officials argued krampus costumes could scare children and that prop sticks could serve as weapons; the judge said the props could go through standard security screening, and the attorney general's office said the state plans to appeal."
+    },
+    {
+      "date": "2026-11-16",
+      "headline": "Spain extends eviction protections and caps some rents after general strike",
+      "tags": [
+        "politics",
+        "markets"
+      ],
+      "snippet": "Spain's interim lower chamber passed a housing decree by 35 votes to 34, shielding vulnerable tenants from eviction through 2030 where regional authorities cannot rehouse them, freezing rents above ne\u2026",
+      "text": "spain extends eviction protections and caps some rents after general strike\nspain's interim lower chamber passed a housing decree by 35 votes to 34, shielding vulnerable tenants from eviction through 2030 where regional authorities cannot rehouse them, freezing rents above neighborhood benchmarks and barring real estate firms from buying properties below 70% of their value. lawmakers rejected a second decree that would have allowed tenants to renew leases without a time limit. the conservative popular party vowed to repeal the measure if it wins the november 29 election. protests over rising rents followed the october eviction and death of an 87-year-old madrid woman, and a nationwide general strike returned the issue to the streets."
+    },
+    {
+      "date": "2026-11-16",
+      "headline": "Beijing bans ownership and storage of drones citywide",
+      "tags": [
+        "surveillance",
+        "politics"
+      ],
+      "snippet": "Beijing began enforcing a ban on drone ownership and storage on November 15 across its 16,400-square-kilometer municipality, including rural districts, saying the measure safeguards the security of th\u2026",
+      "text": "beijing bans ownership and storage of drones citywide\nbeijing began enforcing a ban on drone ownership and storage on november 15 across its 16,400-square-kilometer municipality, including rural districts, saying the measure safeguards the security of the capital. residents caught with drones face fines and confiscation, and the rules bar bringing drones or parts into the city; owners had to sell devices or move them outside the municipality before enforcement began. the city halted drone sales in may 2026 and had allowed owners to keep registered devices. authorities can grant exemptions for uses including policing, disaster response and farming."
+    },
+    {
+      "date": "2026-11-16",
+      "headline": "Houthi fighters advance along Yemen's southern coast toward Aden",
+      "tags": [
+        "defence",
+        "politics"
+      ],
+      "snippet": "Five Yemeni military sources told Reuters that Houthi fighters advanced to Khor Omairh, about 100 kilometers west of Aden. Government forces withdrew Sunday from areas near Bab el-Mandeb to defend Ade\u2026",
+      "text": "houthi fighters advance along yemen's southern coast toward aden\nfive yemeni military sources told reuters that houthi fighters advanced to khor omairh, about 100 kilometers west of aden. government forces withdrew sunday from areas near bab el-mandeb to defend aden and lahj."
+    },
+    {
+      "date": "2026-11-16",
+      "headline": "Bomb found and neutralized at Illinois ethanol plant",
+      "tags": [
+        "legal",
+        "politics"
+      ],
+      "snippet": "Police found a bomb at the Bio-Urja Renewables facility in Peoria, Illinois, prompting evacuations and an ongoing investigation. Authorities, members of Congress and the FBI said the device had been n\u2026",
+      "text": "bomb found and neutralized at illinois ethanol plant\npolice found a bomb at the bio-urja renewables facility in peoria, illinois, prompting evacuations and an ongoing investigation. authorities, members of congress and the fbi said the device had been neutralized and that searches continue for other potential explosives. no one was injured and residents in the area remained evacuated."
+    },
+    {
+      "date": "2026-11-16",
+      "headline": "Dark money behind political creator network draws transparency demands",
       "tags": [
         "media",
         "politics"
       ],
-      "snippet": "Chorus, a creator group co-founded by Brian Tyler Cohen and Stuart Perlmutter, is registered as a 501(c)(4), meaning it is not required to disclose its donors, and its own participants say they do not\u2026",
-      "text": "dark money questions raised over political creator network chorus\nchorus, a creator group co-founded by brian tyler cohen and stuart perlmutter, is registered as a 501(c)(4), meaning it is not required to disclose its donors, and its own participants say they do not know who funds it. the group says it has roughly 200 creators, does not publish their names, and asks members not to discuss program details; cohen has described its work as including message coordination. its sister organisation good influence is a for-profit influencer marketing firm whose payments are traceable in fec filings, which show haley stevens' senate campaign, a recipient of $30.6 million from aipac, paid good influence $10,000 for social media consulting in october 2025. critics are calling for legislation requiring creators to disclose paid political content."
+      "snippet": "Chorus, a creator group co-founded by Brian Tyler Cohen and Stuart Perilmuter, is registered as a 501(c)(4) nonprofit, meaning it is not required to disclose donors, and its own participating creators\u2026",
+      "text": "dark money behind political creator network draws transparency demands\nchorus, a creator group co-founded by brian tyler cohen and stuart perilmuter, is registered as a 501(c)(4) nonprofit, meaning it is not required to disclose donors, and its own participating creators say they do not know who funds it. the group says it has roughly 200 creators, does not publish their names and asks members not to discuss program details, while its stated activities include coordinating messaging. creator aaron parnas said he received $24,000 from the program in early 2025. a sister for-profit firm, good influence, appears in federal election commission filings, including a $10,000 social media consulting payment from the haley stevens senate campaign, which received $30.6 million from aipac during the 2025-2026 cycle. critics are calling for legislation requiring creators to disclose paid political content."
     },
     {
       "date": "2026-11-16",
-      "headline": "Connecticut offers first responders up to $25,000 toward home purchases",
+      "headline": "Constituents pressed to demand open House Democratic leadership race",
       "tags": [
         "politics"
       ],
-      "snippet": "Governor Ned Lamont announced that Connecticut will offer certified firefighters, police officers and emergency medical workers up to $25,000 for down payments and closing costs starting 16 November,\u2026",
-      "text": "connecticut offers first responders up to $25,000 toward home purchases\ngovernor ned lamont announced that connecticut will offer certified firefighters, police officers and emergency medical workers up to $25,000 for down payments and closing costs starting 16 november, with no income cap. applicants must have lived and worked in the state for at least two years and buy a home in the community they serve. the state's emergency services commissioner said connecticut needs hundreds of officers and troopers and struggles to fill its academies, and a may 2025 comptroller's report found volunteer firefighter ranks had shrunk by more than 62% since 2017."
+      "snippet": "A campaign is urging voters to call their representatives through the House switchboard and ask for an open, competitive process to choose the next Democratic leader rather than handing Hakeem Jeffrie\u2026",
+      "text": "constituents pressed to demand open house democratic leadership race\na campaign is urging voters to call their representatives through the house switchboard and ask for an open, competitive process to choose the next democratic leader rather than handing hakeem jeffries the speaker's gavel. jeffries is running unopposed with support from members including alexandria ocasio-cortez and pramila jayapal, and has said leadership selection is an internal matter for house members. supporters of his bid note that democrats won the national popular vote for the house by 13 points under his leadership. a scripted call template has been circulated for constituents to use."
     },
     {
       "date": "2026-11-16",
-      "headline": "Kentucky magistrate race decided by coin toss",
+      "headline": "Airlines accused of price gouging and minimal compensation for stranded travelers",
+      "tags": [
+        "markets"
+      ],
+      "snippet": "Companies were accused of surging prices for travelers stranded across the country during the aviation shutdown, a practice critics said is illegal and warrants accountability. American Airlines drew\u2026",
+      "text": "airlines accused of price gouging and minimal compensation for stranded travelers\ncompanies were accused of surging prices for travelers stranded across the country during the aviation shutdown, a practice critics said is illegal and warrants accountability. american airlines drew criticism after a response to a passenger who said the airline provided only $12 in food credit following multi-day cancellations, stating that food and beverage credits are meant to \"take a bite out of the cost, not cover the entire menu.\""
+    },
+    {
+      "date": "2026-11-16",
+      "headline": "Connecticut to offer first responders up to $25,000 toward home purchases",
       "tags": [
         "politics"
       ],
-      "snippet": "Democrat Kristen Gifford Fryman won a coin toss for the District 2 magistrate seat in Robertson County, Kentucky after she and Republican Benny Ray Renner each received 91 votes. The state election bo\u2026",
-      "text": "kentucky magistrate race decided by coin toss\ndemocrat kristen gifford fryman won a coin toss for the district 2 magistrate seat in robertson county, kentucky after she and republican benny ray renner each received 91 votes. the state election board recommended the toss, the third such tiebreaker in kentucky this year. fryman will join the fiscal court, which sets the county budget and tax rates."
+      "snippet": "Governor Ned Lamont announced that Connecticut will offer first responders up to $25,000 for down payments and closing costs beginning November 16. The First Responders' Time to Own program has no inc\u2026",
+      "text": "connecticut to offer first responders up to $25,000 toward home purchases\ngovernor ned lamont announced that connecticut will offer first responders up to $25,000 for down payments and closing costs beginning november 16. the first responders' time to own program has no income cap and requires certified firefighters, police officers and emergency medical workers to have lived and worked in the state for at least two years and to buy a home where they serve. state emergency services commissioner ronnell higgins said connecticut needs hundreds of police officers and state troopers and struggles to fill its academies, and a may 2025 comptroller's report found volunteer firefighter ranks had shrunk by more than 62% since 2017."
     },
     {
       "date": "2026-11-16",
@@ -307,8 +320,26 @@
         "defence",
         "politics"
       ],
-      "snippet": "An unverified account circulating among service members says the director of the Tactical Training Exercise Control Group, Col. Meador, was relieved of command after a confrontation at a ball where a\u2026",
-      "text": "marine training center director relieved of command after political speech dispute\nan unverified account circulating among service members says the director of the tactical training exercise control group, col. meador, was relieved of command after a confrontation at a ball where a guest speaker delivered what amounted to a political campaign for himself. the account says a senior officer confronted the speaker, who took offence. no further details have been confirmed."
+      "snippet": "The director of the Tactical Training Exercise Control Group, Colonel Meador, was relieved of command following an incident at a ball where a guest speaker delivered what was described as a political\u2026",
+      "text": "marine training center director relieved of command after political speech dispute\nthe director of the tactical training exercise control group, colonel meador, was relieved of command following an incident at a ball where a guest speaker delivered what was described as a political campaign for himself and was confronted by a senior officer. few other details have been released."
+    },
+    {
+      "date": "2026-11-16",
+      "headline": "Kentucky county magistrate race decided by coin toss",
+      "tags": [
+        "politics"
+      ],
+      "snippet": "Democrat Kristen Gifford Fryman won a coin toss for the District 2 magistrate seat in Robertson County, Kentucky after she and Republican Benny Ray Renner each received 91 votes. The state election bo\u2026",
+      "text": "kentucky county magistrate race decided by coin toss\ndemocrat kristen gifford fryman won a coin toss for the district 2 magistrate seat in robertson county, kentucky after she and republican benny ray renner each received 91 votes. the state election board recommended the toss, the third such tiebreaker in kentucky this year. fryman will join the fiscal court, which sets the county budget and tax rates."
+    },
+    {
+      "date": "2026-11-16",
+      "headline": "Saudi court sentences Kenyan domestic worker to 100 lashes",
+      "tags": [
+        "legal"
+      ],
+      "snippet": "Three Saudi judges sentenced Esther Wanja Muthoni, a 40-year-old Kenyan domestic worker, to 100 lashes in October after convicting her of sex outside of marriage, basing the punishment on their readin\u2026",
+      "text": "saudi court sentences kenyan domestic worker to 100 lashes\nthree saudi judges sentenced esther wanja muthoni, a 40-year-old kenyan domestic worker, to 100 lashes in october after convicting her of sex outside of marriage, basing the punishment on their reading of islamic law. police detained her for questioning after a supervisor took her and her newborn to a hospital in august 2025, according to court records. she has spent more than a year trying to return to kenya with her one-year-old son, and the case has prevented them from leaving."
     },
     {
       "date": "2026-11-15",
