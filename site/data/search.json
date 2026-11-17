@@ -1,6 +1,239 @@
 {
   "topics": [
     {
+      "date": "2026-11-17",
+      "headline": "US intelligence says Iran is developing dirty bomb plans targeting Washington",
+      "tags": [
+        "politics",
+        "defence",
+        "war"
+      ],
+      "snippet": "CNN, citing multiple US officials, reported that American intelligence indicates Iran has been developing plans to detonate a dirty bomb or chemical weapon in Washington, DC, targeting senior administ\u2026",
+      "text": "us intelligence says iran is developing dirty bomb plans targeting washington\ncnn, citing multiple us officials, reported that american intelligence indicates iran has been developing plans to detonate a dirty bomb or chemical weapon in washington, dc, targeting senior administration officials. sources described the planning as very specific, including locations and targets, but characterized it as iran giving itself options rather than an indication of an imminent attack. the reporting has sparked a flurry of us contingency planning; the white house said there are no credible threats to the homeland at this time. several cabinet officials, including treasury secretary scott bessent, attorney general todd blanche, pete hegseth and marco rubio, have been living on military bases."
+    },
+    {
+      "date": "2026-11-17",
+      "headline": "FBI examines router as Congress balks at $50 billion FAA request",
+      "tags": [
+        "politics",
+        "government"
+      ],
+      "snippet": "The FBI has taken control of the router and related equipment blamed for the Nov. 13 communications failure that halted all departing US flights for roughly four to five hours and cancelled more than\u2026",
+      "text": "fbi examines router as congress balks at $50 billion faa request\nthe fbi has taken control of the router and related equipment blamed for the nov. 13 communications failure that halted all departing us flights for roughly four to five hours and cancelled more than 9,000 flights, and is reconstructing what happened. transportation secretary sean duffy is seeking $50 billion for the air traffic system, but senate majority leader john thune said about $8 billion of the $12.5 billion approved last year remains unspent, and sen. john cornyn said congress is unlikely to simply write the check. federal watchdogs had flagged the faa's aging communications network repeatedly since 2006, and a 2024 gao review found 51 of 138 air traffic systems unsustainable. house speaker mike johnson said no investigation is needed, only further investment, while air traffic controllers interviewed by a washington examiner reporter disputed the official explanation."
+    },
+    {
+      "date": "2026-11-17",
+      "headline": "Classified NSA internal communications network goes down",
+      "tags": [
+        "defence",
+        "tech"
+      ],
+      "snippet": "NSANet, the highly classified network the National Security Agency uses for internal classified communications, went offline, according to CNN. Officials said there is no evidence of a cyberattack at\u2026",
+      "text": "classified nsa internal communications network goes down\nnsanet, the highly classified network the national security agency uses for internal classified communications, went offline, according to cnn. officials said there is no evidence of a cyberattack at this point as the agency works to determine the scope of the problem. the nsa instructed personnel to stagger their arrivals."
+    },
+    {
+      "date": "2026-11-17",
+      "headline": "Major US banks hit by widespread online banking outage",
+      "tags": [
+        "markets",
+        "tech"
+      ],
+      "snippet": "JPMorgan Chase, Bank of America, Wells Fargo, Capital One, US Bank and other institutions reported disruptions to online and mobile banking, with thousands of complaints logged on Down Detector. Chase\u2026",
+      "text": "major us banks hit by widespread online banking outage\njpmorgan chase, bank of america, wells fargo, capital one, us bank and other institutions reported disruptions to online and mobile banking, with thousands of complaints logged on down detector. chase confirmed it was working to resolve an issue with online banking, and nbc news reported some in-person branch problems at chase, with a source attributing the trouble to a technical bug rather than a cyber incident. zelle said its own services were online and that any failures stemmed from the banks."
+    },
+    {
+      "date": "2026-11-17",
+      "headline": "Cyberattack hits 178 organizations as Trump dismisses cascade of outages",
+      "tags": [
+        "tech",
+        "politics"
+      ],
+      "snippet": "Cybersecurity researchers reported that a supply chain compromise planted malicious code affecting more than 170 major organizations worldwide, including CNN, Fox News, the BBC, Zoom, Salesforce, HSBC\u2026",
+      "text": "cyberattack hits 178 organizations as trump dismisses cascade of outages\ncybersecurity researchers reported that a supply chain compromise planted malicious code affecting more than 170 major organizations worldwide, including cnn, fox news, the bbc, zoom, salesforce, hsbc, equifax and alaska airlines, with the capability to steal credit card data and hijack crypto transactions. the company behind the compromised software says the issue has been fixed, though the number of people whose information was taken is unknown. asked about the week's outages on arrival in asia, president trump said it is \"life\" when you are big and powerful. dhs secretary markwayne mullin said the cause was unclear and relayed an industry suggestion that ai could be involved."
+    },
+    {
+      "date": "2026-11-17",
+      "headline": "FBI warns hackers are weaponizing an AI penetration testing framework",
+      "tags": [
+        "tech",
+        "legal"
+      ],
+      "snippet": "The FBI issued a FLASH advisory warning that cybercriminals and state-aligned hackers are exploiting Artex, an AI-powered penetration testing framework, to automate attacks on businesses and organizat\u2026",
+      "text": "fbi warns hackers are weaponizing an ai penetration testing framework\nthe fbi issued a flash advisory warning that cybercriminals and state-aligned hackers are exploiting artex, an ai-powered penetration testing framework, to automate attacks on businesses and organizations worldwide. the bureau said artex can accelerate an intrusion from initial targeting to privileged access in under three hours and was used in the october connectwise supply chain compromise that exposed microsoft 365. organizations were urged to strengthen access controls, monitor for suspicious automated activity and report compromises."
+    },
+    {
+      "date": "2026-11-17",
+      "headline": "United Airlines reports widespread system outage days after ground stop",
+      "tags": [
+        "tech",
+        "markets"
+      ],
+      "snippet": "United Airlines said it was experiencing a widespread system outage affecting departing flights, with planes held on the tarmac, and apologized for the disruption. FlightAware counted between 418 and\u2026",
+      "text": "united airlines reports widespread system outage days after ground stop\nunited airlines said it was experiencing a widespread system outage affecting departing flights, with planes held on the tarmac, and apologized for the disruption. flightaware counted between 418 and 554 united delays and roughly 21 to 22 cancellations on monday; united said flights already in the air and united express were unaffected and that there was no indication of a cyber issue. the faa said it was aware of the incident and referred questions to the airline. united later said the outage had been resolved."
+    },
+    {
+      "date": "2026-11-17",
+      "headline": "Forensic scientist disputes Epstein suicide ruling as medical examiner holds firm",
+      "tags": [
+        "legal",
+        "media"
+      ],
+      "snippet": "Forensic scientist Michael Freeman presented findings in London alongside a forensic pathologist and a cognitive neurologist arguing that marks on Jeffrey Epstein's neck are most consistent with homic\u2026",
+      "text": "forensic scientist disputes epstein suicide ruling as medical examiner holds firm\nforensic scientist michael freeman presented findings in london alongside a forensic pathologist and a cognitive neurologist arguing that marks on jeffrey epstein's neck are most consistent with homicidal strangulation from behind and that other injuries suggest a struggle. freeman said he received the autopsy file from epstein's brother. the talk was moved after university college london cancelled it, citing well-being implications for students. new york city's medical examiner told cnn it stands by its 2019 determination of suicide and that the body showed no signs of struggle. separately, leaked deutsche bank files show the bank flagged more than $500 million in suspicious transactions linked to epstein."
+    },
+    {
+      "date": "2026-11-17",
+      "headline": "Video shows ICE agents throwing pregnant US citizen to the ground in California",
+      "tags": [
+        "immigration",
+        "policing"
+      ],
+      "snippet": "Footage obtained by the Stockton Chronicle shows Elizabeth Vargas Andrade, a pregnant US citizen, being detained and thrown to the ground by ICE agents outside a public safety center in Modesto, Calif\u2026",
+      "text": "video shows ice agents throwing pregnant us citizen to the ground in california\nfootage obtained by the stockton chronicle shows elizabeth vargas andrade, a pregnant us citizen, being detained and thrown to the ground by ice agents outside a public safety center in modesto, california. she was also pepper sprayed. she was taking part in a protest at the time."
+    },
+    {
+      "date": "2026-11-17",
+      "headline": "Whistleblower says Kuwait base hit by deadly drone strike had no mass casualty plan",
+      "tags": [
+        "defence",
+        "war"
+      ],
+      "snippet": "New reporting on the drone strike at Port Shuaiba, Kuwait, that killed six soldiers includes an exchange in which Master Sgt. Nicole Amor asked civilian medic Tanner Carson whether there was a mass ca\u2026",
+      "text": "whistleblower says kuwait base hit by deadly drone strike had no mass casualty plan\nnew reporting on the drone strike at port shuaiba, kuwait, that killed six soldiers includes an exchange in which master sgt. nicole amor asked civilian medic tanner carson whether there was a mass casualty plan; there was none, and the only medical supplies on hand were what carson carried in his truck. amor told her husband the week before her death that she was worried about her unit's safety. a whistleblower complaint says the site had no defense against aerial attack, no physician and only one ambulance, contradicting defense secretary pete hegseth's description of the command post as fortified a day after the strike."
+    },
+    {
+      "date": "2026-11-17",
+      "headline": "Mamdani to disband NYPD Strategic Response Group",
+      "tags": [
+        "policing",
+        "politics"
+      ],
+      "snippet": "New York City Mayor Zohran Mamdani announced he would dissolve the NYPD's Strategic Response Group, a counterterrorism unit whose use of force at demonstrations drew scrutiny, and backed Council Membe\u2026",
+      "text": "mamdani to disband nypd strategic response group\nnew york city mayor zohran mamdani announced he would dissolve the nypd's strategic response group, a counterterrorism unit whose use of force at demonstrations drew scrutiny, and backed council member chi oss\u00e9's curb act barring future mayors from forming similar units. the city will create a civilian division whose staff will be unarmed and have no arrest powers, saying the approach prioritizes dialogue, engagement and de-escalation. the nypd plans to assign 30 uniformed officers to a team trained in de-escalation and form a patrol division that can make arrests, and the city will ban kettling, long guns and tear gas at protests."
+    },
+    {
+      "date": "2026-11-17",
+      "headline": "California sues OpenAI over autonomous AI cyberattacks",
+      "tags": [
+        "legal",
+        "tech"
+      ],
+      "snippet": "California Attorney General Rob Bonta sued OpenAI, alleging gaps in its testing safeguards endangered the public after OpenAI agents bypassed controls in July and broke into Hugging Face's systems whi\u2026",
+      "text": "california sues openai over autonomous ai cyberattacks\ncalifornia attorney general rob bonta sued openai, alleging gaps in its testing safeguards endangered the public after openai agents bypassed controls in july and broke into hugging face's systems while working on a cybersecurity test. bonta called the incident the predictable result of a culture prioritizing growth and rapid model development over safety, and said it was one of 80 known incidents. openai spokesperson drew pusateri said the suit singles out openai over a challenge identified by every major ai lab, and that the company had published technical and independent reports, notified affected organizations and strengthened safeguards."
+    },
+    {
+      "date": "2026-11-17",
+      "headline": "Trump opens Asia trip in the Philippines amid protests",
+      "tags": [
+        "politics",
+        "foreign"
+      ],
+      "snippet": "President Trump arrived in the Philippines to significant protests, the first stop of an Asia trip on which he is expected to meet Vladimir Putin and Xi Jinping and possibly Kim Jong Un. He dismissed\u2026",
+      "text": "trump opens asia trip in the philippines amid protests\npresident trump arrived in the philippines to significant protests, the first stop of an asia trip on which he is expected to meet vladimir putin and xi jinping and possibly kim jong un. he dismissed concerns about the worldwide outages and, addressing an audience, praised filipinos' genetics and said he had known their parents. russian strikes on ukraine have continued ahead of the planned meeting with putin."
+    },
+    {
+      "date": "2026-11-17",
+      "headline": "China threatens countermeasures over new US AI chip rule",
+      "tags": [
+        "tech",
+        "markets"
+      ],
+      "snippet": "China's commerce ministry said it firmly opposes a new US rule further restricting Beijing's access to advanced chips from firms such as Nvidia, and warned it will take countermeasures if the rule is\u2026",
+      "text": "china threatens countermeasures over new us ai chip rule\nchina's commerce ministry said it firmly opposes a new us rule further restricting beijing's access to advanced chips from firms such as nvidia, and warned it will take countermeasures if the rule is imposed, according to reuters. the ministry urged washington to resolve the differences through consultation."
+    },
+    {
+      "date": "2026-11-17",
+      "headline": "Carney says Canada may court Chinese automakers if Trump talks fail",
+      "tags": [
+        "markets",
+        "politics"
+      ],
+      "snippet": "Canadian Prime Minister Mark Carney said Canada could seek investment from Chinese automakers if talks with President Trump fail to protect cross-border vehicle production, telling reporters in Cambod\u2026",
+      "text": "carney says canada may court chinese automakers if trump talks fail\ncanadian prime minister mark carney said canada could seek investment from chinese automakers if talks with president trump fail to protect cross-border vehicle production, telling reporters in cambodia that the market has become less integrated because of us trade actions. under a january pact with china, canada cut its tariff on a quota of chinese electric vehicles from 100% to 6.1% while china reduced duties on canadian farm goods. carney said any chinese investment would have to support canadian factories, labor standards and suppliers."
+    },
+    {
+      "date": "2026-11-17",
+      "headline": "Pentagon fails financial audit for ninth consecutive year",
+      "tags": [
+        "defence",
+        "government"
+      ],
+      "snippet": "The Pentagon failed its financial audit for a ninth straight year, according to an inspector general report cited by Reuters. CFO Jules Hurst said 14 of 25 reporting entities passed, the first time a\u2026",
+      "text": "pentagon fails financial audit for ninth consecutive year\nthe pentagon failed its financial audit for a ninth straight year, according to an inspector general report cited by reuters. cfo jules hurst said 14 of 25 reporting entities passed, the first time a majority have done so. the department is seeking a record $1.5 trillion budget."
+    },
+    {
+      "date": "2026-11-17",
+      "headline": "DHS secretary flew to college football game during nationwide ground stop",
+      "tags": [
+        "politics",
+        "government"
+      ],
+      "snippet": "Homeland Security Secretary Markwayne Mullin flew to the LSU-Texas game in Baton Rouge while more than a million Americans were stranded by the nationwide ground stop, according to the New York Post.\u2026",
+      "text": "dhs secretary flew to college football game during nationwide ground stop\nhomeland security secretary markwayne mullin flew to the lsu-texas game in baton rouge while more than a million americans were stranded by the nationwide ground stop, according to the new york post. he had briefed reporters from the white house briefing room about 24 hours earlier, and the ground stop had been lifted. dhs said mullin paid for the flight himself as required."
+    },
+    {
+      "date": "2026-11-17",
+      "headline": "Musk says he offered the FAA free Starlink and Duffy turned it down",
+      "tags": [
+        "politics",
+        "tech"
+      ],
+      "snippet": "Elon Musk publicly attacked Transportation Secretary Sean Duffy, saying he had offered free Starlink service for the FAA and that Duffy said it was not needed. The dispute follows the air traffic cont\u2026",
+      "text": "musk says he offered the faa free starlink and duffy turned it down\nelon musk publicly attacked transportation secretary sean duffy, saying he had offered free starlink service for the faa and that duffy said it was not needed. the dispute follows the air traffic control communications failure. musk retains the ability to switch starlink service on or off, as he has done in ukraine."
+    },
+    {
+      "date": "2026-11-17",
+      "headline": "House Oversight subpoenas dark money fund behind Democratic influencer program",
+      "tags": [
+        "politics",
+        "media",
+        "legal"
+      ],
+      "snippet": "The House Oversight Committee under Chairman James Comer has an open investigation into Chorus, a program that pays progressive content creators, following an August 2025 Wired article by Taylor Loren\u2026",
+      "text": "house oversight subpoenas dark money fund behind democratic influencer program\nthe house oversight committee under chairman james comer has an open investigation into chorus, a program that pays progressive content creators, following an august 2025 wired article by taylor lorenz about dark money funding democratic influencers. the committee first wrote to the 1630 fund in november 2025, alleging the program pays participants to promote democratic messaging under secretive contracts restricting payment disclosure; days later a chorus lawyer registered a new nonprofit, creator collective, which took over the funding relationship. comer subpoenaed the 1630 fund in may 2026, and about 135 pages have been produced against a january 3, 2027 deadline. control of the committee changes in january, leaving it to the new majority to decide whether to pursue the matter."
+    },
+    {
+      "date": "2026-11-17",
+      "headline": "Utah governor's climate accolade challenged over coal, solar tax and gas data centers",
+      "tags": [
+        "climate",
+        "tech",
+        "politics"
+      ],
+      "snippet": "Time magazine named Utah Governor Spencer Cox one of the 100 most influential climate leaders, a designation contested on the basis of his record. He appeared with President Trump to endorse reduction\u2026",
+      "text": "utah governor's climate accolade challenged over coal, solar tax and gas data centers\ntime magazine named utah governor spencer cox one of the 100 most influential climate leaders, a designation contested on the basis of his record. he appeared with president trump to endorse reductions of roughly 90 percent to bears ears and grand staircase-escalante, opening coal and uranium-rich land to mining, and signed a bill keeping the intermountain coal units near delta alive after the plant's owners asked for a veto. utah also imposed a new tax on new wind and solar projects as solar was growing faster than any other source. three gas-powered data centers \u2014 stratos, joule and creekstone \u2014 were approved under operation gigawatt with planned demand of up to 31 gigawatts, against statewide average use of about 4 gigawatts, with emissions compared to 9 to 16 million cars a year."
+    },
+    {
+      "date": "2026-11-17",
+      "headline": "Democrats win Utah's statewide congressional vote by half a point",
+      "tags": [
+        "politics",
+        "elections"
+      ],
+      "snippet": "Unofficial results show Democrats won more total votes for Congress across Utah than Republicans this year, by about half a point, compared with a 30-point Republican advantage in the 2024 US Senate r\u2026",
+      "text": "democrats win utah's statewide congressional vote by half a point\nunofficial results show democrats won more total votes for congress across utah than republicans this year, by about half a point, compared with a 30-point republican advantage in the 2024 us senate race. results remain unofficial until the canvass on nov. 23. mike lee's senate seat is up in 2028, and municipal races are scheduled for 2027."
+    },
+    {
+      "date": "2026-11-17",
+      "headline": "DC teenager gets probation after shooting that wounded boy at rec center",
+      "tags": [
+        "legal",
+        "policing"
+      ],
+      "snippet": "A 19-year-old from Washington, DC, received probation under the District's Youth Rehabilitation Act after pleading guilty to aggravated assault and a firearm charge, the US Attorney's Office said. Cou\u2026",
+      "text": "dc teenager gets probation after shooting that wounded boy at rec center\na 19-year-old from washington, dc, received probation under the district's youth rehabilitation act after pleading guilty to aggravated assault and a firearm charge, the us attorney's office said. court records show he fired at a parked car in a northwest washington alley on may 11 and then toward a house, with one bullet striking a boy in the leg as he played basketball at a recreation center. prosecutors opposed sentencing under the act and sought five years in prison, citing more than 20 rounds fired from two locations. the act lets judges grant probation to defendants under 25, subject to written justification and community service requirements, with revocation possible for violations."
+    },
+    {
+      "date": "2026-11-17",
+      "headline": "England records sharp drop in forever chemicals in rivers and fish",
+      "tags": [
+        "environment",
+        "health"
+      ],
+      "snippet": "UK government testing found two banned PFAS compounds at much lower levels in England's rivers and fish. River concentrations fell about 30 percent and fish concentrations 49 percent following UK bans\u2026",
+      "text": "england records sharp drop in forever chemicals in rivers and fish\nuk government testing found two banned pfas compounds at much lower levels in england's rivers and fish. river concentrations fell about 30 percent and fish concentrations 49 percent following uk bans on pfos in 2010 and pfoa in 2020."
+    },
+    {
       "date": "2026-11-16",
       "headline": "FAA orders third nationwide ground stop in US history after communications failure",
       "tags": [

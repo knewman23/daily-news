@@ -1,6 +1,80 @@
 {
-  "last_updated": "2026-11-16T15:54:23.255954+00:00",
+  "last_updated": "2026-11-16T18:29:28.900058+00:00",
   "days": [
+    {
+      "date": "2026-11-17",
+      "tags": [
+        "politics",
+        "defence",
+        "war",
+        "government",
+        "tech",
+        "markets",
+        "legal",
+        "media",
+        "immigration",
+        "policing",
+        "foreign",
+        "climate",
+        "elections",
+        "environment",
+        "health"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@total.hypocrisy",
+        "@oafnation_actual",
+        "@carolinegleich",
+        "@groundnews",
+        "@ericmoutsos"
+      ],
+      "post_count": 51,
+      "transcribed_count": 51,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Commentators tie outages to a planned financial collapse and digital currency",
+          "reason": "Reaction and commentary over other outlets' coverage that reports nothing new itself."
+        },
+        {
+          "headline": "Creator says rival political influencers launched a smear campaign",
+          "reason": "Creator-versus-creator dispute with no policy or news substance."
+        },
+        {
+          "headline": "Creator presses Chorus participants to disclose who funds them",
+          "reason": "Reaction video responding to another creator; the substantive funding investigation is covered separately."
+        },
+        {
+          "headline": "Montage alleges coordinated messaging on Democratic leadership races",
+          "reason": "Primarily a creator-conduct montage rather than new reporting on the leadership contest."
+        },
+        {
+          "headline": "Comment thread shows Chorus creator defending undisclosed funding",
+          "reason": "Screenshots of a comment argument between creators, not news."
+        },
+        {
+          "headline": "Suggestion for a student loan and medical debt outage",
+          "reason": "Joke with no news content."
+        },
+        {
+          "headline": "Everything is broken",
+          "reason": "Joke with no news content."
+        },
+        {
+          "headline": "Creator says skiing is why she keeps showing up",
+          "reason": "Personal reflection with music only and no news content."
+        },
+        {
+          "headline": "Patagonia jacket campaign shot in the Wasatch",
+          "reason": "Brand campaign promotion."
+        },
+        {
+          "headline": "Lost draft of King's 'I Have a Dream' speech found, and a first-of-its-kind marrow transplant",
+          "reason": "Human interest items from a good-news roundup with no policy angle; the PFAS item from the same post is kept."
+        }
+      ]
+    },
     {
       "date": "2026-11-16",
       "tags": [
