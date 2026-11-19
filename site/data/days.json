@@ -1,6 +1,110 @@
 {
-  "last_updated": "2026-11-16T18:29:28.900058+00:00",
+  "last_updated": "2026-11-19T19:51:57.690440+00:00",
   "days": [
+    {
+      "date": "2026-11-19",
+      "tags": [
+        "politics",
+        "government"
+      ],
+      "sources": [
+        "@aaronparnas"
+      ],
+      "post_count": 1,
+      "transcribed_count": 1,
+      "incomplete": false,
+      "skipped": []
+    },
+    {
+      "date": "2026-11-18",
+      "tags": [
+        "war",
+        "politics",
+        "markets",
+        "defence",
+        "legal",
+        "health",
+        "environment",
+        "surveillance",
+        "tech",
+        "climate",
+        "immigration"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@total.hypocrisy",
+        "@oafnation_actual",
+        "@groundnews",
+        "@ericmoutsos",
+        "@hunteralexanderhowell",
+        "@carolinegleich"
+      ],
+      "post_count": 84,
+      "transcribed_count": 84,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Creator dispute over funding of the Chorus network",
+          "reason": "Influencer infighting and personal disputes rather than reported news with a policy angle."
+        },
+        {
+          "headline": "California bars Waymo driverless cars from freeways",
+          "reason": "Transport-technology regulation outside the reader's stated interests."
+        },
+        {
+          "headline": "Leukemia vaccine passes phase three trial",
+          "reason": "Medical research result with no public health policy angle."
+        },
+        {
+          "headline": "Apple services hit by widespread outage",
+          "reason": "Consumer service outage with no policy or security dimension established."
+        },
+        {
+          "headline": "PlayStation Network disrupted hours before GTA 6 launch",
+          "reason": "Consumer gaming service outage, not news in the reader's interest areas."
+        },
+        {
+          "headline": "Grand Theft Auto VI launches after 13-year wait",
+          "reason": "Entertainment release; the productivity figure is a novelty estimate, not economic news."
+        },
+        {
+          "headline": "International Ice Hockey Federation confirms cyberattack",
+          "reason": "Sports governing body incident with no policy, security or market consequence shown."
+        },
+        {
+          "headline": "Pope Leo XIV forgives man whose thrown rosary struck his eye",
+          "reason": "Human interest story with no policy angle."
+        },
+        {
+          "headline": "Pew projects Muslims will outnumber Christians by 2035",
+          "reason": "Demographic projection outside the listed interest areas."
+        },
+        {
+          "headline": "South Korea halts flights during national college entrance exam",
+          "reason": "Foreign education logistics story with no bearing on the reader's interests."
+        },
+        {
+          "headline": "White House disputes that Trump fell asleep in China",
+          "reason": "Viral imagery and press-office dispute that reports no substantive development."
+        },
+        {
+          "headline": "Commentary on Stephen Miller's influence as chief of staff",
+          "reason": "Opinion about personnel dynamics that reports nothing new."
+        },
+        {
+          "headline": "Claim that a dirty bomb warning repeats the Iraq war playbook",
+          "reason": "Historical analogy and speculation rather than new reporting."
+        },
+        {
+          "headline": "Claims that recent cyberattacks are government-orchestrated",
+          "reason": "Unsourced conspiracy claims with no verifiable news content."
+        },
+        {
+          "headline": "Clips and asides with no news content",
+          "reason": "No news content."
+        }
+      ]
+    },
     {
       "date": "2026-11-17",
       "tags": [
