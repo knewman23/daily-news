@@ -1,6 +1,191 @@
 {
   "topics": [
     {
+      "date": "2026-11-20",
+      "headline": "Russian missiles land in Poland during mass strike on Ukraine",
+      "tags": [
+        "war",
+        "politics",
+        "defence"
+      ],
+      "snippet": "Poland's defence minister confirmed that two Russian KH-101 cruise missiles and a drone came down in Polish territory during one of the largest bombardments of Ukraine since the war began. Prime Minis\u2026",
+      "text": "russian missiles land in poland during mass strike on ukraine\npoland's defence minister confirmed that two russian kh-101 cruise missiles and a drone came down in polish territory during one of the largest bombardments of ukraine since the war began. prime minister donald tusk said he does not believe the incursion was accidental and that russia is deliberately trying to provoke nato and poland. the strikes came hours after president trump described vladimir putin as his friend. putin has signalled he will not negotiate with ukraine or the united states for now and intends to continue striking ukraine as winter approaches."
+    },
+    {
+      "date": "2026-11-20",
+      "headline": "Trump, Xi and Putin hold first trilateral meeting at APEC summit",
+      "tags": [
+        "politics",
+        "foreign"
+      ],
+      "snippet": "President Trump, Xi Jinping and Vladimir Putin met in a three-way meeting at the Asia-Pacific Economic Cooperation summit in Shenzhen and agreed to seek United Nations reforms, expand oil supplies and\u2026",
+      "text": "trump, xi and putin hold first trilateral meeting at apec summit\npresident trump, xi jinping and vladimir putin met in a three-way meeting at the asia-pacific economic cooperation summit in shenzhen and agreed to seek united nations reforms, expand oil supplies and discuss curbing nuclear risks. xi called the talks fruitful, while putin invoked the three nations' shared history as victors in world war ii. the joint declaration urged the international criminal court, which seeks putin's arrest, to grant state officials immunity from prosecution, and omitted the wars in ukraine and iran that trump said he raised. on his return, trump reportedly joined a call with european leaders and questioned the level of u.s. funding for ukraine; some republicans characterised the summit as yielding little beyond a photo opportunity."
+    },
+    {
+      "date": "2026-11-20",
+      "headline": "Senate rejects resolution to curb Trump's Iran war powers",
+      "tags": [
+        "politics",
+        "war",
+        "legal"
+      ],
+      "snippet": "The Senate defeated a war powers resolution 51 to 48 that would have directed President Trump to end the war in Iran or seek congressional approval to continue it. Only three Republicans supported the\u2026",
+      "text": "senate rejects resolution to curb trump's iran war powers\nthe senate defeated a war powers resolution 51 to 48 that would have directed president trump to end the war in iran or seek congressional approval to continue it. only three republicans supported the measure. it was the senate's first major vote on iran since the november 3 midterms."
+    },
+    {
+      "date": "2026-11-20",
+      "headline": "Congress heads toward possible pre-Christmas shutdown over Iran war and Pentagon funding",
+      "tags": [
+        "politics",
+        "economy"
+      ],
+      "snippet": "Federal funding expires on December 11 and a deal has stalled over the war in Iran and President Trump's $350 billion Pentagon demand. Senate Republicans shelved Trump's partisan path in favour of bip\u2026",
+      "text": "congress heads toward possible pre-christmas shutdown over iran war and pentagon funding\nfederal funding expires on december 11 and a deal has stalled over the war in iran and president trump's $350 billion pentagon demand. senate republicans shelved trump's partisan path in favour of bipartisan talks. democrats are divided over whether to tie funding to limits on the war."
+    },
+    {
+      "date": "2026-11-20",
+      "headline": "Russia rejects NATO-style security guarantees for Ukraine",
+      "tags": [
+        "politics",
+        "war"
+      ],
+      "snippet": "Deputy Foreign Minister Sergei Ryabkov said any quasi-NATO membership for Kyiv is totally unacceptable to Moscow. The statement contradicts U.S. negotiator Jared Kushner's claim in Berlin that Russia\u2026",
+      "text": "russia rejects nato-style security guarantees for ukraine\ndeputy foreign minister sergei ryabkov said any quasi-nato membership for kyiv is totally unacceptable to moscow. the statement contradicts u.s. negotiator jared kushner's claim in berlin that russia was comfortable with article 5-style guarantees for ukraine."
+    },
+    {
+      "date": "2026-11-20",
+      "headline": "International Court of Justice finds Myanmar committed genocide against the Rohingya",
+      "tags": [
+        "legal",
+        "politics"
+      ],
+      "snippet": "In a 9-6 vote the International Court of Justice ruled that Myanmar committed genocide against the Rohingya during its 2017 clearance operations in northern Rakhine State, the first time the court has\u2026",
+      "text": "international court of justice finds myanmar committed genocide against the rohingya\nin a 9-6 vote the international court of justice ruled that myanmar committed genocide against the rohingya during its 2017 clearance operations in northern rakhine state, the first time the court has held a state responsible for carrying out the crime. the court found at least 10,000 people were killed and close to 400 villages destroyed, and ordered myanmar to pass legislation, investigate and prosecute, and pay reparations. the judgment is final and cannot be appealed. six dissenting judges said the majority had lowered the standard for proving genocidal intent; the same test now faces the court in south africa's case against israel over gaza."
+    },
+    {
+      "date": "2026-11-20",
+      "headline": "White House national cyber director Sean Cairncross leaves post after outages",
+      "tags": [
+        "politics",
+        "tech"
+      ],
+      "snippet": "Sean Cairncross is departing as White House national cyber director following a string of disruptions affecting U.S. aviation, banking and national security systems, including a worldwide Microsoft ou\u2026",
+      "text": "white house national cyber director sean cairncross leaves post after outages\nsean cairncross is departing as white house national cyber director following a string of disruptions affecting u.s. aviation, banking and national security systems, including a worldwide microsoft outage and a ground stop that disrupted more than 18,000 flights. axios reported the departure as an abrupt resignation described as amicable, while a person close to the white house told reuters he was fired with the president's full support. pentagon chief information officer kirsten davies will serve as acting director. cairncross said it was the honour of a lifetime to serve."
+    },
+    {
+      "date": "2026-11-20",
+      "headline": "Agriculture Department hit by cybersecurity incident disrupting farmer payments",
+      "tags": [
+        "tech",
+        "politics"
+      ],
+      "snippet": "The Department of Agriculture's security operations centre uncovered a cybersecurity incident disclosed internally earlier this week, according to Nextgov and Government Executive. Numerous applicatio\u2026",
+      "text": "agriculture department hit by cybersecurity incident disrupting farmer payments\nthe department of agriculture's security operations centre uncovered a cybersecurity incident disclosed internally earlier this week, according to nextgov and government executive. numerous applications were taken offline for days and an internal email said all database passwords had to be reset, disrupting financial tools used for farmer payments, loans and crop insurance. it is not clear who carried out the intrusion or whether any data was taken."
+    },
+    {
+      "date": "2026-11-20",
+      "headline": "Proposed USDA rule could cut SNAP and free school meals for millions",
+      "tags": [
+        "politics",
+        "health"
+      ],
+      "snippet": "A proposed rule from the Department of Agriculture would limit broad-based categorical eligibility, under which receiving certain public benefits automatically qualifies a household for SNAP, accordin\u2026",
+      "text": "proposed usda rule could cut snap and free school meals for millions\na proposed rule from the department of agriculture would limit broad-based categorical eligibility, under which receiving certain public benefits automatically qualifies a household for snap, according to the washington post. the change would remove roughly 6 million people from snap. because snap recipients are automatically eligible for free school meals, more than 1.6 million children could also lose access to those meals."
+    },
+    {
+      "date": "2026-11-20",
+      "headline": "Senate passes BAAJA permitting bill without vote on data center ban for public lands",
+      "tags": [
+        "politics",
+        "climate",
+        "tech"
+      ],
+      "snippet": "The Senate passed BAAJA, a permitting bill co-written by Senator Mike Lee, by 62 to 33, without voting on Senator Ron Wyden's amendment to ban data centers on public lands or on any other amendment to\u2026",
+      "text": "senate passes baaja permitting bill without vote on data center ban for public lands\nthe senate passed baaja, a permitting bill co-written by senator mike lee, by 62 to 33, without voting on senator ron wyden's amendment to ban data centers on public lands or on any other amendment to the bill. earlier in the week wyden and senator jeff merkley placed a hold on the bill after republicans refused to allow a vote on the amendment; the bill's backers say it would not place any data center on public lands. fifteen democrats and independents joined nearly every republican in support, with josh hawley and mike rounds the only republicans voting no. support fell from 73 votes earlier in the month to 62, and the bill now moves to the house, where it dies if not signed by the new year."
+    },
+    {
+      "date": "2026-11-20",
+      "headline": "AI models repeatedly misidentified civilians as military targets in tests",
+      "tags": [
+        "tech",
+        "defence"
+      ],
+      "snippet": "Bloomberg reported that advanced artificial intelligence models in simulated scenarios regularly misidentified civilians, ambulances, surrendering soldiers and a school as military targets. Models fro\u2026",
+      "text": "ai models repeatedly misidentified civilians as military targets in tests\nbloomberg reported that advanced artificial intelligence models in simulated scenarios regularly misidentified civilians, ambulances, surrendering soldiers and a school as military targets. models from anthropic performed worst, with one claude model targeting a school in minab, iran, more often than any other; openai's models were among the best but still made errors. in another experiment models selecting military targets from synthetic drone imagery identified two small children that were struck by explosives. the findings come as the u.s. military incorporates ai into its targeting processes."
+    },
+    {
+      "date": "2026-11-20",
+      "headline": "Pentagon fails annual audit for ninth consecutive year",
+      "tags": [
+        "politics",
+        "defence"
+      ],
+      "snippet": "The Pentagon failed its annual audit on November 16, making it the only one of 24 major federal agencies never to have passed. The department holds more than $4.8 trillion in assets, about 82% of ever\u2026",
+      "text": "pentagon fails annual audit for ninth consecutive year\nthe pentagon failed its annual audit on november 16, making it the only one of 24 major federal agencies never to have passed. the department holds more than $4.8 trillion in assets, about 82% of everything the federal government physically owns, and runs roughly 150 financial management systems, some built on 50-year-old code and unable to communicate with each other. the audit again returned a disclaimer of opinion, meaning the pentagon cannot prove where everything is. congress has set a 2028 deadline to pass, and pete hegseth says the department is more than halfway there."
+    },
+    {
+      "date": "2026-11-20",
+      "headline": "Pentagon prayer service led by Christian nationalist pastor Doug Wilson",
+      "tags": [
+        "politics",
+        "defence"
+      ],
+      "snippet": "Pete Hegseth held a Christian prayer service at the Pentagon alongside pastor Douglas Wilson. Wilson has said women should not have the right to vote, has defended slavery and advocates a society gove\u2026",
+      "text": "pentagon prayer service led by christian nationalist pastor doug wilson\npete hegseth held a christian prayer service at the pentagon alongside pastor douglas wilson. wilson has said women should not have the right to vote, has defended slavery and advocates a society governed by christian principles. a pentagon spokesperson said the nation will forever stand as one nation under god."
+    },
+    {
+      "date": "2026-11-20",
+      "headline": "Trump nominates CENTCOM deputy Patrick Frank to lead NORTHCOM and NORAD",
+      "tags": [
+        "defence",
+        "politics"
+      ],
+      "snippet": "President Trump has nominated Army Lt. Gen. Patrick Frank to lead U.S. Northern Command and NORAD, according to the Department of War. If confirmed by the Senate, Frank would be promoted to four-star\u2026",
+      "text": "trump nominates centcom deputy patrick frank to lead northcom and norad\npresident trump has nominated army lt. gen. patrick frank to lead u.s. northern command and norad, according to the department of war. if confirmed by the senate, frank would be promoted to four-star general and replace gen. gregory guillot. frank has served as centcom's deputy commander since june."
+    },
+    {
+      "date": "2026-11-20",
+      "headline": "Cameron County denies tax break for SpaceX data center in South Texas",
+      "tags": [
+        "politics",
+        "tech",
+        "markets"
+      ],
+      "snippet": "Cameron County commissioners rejected a path toward a county tax abatement for Elon Musk's $24 billion SpaceX data center in South Texas, according to KRGV. SpaceX had sought a 100% property tax abate\u2026",
+      "text": "cameron county denies tax break for spacex data center in south texas\ncameron county commissioners rejected a path toward a county tax abatement for elon musk's $24 billion spacex data center in south texas, according to krgv. spacex had sought a 100% property tax abatement for 10 years, the brownsville herald reported. the decision comes as musk distances himself from the republican party."
+    },
+    {
+      "date": "2026-11-20",
+      "headline": "Texas Democrats vow scrutiny of SpaceX merger and launch expansion",
+      "tags": [
+        "politics",
+        "tech"
+      ],
+      "snippet": "Nathan Johnson, Texas's incoming Democratic attorney general replacing Ken Paxton, has vowed to examine any Tesla-SpaceX merger. SpaceX is also seeking to increase its rocket launches from 25 to more\u2026",
+      "text": "texas democrats vow scrutiny of spacex merger and launch expansion\nnathan johnson, texas's incoming democratic attorney general replacing ken paxton, has vowed to examine any tesla-spacex merger. spacex is also seeking to increase its rocket launches from 25 to more than 400 a year, and texas lawmakers say they will try to block or limit that expansion. the republican-controlled texas senate is reported not to be fully on board with the plans either."
+    },
+    {
+      "date": "2026-11-20",
+      "headline": "Army delays Iowa detonation of lead-containing munitions after public concern",
+      "tags": [
+        "health",
+        "climate",
+        "defence"
+      ],
+      "snippet": "The U.S. Army planned to detonate roughly 10,000 pounds of material composed largely of lead near Middletown, Iowa, and has pushed the event to Monday over safety concerns after public attention. An o\u2026",
+      "text": "army delays iowa detonation of lead-containing munitions after public concern\nthe u.s. army planned to detonate roughly 10,000 pounds of material composed largely of lead near middletown, iowa, and has pushed the event to monday over safety concerns after public attention. an official fallout map advises residents in a highlighted area to stay indoors and warns that children under six are especially vulnerable, with projections that particulate could travel up to about 100 miles, compared with roughly 50 miles previously. the projected path runs between davenport, iowa city and cedar rapids and over farmland near the mississippi river, and residents are advised to wash their cars before touching them."
+    },
+    {
+      "date": "2026-11-20",
+      "headline": "Chorus creator network compared with established 501c4 advocacy groups amid oversight inquiry",
+      "tags": [
+        "politics",
+        "media"
+      ],
+      "snippet": "Chorus, founded in late 2024 by Stuart Perlmutter and Brian Tyler Cohen, holds the same 501c4 tax status as the ACLU, NAACP and Planned Parenthood, which allows unlimited lobbying and non-disclosure o\u2026",
+      "text": "chorus creator network compared with established 501c4 advocacy groups amid oversight inquiry\nchorus, founded in late 2024 by stuart perlmutter and brian tyler cohen, holds the same 501c4 tax status as the aclu, naacp and planned parenthood, which allows unlimited lobbying and non-disclosure of donors. unlike those organisations, chorus has no charity arm, no published form 990s, a board of a founder-lawyer and three directors, and pays roughly 200 creators up to $8,000 a month to produce pro-democracy content without requiring them to disclose their participation. funding originally flowed through the 1630 fund, which sponsored chorus in april 2025; the house oversight committee sent its first inquiry about that funding on november 18, 2025, and creator collective was registered in washington, d.c., three days later, with chorus registered as a trade name under it in december 2025."
+    },
+    {
       "date": "2026-11-19",
       "headline": "Trump's CISA nominee declines to call January 6 an attack in confirmation hearing",
       "tags": [

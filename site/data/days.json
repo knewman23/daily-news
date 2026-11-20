@@ -1,6 +1,64 @@
 {
-  "last_updated": "2026-11-19T19:51:57.690440+00:00",
+  "last_updated": "2026-11-19T19:52:49.092641+00:00",
   "days": [
+    {
+      "date": "2026-11-20",
+      "tags": [
+        "war",
+        "politics",
+        "defence",
+        "foreign",
+        "legal",
+        "economy",
+        "tech",
+        "health",
+        "climate",
+        "markets",
+        "media"
+      ],
+      "sources": [
+        "@aaronparnas",
+        "@hunteralexanderhowell",
+        "@groundnews",
+        "@oafnation_actual",
+        "@carolinegleich",
+        "@ericmoutsos",
+        "@total.hypocrisy"
+      ],
+      "post_count": 35,
+      "transcribed_count": 35,
+      "incomplete": false,
+      "skipped": [
+        {
+          "headline": "Fiona the hippo dies after swallowing child's hat",
+          "reason": "Human interest story with no policy or political angle"
+        },
+        {
+          "headline": "Xi stages musical performance for Trump during China visit",
+          "reason": "Commentary on a clip that reports no new information"
+        },
+        {
+          "headline": "Commentary alleges Israeli-based software monitors largest US banks",
+          "reason": "Reaction video built on clips and speculation rather than new reporting"
+        },
+        {
+          "headline": "Creator publishes change.org contract in dispute over sponsorship disclosure",
+          "reason": "Creator-to-creator dispute about personal sponsorships rather than news"
+        },
+        {
+          "headline": "Grand Theft Auto VI sets preorder sales record",
+          "reason": "Entertainment sales milestone, not economic or policy news"
+        },
+        {
+          "headline": "Nike pledges free sneakers to every US valedictorian in the class of 2027",
+          "reason": "Promotional human interest story with no policy angle"
+        },
+        {
+          "headline": "Creator promotes data broker removal service",
+          "reason": "Sponsored advertisement with no news content"
+        }
+      ]
+    },
     {
       "date": "2026-11-19",
       "tags": [
